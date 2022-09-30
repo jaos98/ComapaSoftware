@@ -51,8 +51,6 @@ namespace ComapaSoftware.Vistas
 
         private void FormPlanta_Load(object sender, EventArgs e)
         {
-
-            cmbSector.Items = modelo.consultarSector2();
             //cmbSector.Items.Add(modelo);
 
    
