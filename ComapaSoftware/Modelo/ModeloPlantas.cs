@@ -38,11 +38,11 @@ namespace ComapaSoftware.Modelo
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
                 {
-                    object objectCollection;
-                    //string result = consultar.GetString(0);
+                    
+                    string result = consultar.GetString(0);
 
-                    objectCollection = consultar.GetString(0);
-                    //lista.Add(result);
+                   
+                    lista.Add(result);
                 }
             }
             catch (MySqlException e)
@@ -51,9 +51,9 @@ namespace ComapaSoftware.Modelo
             }
             return lista;
         }
-        public ComboBox.ObjectCollection consultarSector2(ComboBox owner)
+        public ComboBox.ObjectCollection consultarSector2(ComboBox cmbSector)
         {
-            ComboBox.ObjectCollection Items = new ComboBox.ObjectCollection(owner);
+            ComboBox.ObjectCollection Items = new ComboBox.ObjectCollection(cmbSector);
             try
             {
                 conectarBase();

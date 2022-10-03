@@ -51,57 +51,17 @@ namespace ComapaSoftware.Vistas
 
         private void FormPlanta_Load(object sender, EventArgs e)
         {
-            //cmbSector.Items.Add(modelo);
-
-   
-            // cmbSector.Items.Add(modelo.consultarSector());
+            //cmbSector.Items.Add(modelo.consultarSector2(cmbSector));
             
-                //foreach (var i in modelo.consultarSector())
-                //{
-                //    cmbSector.Items.Add(i);
-                //}
-                //cmbColonia.Enabled = false;
-           
-            
+            foreach (var item in modelo.consultarSector())
+            {
+                cmbSector.Items.Add(item);
+            }
         }
 
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // string helper = cmbSector.SelectedText;
-           // Console.WriteLine(helper);
-
-
-           //int value = cmbSector.SelectedIndex;
-
-           // switch (helper)
-           // {
-           //     case "Sector Rancho Grande":
-           //         MessageBox.Show("Funciona");
-           //         cmbColonia.Enabled = true;
-           //         break;
-           //     case "1":
-           //         MessageBox.Show("Funciona");
-           //         break;
-
-           // }
-
-
-           // if(cmbSector.SelectedIndex == 0)
-           // {
-           //     cmbColonia.Enabled = true;
-           // }
-
-
-            // string receiver = conn.ConsultaSector();
-            //  MessageBox.Show(receiver);
-            //switch (cmbSector.SelectedIndex)
-            //{
-            //    case 0:
-            //        break;
-
-            //    case 1:
-            //        break;
-            //}
+           
         }
         
     }
