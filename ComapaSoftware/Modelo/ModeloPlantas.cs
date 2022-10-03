@@ -33,16 +33,17 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT NombreSector FROM sector";
+                Query.CommandText = "SELECT IdSector,NombreSector FROM sector";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
                 {
+                    string result = consultar.GetString(1);
                     
-                    string result = consultar.GetString(0);
 
-                   
+                    Console.WriteLine(result);
                     lista.Add(result);
+                    
                 }
             }
             catch (MySqlException e)
@@ -51,27 +52,84 @@ namespace ComapaSoftware.Modelo
             }
             return lista;
         }
-        public ComboBox.ObjectCollection consultarSector2(ComboBox cmbSector)
+
+        public string obtenerID(string idObtenido)
         {
-            ComboBox.ObjectCollection Items = new ComboBox.ObjectCollection(cmbSector);
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT NombreSector FROM sector";
+                Query.CommandText = "SELECT IdSector FROM sector WHERE NombreSector = '"+idObtenido+"'";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
                 {
-
-                    string result = consultar.GetString(0);
-                    Items.Add(result);
+                    idObtenido = consultar.GetString(0);
+                    Console.WriteLine(idObtenido);
                 }
             }
-            catch (MySqlException e)
+            catch (Exception)
             {
-                Console.WriteLine(e);
+
+                throw;
             }
-            return Items;
+
+
+
+            return idObtenido;
         }
+
+        public string compararDatos(string resultId)
+        {
+            conectarBase();
+            Query.CommandText = "";
+            Query.Connection = Conn;
+            consultar = Query.ExecuteReader();
+            while (consultar.Read())
+            {
+                //idObtenido = consultar.GetString(0);
+               // Console.WriteLine(idObtenido);
+            }
+
+
+
+            return resultId;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //public ComboBox.ObjectCollection consultarSector2(ComboBox cmbSector)
+        //{
+        //    ComboBox.ObjectCollection Items = new ComboBox.ObjectCollection(cmbSector);
+        //    try
+        //    {
+        //        conectarBase();
+        //        Query.CommandText = "SELECT NombreSector FROM sector";
+        //        Query.Connection = Conn;
+        //        consultar = Query.ExecuteReader();
+        //        while (consultar.Read())
+        //        {
+
+        //            string result = consultar.GetString(0);
+        //            Items.Add(result);
+        //        }
+        //    }
+        //    catch (MySqlException e)
+        //    {
+        //        Console.WriteLine(e);
+        //    }
+        //    return Items;
+        //}
     }
 }

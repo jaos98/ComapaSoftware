@@ -52,15 +52,46 @@ namespace ComapaSoftware.Vistas
         private void FormPlanta_Load(object sender, EventArgs e)
         {
             //cmbSector.Items.Add(modelo.consultarSector2(cmbSector));
-            
+                        
+           cmbColonia.Enabled = false;
             foreach (var item in modelo.consultarSector())
             {
                 cmbSector.Items.Add(item);
+
             }
+            
         }
 
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(cmbSector.SelectedIndex < 0)
+            {
+
+            } else if (cmbSector.SelectedIndex >= 0)
+            {
+                string result = cmbSector.Text;
+                cmbColonia.Enabled = true;
+                string resultId =modelo.obtenerID(result);
+                
+                //foreach (var item in collection)
+                //{
+
+                //}
+                //metodo.obtenerColonias();
+                //foreach(var resultCol in metodo.obtenerColonias())
+                //{
+                //
+                //]
+                //cmbColonia.Items.Add(resultCol);
+
+
+                MessageBox.Show(modelo.obtenerID(resultId));
+
+            }
+            
+            
+
+
            
         }
         
