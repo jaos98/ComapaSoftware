@@ -90,14 +90,15 @@ namespace ComapaSoftware.Modelo
 
         public void insertarPlanta(string idPlantas,string numMedidor, string numServicio,string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
         {
+            //Registro de plantas
             try
             {
                 conectarBase();
-                string sql = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
+                Query.CommandText = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
                     "`DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
-                    "VALUES ('"+idPlantas+"','"+numMedidor+"','"+numServicio+ "','" + tipoPlanta + "','" + estatus + "','" + descFunciones + "','" + colonia + "','" + sector + "','" + latitud + "','" + longitud + "','" + elevacion + "','" + servicio + "','" + domicilio + ");";
-                Console.WriteLine(sql);                
+                    "VALUES ('"+idPlantas+"','"+numMedidor+"','"+numServicio+ "','" + tipoPlanta + "','" + estatus + "','" + descFunciones + "','" + colonia + "','" + sector + "','" + latitud + "','" + longitud + "','" + elevacion + "','" + servicio + "','" + domicilio +"');";               
                 Query.Connection = Conn;
+                Query.ExecuteNonQuery();
                
             }
             catch (Exception ex)
