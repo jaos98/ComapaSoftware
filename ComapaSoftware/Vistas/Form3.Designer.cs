@@ -113,6 +113,7 @@
             this.cmbColonia.Size = new System.Drawing.Size(237, 21);
             this.cmbColonia.TabIndex = 31;
             this.cmbColonia.Text = "--Seleccione Colonia--";
+            this.cmbColonia.SelectedIndexChanged += new System.EventHandler(this.cmbColonia_SelectedIndexChanged);
             // 
             // cmbEstatus
             // 

@@ -32,20 +32,32 @@ namespace ComapaSoftware.Vistas
         //Informacion a llenar con boton
         private void button1_Click(object sender, EventArgs e)
         {
-            controlador.IdPlanta = txtPlanta.Text.Trim();
-            controlador.NumMedidor = txtNumMed.Text.Trim();
-            string txtNumServicio = txtNumServ.Text.Trim();
-            int num = Int32.Parse(txtNumServicio);
-            controlador.NumServicio = num;
-            controlador.TipoPlantas = cmbTipoPlanta.Text;
-            controlador.Estatus = cmbEstatus.Text;
-            controlador.DescFunciones = txtDescFunciones.Text;
+            getInfo();
+            string idPlanta, numMedidor,numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
+                , longitud, elevacion, servicio, domicilio;
+            idPlanta = controlador.IdPlanta;
+            numMedidor = controlador.NumMedidor;
+            numServicio = controlador.NumServicio;
+            tipoPlantas = controlador.TipoPlantas;
+            estatus = controlador.Estatus;
+            descFunciones = controlador.DescFunciones;
+            colonia = controlador.Colonia;
+            sector = controlador.Sector;
+            latitud = controlador.Latitud;
+            elevacion = controlador.Elevacion;
+            longitud = controlador.Longitud;
+            servicio = controlador.Servicio;
+            domicilio = controlador.Domicilio;
+
+            MessageBox.Show(idPlanta+numMedidor+ numServicio+ tipoPlantas+ estatus+ descFunciones+ colonia+
+                sector+ latitud+
+                longitud+ elevacion+ servicio+ domicilio);
 
 
-            MessageBox.Show(controlador.IdPlanta + "\n" +
-            "\n" + controlador.NumServicio.ToString() +
-            "\n" + controlador.NumMedidor +
-            "\n" + controlador.TipoPlantas);
+
+            modelo.insertarPlanta(idPlanta,numMedidor,numServicio,tipoPlantas,estatus,descFunciones,colonia,sector,latitud
+                ,longitud,elevacion,servicio,domicilio);
+
 
         }
 
@@ -64,36 +76,44 @@ namespace ComapaSoftware.Vistas
 
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cmbSector.SelectedIndex < 0)
+            int value = cmbSector.SelectedIndex;
+            if (cmbSector.SelectedIndex < 0)
             {
-
-            } else if (cmbSector.SelectedIndex >= 0)
-            {
-                string result = cmbSector.Text;
-                cmbColonia.Enabled = true;
-                string resultId =modelo.obtenerID(result);
-                
-                //foreach (var item in collection)
-                //{
-
-                //}
-                //metodo.obtenerColonias();
-                //foreach(var resultCol in metodo.obtenerColonias())
-                //{
-                //
-                //]
-                //cmbColonia.Items.Add(resultCol);
-
-
-                MessageBox.Show(modelo.obtenerID(resultId));
-
+                cmbColonia.Items.Clear();
             }
-            
-            
-
-
-           
+            else if (cmbSector.SelectedIndex >= 0)
+            {
+                cmbColonia.Items.Clear();
+                cmbColonia.Enabled = true;
+                string resultId = modelo.obtenerID(cmbSector.Text);
+                cmbColonia.Enabled = true;
+                foreach (var item in modelo.compararDatos(resultId))
+                {
+                    cmbColonia.Items.Add(item);
+                }
+            }
         }
-        
+
+        private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+        public void getInfo()
+        {
+            controlador.IdPlanta = txtPlanta.Text.Trim();
+            controlador.NumMedidor = txtNumMed.Text.Trim();
+            controlador.NumServicio = txtNumServ.Text.Trim();
+            controlador.TipoPlantas = cmbTipoPlanta.Text;
+            controlador.Estatus = cmbEstatus.Text;
+            controlador.DescFunciones = txtDescFunciones.Text;
+            controlador.Colonia = cmbColonia.Text;
+            controlador.Sector = cmbSector.Text;
+            controlador.Latitud = txtLatitud.Text;
+            controlador.Longitud = txtLongitud.Text;
+            controlador.Elevacion = txtElevacion.Text;
+            controlador.Servicio = txtNumServ.Text;
+            controlador.Domicilio = txtDomicilio.Text;
+        }
     }
+ 
 }

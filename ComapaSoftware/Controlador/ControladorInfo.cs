@@ -10,7 +10,7 @@ namespace ComapaSoftware.Controlador
     {
         private string idPlanta;
         private string numMedidor;
-        private int numServicio;
+        private string numServicio;
         private string tipoPlantas;
         private string estatus;
         private string descFunciones;
@@ -20,7 +20,7 @@ namespace ComapaSoftware.Controlador
         private string longitud;
         private string elevacion;
         private string servicio;
-
+        private string domicilio;
      
 
         public string IdPlanta
@@ -33,7 +33,7 @@ namespace ComapaSoftware.Controlador
             get { return numMedidor; }
             set { numMedidor = value; }
         }
-        public int NumServicio
+        public string NumServicio
         {
             get { return numServicio; }
             set { numServicio = value; }
@@ -82,6 +82,11 @@ namespace ComapaSoftware.Controlador
         {
             get { return servicio; }
             set { servicio = value; }
+        }
+        public string Domicilio
+        {
+            get { return domicilio; }
+            set { domicilio = value; }
         }
 
 

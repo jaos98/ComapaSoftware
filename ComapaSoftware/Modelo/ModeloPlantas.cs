@@ -39,11 +39,8 @@ namespace ComapaSoftware.Modelo
                 while (consultar.Read())
                 {
                     string result = consultar.GetString(1);
-                    
-
                     Console.WriteLine(result);
                     lista.Add(result);
-                    
                 }
             }
             catch (MySqlException e)
@@ -69,44 +66,44 @@ namespace ComapaSoftware.Modelo
             }
             catch (Exception)
             {
-
                 throw;
             }
-
-
-
             return idObtenido;
         }
 
-        public string compararDatos(string resultId)
+        public List<string> compararDatos(string resultId)
         {
+            List<string> helper = new List<string>();
             conectarBase();
-            Query.CommandText = "";
+            Query.CommandText = "SELECT sector.IdSector, colonia.NombreColonia FROM sector " +
+                "INNER JOIN colonia ON sector.IdSector = colonia.IdSector WHERE sector.IdSector = '"+resultId+"'";
             Query.Connection = Conn;
             consultar = Query.ExecuteReader();
             while (consultar.Read())
             {
-                //idObtenido = consultar.GetString(0);
-               // Console.WriteLine(idObtenido);
+                string res = consultar.GetString(1);
+                helper.Add(res);
             }
-
-
-
-            return resultId;
+            return helper;
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
+        public void insertarPlanta(string idPlantas,string numMedidor, string numServicio,string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
+        {
+            try
+            {
+                conectarBase();
+                Query.CommandText = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, `DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
+                    "VALUES ('"+idPlantas+"','"+numMedidor+"','"+numServicio+ "'" + tipoPlanta + "','" + estatus + "',''" + descFunciones + "','" + colonia + "',''" + sector + "','" + latitud + "',''" + longitud + "','" + elevacion + "',''" + servicio + "','" + domicilio + "',');";
+                Query.Connection = Conn;
+                Query.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            Console.WriteLine("La info se registro, creo");
+        }
 
 
         //public ComboBox.ObjectCollection consultarSector2(ComboBox cmbSector)
