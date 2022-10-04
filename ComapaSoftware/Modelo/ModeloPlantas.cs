@@ -93,10 +93,12 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, `DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
-                    "VALUES ('"+idPlantas+"','"+numMedidor+"','"+numServicio+ "'" + tipoPlanta + "','" + estatus + "',''" + descFunciones + "','" + colonia + "',''" + sector + "','" + latitud + "',''" + longitud + "','" + elevacion + "',''" + servicio + "','" + domicilio + "',');";
+                string sql = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
+                    "`DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
+                    "VALUES ('"+idPlantas+"','"+numMedidor+"','"+numServicio+ "','" + tipoPlanta + "','" + estatus + "','" + descFunciones + "','" + colonia + "','" + sector + "','" + latitud + "','" + longitud + "','" + elevacion + "','" + servicio + "','" + domicilio + ");";
+                Console.WriteLine(sql);                
                 Query.Connection = Conn;
-                Query.ExecuteNonQuery();
+               
             }
             catch (Exception ex)
             {
