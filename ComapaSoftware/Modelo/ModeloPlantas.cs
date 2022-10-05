@@ -87,10 +87,10 @@ namespace ComapaSoftware.Modelo
             return helper;
         }
 
-
+        //REGISTRO DE PLANTAS SIN PARAMETROS
         public void insertarPlanta(string idPlantas,string numMedidor, string numServicio,string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
         {
-            //Registro de plantas
+         
             try
             {
                 conectarBase();
@@ -109,27 +109,50 @@ namespace ComapaSoftware.Modelo
         }
 
 
-        //public ComboBox.ObjectCollection consultarSector2(ComboBox cmbSector)
-        //{
-        //    ComboBox.ObjectCollection Items = new ComboBox.ObjectCollection(cmbSector);
-        //    try
-        //    {
-        //        conectarBase();
-        //        Query.CommandText = "SELECT NombreSector FROM sector";
-        //        Query.Connection = Conn;
-        //        consultar = Query.ExecuteReader();
-        //        while (consultar.Read())
-        //        {
+       
 
-        //            string result = consultar.GetString(0);
-        //            Items.Add(result);
-        //        }
-        //    }
-        //    catch (MySqlException e)
-        //    {
-        //        Console.WriteLine(e);
-        //    }
-        //    return Items;
-        //}
+
+        //INSERT CON PARAMETROS (PRUEBA)
+        public int insertarEquipo(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
+        {
+            int numRegistros = 0;
+            string sqlEjecutar = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
+                    "`DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
+                    "VALUES (@idPlantas,@numMedidor,@numServicio,@tipoPlanta,@estatus,@descFunciones,@colonia,@sector,@latitud,@longitud,@elevacion,@servicio,@domicilio);";
+            try
+            {
+                MySqlCommand Query = new MySqlCommand();
+                Conn.Close();
+                Query.Connection = Conn;
+                Query.CommandText = sqlEjecutar;
+                Query.Parameters.Add("@idPlantas", MySqlDbType.String).Value = idPlantas;
+                Query.Parameters.Add("@numMedidor", MySqlDbType.String).Value = numMedidor;
+                Query.Parameters.Add("@numServicio", MySqlDbType.String).Value = numServicio;
+                Query.Parameters.Add("@tipoPlanta", MySqlDbType.String).Value = tipoPlanta;
+                Query.Parameters.Add("@estatus", MySqlDbType.String).Value = estatus;
+                Query.Parameters.Add("@descFunciones", MySqlDbType.String).Value = descFunciones;
+                Query.Parameters.Add("@colonia", MySqlDbType.String).Value = colonia;
+                Query.Parameters.Add("@sector", MySqlDbType.String).Value = sector;
+                Query.Parameters.Add("@latitud", MySqlDbType.String).Value = latitud;
+                Query.Parameters.Add("@longitud", MySqlDbType.String).Value = longitud;
+                Query.Parameters.Add("@elevacion", MySqlDbType.String).Value = elevacion;
+                Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
+                Query.Parameters.Add("@domicilio", MySqlDbType.String).Value = domicilio;
+                Conn.Open();
+                numRegistros = Query.ExecuteNonQuery();
+                return numRegistros;
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("Error al añadir dispositivo");
+                Console.WriteLine(ex);
+                return numRegistros; //0 si ha habido algún error
+            }
+            finally
+            {
+                Conn.Close();
+            }
+        }
+
     }
 }

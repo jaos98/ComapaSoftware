@@ -53,10 +53,19 @@ namespace ComapaSoftware.Vistas
                 sector+ latitud+
                 longitud+ elevacion+ servicio+ domicilio);
 
-
-
-            modelo.insertarPlanta(idPlanta,numMedidor,numServicio,tipoPlantas,estatus,descFunciones,colonia,sector,latitud
-                ,longitud,elevacion,servicio,domicilio);
+            if (modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
+                , longitud, elevacion, servicio, domicilio)>0)
+            {
+                MessageBox.Show("La informacion se ha registrado!");
+            }
+            else
+            {
+                MessageBox.Show("Algo ha salido mal");
+            }
+           // modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
+            //    ,longitud,elevacion,servicio,domicilio);
+              //modelo.insertarPlanta(idPlanta,numMedidor,numServicio,tipoPlantas,estatus,descFunciones,colonia,sector,latitud
+              //  ,longitud,elevacion,servicio,domicilio);
 
 
         }
