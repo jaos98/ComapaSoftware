@@ -21,6 +21,13 @@ namespace ComapaSoftware.Vistas
             InitializeComponent();
            
         }
+        public void conectarBase()
+        {
+            Conn = new MySqlConnection();
+            string sql = "server=localhost;user id=root; database=comapainfo;password=;";
+            Conn.ConnectionString = sql;
+            Conn.Open();
+        }
         
         
 
@@ -33,13 +40,12 @@ namespace ComapaSoftware.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            consultarDato();
+            //consultarDato();
+            this.Hide();
+            FormResultado formResultado = new FormResultado();
+            formResultado.Show();
         }
 
-        public void conectarBase()
-        {
-          
-        }
         public void consultarDato()
         {
             try
@@ -65,10 +71,30 @@ namespace ComapaSoftware.Vistas
             }
             catch (MySqlException e)
             {
-                // Console.WriteLine(e);
                 MessageBox.Show(e.Message);
             }
-
         }
+
+
+
+
+        //public void traerDatos()
+        //{
+        //    string sql = "SELECT IdPlantas,NumMedidor,NumServicio FROM plantascomapa";
+        //    conectarBase();
+        //    try
+        //    {
+        //        MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql,Conn);
+        //        DataTable dt = new DataTable();
+        //        dataAdapter.Fill(dt);
+
+
+        //    }
+        //    catch (Exception)
+        //    {
+
+        //        throw;
+        //    }
+        //}
     }
 }

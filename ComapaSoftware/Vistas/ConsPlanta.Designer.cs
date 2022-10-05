@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -50,31 +50,14 @@
             this.panel1.Size = new System.Drawing.Size(801, 541);
             this.panel1.TabIndex = 0;
             // 
-            // dataGridView1
+            // button3
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 29);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 391);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(11, 455);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(355, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Mostrar Informacion tecnica";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(432, 455);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(355, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Mostrar Informacion Adicional";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button3.Location = new System.Drawing.Point(255, 503);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(302, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Volver";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -85,14 +68,33 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Elija una opcion";
             // 
-            // button3
+            // button2
             // 
-            this.button3.Location = new System.Drawing.Point(255, 503);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(302, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Volver";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button2.Location = new System.Drawing.Point(432, 455);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(355, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Mostrar Informacion Adicional";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(11, 455);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(355, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Mostrar Informacion tecnica";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(11, 29);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(776, 391);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // FormResultado
             // 
