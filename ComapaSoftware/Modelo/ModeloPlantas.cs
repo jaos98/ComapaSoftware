@@ -121,7 +121,7 @@ namespace ComapaSoftware.Modelo
                     "VALUES (@idPlantas,@numMedidor,@numServicio,@tipoPlanta,@estatus,@descFunciones,@colonia,@sector,@latitud,@longitud,@elevacion,@servicio,@domicilio);";
             try
             {
-                MySqlCommand Query = new MySqlCommand();
+                
                 Conn.Close();
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
