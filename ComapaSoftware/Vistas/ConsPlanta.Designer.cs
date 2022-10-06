@@ -29,35 +29,43 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAdicional = new System.Windows.Forms.Button();
+            this.btnTecnica = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.txtAdicional = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnMostrar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.btnBuscar);
+            this.panel1.Controls.Add(this.btnMostrar);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txtAdicional);
+            this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnAdicional);
+            this.panel1.Controls.Add(this.btnTecnica);
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1100, 627);
             this.panel1.TabIndex = 0;
             // 
-            // button3
+            // btnVolver
             // 
-            this.button3.Location = new System.Drawing.Point(282, 573);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(539, 23);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Volver";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnVolver.Location = new System.Drawing.Point(282, 573);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(539, 23);
+            this.btnVolver.TabIndex = 4;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -68,24 +76,24 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Elija una opcion";
             // 
-            // button2
+            // btnAdicional
             // 
-            this.button2.Location = new System.Drawing.Point(695, 489);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(355, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Mostrar Informacion Adicional";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAdicional.Location = new System.Drawing.Point(695, 489);
+            this.btnAdicional.Name = "btnAdicional";
+            this.btnAdicional.Size = new System.Drawing.Size(355, 23);
+            this.btnAdicional.TabIndex = 2;
+            this.btnAdicional.Text = "Mostrar Informacion Adicional";
+            this.btnAdicional.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnTecnica
             // 
-            this.button1.Location = new System.Drawing.Point(57, 489);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(355, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Mostrar Informacion tecnica";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnTecnica.Location = new System.Drawing.Point(57, 489);
+            this.btnTecnica.Name = "btnTecnica";
+            this.btnTecnica.Size = new System.Drawing.Size(355, 23);
+            this.btnTecnica.TabIndex = 1;
+            this.btnTecnica.Text = "Mostrar Informacion tecnica";
+            this.btnTecnica.UseVisualStyleBackColor = true;
+            this.btnTecnica.Click += new System.EventHandler(this.button1_Click);
             // 
             // dataGridView1
             // 
@@ -97,6 +105,42 @@
             this.dataGridView1.Size = new System.Drawing.Size(1064, 391);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // txtAdicional
+            // 
+            this.txtAdicional.Location = new System.Drawing.Point(695, 11);
+            this.txtAdicional.Name = "txtAdicional";
+            this.txtAdicional.Size = new System.Drawing.Size(276, 20);
+            this.txtAdicional.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(633, 14);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Consulta";
+            // 
+            // btnMostrar
+            // 
+            this.btnMostrar.Location = new System.Drawing.Point(487, 455);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(154, 23);
+            this.btnMostrar.TabIndex = 7;
+            this.btnMostrar.Text = "Mostrar Todo";
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Location = new System.Drawing.Point(977, 8);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(101, 23);
+            this.btnBuscar.TabIndex = 8;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // FormResultado
             // 
@@ -117,10 +161,14 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnAdicional;
+        private System.Windows.Forms.Button btnTecnica;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnMostrar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtAdicional;
+        private System.Windows.Forms.Button btnBuscar;
     }
 }

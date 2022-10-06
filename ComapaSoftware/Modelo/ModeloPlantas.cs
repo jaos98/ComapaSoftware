@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -152,6 +153,64 @@ namespace ComapaSoftware.Modelo
             {
                 Conn.Close();
             }
+        }
+        public DataTable llevarDatos(string globalReceiver)
+        {
+            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio " +
+                "FROM plantascomapa WHERE IdPlantas = '" + globalReceiver + "' OR TipoPlantas = '" + globalReceiver + "' ";
+            conectarBase();
+            try
+            {
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                Conn.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                Conn.Close();
+                throw;
+            }
+        }
+        public DataTable dataSender()
+        {
+            string sql = "SELECT * " +
+                "FROM plantascomapa";
+            conectarBase();
+            try
+            {
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        public DataTable consultaAdicional(string globalEntry)
+        {
+            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio " +
+                "FROM plantascomapa WHERE (IdPlantas = '"+globalEntry+"') OR (TipoPlantas ='"+globalEntry+"') ";
+            conectarBase();
+            try
+            {
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return null;
+            }
+
         }
 
     }

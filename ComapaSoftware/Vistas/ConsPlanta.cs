@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComapaSoftware.Controlador;
+using ComapaSoftware.Modelo;
 
 namespace ComapaSoftware.Vistas
 {
@@ -21,7 +22,7 @@ namespace ComapaSoftware.Vistas
         ControladorPlantas controladorPlantas = new ControladorPlantas();
         public FormResultado(string senderInfo)
         {
-            controladorPlantas.ReceiverInfo = senderInfo;
+            globalReceiver = senderInfo;
             InitializeComponent();
             FormPlanta formPlanta = new FormPlanta();
             formPlanta.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -37,23 +38,29 @@ namespace ComapaSoftware.Vistas
 
         public void traerDatos()
         {
-            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus FROM plantascomapa";
-            conectarBase();
-            try
-            {
-                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);
-                DataTable dt = new DataTable();
-                dataAdapter.Fill(dt);
-                dataGridView1.DataSource = dt;
-                Conn.Close();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                Conn.Close();
-                throw;
-            }
+            ModeloPlantas modeloPlantas = new ModeloPlantas();
+            dataGridView1.DataSource = modeloPlantas.llevarDatos(globalReceiver);
         }
+        public void traerTodo()
+        {
+            ModeloPlantas modeloPlantas = new ModeloPlantas();
+            dataGridView1.DataSource = modeloPlantas.dataSender();
+        }
+        public void consultaTecnica()
+        {
+            ModeloPlantas modeloPlantas = new ModeloPlantas();
+            dataGridView1.DataSource = modeloPlantas.dataSender();
+        }
+        public void consultaAdicional()
+        {
+            string globalEntry = txtAdicional.Text;
+            ModeloPlantas modeloPlantas = new ModeloPlantas();
+            dataGridView1.DataSource = modeloPlantas.consultaAdicional(globalEntry);
+            dataGridView1.Refresh();
+        }
+
+
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -62,12 +69,22 @@ namespace ComapaSoftware.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            traerDatos();
+            
         }
 
         private void FormResultado_Load(object sender, EventArgs e)
         {
-            
+            traerDatos();
+        }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            traerTodo();
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            consultaAdicional();
         }
     }
 }
