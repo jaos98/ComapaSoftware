@@ -8,17 +8,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ComapaSoftware.Controlador;
 
 namespace ComapaSoftware.Vistas
 {
     public partial class FormResultado : Form
     {
+        string globalReceiver;
         MySqlCommand Query = new MySqlCommand();
         MySqlConnection Conn;
         MySqlDataReader consultar;
-        public FormResultado()
+        ControladorPlantas controladorPlantas = new ControladorPlantas();
+        public FormResultado(string senderInfo)
         {
+            controladorPlantas.ReceiverInfo = senderInfo;
             InitializeComponent();
+            FormPlanta formPlanta = new FormPlanta();
+            formPlanta.FormBorderStyle = FormBorderStyle.FixedDialog;
+            formPlanta.StartPosition = FormStartPosition.CenterScreen;
         }
         public void conectarBase()
         {
@@ -30,7 +37,7 @@ namespace ComapaSoftware.Vistas
 
         public void traerDatos()
         {
-            string sql = "SELECT * FROM plantascomapa";
+            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus FROM plantascomapa";
             conectarBase();
             try
             {
@@ -39,7 +46,6 @@ namespace ComapaSoftware.Vistas
                 dataAdapter.Fill(dt);
                 dataGridView1.DataSource = dt;
                 Conn.Close();
-
             }
             catch (Exception ex)
             {
@@ -57,6 +63,11 @@ namespace ComapaSoftware.Vistas
         private void button1_Click(object sender, EventArgs e)
         {
             traerDatos();
+        }
+
+        private void FormResultado_Load(object sender, EventArgs e)
+        {
+            
         }
     }
 }

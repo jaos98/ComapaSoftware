@@ -47,14 +47,14 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(801, 541);
+            this.panel1.Size = new System.Drawing.Size(1100, 627);
             this.panel1.TabIndex = 0;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(255, 503);
+            this.button3.Location = new System.Drawing.Point(282, 573);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(302, 23);
+            this.button3.Size = new System.Drawing.Size(539, 23);
             this.button3.TabIndex = 4;
             this.button3.Text = "Volver";
             this.button3.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 10);
+            this.label1.Location = new System.Drawing.Point(11, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 3;
@@ -70,7 +70,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(432, 455);
+            this.button2.Location = new System.Drawing.Point(695, 489);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(355, 23);
             this.button2.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 455);
+            this.button1.Location = new System.Drawing.Point(57, 489);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(355, 23);
             this.button1.TabIndex = 1;
@@ -89,10 +89,12 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 29);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 44);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(776, 391);
+            this.dataGridView1.Size = new System.Drawing.Size(1064, 391);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -100,10 +102,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 539);
+            this.ClientSize = new System.Drawing.Size(1102, 625);
             this.Controls.Add(this.panel1);
             this.Name = "FormResultado";
             this.Text = "Resultados de Busqueda";
+            this.Load += new System.EventHandler(this.FormResultado_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

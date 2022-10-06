@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-
+using ComapaSoftware.Controlador;
 namespace ComapaSoftware.Vistas
 {
     public partial class FormPanel : Form
@@ -41,20 +41,29 @@ namespace ComapaSoftware.Vistas
         private void button1_Click(object sender, EventArgs e)
         {
             //consultarDato();
-            this.Hide();
-            FormResultado formResultado = new FormResultado();
-            formResultado.Show();
-        }
+            if (txtConsulta.Text == "")
+            {
+                MessageBox.Show("Por favor introduzca la informacion correcta");
+            }
+            else
+            {
+                string senderInfo = txtConsulta.Text;
+                this.Hide();
+                FormResultado formResultado = new FormResultado(senderInfo);
+                formResultado.Show();
+            }
+          
 
+        }
         public void consultarDato()
         {
             try
             {
-                
-                Conn = new MySqlConnection();
-                string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-                Conn.ConnectionString = sql;
-                Conn.Open();
+                conectarBase();
+                //Conn = new MySqlConnection();
+                //string sql = "server=localhost;user id=root; database=comapainfo;password=;";
+                //Conn.ConnectionString = sql;
+                //Conn.Open();
                 Console.WriteLine("Conectado con exito!");
                 Query.CommandText = "SELECT IdPlantas,NumMedidor,NumServicio FROM plantascomapa";
                 Query.Connection = Conn;

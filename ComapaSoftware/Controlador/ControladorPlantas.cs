@@ -8,9 +8,9 @@ namespace ComapaSoftware.Controlador
 {
     internal class ControladorPlantas
     {
+        private string receiverInfo;
 
-
-
+        public string ReceiverInfo { get { return receiverInfo; } set { receiverInfo = value; } }
 
     }
 }

@@ -56,7 +56,15 @@ namespace ComapaSoftware
             }
         }
 
-
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            //var bounds = Screen.FromControl(this).Bounds;
+            //this.Width = bounds.Width - 100;
+           // this.Height = bounds.Height - 100;
+            FormLogin formLogin = new FormLogin();
+            formLogin.FormBorderStyle = FormBorderStyle.FixedDialog;
+            formLogin.StartPosition = FormStartPosition.CenterScreen;
+        }
     }
     
 }
