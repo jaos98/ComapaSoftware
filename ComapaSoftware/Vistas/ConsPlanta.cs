@@ -86,5 +86,12 @@ namespace ComapaSoftware.Vistas
         {
             consultaAdicional();
         }
+
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormPanel formPanel = new FormPanel();
+            formPanel.Show();
+        }
     }
 }

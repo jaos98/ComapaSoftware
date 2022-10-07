@@ -84,6 +84,22 @@ namespace ComapaSoftware.Vistas
             }
         }
 
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if(cmbCategoria.Text == "--Seleccione categoria--")
+            {
+                MessageBox.Show("Porfavor seleccione categoria para consulta");
+
+            }
+            else
+            {
+                string senderInfo = cmbCategoria.Text;
+                this.Hide();
+                FormResultado formResultado = new FormResultado(senderInfo);
+                formResultado.Show();
+            }
+        }
+
 
 
 

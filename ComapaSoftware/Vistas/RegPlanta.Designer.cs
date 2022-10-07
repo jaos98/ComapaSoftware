@@ -154,7 +154,8 @@
             "Pozo",
             "Rebombeo",
             "Potabilizadora",
-            "Tanque"});
+            "Tanque",
+            "Carcamo"});
             this.cmbServicio.Location = new System.Drawing.Point(519, 193);
             this.cmbServicio.Name = "cmbServicio";
             this.cmbServicio.Size = new System.Drawing.Size(237, 21);
@@ -166,7 +167,10 @@
             this.cmbTipoPlanta.FormattingEnabled = true;
             this.cmbTipoPlanta.Items.AddRange(new object[] {
             "Potable",
-            "Residual"});
+            "Residual",
+            "PTAR",
+            "EBAR",
+            "EBAP"});
             this.cmbTipoPlanta.Location = new System.Drawing.Point(172, 146);
             this.cmbTipoPlanta.Name = "cmbTipoPlanta";
             this.cmbTipoPlanta.Size = new System.Drawing.Size(237, 21);
