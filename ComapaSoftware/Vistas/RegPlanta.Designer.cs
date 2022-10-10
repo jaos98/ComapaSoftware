@@ -151,11 +151,12 @@
             this.cmbServicio.FormattingEnabled = true;
             this.cmbServicio.Items.AddRange(new object[] {
             "Bombeo",
-            "Pozo",
             "Rebombeo",
             "Potabilizadora",
             "Tanque",
-            "Carcamo"});
+            "Pozo",
+            "Carcamo",
+            "Sin sub-categoria"});
             this.cmbServicio.Location = new System.Drawing.Point(519, 193);
             this.cmbServicio.Name = "cmbServicio";
             this.cmbServicio.Size = new System.Drawing.Size(237, 21);
@@ -170,7 +171,9 @@
             "Residual",
             "PTAR",
             "EBAR",
-            "EBAP"});
+            "EBAP",
+            "Obra de toma",
+            "Rebombeo de agua cruda"});
             this.cmbTipoPlanta.Location = new System.Drawing.Point(172, 146);
             this.cmbTipoPlanta.Name = "cmbTipoPlanta";
             this.cmbTipoPlanta.Size = new System.Drawing.Size(237, 21);

@@ -24,10 +24,6 @@ namespace ComapaSoftware.Modelo
             Conn.ConnectionString = sql;
             Conn.Open();
         }
-        public void insertarPlanta(string idPlanta, string numMedidor)
-        {
-            
-        }
         public List<string> consultarSector()
         {
             List<string> lista = new List<string>();
@@ -141,7 +137,7 @@ namespace ComapaSoftware.Modelo
                 Query.Parameters.Add("@domicilio", MySqlDbType.String).Value = domicilio;
                 Conn.Open();
                 numRegistros = Query.ExecuteNonQuery();
-                return numRegistros;
+                return numRegistros;//1 si se ha registrado
             }
             catch (MySqlException ex)
             {

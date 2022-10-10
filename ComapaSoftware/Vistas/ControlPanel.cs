@@ -100,6 +100,13 @@ namespace ComapaSoftware.Vistas
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegInfoTec regInfoTec = new RegInfoTec();
+            regInfoTec.Show();
+        }
+
 
 
 

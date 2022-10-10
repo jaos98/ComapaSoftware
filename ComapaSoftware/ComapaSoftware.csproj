@@ -87,6 +87,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="Controlador\ControladorInfo.cs" />
     <Compile Include="Controlador\ControladorPlantas.cs" />
+    <Compile Include="Modelo\ModeloFichaTecnica.cs" />
     <Compile Include="Modelo\ModeloPlantas.cs" />
     <Compile Include="Vistas\RegInfoTec.cs">
       <SubType>Form</SubType>

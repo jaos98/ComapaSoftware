@@ -28,53 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cmbId = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.txtInst = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.txtProm = new System.Windows.Forms.TextBox();
+            this.txtGarant = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtEquinst = new System.Windows.Forms.TextBox();
+            this.txtOpmin = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtCap = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // cmbId
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 173);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(173, 21);
-            this.comboBox1.TabIndex = 0;
-            this.comboBox1.Text = "--Seleccione ID--";
+            this.cmbId.FormattingEnabled = true;
+            this.cmbId.Location = new System.Drawing.Point(9, 173);
+            this.cmbId.Name = "cmbId";
+            this.cmbId.Size = new System.Drawing.Size(173, 21);
+            this.cmbId.TabIndex = 0;
+            this.cmbId.Text = "--Seleccione ID--";
+            this.cmbId.SelectedIndexChanged += new System.EventHandler(this.cmbId_SelectedIndexChanged);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.comboBox2);
-            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.txtInst);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.textBox6);
-            this.panel1.Controls.Add(this.textBox5);
+            this.panel1.Controls.Add(this.txtProm);
+            this.panel1.Controls.Add(this.txtGarant);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
+            this.panel1.Controls.Add(this.txtEquinst);
+            this.panel1.Controls.Add(this.txtOpmin);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.label5);
@@ -82,73 +83,88 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.txtCap);
             this.panel1.Location = new System.Drawing.Point(219, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(579, 449);
             this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
             // 
-            // textBox1
+            // label10
             // 
-            this.textBox1.Location = new System.Drawing.Point(279, 62);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 20);
-            this.textBox1.TabIndex = 0;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(24, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(201, 13);
+            this.label10.TabIndex = 15;
+            this.label10.Text = "Introduzca la informacion general tecnica";
             // 
-            // label1
+            // comboBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 69);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Capacidad de Equipos";
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Manual",
+            "Automatico"});
+            this.comboBox2.Location = new System.Drawing.Point(279, 200);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.TabIndex = 14;
+            this.comboBox2.Text = "--Seleccione Tipo--";
             // 
-            // label2
+            // txtInst
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 113);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(183, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Cantidad de Eq./P Operacion Minima";
+            this.txtInst.Location = new System.Drawing.Point(279, 346);
+            this.txtInst.Name = "txtInst";
+            this.txtInst.Size = new System.Drawing.Size(121, 20);
+            this.txtInst.TabIndex = 13;
             // 
-            // label3
+            // button2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 159);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Equipos Instalados";
+            this.button2.Location = new System.Drawing.Point(369, 413);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(200, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Volver";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label4
+            // txtProm
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 208);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(28, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Tipo";
+            this.txtProm.Location = new System.Drawing.Point(279, 300);
+            this.txtProm.Name = "txtProm";
+            this.txtProm.Size = new System.Drawing.Size(121, 20);
+            this.txtProm.TabIndex = 12;
             // 
-            // label5
+            // txtGarant
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(23, 253);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(225, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Cantidad De Equipos P/ Garantizar Operacion";
+            this.txtGarant.Location = new System.Drawing.Point(279, 253);
+            this.txtGarant.Name = "txtGarant";
+            this.txtGarant.Size = new System.Drawing.Size(121, 20);
+            this.txtGarant.TabIndex = 11;
             // 
-            // label6
+            // button1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 303);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Gasto Promedio (LPS)";
+            this.button1.Location = new System.Drawing.Point(27, 413);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(201, 23);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Agregar Informacion";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // txtEquinst
+            // 
+            this.txtEquinst.Location = new System.Drawing.Point(279, 152);
+            this.txtEquinst.Name = "txtEquinst";
+            this.txtEquinst.Size = new System.Drawing.Size(121, 20);
+            this.txtEquinst.TabIndex = 9;
+            // 
+            // txtOpmin
+            // 
+            this.txtOpmin.Location = new System.Drawing.Point(279, 106);
+            this.txtOpmin.Name = "txtOpmin";
+            this.txtOpmin.Size = new System.Drawing.Size(121, 20);
+            this.txtOpmin.TabIndex = 8;
             // 
             // label7
             // 
@@ -159,67 +175,66 @@
             this.label7.TabIndex = 7;
             this.label7.Text = "Gasto Instalado (LPS)";
             // 
-            // textBox2
+            // label6
             // 
-            this.textBox2.Location = new System.Drawing.Point(279, 106);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(121, 20);
-            this.textBox2.TabIndex = 8;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 303);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 13);
+            this.label6.TabIndex = 6;
+            this.label6.Text = "Gasto Promedio (LPS)";
             // 
-            // textBox3
+            // label5
             // 
-            this.textBox3.Location = new System.Drawing.Point(279, 152);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(121, 20);
-            this.textBox3.TabIndex = 9;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(23, 253);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(225, 13);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "Cantidad De Equipos P/ Garantizar Operacion";
             // 
-            // button1
+            // label4
             // 
-            this.button1.Location = new System.Drawing.Point(27, 413);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Agregar Informacion";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 208);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(28, 13);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "Tipo";
             // 
-            // textBox5
+            // label3
             // 
-            this.textBox5.Location = new System.Drawing.Point(279, 253);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(121, 20);
-            this.textBox5.TabIndex = 11;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 159);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(96, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Equipos Instalados";
             // 
-            // textBox6
+            // label2
             // 
-            this.textBox6.Location = new System.Drawing.Point(279, 300);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(121, 20);
-            this.textBox6.TabIndex = 12;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 113);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Cantidad de Eq./P Operacion Minima";
             // 
-            // textBox7
+            // label1
             // 
-            this.textBox7.Location = new System.Drawing.Point(279, 346);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(121, 20);
-            this.textBox7.TabIndex = 13;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(24, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Capacidad de Equipos";
             // 
-            // comboBox2
+            // txtCap
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(279, 200);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 14;
-            this.comboBox2.Text = "--Seleccione Tipo--";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(369, 413);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Volver";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtCap.Location = new System.Drawing.Point(279, 62);
+            this.txtCap.Name = "txtCap";
+            this.txtCap.Size = new System.Drawing.Size(121, 20);
+            this.txtCap.TabIndex = 0;
             // 
             // label8
             // 
@@ -238,23 +253,23 @@
             this.label9.Size = new System.Drawing.Size(0, 13);
             this.label9.TabIndex = 5;
             // 
-            // comboBox3
+            // cmbCategoria
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(11, 87);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(173, 21);
-            this.comboBox3.TabIndex = 6;
-            this.comboBox3.Text = "--Seleccione Categoria--";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(201, 13);
-            this.label10.TabIndex = 15;
-            this.label10.Text = "Introduzca la informacion general tecnica";
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Items.AddRange(new object[] {
+            "Potable",
+            "Residual",
+            "PTAR",
+            "EBAR",
+            "EBAP",
+            "Obra de toma",
+            "Rebombeo de agua cruda"});
+            this.cmbCategoria.Location = new System.Drawing.Point(11, 87);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(173, 21);
+            this.cmbCategoria.TabIndex = 6;
+            this.cmbCategoria.Text = "--Seleccione Categoria--";
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -281,11 +296,11 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cmbId);
             this.Name = "RegInfoTec";
             this.Text = "Agregar Informacion tecnica";
             this.Load += new System.EventHandler(this.RegInfoTec_Load);
@@ -298,14 +313,14 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbId;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtInst;
+        private System.Windows.Forms.TextBox txtProm;
+        private System.Windows.Forms.TextBox txtGarant;
+        private System.Windows.Forms.TextBox txtEquinst;
+        private System.Windows.Forms.TextBox txtOpmin;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -313,13 +328,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCap;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
     }
