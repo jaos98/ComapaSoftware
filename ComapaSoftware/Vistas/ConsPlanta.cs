@@ -93,5 +93,11 @@ namespace ComapaSoftware.Vistas
             FormPanel formPanel = new FormPanel();
             formPanel.Show();
         }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            
+        }
     }
 }
