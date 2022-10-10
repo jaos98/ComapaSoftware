@@ -13,13 +13,14 @@ namespace ComapaSoftware.Vistas
 {
     public partial class RegInfoTec : Form
     {
+        string capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
+            , gastoPromedio, gastoInstalado;
         ModeloFichaTecnica model = new ModeloFichaTecnica();
         public RegInfoTec()
         {
             InitializeComponent();
             
         }
-
         private void RegInfoTec_Load(object sender, EventArgs e)
         {
             cmbId.Enabled = false;
@@ -28,6 +29,23 @@ namespace ComapaSoftware.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string idPlanta = cmbId.Text;
+            capEquipos = txtCap.Text;
+            operacionMinima = txtOpmin.Text;
+            equiposInstalados = txtEquinst.Text;
+            tipo = cmbTipo.Text;
+            garantOperacion = txtGarant.Text;
+            gastoPromedio = txtProm.Text;
+            gastoInstalado = txtInst.Text;
+            if (model.registrarInfo(idPlanta,capEquipos,operacionMinima,
+                equiposInstalados,tipo,garantOperacion,gastoPromedio,gastoInstalado)>0)
+            {
+                MessageBox.Show("Informacion registrada");
+            }
+            else
+            {
+                MessageBox.Show("Hubo un error");
+            }
 
         }
 
@@ -69,5 +87,12 @@ namespace ComapaSoftware.Vistas
                 panel1.Visible = true;
             }
         }
+
+    
+
+
+
     }
+
+
 }

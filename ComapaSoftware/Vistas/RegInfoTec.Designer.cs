@@ -31,7 +31,7 @@
             this.cmbId = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label10 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtInst = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.txtProm = new System.Windows.Forms.TextBox();
@@ -68,7 +68,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.comboBox2);
+            this.panel1.Controls.Add(this.cmbTipo);
             this.panel1.Controls.Add(this.txtInst);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.txtProm);
@@ -99,17 +99,17 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "Introduzca la informacion general tecnica";
             // 
-            // comboBox2
+            // cmbTipo
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
             "Manual",
             "Automatico"});
-            this.comboBox2.Location = new System.Drawing.Point(279, 200);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 14;
-            this.comboBox2.Text = "--Seleccione Tipo--";
+            this.cmbTipo.Location = new System.Drawing.Point(279, 200);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTipo.TabIndex = 14;
+            this.cmbTipo.Text = "--Seleccione Tipo--";
             // 
             // txtInst
             // 
@@ -315,7 +315,7 @@
 
         private System.Windows.Forms.ComboBox cmbId;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.TextBox txtInst;
         private System.Windows.Forms.TextBox txtProm;
         private System.Windows.Forms.TextBox txtGarant;
