@@ -52,21 +52,25 @@
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.cmbServicio = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbId
             // 
+            this.cmbId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbId.FormattingEnabled = true;
             this.cmbId.Location = new System.Drawing.Point(9, 173);
             this.cmbId.Name = "cmbId";
             this.cmbId.Size = new System.Drawing.Size(173, 21);
             this.cmbId.TabIndex = 0;
-            this.cmbId.Text = "--Seleccione ID--";
             this.cmbId.SelectedIndexChanged += new System.EventHandler(this.cmbId_SelectedIndexChanged);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.cmbServicio);
+            this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.cmbTipo);
             this.panel1.Controls.Add(this.txtInst);
@@ -86,7 +90,7 @@
             this.panel1.Controls.Add(this.txtCap);
             this.panel1.Location = new System.Drawing.Point(219, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(579, 449);
+            this.panel1.Size = new System.Drawing.Size(618, 449);
             this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
             // 
@@ -120,7 +124,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(369, 413);
+            this.button2.Location = new System.Drawing.Point(399, 413);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 23);
             this.button2.TabIndex = 3;
@@ -255,6 +259,7 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
@@ -268,7 +273,6 @@
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(173, 21);
             this.cmbCategoria.TabIndex = 6;
-            this.cmbCategoria.Text = "--Seleccione Categoria--";
             this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // label11
@@ -289,11 +293,37 @@
             this.label12.TabIndex = 8;
             this.label12.Text = "Categoria";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(495, 174);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 13);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Servicio";
+            // 
+            // cmbServicio
+            // 
+            this.cmbServicio.FormattingEnabled = true;
+            this.cmbServicio.Items.AddRange(new object[] {
+            "Bombeo",
+            "Rebombeo",
+            "Potabilizadora",
+            "Tanque",
+            "Pozo",
+            "Carcamo",
+            "Sin sub-categoria"});
+            this.cmbServicio.Location = new System.Drawing.Point(452, 200);
+            this.cmbServicio.Name = "cmbServicio";
+            this.cmbServicio.Size = new System.Drawing.Size(134, 21);
+            this.cmbServicio.TabIndex = 17;
+            this.cmbServicio.Text = "--Seleccione servicio--";
+            // 
             // RegInfoTec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(849, 450);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmbCategoria);
@@ -337,5 +367,7 @@
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox cmbServicio;
+        private System.Windows.Forms.Label label13;
     }
 }

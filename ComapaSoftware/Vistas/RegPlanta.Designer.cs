@@ -97,22 +97,22 @@
             // 
             // cmbSector
             // 
+            this.cmbSector.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSector.FormattingEnabled = true;
             this.cmbSector.Location = new System.Drawing.Point(172, 226);
             this.cmbSector.Name = "cmbSector";
             this.cmbSector.Size = new System.Drawing.Size(237, 21);
             this.cmbSector.TabIndex = 32;
-            this.cmbSector.Text = "-- Seleccione Sector--";
             this.cmbSector.SelectedIndexChanged += new System.EventHandler(this.cmbSector_SelectedIndexChanged);
             // 
             // cmbColonia
             // 
+            this.cmbColonia.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbColonia.FormattingEnabled = true;
             this.cmbColonia.Location = new System.Drawing.Point(519, 32);
             this.cmbColonia.Name = "cmbColonia";
             this.cmbColonia.Size = new System.Drawing.Size(237, 21);
             this.cmbColonia.TabIndex = 31;
-            this.cmbColonia.Text = "--Seleccione Colonia--";
             this.cmbColonia.SelectedIndexChanged += new System.EventHandler(this.cmbColonia_SelectedIndexChanged);
             // 
             // cmbEstatus
@@ -148,6 +148,7 @@
             // 
             // cmbServicio
             // 
+            this.cmbServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbServicio.FormattingEnabled = true;
             this.cmbServicio.Items.AddRange(new object[] {
             "Bombeo",
@@ -161,10 +162,10 @@
             this.cmbServicio.Name = "cmbServicio";
             this.cmbServicio.Size = new System.Drawing.Size(237, 21);
             this.cmbServicio.TabIndex = 27;
-            this.cmbServicio.Text = "--Seleccione tipo de servicio--";
             // 
             // cmbTipoPlanta
             // 
+            this.cmbTipoPlanta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoPlanta.FormattingEnabled = true;
             this.cmbTipoPlanta.Items.AddRange(new object[] {
             "Potable",
@@ -178,7 +179,6 @@
             this.cmbTipoPlanta.Name = "cmbTipoPlanta";
             this.cmbTipoPlanta.Size = new System.Drawing.Size(237, 21);
             this.cmbTipoPlanta.TabIndex = 26;
-            this.cmbTipoPlanta.Text = "--Seleccione tipo de planta--";
             // 
             // txtDomicilio
             // 

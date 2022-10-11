@@ -141,7 +141,7 @@ namespace ComapaSoftware.Modelo
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine("Error al añadir dispositivo");
+                Console.WriteLine("Error ");
                 Console.WriteLine(ex);
                 return numRegistros; //0 si ha habido algún error
             }

@@ -45,13 +45,13 @@ namespace ComapaSoftware.Modelo
 
 
         public int registrarInfo(string idPlantas, string capEquipos, string operacionMinima, string equiposInstalados, 
-            string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado)
+            string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado,string servicio)
         {
 
             int numRegistros = 0;
             string sqlEjecutar = "INSERT INTO `informaciontecnica`(`IdPlantas`, `CapacidadEquipos`, `OperacionMinima`, `EquiposInstalados`, `Tipo`, " +
-                    "`GarantOperacion`, `GastoPromedio`, `GastoInstalado`) " +
-                    "VALUES (@idPlantas,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado);";
+                    "`GarantOperacion`, `GastoPromedio`, `GastoInstalado`, `Servicio`) " +
+                    "VALUES (@idPlantas,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio);";
             try
             {
 
@@ -66,6 +66,7 @@ namespace ComapaSoftware.Modelo
                 Query.Parameters.Add("@garantOperacion", MySqlDbType.String).Value = garantOperacion;
                 Query.Parameters.Add("@gastoPromedio", MySqlDbType.String).Value = gastoPromedio;
                 Query.Parameters.Add("@gastoInstalado", MySqlDbType.String).Value = gastoInstalado;
+                Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
                 Conn.Open();
                 numRegistros = Query.ExecuteNonQuery();
                 return numRegistros;//1 si se ha registrado

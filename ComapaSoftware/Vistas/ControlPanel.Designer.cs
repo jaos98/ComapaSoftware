@@ -152,6 +152,7 @@
             this.btnBombas.TabIndex = 2;
             this.btnBombas.Text = "Agregar Informacion de bombas";
             this.btnBombas.UseVisualStyleBackColor = true;
+            this.btnBombas.Click += new System.EventHandler(this.btnBombas_Click);
             // 
             // btnInfoTec
             // 

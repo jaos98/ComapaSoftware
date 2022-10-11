@@ -87,6 +87,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="Controlador\ControladorInfo.cs" />
     <Compile Include="Controlador\ControladorPlantas.cs" />
+    <Compile Include="Modelo\ModeloBombas.cs" />
     <Compile Include="Modelo\ModeloFichaTecnica.cs" />
     <Compile Include="Modelo\ModeloPlantas.cs" />
     <Compile Include="Vistas\ConsInfoTec.cs">
@@ -94,6 +95,12 @@
     </Compile>
     <Compile Include="Vistas\ConsInfoTec.Designer.cs">
       <DependentUpon>ConsInfoTec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegBomba.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegBomba.Designer.cs">
+      <DependentUpon>RegBomba.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\RegInfoTec.cs">
       <SubType>Form</SubType>
@@ -144,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ControlPanel.resx">
       <DependentUpon>ControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegBomba.resx">
+      <DependentUpon>RegBomba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegInfoTec.resx">
       <DependentUpon>RegInfoTec.cs</DependentUpon>

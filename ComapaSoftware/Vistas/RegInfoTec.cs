@@ -14,7 +14,7 @@ namespace ComapaSoftware.Vistas
     public partial class RegInfoTec : Form
     {
         string capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
-            , gastoPromedio, gastoInstalado;
+            , gastoPromedio, gastoInstalado,servicio;
         ModeloFichaTecnica model = new ModeloFichaTecnica();
         public RegInfoTec()
         {
@@ -37,16 +37,26 @@ namespace ComapaSoftware.Vistas
             garantOperacion = txtGarant.Text;
             gastoPromedio = txtProm.Text;
             gastoInstalado = txtInst.Text;
-            if (model.registrarInfo(idPlanta,capEquipos,operacionMinima,
-                equiposInstalados,tipo,garantOperacion,gastoPromedio,gastoInstalado)>0)
+            servicio = cmbServicio.Text;
+            switch (validacionDatos())
             {
-                MessageBox.Show("Informacion registrada");
-            }
-            else
-            {
-                MessageBox.Show("Hubo un error");
-            }
+                case 0:
+                    MessageBox.Show("Llene todos los campos");
+                    break;
 
+                case 1:
+                    MessageBox.Show("Todos los datos son correctos");
+                    if (model.registrarInfo(idPlanta, capEquipos, operacionMinima,
+                equiposInstalados, tipo, garantOperacion, gastoPromedio, gastoInstalado,servicio) > 0)
+                    {
+                        MessageBox.Show("Informacion registrada");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un error");
+                    }
+                    break;
+            }
         }
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
@@ -88,7 +98,30 @@ namespace ComapaSoftware.Vistas
             }
         }
 
-    
+    private int validacionDatos()
+        {
+            int result;
+            string idPlanta = cmbId.Text;
+            capEquipos = txtCap.Text;
+            operacionMinima = txtOpmin.Text;
+            equiposInstalados = txtEquinst.Text;
+            tipo = cmbTipo.Text;
+            garantOperacion = txtGarant.Text;
+            gastoPromedio = txtProm.Text;
+            gastoInstalado = txtInst.Text;
+            servicio = cmbServicio.Text;
+            if (idPlanta == "" || capEquipos ==" " || operacionMinima == ""
+                || equiposInstalados == "" || tipo == "" || garantOperacion == ""
+                || gastoPromedio =="" || gastoInstalado =="" || servicio =="")
+            {
+                result = 0;
+            }
+            else
+            {
+                result = 1;
+            }
+            return result;
+        }
 
 
 

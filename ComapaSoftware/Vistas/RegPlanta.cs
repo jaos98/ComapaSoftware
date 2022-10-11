@@ -120,7 +120,7 @@ namespace ComapaSoftware.Vistas
             controlador.Latitud = txtLatitud.Text;
             controlador.Longitud = txtLongitud.Text;
             controlador.Elevacion = txtElevacion.Text;
-            controlador.Servicio = txtNumServ.Text;
+            controlador.Servicio = cmbServicio.Text;
             controlador.Domicilio = txtDomicilio.Text;
         }
     }

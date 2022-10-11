@@ -107,6 +107,13 @@ namespace ComapaSoftware.Vistas
             regInfoTec.Show();
         }
 
+        private void btnBombas_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RegBomba regBomba = new RegBomba();
+            regBomba.Show();
+        }
+
 
 
 
