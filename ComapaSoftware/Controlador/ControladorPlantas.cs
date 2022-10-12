@@ -8,32 +8,32 @@ namespace ComapaSoftware.Controlador
 {
     internal class ControladorPlantas
     {
-        private string IdInfoTecnica;
-        private string IdPlantas;
-        private string CapacidadEquipos;
-        private string OperacionMinima;
-        private string EquiposInstalados;
-        private string Tipo;
-        private string GarantOperacion;
-        private string GastoPromedio;
-        private string GastoInstalado;
-        private string Servicio;
-        private string Observaciones;
+        public string idInfoTecnica;
+        public string idPlantas;
+        public string capacidadEquipos;
+        public string operacionMinima;
+        public string equiposInstalados;
+        public string tipo;
+        public string garantizarOperacion;
+        public string gastoPromedio;
+        public string gastoInstalado;
+        public string servicio;
+        public string observaciones;
 
 
 
 
-        public string idInfoTecnica { get; set; }
-        public string idPlantas { get; set;}
-        public string idCapacidadEquipos { get; set; }
-        public string operacionMinima { get; set;}
-        public string equiposInstalados { get; set; }
-        public string tipo { get; set; }
-        public string garantOperacion { get; set; }
-        public string gastoPromedio { get; set; }
-        public string gastoInstalado { get; set; }
-        public string servicio { get; set; }
-        public string observaciones { get; set; }
+        public string IDFicha { get; }
+        public string IDPlanta { get; set; }
+        public string CapacidadEquipos { get; set; }
+        public string OperacionMinima { get; set; }
+        public string EquiposInstalados { get; set; }
+        public string Tipo { get; set; }
+        public string GarantizarOperacion { get; set; }
+        public string GastoPromedio { get; set; }
+        public string GastoInstalado { get; set; }
+        public string Servicio { get; set; }
+        public string Observaciones { get; set; }
 
     }
 }

@@ -38,8 +38,6 @@
             this.cmbTipoPlanta = new System.Windows.Forms.ComboBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
             this.txtElevacion = new System.Windows.Forms.TextBox();
-            this.txtLongitud = new System.Windows.Forms.TextBox();
-            this.txtLatitud = new System.Windows.Forms.TextBox();
             this.txtDescFunciones = new System.Windows.Forms.TextBox();
             this.txtNumServ = new System.Windows.Forms.TextBox();
             this.txtNumMed = new System.Windows.Forms.TextBox();
@@ -57,11 +55,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtLatitud = new System.Windows.Forms.MaskedTextBox();
+            this.txtLongitud = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtLongitud);
+            this.panel1.Controls.Add(this.txtLatitud);
             this.panel1.Controls.Add(this.cmbSector);
             this.panel1.Controls.Add(this.cmbColonia);
             this.panel1.Controls.Add(this.cmbEstatus);
@@ -71,8 +73,6 @@
             this.panel1.Controls.Add(this.cmbTipoPlanta);
             this.panel1.Controls.Add(this.txtDomicilio);
             this.panel1.Controls.Add(this.txtElevacion);
-            this.panel1.Controls.Add(this.txtLongitud);
-            this.panel1.Controls.Add(this.txtLatitud);
             this.panel1.Controls.Add(this.txtDescFunciones);
             this.panel1.Controls.Add(this.txtNumServ);
             this.panel1.Controls.Add(this.txtNumMed);
@@ -194,20 +194,6 @@
             this.txtElevacion.Name = "txtElevacion";
             this.txtElevacion.Size = new System.Drawing.Size(237, 20);
             this.txtElevacion.TabIndex = 23;
-            // 
-            // txtLongitud
-            // 
-            this.txtLongitud.Location = new System.Drawing.Point(519, 112);
-            this.txtLongitud.Name = "txtLongitud";
-            this.txtLongitud.Size = new System.Drawing.Size(237, 20);
-            this.txtLongitud.TabIndex = 22;
-            // 
-            // txtLatitud
-            // 
-            this.txtLatitud.Location = new System.Drawing.Point(519, 73);
-            this.txtLatitud.Name = "txtLatitud";
-            this.txtLatitud.Size = new System.Drawing.Size(237, 20);
-            this.txtLatitud.TabIndex = 21;
             // 
             // txtDescFunciones
             // 
@@ -355,6 +341,22 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Id Planta";
             // 
+            // txtLatitud
+            // 
+            this.txtLatitud.Location = new System.Drawing.Point(519, 69);
+            this.txtLatitud.Mask = "00°00\'00.00\"N";
+            this.txtLatitud.Name = "txtLatitud";
+            this.txtLatitud.Size = new System.Drawing.Size(237, 20);
+            this.txtLatitud.TabIndex = 33;
+            // 
+            // txtLongitud
+            // 
+            this.txtLongitud.Location = new System.Drawing.Point(519, 116);
+            this.txtLongitud.Mask = "00°00\'00.00\"O";
+            this.txtLongitud.Name = "txtLongitud";
+            this.txtLongitud.Size = new System.Drawing.Size(237, 20);
+            this.txtLongitud.TabIndex = 34;
+            // 
             // FormPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,8 +377,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtDomicilio;
         private System.Windows.Forms.TextBox txtElevacion;
-        private System.Windows.Forms.TextBox txtLongitud;
-        private System.Windows.Forms.TextBox txtLatitud;
         private System.Windows.Forms.TextBox txtDescFunciones;
         private System.Windows.Forms.TextBox txtNumServ;
         private System.Windows.Forms.TextBox txtNumMed;
@@ -401,5 +401,7 @@
         private System.Windows.Forms.ComboBox cmbEstatus;
         private System.Windows.Forms.ComboBox cmbSector;
         private System.Windows.Forms.ComboBox cmbColonia;
+        private System.Windows.Forms.MaskedTextBox txtLongitud;
+        private System.Windows.Forms.MaskedTextBox txtLatitud;
     }
 }

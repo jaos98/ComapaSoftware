@@ -83,6 +83,7 @@
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
@@ -94,7 +95,6 @@
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(313, 21);
             this.cmbCategoria.TabIndex = 4;
-            this.cmbCategoria.Text = "--Seleccione categoria--";
             // 
             // label2
             // 
