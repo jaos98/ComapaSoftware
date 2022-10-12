@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,13 +46,13 @@ namespace ComapaSoftware.Modelo
 
 
         public int registrarInfo(string idPlantas, string capEquipos, string operacionMinima, string equiposInstalados, 
-            string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado,string servicio)
+            string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado,string servicio,string observaciones)
         {
 
             int numRegistros = 0;
             string sqlEjecutar = "INSERT INTO `informaciontecnica`(`IdPlantas`, `CapacidadEquipos`, `OperacionMinima`, `EquiposInstalados`, `Tipo`, " +
-                    "`GarantOperacion`, `GastoPromedio`, `GastoInstalado`, `Servicio`) " +
-                    "VALUES (@idPlantas,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio);";
+                    "`GarantOperacion`, `GastoPromedio`, `GastoInstalado`, `Servicio`, `Observaciones`) " +
+                    "VALUES (@idPlantas,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio,@observaciones);";
             try
             {
 
@@ -67,6 +68,7 @@ namespace ComapaSoftware.Modelo
                 Query.Parameters.Add("@gastoPromedio", MySqlDbType.String).Value = gastoPromedio;
                 Query.Parameters.Add("@gastoInstalado", MySqlDbType.String).Value = gastoInstalado;
                 Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
+                Query.Parameters.Add("@observaciones", MySqlDbType.String).Value = observaciones;
                 Conn.Open();
                 numRegistros = Query.ExecuteNonQuery();
                 return numRegistros;//1 si se ha registrado
@@ -83,5 +85,53 @@ namespace ComapaSoftware.Modelo
             }
         }
 
+
+        public DataTable llevarDatos(string globalReceiver)
+        {
+            string sql = "SELECT *" +
+                " FROM informaciontecnica WHERE IdPlantas = '"+ globalReceiver+ "' ";
+            conectarBase();
+            try
+            {
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql, Conn);
+                DataTable dt = new DataTable();
+                dataAdapter.Fill(dt);
+                Conn.Close();
+                return dt;
+            }
+            catch (Exception ex)
+            {
+             Console.WriteLine(ex.Message);
+                Conn.Close();
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+        public string traerDescripcion(string idFicha)
+        {
+            //List<string> result = new List<string>();
+            conectarBase();
+            try
+            {
+                Query.CommandText = "SELECT Observaciones FROM informaciontecnica WHERE idInfoTecnica= '" + idFicha + "'";
+                Query.Connection = Conn;
+                consultar = Query.ExecuteReader();
+                while (consultar.Read())
+                {
+                    idFicha = consultar.GetString(0);
+                    //Console.WriteLine(idFicha);
+                    //result.Add(idFicha);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                Conn.Close();
+                throw;
+            }
+
+
+            return idFicha;
+        }
     }
 }

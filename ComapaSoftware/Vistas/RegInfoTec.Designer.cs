@@ -30,6 +30,8 @@
         {
             this.cmbId = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cmbServicio = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtInst = new System.Windows.Forms.TextBox();
@@ -52,8 +54,8 @@
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.cmbServicio = new System.Windows.Forms.ComboBox();
+            this.txtObservacion = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,12 +65,14 @@
             this.cmbId.FormattingEnabled = true;
             this.cmbId.Location = new System.Drawing.Point(9, 173);
             this.cmbId.Name = "cmbId";
-            this.cmbId.Size = new System.Drawing.Size(173, 21);
+            this.cmbId.Size = new System.Drawing.Size(141, 21);
             this.cmbId.TabIndex = 0;
             this.cmbId.SelectedIndexChanged += new System.EventHandler(this.cmbId_SelectedIndexChanged);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.txtObservacion);
             this.panel1.Controls.Add(this.cmbServicio);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label10);
@@ -88,11 +92,37 @@
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtCap);
-            this.panel1.Location = new System.Drawing.Point(219, 2);
+            this.panel1.Location = new System.Drawing.Point(188, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(618, 449);
+            this.panel1.Size = new System.Drawing.Size(659, 449);
             this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
+            // 
+            // cmbServicio
+            // 
+            this.cmbServicio.FormattingEnabled = true;
+            this.cmbServicio.Items.AddRange(new object[] {
+            "Bombeo",
+            "Rebombeo",
+            "Potabilizadora",
+            "Tanque",
+            "Pozo",
+            "Carcamo",
+            "Sin sub-categoria"});
+            this.cmbServicio.Location = new System.Drawing.Point(449, 105);
+            this.cmbServicio.Name = "cmbServicio";
+            this.cmbServicio.Size = new System.Drawing.Size(134, 21);
+            this.cmbServicio.TabIndex = 17;
+            this.cmbServicio.Text = "--Seleccione servicio--";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(446, 62);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(45, 13);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "Servicio";
             // 
             // label10
             // 
@@ -124,7 +154,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(399, 413);
+            this.button2.Location = new System.Drawing.Point(443, 413);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(200, 23);
             this.button2.TabIndex = 3;
@@ -148,7 +178,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(27, 413);
+            this.button1.Location = new System.Drawing.Point(79, 413);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(201, 23);
             this.button1.TabIndex = 2;
@@ -271,7 +301,7 @@
             "Rebombeo de agua cruda"});
             this.cmbCategoria.Location = new System.Drawing.Point(11, 87);
             this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(173, 21);
+            this.cmbCategoria.Size = new System.Drawing.Size(139, 21);
             this.cmbCategoria.TabIndex = 6;
             this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
@@ -293,31 +323,22 @@
             this.label12.TabIndex = 8;
             this.label12.Text = "Categoria";
             // 
-            // label13
+            // txtObservacion
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(495, 174);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(45, 13);
-            this.label13.TabIndex = 16;
-            this.label13.Text = "Servicio";
+            this.txtObservacion.Location = new System.Drawing.Point(443, 254);
+            this.txtObservacion.Multiline = true;
+            this.txtObservacion.Name = "txtObservacion";
+            this.txtObservacion.Size = new System.Drawing.Size(200, 112);
+            this.txtObservacion.TabIndex = 18;
             // 
-            // cmbServicio
+            // label14
             // 
-            this.cmbServicio.FormattingEnabled = true;
-            this.cmbServicio.Items.AddRange(new object[] {
-            "Bombeo",
-            "Rebombeo",
-            "Potabilizadora",
-            "Tanque",
-            "Pozo",
-            "Carcamo",
-            "Sin sub-categoria"});
-            this.cmbServicio.Location = new System.Drawing.Point(452, 200);
-            this.cmbServicio.Name = "cmbServicio";
-            this.cmbServicio.Size = new System.Drawing.Size(134, 21);
-            this.cmbServicio.TabIndex = 17;
-            this.cmbServicio.Text = "--Seleccione servicio--";
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(446, 222);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Observaciones";
             // 
             // RegInfoTec
             // 
@@ -369,5 +390,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmbServicio;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtObservacion;
     }
 }

@@ -62,10 +62,7 @@ namespace ComapaSoftware.Vistas
 
 
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -93,10 +90,16 @@ namespace ComapaSoftware.Vistas
             FormPanel formPanel = new FormPanel();
             formPanel.Show();
         }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            this.Close();
+            ConsInfoTec consInfoTec = new ConsInfoTec(result);
+            consInfoTec.Show();
             
         }
     }

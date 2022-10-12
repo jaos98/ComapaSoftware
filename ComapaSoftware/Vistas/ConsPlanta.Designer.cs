@@ -55,7 +55,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1100, 627);
+            this.panel1.Size = new System.Drawing.Size(1100, 572);
             this.panel1.TabIndex = 0;
             // 
             // btnBuscar
@@ -96,7 +96,7 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(282, 573);
+            this.btnVolver.Location = new System.Drawing.Point(281, 533);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(539, 23);
             this.btnVolver.TabIndex = 4;
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1102, 625);
+            this.ClientSize = new System.Drawing.Size(1102, 572);
             this.Controls.Add(this.panel1);
             this.Name = "FormResultado";
             this.Text = "Resultados de Busqueda";

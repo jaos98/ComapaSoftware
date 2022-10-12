@@ -14,7 +14,7 @@ namespace ComapaSoftware.Vistas
     public partial class RegInfoTec : Form
     {
         string capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
-            , gastoPromedio, gastoInstalado,servicio;
+            , gastoPromedio, gastoInstalado,servicio,observaciones;
         ModeloFichaTecnica model = new ModeloFichaTecnica();
         public RegInfoTec()
         {
@@ -38,6 +38,7 @@ namespace ComapaSoftware.Vistas
             gastoPromedio = txtProm.Text;
             gastoInstalado = txtInst.Text;
             servicio = cmbServicio.Text;
+            observaciones = txtObservacion.Text;
             switch (validacionDatos())
             {
                 case 0:
@@ -47,7 +48,7 @@ namespace ComapaSoftware.Vistas
                 case 1:
                     MessageBox.Show("Todos los datos son correctos");
                     if (model.registrarInfo(idPlanta, capEquipos, operacionMinima,
-                equiposInstalados, tipo, garantOperacion, gastoPromedio, gastoInstalado,servicio) > 0)
+                equiposInstalados, tipo, garantOperacion, gastoPromedio, gastoInstalado,servicio,observaciones) > 0)
                     {
                         MessageBox.Show("Informacion registrada");
                     }
@@ -112,7 +113,7 @@ namespace ComapaSoftware.Vistas
             servicio = cmbServicio.Text;
             if (idPlanta == "" || capEquipos ==" " || operacionMinima == ""
                 || equiposInstalados == "" || tipo == "" || garantOperacion == ""
-                || gastoPromedio =="" || gastoInstalado =="" || servicio =="")
+                || gastoPromedio =="" || gastoInstalado =="" || servicio =="" || observaciones=="")
             {
                 result = 0;
             }
