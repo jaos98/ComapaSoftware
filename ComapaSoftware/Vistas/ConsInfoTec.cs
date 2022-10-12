@@ -8,10 +8,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ComapaSoftware.Modelo;
+using ComapaSoftware.Controlador;
 namespace ComapaSoftware.Vistas
 {
     public partial class ConsInfoTec : Form
     {
+        ControladorPlantas controler = new ControladorPlantas();
         ModeloFichaTecnica modelo = new ModeloFichaTecnica();
         string globalReceiver;
         public ConsInfoTec(string result)
@@ -31,20 +33,17 @@ namespace ComapaSoftware.Vistas
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
-
-            //string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                //MessageBox.Show("Diste un solo click");
-               // labelDesc.Text = modelo.traerDescripcion(result);
-            
+            if (e.RowIndex >= 0)
+            {
+                richTextBox1.Text = modelo.traerDescripcion(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            }
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dataGridView1.Columns[e.ColumnIndex].Index.ToString() == "-1")
+            if (e.RowIndex >= -0)
             {
-                string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                MessageBox.Show(result);
+                richTextBox1.Text = modelo.traerDescripcion(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
             }
         }
 

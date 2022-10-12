@@ -92,14 +92,22 @@ namespace ComapaSoftware.Vistas
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+
+            }
 
         }
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-            this.Close();
-            ConsInfoTec consInfoTec = new ConsInfoTec(result);
-            consInfoTec.Show();
+            if (e.RowIndex>=0)
+            {
+                string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                this.Close();
+                ConsInfoTec consInfoTec = new ConsInfoTec(result);
+                consInfoTec.Show();
+            }
+            
             
         }
     }

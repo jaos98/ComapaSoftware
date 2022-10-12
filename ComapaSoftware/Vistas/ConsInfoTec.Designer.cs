@@ -28,13 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.labelDesc = new System.Windows.Forms.Label();
+            this.controladorInfoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.controladorPlantasBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.controladorPlantasBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.controladorPlantasBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorInfoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorPlantasBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorPlantasBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorPlantasBindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -87,20 +96,36 @@
             this.panel1.Size = new System.Drawing.Size(520, 173);
             this.panel1.TabIndex = 14;
             // 
-            // labelDesc
+            // controladorInfoBindingSource
             // 
-            this.labelDesc.AutoSize = true;
-            this.labelDesc.Location = new System.Drawing.Point(131, 270);
-            this.labelDesc.Name = "labelDesc";
-            this.labelDesc.Size = new System.Drawing.Size(0, 13);
-            this.labelDesc.TabIndex = 15;
+            this.controladorInfoBindingSource.DataSource = typeof(ComapaSoftware.Controlador.ControladorInfo);
+            // 
+            // controladorPlantasBindingSource
+            // 
+            this.controladorPlantasBindingSource.DataSource = typeof(ComapaSoftware.Controlador.ControladorPlantas);
+            // 
+            // controladorPlantasBindingSource1
+            // 
+            this.controladorPlantasBindingSource1.DataSource = typeof(ComapaSoftware.Controlador.ControladorPlantas);
+            // 
+            // controladorPlantasBindingSource2
+            // 
+            this.controladorPlantasBindingSource2.DataSource = typeof(ComapaSoftware.Controlador.ControladorPlantas);
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(127, 270);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(380, 96);
+            this.richTextBox1.TabIndex = 15;
+            this.richTextBox1.Text = "";
             // 
             // ConsInfoTec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1097, 441);
-            this.Controls.Add(this.labelDesc);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVolver);
@@ -110,6 +135,10 @@
             this.Text = "ConsInfoTec";
             this.Load += new System.EventHandler(this.ConsInfoTec_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorInfoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorPlantasBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorPlantasBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.controladorPlantasBindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,6 +150,10 @@
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label labelDesc;
+        private System.Windows.Forms.BindingSource controladorInfoBindingSource;
+        private System.Windows.Forms.BindingSource controladorPlantasBindingSource;
+        private System.Windows.Forms.BindingSource controladorPlantasBindingSource1;
+        private System.Windows.Forms.BindingSource controladorPlantasBindingSource2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
