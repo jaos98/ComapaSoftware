@@ -1,9 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Modelo
 {
@@ -45,8 +42,6 @@ namespace ComapaSoftware.Modelo
             }
             return result;
         }
-
-
         public List<string> obtenerIdFicha()
         {
             List<string> helper = new List<string>();
@@ -54,22 +49,22 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas FROM informaciontecnica ";
+                Query.CommandText = "SELECT IdPlantas,Servicio FROM informaciontecnica ";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
                 {
                     values = consultar.GetString(0);
+                    
                     helper.Add(values);
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex);
                 throw;
             }
             return helper;
         }
-
     }
 }

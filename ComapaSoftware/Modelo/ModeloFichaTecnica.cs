@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 namespace ComapaSoftware.Modelo
 {
     internal class ModeloFichaTecnica
@@ -26,7 +23,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '"+catString+"'";
+                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + catString + "'";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
@@ -39,14 +36,14 @@ namespace ComapaSoftware.Modelo
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                
+
             }
             return result;
         }
 
 
-        public int registrarInfo(string idPlantas, string capEquipos, string operacionMinima, string equiposInstalados, 
-            string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado,string servicio,string observaciones)
+        public int registrarInfo(string idPlantas, string capEquipos, string operacionMinima, string equiposInstalados,
+            string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado, string servicio, string observaciones)
         {
 
             int numRegistros = 0;
@@ -91,7 +88,7 @@ namespace ComapaSoftware.Modelo
             string sql = "SELECT `IdInfoTecnica`, `IdPlantas`, `CapacidadEquipos`, `OperacionMinima`, " +
                 "`EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`, `GastoInstalado`, " +
                 "`Servicio`" +
-                " FROM informaciontecnica WHERE IdPlantas = '"+ globalReceiver+ "' ";
+                " FROM informaciontecnica WHERE IdPlantas = '" + globalReceiver + "' ";
             conectarBase();
             try
             {
@@ -103,7 +100,7 @@ namespace ComapaSoftware.Modelo
             }
             catch (Exception ex)
             {
-             Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.Message);
                 Conn.Close();
                 Console.WriteLine(ex);
                 throw;

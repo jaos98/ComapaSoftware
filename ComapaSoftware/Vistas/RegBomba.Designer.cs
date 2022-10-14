@@ -343,14 +343,6 @@
             // cmbCategoria
             // 
             this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Items.AddRange(new object[] {
-            "Potable",
-            "Residual",
-            "PTAR",
-            "EBAR",
-            "EBAP",
-            "Obra de toma",
-            "Rebombeo de agua cruda"});
             this.cmbCategoria.Location = new System.Drawing.Point(26, 57);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
