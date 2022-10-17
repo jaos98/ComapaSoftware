@@ -66,5 +66,27 @@ namespace ComapaSoftware.Modelo
             }
             return helper;
         }
+        //public string[] obtenerIdFicha2()
+        //{
+        //    string[] values = new string[2] ;
+        //    try
+        //    {
+        //        conectarBase();
+        //        Query.CommandText = "SELECT IdPlantas,Servicio FROM informaciontecnica ";
+        //        Query.Connection = Conn;
+        //        consultar = Query.ExecuteReader();
+        //        while (consultar.Read())
+        //        {
+        //            values[0] = consultar.GetString(0);
+        //            values[1] = consultar.GetString(1);
+        //           // Console.WriteLine(values[0]+", "+values[1]);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine(ex);
+        //    }
+        //    return values;
+        //}
     }
 }

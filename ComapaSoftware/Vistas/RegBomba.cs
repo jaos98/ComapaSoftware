@@ -46,7 +46,7 @@ namespace ComapaSoftware.Vistas
             cmbIdPlanta.Enabled = false;
             foreach (var item in modeloBombas.obtenerIdFicha())
             {
-                cmbCategoria.Items.Add(item);
+               cmbCategoria.Items.Add(item);
             }
         }
     }

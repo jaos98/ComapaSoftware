@@ -325,7 +325,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 199);
+            this.label1.Location = new System.Drawing.Point(23, 110);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 1;
@@ -352,7 +352,7 @@
             // cmbIdPlanta
             // 
             this.cmbIdPlanta.FormattingEnabled = true;
-            this.cmbIdPlanta.Location = new System.Drawing.Point(26, 232);
+            this.cmbIdPlanta.Location = new System.Drawing.Point(26, 142);
             this.cmbIdPlanta.Name = "cmbIdPlanta";
             this.cmbIdPlanta.Size = new System.Drawing.Size(121, 21);
             this.cmbIdPlanta.TabIndex = 4;
