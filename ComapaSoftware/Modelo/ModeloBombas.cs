@@ -42,14 +42,15 @@ namespace ComapaSoftware.Modelo
             }
             return result;
         }
-        public List<string> obtenerIdFicha()
+        //MODIFICAR
+        public List<string> obtenerIdFicha(string receiver)
         {
             List<string> helper = new List<string>();
             string values;
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas,Servicio FROM informaciontecnica ";
+                Query.CommandText = "SELECT slug FROM informaciontecnica WHERE Servicio= '"+receiver+"' ";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())

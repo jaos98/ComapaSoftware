@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtFpm = new System.Windows.Forms.Panel();
+            this.panelMain = new System.Windows.Forms.Panel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.t = new System.Windows.Forms.TextBox();
+            this.txtFpm = new System.Windows.Forms.TextBox();
             this.txtRpm = new System.Windows.Forms.TextBox();
             this.txtDinamica = new System.Windows.Forms.TextBox();
             this.txtGastolps = new System.Windows.Forms.TextBox();
@@ -59,42 +59,42 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.cmbIdPlanta = new System.Windows.Forms.ComboBox();
-            this.txtFpm.SuspendLayout();
+            this.panelMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtFpm
+            // panelMain
             // 
-            this.txtFpm.Controls.Add(this.comboBox1);
-            this.txtFpm.Controls.Add(this.cmbTipo);
-            this.txtFpm.Controls.Add(this.txtModelo);
-            this.txtFpm.Controls.Add(this.label14);
-            this.txtFpm.Controls.Add(this.button2);
-            this.txtFpm.Controls.Add(this.button1);
-            this.txtFpm.Controls.Add(this.t);
-            this.txtFpm.Controls.Add(this.txtRpm);
-            this.txtFpm.Controls.Add(this.txtDinamica);
-            this.txtFpm.Controls.Add(this.txtGastolps);
-            this.txtFpm.Controls.Add(this.txtDiametro);
-            this.txtFpm.Controls.Add(this.txtVoltaje);
-            this.txtFpm.Controls.Add(this.txtHp);
-            this.txtFpm.Controls.Add(this.txtMarca);
-            this.txtFpm.Controls.Add(this.label13);
-            this.txtFpm.Controls.Add(this.label12);
-            this.txtFpm.Controls.Add(this.label11);
-            this.txtFpm.Controls.Add(this.label10);
-            this.txtFpm.Controls.Add(this.label9);
-            this.txtFpm.Controls.Add(this.label8);
-            this.txtFpm.Controls.Add(this.label7);
-            this.txtFpm.Controls.Add(this.label6);
-            this.txtFpm.Controls.Add(this.label5);
-            this.txtFpm.Controls.Add(this.label4);
-            this.txtFpm.Controls.Add(this.txtPosicion);
-            this.txtFpm.Controls.Add(this.label3);
-            this.txtFpm.Enabled = false;
-            this.txtFpm.Location = new System.Drawing.Point(225, 12);
-            this.txtFpm.Name = "txtFpm";
-            this.txtFpm.Size = new System.Drawing.Size(723, 399);
-            this.txtFpm.TabIndex = 0;
+            this.panelMain.Controls.Add(this.comboBox1);
+            this.panelMain.Controls.Add(this.cmbTipo);
+            this.panelMain.Controls.Add(this.txtModelo);
+            this.panelMain.Controls.Add(this.label14);
+            this.panelMain.Controls.Add(this.button2);
+            this.panelMain.Controls.Add(this.button1);
+            this.panelMain.Controls.Add(this.txtFpm);
+            this.panelMain.Controls.Add(this.txtRpm);
+            this.panelMain.Controls.Add(this.txtDinamica);
+            this.panelMain.Controls.Add(this.txtGastolps);
+            this.panelMain.Controls.Add(this.txtDiametro);
+            this.panelMain.Controls.Add(this.txtVoltaje);
+            this.panelMain.Controls.Add(this.txtHp);
+            this.panelMain.Controls.Add(this.txtMarca);
+            this.panelMain.Controls.Add(this.label13);
+            this.panelMain.Controls.Add(this.label12);
+            this.panelMain.Controls.Add(this.label11);
+            this.panelMain.Controls.Add(this.label10);
+            this.panelMain.Controls.Add(this.label9);
+            this.panelMain.Controls.Add(this.label8);
+            this.panelMain.Controls.Add(this.label7);
+            this.panelMain.Controls.Add(this.label6);
+            this.panelMain.Controls.Add(this.label5);
+            this.panelMain.Controls.Add(this.label4);
+            this.panelMain.Controls.Add(this.txtPosicion);
+            this.panelMain.Controls.Add(this.label3);
+            this.panelMain.Enabled = false;
+            this.panelMain.Location = new System.Drawing.Point(233, 12);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(723, 399);
+            this.panelMain.TabIndex = 0;
             // 
             // comboBox1
             // 
@@ -159,12 +159,12 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // t
+            // txtFpm
             // 
-            this.t.Location = new System.Drawing.Point(461, 248);
-            this.t.Name = "t";
-            this.t.Size = new System.Drawing.Size(100, 20);
-            this.t.TabIndex = 21;
+            this.txtFpm.Location = new System.Drawing.Point(461, 248);
+            this.txtFpm.Name = "txtFpm";
+            this.txtFpm.Size = new System.Drawing.Size(100, 20);
+            this.txtFpm.TabIndex = 21;
             // 
             // txtRpm
             // 
@@ -336,13 +336,21 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(23, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "ID";
+            this.label2.Text = "Categorias";
             // 
             // cmbCategoria
             // 
             this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Items.AddRange(new object[] {
+            "Bombeo",
+            "Rebombeo",
+            "Potabilizadora",
+            "Tanque",
+            "Pozo",
+            "Carcamo",
+            "Sin sub-categoria"});
             this.cmbCategoria.Location = new System.Drawing.Point(26, 57);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
@@ -356,6 +364,7 @@
             this.cmbIdPlanta.Name = "cmbIdPlanta";
             this.cmbIdPlanta.Size = new System.Drawing.Size(121, 21);
             this.cmbIdPlanta.TabIndex = 4;
+            this.cmbIdPlanta.SelectedIndexChanged += new System.EventHandler(this.cmbIdPlanta_SelectedIndexChanged);
             // 
             // RegBomba
             // 
@@ -366,12 +375,12 @@
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtFpm);
+            this.Controls.Add(this.panelMain);
             this.Name = "RegBomba";
             this.Text = "RegBomba";
             this.Load += new System.EventHandler(this.RegBomba_Load);
-            this.txtFpm.ResumeLayout(false);
-            this.txtFpm.PerformLayout();
+            this.panelMain.ResumeLayout(false);
+            this.panelMain.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,7 +388,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel txtFpm;
+        private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbCategoria;
@@ -390,7 +399,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPosicion;
-        private System.Windows.Forms.TextBox t;
+        private System.Windows.Forms.TextBox txtFpm;
         private System.Windows.Forms.TextBox txtRpm;
         private System.Windows.Forms.TextBox txtDinamica;
         private System.Windows.Forms.TextBox txtGastolps;

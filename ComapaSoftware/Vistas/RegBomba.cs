@@ -25,6 +25,15 @@ namespace ComapaSoftware.Vistas
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cmbCategoria.SelectedIndex >=0)
+            {
+                cmbIdPlanta.Enabled = true;
+                foreach (var item in modeloBombas.obtenerIdFicha(cmbCategoria.Text))
+                {
+                    cmbIdPlanta.Items.Add(item);
+                }
+            }
+            
             //if (cmbCategoria.SelectedIndex <0)
             //{
             //    Console.WriteLine("Algo salio mal");
@@ -44,9 +53,14 @@ namespace ComapaSoftware.Vistas
         private void RegBomba_Load(object sender, EventArgs e)
         {
             cmbIdPlanta.Enabled = false;
-            foreach (var item in modeloBombas.obtenerIdFicha())
+        }
+
+        private void cmbIdPlanta_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbIdPlanta.SelectedIndex>=0)
             {
-               cmbCategoria.Items.Add(item);
+                Console.WriteLine(cmbIdPlanta.Text);
+                panelMain.Enabled = true;
             }
         }
     }

@@ -85,7 +85,7 @@ namespace ComapaSoftware.Modelo
 
         public DataTable llevarDatos(string globalReceiver)
         {
-            string sql = "SELECT `IdInfoTecnica`, `IdPlantas`, `CapacidadEquipos`, `OperacionMinima`, " +
+            string sql = "SELECT `IdInfoTecnica`, `IdPlantas`, `slug`, `CapacidadEquipos`, `OperacionMinima`, " +
                 "`EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`, `GastoInstalado`, " +
                 "`Servicio`" +
                 " FROM informaciontecnica WHERE IdPlantas = '" + globalReceiver + "' ";
