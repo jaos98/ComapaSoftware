@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ComapaSoftware.Controlador;
+﻿using ComapaSoftware.Controlador;
 using ComapaSoftware.Modelo;
+using System;
+using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
@@ -33,7 +26,7 @@ namespace ComapaSoftware.Vistas
         private void button1_Click(object sender, EventArgs e)
         {
             getInfo();
-            string idPlanta, numMedidor,numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
+            string idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
                 , longitud, elevacion, servicio, domicilio;
             idPlanta = controlador.IdPlanta;
             numMedidor = controlador.NumMedidor;
@@ -49,12 +42,12 @@ namespace ComapaSoftware.Vistas
             servicio = controlador.Servicio;
             domicilio = controlador.Domicilio;
 
-            MessageBox.Show(idPlanta+numMedidor+ numServicio+ tipoPlantas+ estatus+ descFunciones+ colonia+
-                sector+ latitud+
-                longitud+ elevacion+ servicio+ domicilio);
+            MessageBox.Show(idPlanta + numMedidor + numServicio + tipoPlantas + estatus + descFunciones + colonia +
+                sector + latitud +
+                longitud + elevacion + servicio + domicilio);
 
             if (modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
-                , longitud, elevacion, servicio, domicilio)>0)
+                , longitud, elevacion, servicio, domicilio) > 0)
             {
                 MessageBox.Show("La informacion se ha registrado!");
             }
@@ -62,10 +55,10 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("Algo ha salido mal");
             }
-           // modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
+            // modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
             //    ,longitud,elevacion,servicio,domicilio);
-              //modelo.insertarPlanta(idPlanta,numMedidor,numServicio,tipoPlantas,estatus,descFunciones,colonia,sector,latitud
-              //  ,longitud,elevacion,servicio,domicilio);
+            //modelo.insertarPlanta(idPlanta,numMedidor,numServicio,tipoPlantas,estatus,descFunciones,colonia,sector,latitud
+            //  ,longitud,elevacion,servicio,domicilio);
 
 
         }
@@ -73,14 +66,14 @@ namespace ComapaSoftware.Vistas
         private void FormPlanta_Load(object sender, EventArgs e)
         {
             //cmbSector.Items.Add(modelo.consultarSector2(cmbSector));
-                        
-           cmbColonia.Enabled = false;
+
+            cmbColonia.Enabled = false;
             foreach (var item in modelo.consultarSector())
             {
                 cmbSector.Items.Add(item);
 
             }
-            
+
         }
 
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,7 +98,7 @@ namespace ComapaSoftware.Vistas
 
         private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
         }
         public void getInfo()
         {
@@ -124,5 +117,5 @@ namespace ComapaSoftware.Vistas
             controlador.Domicilio = txtDomicilio.Text;
         }
     }
- 
+
 }

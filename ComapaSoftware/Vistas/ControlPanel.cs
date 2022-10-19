@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using ComapaSoftware.Controlador;
 namespace ComapaSoftware.Vistas
 {
     public partial class FormPanel : Form
@@ -19,7 +11,7 @@ namespace ComapaSoftware.Vistas
         public FormPanel()
         {
             InitializeComponent();
-           
+
         }
         public void conectarBase()
         {
@@ -28,8 +20,8 @@ namespace ComapaSoftware.Vistas
             Conn.ConnectionString = sql;
             Conn.Open();
         }
-        
-        
+
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -52,7 +44,7 @@ namespace ComapaSoftware.Vistas
                 FormResultado formResultado = new FormResultado(senderInfo);
                 formResultado.Show();
             }
-          
+
 
         }
         public void consultarDato()
@@ -86,7 +78,7 @@ namespace ComapaSoftware.Vistas
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if(cmbCategoria.Text == "--Seleccione categoria--")
+            if (cmbCategoria.Text == "--Seleccione categoria--")
             {
                 MessageBox.Show("Porfavor seleccione categoria para consulta");
 

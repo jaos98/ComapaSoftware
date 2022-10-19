@@ -1,11 +1,12 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ComapaSoftware.Controlador;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-
 namespace ComapaSoftware.Modelo
 {
     internal class ModeloBombas
     {
+        ControladorBombas controlador = new ControladorBombas();
         MySqlCommand Query = new MySqlCommand();
         MySqlConnection Conn;
         MySqlDataReader consultar;
@@ -50,13 +51,13 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT slug FROM informaciontecnica WHERE Servicio= '"+receiver+"' ";
+                Query.CommandText = "SELECT slug FROM informaciontecnica WHERE Servicio= '" + receiver + "' ";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
                 {
                     values = consultar.GetString(0);
-                    
+
                     helper.Add(values);
                 }
             }
@@ -67,27 +68,53 @@ namespace ComapaSoftware.Modelo
             }
             return helper;
         }
-        //public string[] obtenerIdFicha2()
-        //{
-        //    string[] values = new string[2] ;
-        //    try
-        //    {
-        //        conectarBase();
-        //        Query.CommandText = "SELECT IdPlantas,Servicio FROM informaciontecnica ";
-        //        Query.Connection = Conn;
-        //        consultar = Query.ExecuteReader();
-        //        while (consultar.Read())
-        //        {
-        //            values[0] = consultar.GetString(0);
-        //            values[1] = consultar.GetString(1);
-        //           // Console.WriteLine(values[0]+", "+values[1]);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex);
-        //    }
-        //    return values;
-        //}
+        public List<string> obtenerIdFicha2(string receiver)
+        {
+
+            List<string> list = new List<string>(3);
+
+            try
+            {
+                conectarBase();
+                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM informaciontecnica WHERE Servicio= '" + receiver + "' ";
+                Query.Connection = Conn;
+                consultar = Query.ExecuteReader();
+                while (consultar.Read())
+                {
+                    list.Add(consultar.GetString(0)+", "+consultar.GetString(1)+", "+consultar.GetString(2));
+                    
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                return null;
+                Console.WriteLine(ex);
+                throw;
+            }
+            
+        }
+        public List<CriterioRegistroBomba> obtenerIdFicha3(string receiver)
+        {
+            List<CriterioRegistroBomba> list = new List<CriterioRegistroBomba>();
+            try
+            {
+                conectarBase();
+                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM informaciontecnica WHERE Servicio= '" + receiver + "' ";
+                Query.Connection = Conn;
+                consultar = Query.ExecuteReader();
+                while (consultar.Read())
+                {
+                    list.Add(new CriterioRegistroBomba(consultar.GetString(0), consultar.GetString(1)
+                        , consultar.GetString(2)));
+                    Console.WriteLine(list.ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return list;
+        }
     }
 }

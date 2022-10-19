@@ -85,8 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Controlador\ControladorBombas.cs" />
     <Compile Include="Controlador\ControladorInfo.cs" />
     <Compile Include="Controlador\ControladorPlantas.cs" />
+    <Compile Include="Controlador\CriterioRegistroBomba.cs" />
     <Compile Include="Modelo\ModeloBombas.cs" />
     <Compile Include="Modelo\ModeloFichaTecnica.cs" />
     <Compile Include="Modelo\ModeloPlantas.cs" />

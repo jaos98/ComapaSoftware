@@ -1,12 +1,9 @@
-﻿using System;
+﻿using ComapaSoftware.Controlador;
+using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ComapaSoftware.Controlador;
-using MySql.Data.MySqlClient;
 
 namespace ComapaSoftware.Modelo
 {
@@ -52,7 +49,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdSector FROM sector WHERE NombreSector = '"+idObtenido+"'";
+                Query.CommandText = "SELECT IdSector FROM sector WHERE NombreSector = '" + idObtenido + "'";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
@@ -73,7 +70,7 @@ namespace ComapaSoftware.Modelo
             List<string> helper = new List<string>();
             conectarBase();
             Query.CommandText = "SELECT sector.IdSector, colonia.NombreColonia FROM sector " +
-                "INNER JOIN colonia ON sector.IdSector = colonia.IdSector WHERE sector.IdSector = '"+resultId+"'";
+                "INNER JOIN colonia ON sector.IdSector = colonia.IdSector WHERE sector.IdSector = '" + resultId + "'";
             Query.Connection = Conn;
             consultar = Query.ExecuteReader();
             while (consultar.Read())
@@ -85,18 +82,18 @@ namespace ComapaSoftware.Modelo
         }
 
         //REGISTRO DE PLANTAS SIN PARAMETROS
-        public void insertarPlanta(string idPlantas,string numMedidor, string numServicio,string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
+        public void insertarPlanta(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
         {
-         
+
             try
             {
                 conectarBase();
                 Query.CommandText = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
                     "`DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
-                    "VALUES ('"+idPlantas+"','"+numMedidor+"','"+numServicio+ "','" + tipoPlanta + "','" + estatus + "','" + descFunciones + "','" + colonia + "','" + sector + "','" + latitud + "','" + longitud + "','" + elevacion + "','" + servicio + "','" + domicilio +"');";               
+                    "VALUES ('" + idPlantas + "','" + numMedidor + "','" + numServicio + "','" + tipoPlanta + "','" + estatus + "','" + descFunciones + "','" + colonia + "','" + sector + "','" + latitud + "','" + longitud + "','" + elevacion + "','" + servicio + "','" + domicilio + "');";
                 Query.Connection = Conn;
                 Query.ExecuteNonQuery();
-               
+
             }
             catch (Exception ex)
             {
@@ -106,7 +103,7 @@ namespace ComapaSoftware.Modelo
         }
 
 
-       
+
 
 
         //INSERT CON PARAMETROS (PRUEBA)
@@ -118,7 +115,7 @@ namespace ComapaSoftware.Modelo
                     "VALUES (@idPlantas,@numMedidor,@numServicio,@tipoPlanta,@estatus,@descFunciones,@colonia,@sector,@latitud,@longitud,@elevacion,@servicio,@domicilio);";
             try
             {
-                
+
                 Conn.Close();
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
@@ -192,7 +189,7 @@ namespace ComapaSoftware.Modelo
         public DataTable consultaAdicional(string globalEntry)
         {
             string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio " +
-                "FROM plantascomapa WHERE (IdPlantas = '"+globalEntry+"') OR (TipoPlantas ='"+globalEntry+"') ";
+                "FROM plantascomapa WHERE (IdPlantas = '" + globalEntry + "') OR (TipoPlantas ='" + globalEntry + "') ";
             conectarBase();
             try
             {

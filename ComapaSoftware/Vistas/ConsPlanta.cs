@@ -1,15 +1,8 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ComapaSoftware.Controlador;
+﻿using ComapaSoftware.Controlador;
 using ComapaSoftware.Modelo;
+using MySql.Data.MySqlClient;
+using System;
+using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
@@ -62,11 +55,11 @@ namespace ComapaSoftware.Vistas
 
 
 
-       
+
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void FormResultado_Load(object sender, EventArgs e)
@@ -100,15 +93,15 @@ namespace ComapaSoftware.Vistas
         }
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
                 string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
                 this.Close();
                 ConsInfoTec consInfoTec = new ConsInfoTec(result);
                 consInfoTec.Show();
             }
-            
-            
+
+
         }
     }
 }

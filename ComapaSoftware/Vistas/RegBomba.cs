@@ -1,4 +1,5 @@
-﻿using ComapaSoftware.Modelo;
+﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,6 +8,7 @@ namespace ComapaSoftware.Vistas
 
     public partial class RegBomba : Form
     {
+        ControladorBombas controlador = new ControladorBombas();
         ModeloBombas modeloBombas = new ModeloBombas();
         public RegBomba()
         {
@@ -25,29 +27,25 @@ namespace ComapaSoftware.Vistas
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCategoria.SelectedIndex >=0)
+            if (cmbCategoria.SelectedIndex >= 0)
             {
                 cmbIdPlanta.Enabled = true;
-                foreach (var item in modeloBombas.obtenerIdFicha(cmbCategoria.Text))
+                cmbIdPlanta.Items.Clear();
+                foreach (var item in modeloBombas.obtenerIdFicha3(cmbCategoria.Text))
                 {
                     cmbIdPlanta.Items.Add(item);
                 }
-            }
-            
-            //if (cmbCategoria.SelectedIndex <0)
-            //{
-            //    Console.WriteLine("Algo salio mal");
-            //}
-            //else
-            //{
-            //    cmbIdPlanta.Enabled = true;
-            //    string cmbresult = cmbCategoria.Text;
-            //    foreach (var item in modeloBombas.obtenerId(cmbresult))
-            //    {
-            //        cmbIdPlanta.Items.Add(item);
-            //    }
 
-            //}
+                
+                //foreach (var item in modeloBombas.obtenerIdFicha2(cmbCategoria.Text))
+                //{
+                //    cmbIdPlanta.Items.Add(item);
+                //}
+            }
+            else
+            {
+                Console.WriteLine("Algo ha salido mal");
+            }
         }
 
         private void RegBomba_Load(object sender, EventArgs e)
@@ -57,7 +55,7 @@ namespace ComapaSoftware.Vistas
 
         private void cmbIdPlanta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbIdPlanta.SelectedIndex>=0)
+            if (cmbIdPlanta.SelectedIndex >= 0)
             {
                 Console.WriteLine(cmbIdPlanta.Text);
                 panelMain.Enabled = true;

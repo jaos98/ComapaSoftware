@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ComapaSoftware.Controlador
+﻿namespace ComapaSoftware.Controlador
 {
     internal class ControladorInfo
     {
@@ -21,7 +15,7 @@ namespace ComapaSoftware.Controlador
         private string elevacion;
         private string servicio;
         private string domicilio;
-     
+
 
         public string IdPlanta
         {

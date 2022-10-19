@@ -1,9 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware
 {
@@ -49,12 +45,12 @@ namespace ComapaSoftware
                     string IdPlantas = consultar.GetString(0);
                     string NumMedidor = consultar.GetString(1);
                     string NumServicio = consultar.GetString(2);
-                    Console.WriteLine("Resultados: \n" + IdPlantas + "" + NumMedidor + "" + NumServicio + "") ;
-                  
+                    Console.WriteLine("Resultados: \n" + IdPlantas + "" + NumMedidor + "" + NumServicio + "");
+
                 }
                 Conn.Close();
             }
-            catch(MySqlException e)
+            catch (MySqlException e)
             {
                 Console.WriteLine(e);
             }
@@ -78,7 +74,7 @@ namespace ComapaSoftware
                 Conn.Open();
                 Console.WriteLine("Conectado con exito");
             }
-            catch(MySqlException e)
+            catch (MySqlException e)
             {
                 Console.WriteLine(e);
             }
@@ -89,7 +85,7 @@ namespace ComapaSoftware
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT CuentaUsuario,ContraseñaUsuario FROM `usuarios` WHERE CuentaUsuario = '" + usuario + "' AND ContraseñaUsuario='" +contraseña+"'";
+                Query.CommandText = "SELECT CuentaUsuario,ContraseñaUsuario FROM `usuarios` WHERE CuentaUsuario = '" + usuario + "' AND ContraseñaUsuario='" + contraseña + "'";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
                 return consultar.HasRows;
@@ -102,6 +98,6 @@ namespace ComapaSoftware
         }
 
 
-       
+
     }
 }

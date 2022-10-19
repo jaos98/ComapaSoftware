@@ -1,12 +1,5 @@
 ﻿using ComapaSoftware.Vistas;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware
@@ -14,16 +7,16 @@ namespace ComapaSoftware
     public partial class FormLogin : Form
     {
         Conexion con = new Conexion();
-        
+
         public FormLogin()
         {
             InitializeComponent();
-           
+
 
         }
         public bool validacionDatos()
         {
-            
+
             String usuario = txtUsuario.Text;
             String contraseña = txtContraseña.Text;
             if (usuario == "" || contraseña == "")
@@ -41,7 +34,7 @@ namespace ComapaSoftware
             {
                 String usuario = txtUsuario.Text;
                 String contraseña = txtContraseña.Text;
-                if (con.ConsultaExperimental(usuario,contraseña))
+                if (con.ConsultaExperimental(usuario, contraseña))
                 {
                     MessageBox.Show("Bienvenido");
                     this.Close();
@@ -60,11 +53,11 @@ namespace ComapaSoftware
         {
             //var bounds = Screen.FromControl(this).Bounds;
             //this.Width = bounds.Width - 100;
-           // this.Height = bounds.Height - 100;
+            // this.Height = bounds.Height - 100;
             FormLogin formLogin = new FormLogin();
             formLogin.FormBorderStyle = FormBorderStyle.FixedDialog;
             formLogin.StartPosition = FormStartPosition.CenterScreen;
         }
     }
-    
+
 }
