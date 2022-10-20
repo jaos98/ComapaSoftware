@@ -30,12 +30,18 @@ namespace ComapaSoftware.Controlador
             set { servicio = value; }
         }
         public CriterioRegistroBomba(string idPlantas, string slug, string servicio)
-        {  
-
-
-    
+        {
+            this.idPlantas = idPlantas;
+            this.slug = slug;
+            this.servicio = servicio;
+            //Console.WriteLine(idPlantas + slug + servicio + "hasta aqui recibe la info");
         }
-        
+        public CriterioRegistroBomba()
+        {
+            
+        }
+
     }
+    
 }
    

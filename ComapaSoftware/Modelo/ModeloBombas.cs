@@ -81,8 +81,8 @@ namespace ComapaSoftware.Modelo
                 consultar = Query.ExecuteReader();
                 while (consultar.Read())
                 {
-                    list.Add(consultar.GetString(0)+", "+consultar.GetString(1)+", "+consultar.GetString(2));
-                    
+                    list.Add(consultar.GetString(0) + ", " + consultar.GetString(1) + ", " + consultar.GetString(2));
+
                 }
                 return list;
             }
@@ -92,7 +92,7 @@ namespace ComapaSoftware.Modelo
                 Console.WriteLine(ex);
                 throw;
             }
-            
+
         }
         public List<CriterioRegistroBomba> obtenerIdFicha3(string receiver)
         {
@@ -106,8 +106,7 @@ namespace ComapaSoftware.Modelo
                 while (consultar.Read())
                 {
                     list.Add(new CriterioRegistroBomba(consultar.GetString(0), consultar.GetString(1)
-                        , consultar.GetString(2)));
-                    Console.WriteLine(list.ToString());
+                        ,consultar.GetString(2)));
                 }
             }
             catch (Exception ex)
