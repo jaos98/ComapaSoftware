@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelMain = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.cmbEstatus = new System.Windows.Forms.ComboBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnReg = new System.Windows.Forms.Button();
             this.txtFpm = new System.Windows.Forms.TextBox();
             this.txtRpm = new System.Windows.Forms.TextBox();
             this.txtDinamica = new System.Windows.Forms.TextBox();
@@ -59,55 +59,60 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.cmbIdPlanta = new System.Windows.Forms.ComboBox();
-            this.panelMain.SuspendLayout();
+            this.labelId = new System.Windows.Forms.Label();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelMain
+            // mainPanel
             // 
-            this.panelMain.Controls.Add(this.comboBox1);
-            this.panelMain.Controls.Add(this.cmbTipo);
-            this.panelMain.Controls.Add(this.txtModelo);
-            this.panelMain.Controls.Add(this.label14);
-            this.panelMain.Controls.Add(this.button2);
-            this.panelMain.Controls.Add(this.button1);
-            this.panelMain.Controls.Add(this.txtFpm);
-            this.panelMain.Controls.Add(this.txtRpm);
-            this.panelMain.Controls.Add(this.txtDinamica);
-            this.panelMain.Controls.Add(this.txtGastolps);
-            this.panelMain.Controls.Add(this.txtDiametro);
-            this.panelMain.Controls.Add(this.txtVoltaje);
-            this.panelMain.Controls.Add(this.txtHp);
-            this.panelMain.Controls.Add(this.txtMarca);
-            this.panelMain.Controls.Add(this.label13);
-            this.panelMain.Controls.Add(this.label12);
-            this.panelMain.Controls.Add(this.label11);
-            this.panelMain.Controls.Add(this.label10);
-            this.panelMain.Controls.Add(this.label9);
-            this.panelMain.Controls.Add(this.label8);
-            this.panelMain.Controls.Add(this.label7);
-            this.panelMain.Controls.Add(this.label6);
-            this.panelMain.Controls.Add(this.label5);
-            this.panelMain.Controls.Add(this.label4);
-            this.panelMain.Controls.Add(this.txtPosicion);
-            this.panelMain.Controls.Add(this.label3);
-            this.panelMain.Enabled = false;
-            this.panelMain.Location = new System.Drawing.Point(233, 12);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(723, 399);
-            this.panelMain.TabIndex = 0;
+            this.mainPanel.Controls.Add(this.label15);
+            this.mainPanel.Controls.Add(this.txtObservaciones);
+            this.mainPanel.Controls.Add(this.cmbEstatus);
+            this.mainPanel.Controls.Add(this.cmbTipo);
+            this.mainPanel.Controls.Add(this.txtModelo);
+            this.mainPanel.Controls.Add(this.label14);
+            this.mainPanel.Controls.Add(this.button2);
+            this.mainPanel.Controls.Add(this.btnReg);
+            this.mainPanel.Controls.Add(this.txtFpm);
+            this.mainPanel.Controls.Add(this.txtRpm);
+            this.mainPanel.Controls.Add(this.txtDinamica);
+            this.mainPanel.Controls.Add(this.txtGastolps);
+            this.mainPanel.Controls.Add(this.txtDiametro);
+            this.mainPanel.Controls.Add(this.txtVoltaje);
+            this.mainPanel.Controls.Add(this.txtHp);
+            this.mainPanel.Controls.Add(this.txtMarca);
+            this.mainPanel.Controls.Add(this.label13);
+            this.mainPanel.Controls.Add(this.label12);
+            this.mainPanel.Controls.Add(this.label11);
+            this.mainPanel.Controls.Add(this.label10);
+            this.mainPanel.Controls.Add(this.label9);
+            this.mainPanel.Controls.Add(this.label8);
+            this.mainPanel.Controls.Add(this.label7);
+            this.mainPanel.Controls.Add(this.label6);
+            this.mainPanel.Controls.Add(this.label5);
+            this.mainPanel.Controls.Add(this.label4);
+            this.mainPanel.Controls.Add(this.txtPosicion);
+            this.mainPanel.Controls.Add(this.label3);
+            this.mainPanel.Enabled = false;
+            this.mainPanel.Location = new System.Drawing.Point(233, 12);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(723, 399);
+            this.mainPanel.TabIndex = 0;
             // 
-            // comboBox1
+            // cmbEstatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.cmbEstatus.FormattingEnabled = true;
+            this.cmbEstatus.Items.AddRange(new object[] {
             "Operando",
             "Fuera de servicio",
             "Sin especificar"});
-            this.comboBox1.Location = new System.Drawing.Point(461, 199);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 27;
-            this.comboBox1.Text = "--Seleccione Estatus--";
+            this.cmbEstatus.Location = new System.Drawing.Point(461, 199);
+            this.cmbEstatus.Name = "cmbEstatus";
+            this.cmbEstatus.Size = new System.Drawing.Size(121, 21);
+            this.cmbEstatus.TabIndex = 27;
+            this.cmbEstatus.Text = "--Seleccione Estatus--";
             // 
             // cmbTipo
             // 
@@ -142,22 +147,22 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(416, 352);
+            this.button2.Location = new System.Drawing.Point(225, 352);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 23);
             this.button2.TabIndex = 23;
             this.button2.Text = "Volver";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnReg
             // 
-            this.button1.Location = new System.Drawing.Point(33, 352);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(157, 23);
-            this.button1.TabIndex = 22;
-            this.button1.Text = "Registrar Bomba";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnReg.Location = new System.Drawing.Point(33, 352);
+            this.btnReg.Name = "btnReg";
+            this.btnReg.Size = new System.Drawing.Size(157, 23);
+            this.btnReg.TabIndex = 22;
+            this.btnReg.Text = "Registrar Bomba";
+            this.btnReg.UseVisualStyleBackColor = true;
+            this.btnReg.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtFpm
             // 
@@ -366,21 +371,48 @@
             this.cmbIdPlanta.TabIndex = 4;
             this.cmbIdPlanta.SelectedIndexChanged += new System.EventHandler(this.cmbIdPlanta_SelectedIndexChanged);
             // 
+            // labelId
+            // 
+            this.labelId.AutoSize = true;
+            this.labelId.Location = new System.Drawing.Point(26, 213);
+            this.labelId.Name = "labelId";
+            this.labelId.Size = new System.Drawing.Size(41, 13);
+            this.labelId.TabIndex = 5;
+            this.labelId.Text = "label15";
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(461, 305);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(243, 80);
+            this.txtObservaciones.TabIndex = 28;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(461, 286);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Observaciones";
+            // 
             // RegBomba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 433);
+            this.Controls.Add(this.labelId);
             this.Controls.Add(this.cmbIdPlanta);
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelMain);
+            this.Controls.Add(this.mainPanel);
             this.Name = "RegBomba";
             this.Text = "RegBomba";
             this.Load += new System.EventHandler(this.RegBomba_Load);
-            this.panelMain.ResumeLayout(false);
-            this.panelMain.PerformLayout();
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -388,7 +420,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panelMain;
+        private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbCategoria;
@@ -414,10 +446,13 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReg;
         private System.Windows.Forms.ComboBox cmbTipo;
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbEstatus;
+        private System.Windows.Forms.Label labelId;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox txtObservaciones;
     }
 }

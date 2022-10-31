@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ComapaSoftware.Controlador
 {
-  
+
     internal class CriterioRegistroBomba
     {
-       
+
         private string idPlantas;
         private string slug;
         private string servicio;

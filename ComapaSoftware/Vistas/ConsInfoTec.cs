@@ -34,9 +34,16 @@ namespace ComapaSoftware.Vistas
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= -0)
+            //if (e.RowIndex >= -0)
+            //{
+            //    richTextBox1.Text = modelo.traerDescripcion(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+            //}
+            if (e.RowIndex >= 0)
             {
-                richTextBox1.Text = modelo.traerDescripcion(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                string result = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                this.Close();
+                ConsBombas consBombas = new ConsBombas(result);
+                consBombas.Show();
             }
         }
 
