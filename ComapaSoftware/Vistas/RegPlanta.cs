@@ -7,75 +7,50 @@ namespace ComapaSoftware.Vistas
 {
     public partial class FormPlanta : Form
     {
-
-        Conexion conn = new Conexion();
-        ControladorInfo controlador = new ControladorInfo();
-        ModeloPlantas modelo = new ModeloPlantas();
+        ControladorInfo c = new ControladorInfo();
+        ModeloPlantas m = new ModeloPlantas();
         public FormPlanta()
         {
             InitializeComponent();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
             FormPanel formPanel = new FormPanel();
             formPanel.Show();
         }
         //Informacion a llenar con boton
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
             getInfo();
-            string idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
-                , longitud, elevacion, servicio, domicilio;
-            idPlanta = controlador.IdPlanta;
-            numMedidor = controlador.NumMedidor;
-            numServicio = controlador.NumServicio;
-            tipoPlantas = controlador.TipoPlantas;
-            estatus = controlador.Estatus;
-            descFunciones = controlador.DescFunciones;
-            colonia = controlador.Colonia;
-            sector = controlador.Sector;
-            latitud = controlador.Latitud;
-            elevacion = controlador.Elevacion;
-            longitud = controlador.Longitud;
-            servicio = controlador.Servicio;
-            domicilio = controlador.Domicilio;
-
-            MessageBox.Show(idPlanta + numMedidor + numServicio + tipoPlantas + estatus + descFunciones + colonia +
-                sector + latitud +
-                longitud + elevacion + servicio + domicilio);
-
-            if (modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
-                , longitud, elevacion, servicio, domicilio) > 0)
+            if (validate())
             {
-                MessageBox.Show("La informacion se ha registrado!");
+                if (m.insertarPlanta(c.IdPlanta, c.NumMedidor, c.NumServicio,
+               c.TipoPlantas, c.Estatus, c.DescFunciones, c.Colonia, c.Sector,
+               c.Latitud, c.Longitud, c.Elevacion, c.Servicio, c.Domicilio) > 0)
+                {
+                    MessageBox.Show("Se han registrado todos los datos");
+                    clean();
+                }
+                else
+                {
+                    MessageBox.Show("Algo ha salido mal, revise la informacion" +
+                        "o bien, contacte al administrador");
+                }
             }
             else
             {
-                MessageBox.Show("Algo ha salido mal");
+                MessageBox.Show("Porfavor Ingrese todos los datos");
             }
-            // modelo.insertarEquipo(idPlanta, numMedidor, numServicio, tipoPlantas, estatus, descFunciones, colonia, sector, latitud
-            //    ,longitud,elevacion,servicio,domicilio);
-            //modelo.insertarPlanta(idPlanta,numMedidor,numServicio,tipoPlantas,estatus,descFunciones,colonia,sector,latitud
-            //  ,longitud,elevacion,servicio,domicilio);
-
-
         }
-
         private void FormPlanta_Load(object sender, EventArgs e)
         {
-            //cmbSector.Items.Add(modelo.consultarSector2(cmbSector));
-
             cmbColonia.Enabled = false;
-            foreach (var item in modelo.consultarSector())
+            foreach (var item in m.consultarSector())
             {
                 cmbSector.Items.Add(item);
-
             }
-
         }
-
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
             int value = cmbSector.SelectedIndex;
@@ -87,35 +62,73 @@ namespace ComapaSoftware.Vistas
             {
                 cmbColonia.Items.Clear();
                 cmbColonia.Enabled = true;
-                string resultId = modelo.obtenerID(cmbSector.Text);
+                string resultId = m.obtenerID(cmbSector.Text);
                 cmbColonia.Enabled = true;
-                foreach (var item in modelo.compararDatos(resultId))
+                foreach (var item in m.compararDatos(resultId))
                 {
                     cmbColonia.Items.Add(item);
                 }
             }
         }
-
         private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
+        private void txtNumServ_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+               (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
         public void getInfo()
         {
-            controlador.IdPlanta = txtPlanta.Text.Trim();
-            controlador.NumMedidor = txtNumMed.Text.Trim();
-            controlador.NumServicio = txtNumServ.Text.Trim();
-            controlador.TipoPlantas = cmbTipoPlanta.Text;
-            controlador.Estatus = cmbEstatus.Text;
-            controlador.DescFunciones = txtDescFunciones.Text;
-            controlador.Colonia = cmbColonia.Text;
-            controlador.Sector = cmbSector.Text;
-            controlador.Latitud = txtLatitud.Text;
-            controlador.Longitud = txtLongitud.Text;
-            controlador.Elevacion = txtElevacion.Text;
-            controlador.Servicio = cmbServicio.Text;
-            controlador.Domicilio = txtDomicilio.Text;
+            c.IdPlanta = txtPlanta.Text.Trim();
+            c.NumMedidor = txtNumMed.Text.Trim();
+            c.NumServicio = txtNumServ.Text.Trim();
+            c.TipoPlantas = cmbTipoPlanta.Text;
+            c.Estatus = cmbEstatus.Text;
+            c.DescFunciones = txtDescFunciones.Text;
+            c.Colonia = cmbColonia.Text;
+            c.Sector = cmbSector.Text;
+            c.Latitud = txtLatitud.Text;
+            c.Longitud = txtLongitud.Text;
+            c.Elevacion = txtElevacion.Text;
+            c.Servicio = cmbServicio.Text;
+            c.Domicilio = txtDomicilio.Text;
+        }
+        private bool validate()
+        {
+            if (c.IdPlanta == "" || c.NumMedidor == "" || c.NumServicio == "" ||
+                c.TipoPlantas == "" || c.Estatus == "" || c.DescFunciones == "" ||
+                c.Colonia == "" || c.Sector == "" || c.Latitud == "" || c.Longitud == "" ||
+                c.Elevacion == "" || c.Servicio == "" || c.Domicilio == "")
+            {
+                return false;
+            }
+            return true;
+        }
+        private void clean()
+        {
+            txtPlanta.Clear();
+            txtNumMed.Clear();
+            txtNumServ.Clear();
+            cmbTipoPlanta.ResetText();
+            cmbEstatus.ResetText();
+            txtDescFunciones.Clear();
+            cmbColonia.ResetText();
+            cmbSector.ResetText();
+            txtLatitud.Clear();
+            txtLongitud.Clear();
+            txtElevacion.Clear();
+            txtNumServ.Clear();
+            txtDomicilio.Clear();
         }
     }
-
 }

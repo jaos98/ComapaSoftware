@@ -11,7 +11,6 @@ namespace ComapaSoftware.Vistas
         public FormPanel()
         {
             InitializeComponent();
-
         }
         public void conectarBase()
         {
@@ -20,17 +19,13 @@ namespace ComapaSoftware.Vistas
             Conn.ConnectionString = sql;
             Conn.Open();
         }
-
-
-
-        private void button2_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Hide();
             FormPlanta formPlanta = new FormPlanta();
             formPlanta.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
             //consultarDato();
             if (txtConsulta.Text == "")
@@ -40,11 +35,42 @@ namespace ComapaSoftware.Vistas
             else
             {
                 string senderInfo = txtConsulta.Text;
-                this.Hide();
+                Hide();
                 FormResultado formResultado = new FormResultado(senderInfo);
                 formResultado.Show();
             }
+        }
+        private void btnBuscarCat_Click(object sender, EventArgs e)
+        {
+            if (cmbCategoria.Text == "--Seleccione categoria--")
+            {
+                MessageBox.Show("Porfavor seleccione categoria para consulta");
+            }
+            else
+            {
+                string senderInfo = cmbCategoria.Text;
+                Hide();
+                FormResultado formResultado = new FormResultado(senderInfo);
+                formResultado.Show();
+            }
+        }
 
+        private void btnInfoTec_Click(object sender, EventArgs e)
+        {
+            Hide();
+            RegInfoTec regInfoTec = new RegInfoTec();
+            regInfoTec.Show();
+        }
+
+        private void btnBombas_Click(object sender, EventArgs e)
+        {
+            Hide();
+            RegBomba regBomba = new RegBomba();
+            regBomba.Show();
+        }
+
+        private void FormPanel_Load(object sender, EventArgs e)
+        {
 
         }
         public void consultarDato()
@@ -52,10 +78,6 @@ namespace ComapaSoftware.Vistas
             try
             {
                 conectarBase();
-                //Conn = new MySqlConnection();
-                //string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-                //Conn.ConnectionString = sql;
-                //Conn.Open();
                 Console.WriteLine("Conectado con exito!");
                 Query.CommandText = "SELECT IdPlantas,NumMedidor,NumServicio FROM plantascomapa";
                 Query.Connection = Conn;
@@ -65,7 +87,6 @@ namespace ComapaSoftware.Vistas
                     string IdPlantas = consultar.GetString(0);
                     string NumMedidor = consultar.GetString(1);
                     string NumServicio = consultar.GetString(2);
-                    // Console.WriteLine("Resultados: \n" + IdPlantas + "" + NumMedidor + "" + NumServicio + "");
                     MessageBox.Show("Resultados: \n" + IdPlantas + "\n" + NumMedidor + "\n" + NumServicio + "\n");
                 }
                 Conn.Close();
@@ -75,57 +96,5 @@ namespace ComapaSoftware.Vistas
                 MessageBox.Show(e.Message);
             }
         }
-
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (cmbCategoria.Text == "--Seleccione categoria--")
-            {
-                MessageBox.Show("Porfavor seleccione categoria para consulta");
-
-            }
-            else
-            {
-                string senderInfo = cmbCategoria.Text;
-                this.Hide();
-                FormResultado formResultado = new FormResultado(senderInfo);
-                formResultado.Show();
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RegInfoTec regInfoTec = new RegInfoTec();
-            regInfoTec.Show();
-        }
-
-        private void btnBombas_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RegBomba regBomba = new RegBomba();
-            regBomba.Show();
-        }
-
-
-
-
-        //public void traerDatos()
-        //{
-        //    string sql = "SELECT IdPlantas,NumMedidor,NumServicio FROM plantascomapa";
-        //    conectarBase();
-        //    try
-        //    {
-        //        MySqlDataAdapter dataAdapter = new MySqlDataAdapter(sql,Conn);
-        //        DataTable dt = new DataTable();
-        //        dataAdapter.Fill(dt);
-
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //}
     }
 }

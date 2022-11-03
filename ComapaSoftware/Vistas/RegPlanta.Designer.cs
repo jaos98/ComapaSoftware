@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtLongitud = new System.Windows.Forms.MaskedTextBox();
+            this.txtLatitud = new System.Windows.Forms.MaskedTextBox();
             this.cmbSector = new System.Windows.Forms.ComboBox();
             this.cmbColonia = new System.Windows.Forms.ComboBox();
             this.cmbEstatus = new System.Windows.Forms.ComboBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.cmbServicio = new System.Windows.Forms.ComboBox();
             this.cmbTipoPlanta = new System.Windows.Forms.ComboBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtLatitud = new System.Windows.Forms.MaskedTextBox();
-            this.txtLongitud = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,8 +67,8 @@
             this.panel1.Controls.Add(this.cmbSector);
             this.panel1.Controls.Add(this.cmbColonia);
             this.panel1.Controls.Add(this.cmbEstatus);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnVolver);
+            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.cmbServicio);
             this.panel1.Controls.Add(this.cmbTipoPlanta);
             this.panel1.Controls.Add(this.txtDomicilio);
@@ -94,6 +94,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
+            // 
+            // txtLongitud
+            // 
+            this.txtLongitud.Location = new System.Drawing.Point(519, 116);
+            this.txtLongitud.Mask = "00°00\'00.00\"O";
+            this.txtLongitud.Name = "txtLongitud";
+            this.txtLongitud.Size = new System.Drawing.Size(237, 20);
+            this.txtLongitud.TabIndex = 34;
+            // 
+            // txtLatitud
+            // 
+            this.txtLatitud.Location = new System.Drawing.Point(519, 69);
+            this.txtLatitud.Mask = "00°00\'00.00\"N";
+            this.txtLatitud.Name = "txtLatitud";
+            this.txtLatitud.Size = new System.Drawing.Size(237, 20);
+            this.txtLatitud.TabIndex = 33;
             // 
             // cmbSector
             // 
@@ -126,25 +142,25 @@
             this.cmbEstatus.Size = new System.Drawing.Size(237, 21);
             this.cmbEstatus.TabIndex = 30;
             // 
-            // button2
+            // btnVolver
             // 
-            this.button2.Location = new System.Drawing.Point(591, 422);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(165, 23);
-            this.button2.TabIndex = 29;
-            this.button2.Text = "Volver";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnVolver.Location = new System.Drawing.Point(591, 422);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(165, 23);
+            this.btnVolver.TabIndex = 29;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // button1
+            // btnAgregar
             // 
-            this.button1.Location = new System.Drawing.Point(36, 422);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(165, 23);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAgregar.Location = new System.Drawing.Point(36, 422);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(165, 23);
+            this.btnAgregar.TabIndex = 28;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // cmbServicio
             // 
@@ -183,6 +199,7 @@
             // txtDomicilio
             // 
             this.txtDomicilio.Location = new System.Drawing.Point(519, 279);
+            this.txtDomicilio.MaxLength = 100;
             this.txtDomicilio.Multiline = true;
             this.txtDomicilio.Name = "txtDomicilio";
             this.txtDomicilio.Size = new System.Drawing.Size(237, 115);
@@ -191,6 +208,7 @@
             // txtElevacion
             // 
             this.txtElevacion.Location = new System.Drawing.Point(519, 152);
+            this.txtElevacion.MaxLength = 10;
             this.txtElevacion.Name = "txtElevacion";
             this.txtElevacion.Size = new System.Drawing.Size(237, 20);
             this.txtElevacion.TabIndex = 23;
@@ -198,6 +216,7 @@
             // txtDescFunciones
             // 
             this.txtDescFunciones.Location = new System.Drawing.Point(172, 279);
+            this.txtDescFunciones.MaxLength = 100;
             this.txtDescFunciones.Multiline = true;
             this.txtDescFunciones.Name = "txtDescFunciones";
             this.txtDescFunciones.Size = new System.Drawing.Size(237, 115);
@@ -206,13 +225,16 @@
             // txtNumServ
             // 
             this.txtNumServ.Location = new System.Drawing.Point(172, 105);
+            this.txtNumServ.MaxLength = 25;
             this.txtNumServ.Name = "txtNumServ";
             this.txtNumServ.Size = new System.Drawing.Size(237, 20);
             this.txtNumServ.TabIndex = 15;
+            this.txtNumServ.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumServ_KeyPress);
             // 
             // txtNumMed
             // 
             this.txtNumMed.Location = new System.Drawing.Point(172, 69);
+            this.txtNumMed.MaxLength = 11;
             this.txtNumMed.Name = "txtNumMed";
             this.txtNumMed.Size = new System.Drawing.Size(237, 20);
             this.txtNumMed.TabIndex = 14;
@@ -220,6 +242,7 @@
             // txtPlanta
             // 
             this.txtPlanta.Location = new System.Drawing.Point(172, 32);
+            this.txtPlanta.MaxLength = 15;
             this.txtPlanta.Name = "txtPlanta";
             this.txtPlanta.Size = new System.Drawing.Size(237, 20);
             this.txtPlanta.TabIndex = 13;
@@ -341,22 +364,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Id Planta";
             // 
-            // txtLatitud
-            // 
-            this.txtLatitud.Location = new System.Drawing.Point(519, 69);
-            this.txtLatitud.Mask = "00°00\'00.00\"N";
-            this.txtLatitud.Name = "txtLatitud";
-            this.txtLatitud.Size = new System.Drawing.Size(237, 20);
-            this.txtLatitud.TabIndex = 33;
-            // 
-            // txtLongitud
-            // 
-            this.txtLongitud.Location = new System.Drawing.Point(519, 116);
-            this.txtLongitud.Mask = "00°00\'00.00\"O";
-            this.txtLongitud.Name = "txtLongitud";
-            this.txtLongitud.Size = new System.Drawing.Size(237, 20);
-            this.txtLongitud.TabIndex = 34;
-            // 
             // FormPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,8 +401,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ComboBox cmbServicio;
         private System.Windows.Forms.ComboBox cmbTipoPlanta;
         private System.Windows.Forms.ComboBox cmbEstatus;

@@ -30,7 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnBuscarCat = new System.Windows.Forms.Button();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.btnBuscarCat);
             this.tabPage1.Controls.Add(this.cmbCategoria);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.btnBuscar);
@@ -71,15 +71,15 @@
             this.tabPage1.Text = "Consulta";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnBuscarCat
             // 
-            this.button1.Location = new System.Drawing.Point(58, 289);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(313, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Buscar Categoria";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.btnBuscarCat.Location = new System.Drawing.Point(58, 289);
+            this.btnBuscarCat.Name = "btnBuscarCat";
+            this.btnBuscarCat.Size = new System.Drawing.Size(313, 23);
+            this.btnBuscarCat.TabIndex = 5;
+            this.btnBuscarCat.Text = "Buscar Categoria";
+            this.btnBuscarCat.UseVisualStyleBackColor = true;
+            this.btnBuscarCat.Click += new System.EventHandler(this.btnBuscarCat_Click);
             // 
             // cmbCategoria
             // 
@@ -113,7 +113,7 @@
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.button1_Click);
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label1
             // 
@@ -162,7 +162,7 @@
             this.btnInfoTec.TabIndex = 1;
             this.btnInfoTec.Text = "Agregar Informacion Tecnica";
             this.btnInfoTec.UseVisualStyleBackColor = true;
-            this.btnInfoTec.Click += new System.EventHandler(this.button3_Click);
+            this.btnInfoTec.Click += new System.EventHandler(this.btnInfoTec_Click);
             // 
             // btnAgregar
             // 
@@ -172,7 +172,7 @@
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar planta";
             this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Click += new System.EventHandler(this.button2_Click);
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // FormPanel
             // 
@@ -182,6 +182,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "FormPanel";
             this.Text = "Panel de Control";
+            this.Load += new System.EventHandler(this.FormPanel_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -201,7 +202,7 @@
         private System.Windows.Forms.Button btnBombas;
         private System.Windows.Forms.Button btnInfoTec;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnBuscarCat;
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label label2;
     }

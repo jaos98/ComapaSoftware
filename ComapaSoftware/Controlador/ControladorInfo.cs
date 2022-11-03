@@ -83,7 +83,13 @@
             set { domicilio = value; }
         }
 
+        public ControladorInfo(string IdPlanta)
+        {
+            idPlanta = IdPlanta;
+        }
+        public ControladorInfo()
+        {
 
-
+        }
     }
 }

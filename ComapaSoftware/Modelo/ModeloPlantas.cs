@@ -9,8 +9,6 @@ namespace ComapaSoftware.Modelo
 {
     internal class ModeloPlantas
     {
-        Conexion conn = new Conexion();
-        ControladorInfo controlador = new ControladorInfo();
         MySqlCommand Query = new MySqlCommand();
         MySqlConnection Conn;
         MySqlDataReader consultar;
@@ -43,7 +41,6 @@ namespace ComapaSoftware.Modelo
             }
             return lista;
         }
-
         public string obtenerID(string idObtenido)
         {
             try
@@ -80,34 +77,8 @@ namespace ComapaSoftware.Modelo
             }
             return helper;
         }
-
-        //REGISTRO DE PLANTAS SIN PARAMETROS
-        public void insertarPlanta(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
-        {
-
-            try
-            {
-                conectarBase();
-                Query.CommandText = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
-                    "`DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
-                    "VALUES ('" + idPlantas + "','" + numMedidor + "','" + numServicio + "','" + tipoPlanta + "','" + estatus + "','" + descFunciones + "','" + colonia + "','" + sector + "','" + latitud + "','" + longitud + "','" + elevacion + "','" + servicio + "','" + domicilio + "');";
-                Query.Connection = Conn;
-                Query.ExecuteNonQuery();
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            Console.WriteLine("La info se registro, creo");
-        }
-
-
-
-
-
         //INSERT CON PARAMETROS (PRUEBA)
-        public int insertarEquipo(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
+        public int insertarPlanta(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
         {
             int numRegistros = 0;
             string sqlEjecutar = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
@@ -115,7 +86,6 @@ namespace ComapaSoftware.Modelo
                     "VALUES (@idPlantas,@numMedidor,@numServicio,@tipoPlanta,@estatus,@descFunciones,@colonia,@sector,@latitud,@longitud,@elevacion,@servicio,@domicilio);";
             try
             {
-
                 Conn.Close();
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
@@ -181,10 +151,8 @@ namespace ComapaSoftware.Modelo
             }
             catch (Exception)
             {
-
                 throw;
             }
-
         }
         public DataTable consultaAdicional(string globalEntry)
         {
@@ -203,7 +171,6 @@ namespace ComapaSoftware.Modelo
                 Console.WriteLine(ex);
                 return null;
             }
-
         }
 
     }

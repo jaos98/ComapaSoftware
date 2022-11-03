@@ -57,7 +57,7 @@
             this.btnIniciar.TabIndex = 2;
             this.btnIniciar.Text = "Iniciar";
             this.btnIniciar.UseVisualStyleBackColor = true;
-            this.btnIniciar.Click += new System.EventHandler(this.button1_Click);
+            this.btnIniciar.Click += new System.EventHandler(this.btnIniciar_Click);
             // 
             // label1
             // 
