@@ -81,8 +81,6 @@ namespace ComapaSoftware.Modelo
                 Conn.Close();
             }
         }
-
-
         public DataTable llevarDatos(string globalReceiver)
         {
             string sql = "SELECT `IdInfoTecnica`, `IdPlantas`, `slug`, `CapacidadEquipos`, `OperacionMinima`, " +
@@ -108,7 +106,6 @@ namespace ComapaSoftware.Modelo
         }
         public string traerDescripcion(string idFicha)
         {
-            //List<string> result = new List<string>();
             conectarBase();
             try
             {
@@ -118,8 +115,6 @@ namespace ComapaSoftware.Modelo
                 while (consultar.Read())
                 {
                     idFicha = consultar.GetString(0);
-                    //Console.WriteLine(idFicha);
-                    //result.Add(idFicha);
                 }
             }
             catch (Exception ex)
@@ -128,8 +123,6 @@ namespace ComapaSoftware.Modelo
                 Conn.Close();
                 throw;
             }
-
-
             return idFicha;
         }
     }

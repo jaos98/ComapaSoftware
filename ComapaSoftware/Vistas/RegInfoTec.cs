@@ -40,7 +40,7 @@ namespace ComapaSoftware.Vistas
                 MessageBox.Show("Llene todos los campos");
             }
         }
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbCategoria.SelectedIndex < 0)
             {
