@@ -1,58 +1,45 @@
 ﻿using ComapaSoftware.Modelo;
 using System;
 using System.Windows.Forms;
+using ComapaSoftware.Controlador;
 
 namespace ComapaSoftware.Vistas
 {
     public partial class RegInfoTec : Form
     {
-        string capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
-            , gastoPromedio, gastoInstalado, servicio, observaciones;
         ModeloFichaTecnica model = new ModeloFichaTecnica();
+        ControladorInfo c = new ControladorInfo();
         public RegInfoTec()
         {
             InitializeComponent();
-
         }
         private void RegInfoTec_Load(object sender, EventArgs e)
         {
             cmbId.Enabled = false;
-
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnAgregar_Click(object sender, EventArgs e)
         {
-            string idPlanta = cmbId.Text;
-            capEquipos = txtCap.Text;
-            operacionMinima = txtOpmin.Text;
-            equiposInstalados = txtEquinst.Text;
-            tipo = cmbTipo.Text;
-            garantOperacion = txtGarant.Text;
-            gastoPromedio = txtProm.Text;
-            gastoInstalado = txtInst.Text;
-            servicio = cmbServicio.Text;
-            observaciones = txtObservacion.Text;
-            switch (validacionDatos())
+            DataView();
+            if (Validate())
             {
-                case 0:
-                    MessageBox.Show("Llene todos los campos");
-                    break;
-
-                case 1:
-                    MessageBox.Show("Todos los datos son correctos");
-                    if (model.registrarInfo(idPlanta, capEquipos, operacionMinima,
-                equiposInstalados, tipo, garantOperacion, gastoPromedio, gastoInstalado, servicio, observaciones) > 0)
-                    {
-                        MessageBox.Show("Informacion registrada");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Hubo un error");
-                    }
-                    break;
+                MessageBox.Show("Todos los datos son correctos");
+                if (model.registrarInfo(c.IdPlantas, c.CapEquipos, c.OperacionMinima,
+                    c.EquiposInstalados, c.Tipo, c.GarantOperacion, c.GastoPromedio,
+                    c.GastoInstalado, c.Servicio, c.Observaciones) > 0)
+                {
+                    MessageBox.Show("Informacion registrada");
+                    Clean();
+                }
+                else
+                {
+                    MessageBox.Show("Hubo un error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Llene todos los campos");
             }
         }
-
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbCategoria.SelectedIndex < 0)
@@ -72,14 +59,6 @@ namespace ComapaSoftware.Vistas
                 }
             }
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormPanel formPanel = new FormPanel();
-            formPanel.Show();
-        }
-
         private void cmbId_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbId.SelectedIndex < 0)
@@ -90,37 +69,59 @@ namespace ComapaSoftware.Vistas
             {
                 Console.WriteLine(cmbId.SelectedIndex.ToString());
                 panel1.Visible = true;
+                btnVolver2.Visible = false;
             }
         }
-
-        private int validacionDatos()
+        new bool Validate()
         {
-            int result;
-            string idPlanta = cmbId.Text;
-            capEquipos = txtCap.Text;
-            operacionMinima = txtOpmin.Text;
-            equiposInstalados = txtEquinst.Text;
-            tipo = cmbTipo.Text;
-            garantOperacion = txtGarant.Text;
-            gastoPromedio = txtProm.Text;
-            gastoInstalado = txtInst.Text;
-            servicio = cmbServicio.Text;
-            if (idPlanta == "" || capEquipos == " " || operacionMinima == ""
-                || equiposInstalados == "" || tipo == "" || garantOperacion == ""
-                || gastoPromedio == "" || gastoInstalado == "" || servicio == "" || observaciones == "")
+            if (c.IdPlantas == ""|| c.CapEquipos =="" ||c.OperacionMinima==""||
+                c.EquiposInstalados==""||c.Tipo==""||c.GarantOperacion==""||
+                c.GastoPromedio==""||c.GastoInstalado==""||c.Servicio==""||
+                c.Observaciones=="")
             {
-                result = 0;
+                return false;
             }
-            else
-            {
-                result = 1;
-            }
-            return result;
+            return true;
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormPanel formPanel = new FormPanel();
+            formPanel.Show();
+        }
+        private void btnVolver2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormPanel formPanel = new FormPanel();
+            formPanel.Show();
         }
 
+        private void Clean()
+        {
+            cmbId.Text = "";
+            txtCap.Clear();
+            txtOpmin.Clear();
+            txtEquinst.Clear();
+            cmbTipo.Text="";
+            txtGarant.Clear();
+            txtProm.Clear();
+            txtInst.Clear();
+            cmbServicio.Text="";
+            txtObservacion.Clear();
 
-
+        }
+        private void DataView()
+        {
+            c.IdPlantas = cmbId.Text;
+            c.CapEquipos = txtCap.Text;
+            c.OperacionMinima = txtOpmin.Text;
+            c.EquiposInstalados = txtEquinst.Text;
+            c.Tipo = cmbTipo.Text;
+            c.GarantOperacion = txtGarant.Text;
+            c.GastoPromedio = txtProm.Text;
+            c.GastoInstalado = txtInst.Text;
+            c.Servicio = cmbServicio.Text;
+            c.Observaciones = txtObservacion.Text;
+        }
     }
-
-
 }

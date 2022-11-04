@@ -7,41 +7,11 @@ namespace ComapaSoftware.Vistas
 {
     public partial class FormPlanta : Form
     {
-        ControladorInfo c = new ControladorInfo();
+        ControladorPlantas c = new ControladorPlantas();
         ModeloPlantas m = new ModeloPlantas();
         public FormPlanta()
         {
             InitializeComponent();
-        }
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            FormPanel formPanel = new FormPanel();
-            formPanel.Show();
-        }
-        //Informacion a llenar con boton
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            getInfo();
-            if (validate())
-            {
-                if (m.insertarPlanta(c.IdPlanta, c.NumMedidor, c.NumServicio,
-               c.TipoPlantas, c.Estatus, c.DescFunciones, c.Colonia, c.Sector,
-               c.Latitud, c.Longitud, c.Elevacion, c.Servicio, c.Domicilio) > 0)
-                {
-                    MessageBox.Show("Se han registrado todos los datos");
-                    clean();
-                }
-                else
-                {
-                    MessageBox.Show("Algo ha salido mal, revise la informacion" +
-                        "o bien, contacte al administrador");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Porfavor Ingrese todos los datos");
-            }
         }
         private void FormPlanta_Load(object sender, EventArgs e)
         {
@@ -50,6 +20,46 @@ namespace ComapaSoftware.Vistas
             {
                 cmbSector.Items.Add(item);
             }
+        }
+       
+        //Informacion a llenar con boton
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            getInfo();
+            if (validate())
+            {
+                //VALIDAR ANTES DE INGRESAR LA INFO
+                if (m.noRepite(c.IdPlanta))
+                {
+                    if (m.insertarPlanta(c.IdPlanta, c.NumMedidor, c.NumServicio,
+               c.TipoPlantas, c.Estatus, c.DescFunciones, c.Colonia, c.Sector,
+               c.Latitud, c.Longitud, c.Elevacion, c.Servicio, c.Domicilio) > 0)
+                    {
+                        MessageBox.Show("Se han registrado todos los datos");
+                        clean();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Algo ha salido mal, revise la informacion" +
+                            "o bien, contacte al administrador");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("El id ingresado ya se utilizo, cambie o elimine el anterior");
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Porfavor Ingrese todos los datos");
+            }
+        }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            FormPanel formPanel = new FormPanel();
+            formPanel.Show();
         }
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -70,10 +80,6 @@ namespace ComapaSoftware.Vistas
                 }
             }
         }
-        private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
         private void txtNumServ_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -86,6 +92,15 @@ namespace ComapaSoftware.Vistas
             {
                 e.Handled = true;
             }
+        }
+        private void txtLatitud_Click(object sender, EventArgs e)
+        {
+            txtLatitud.Select(0, 0);
+        }
+
+        private void txtLongitud_Click(object sender, EventArgs e)
+        {
+            txtLongitud.Select(0, 0);
         }
         public void getInfo()
         {
@@ -129,6 +144,10 @@ namespace ComapaSoftware.Vistas
             txtElevacion.Clear();
             txtNumServ.Clear();
             txtDomicilio.Clear();
+        }
+        private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

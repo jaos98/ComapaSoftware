@@ -1,95 +1,69 @@
-﻿namespace ComapaSoftware.Controlador
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ComapaSoftware.Controlador
 {
     internal class ControladorInfo
     {
-        private string idPlanta;
-        private string numMedidor;
-        private string numServicio;
-        private string tipoPlantas;
-        private string estatus;
-        private string descFunciones;
-        private string colonia;
-        private string sector;
-        private string latitud;
-        private string longitud;
-        private string elevacion;
-        private string servicio;
-        private string domicilio;
+        private string idPlantas,capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
+           , gastoPromedio, gastoInstalado, servicio, observaciones;
 
 
-        public string IdPlanta
+
+        public string IdPlantas
         {
-            get { return idPlanta; }
-            set { idPlanta = value; }
+            get{ return idPlantas; }
+            set { idPlantas = value; }
         }
-        public string NumMedidor
+        public string CapEquipos
         {
-            get { return numMedidor; }
-            set { numMedidor = value; }
+            get{ return capEquipos; }
+            set { capEquipos = value; }
         }
-        public string NumServicio
+        public string OperacionMinima
         {
-            get { return numServicio; }
-            set { numServicio = value; }
+            get { return operacionMinima; }
+            set { operacionMinima = value; }
         }
-        public string TipoPlantas
+        public string EquiposInstalados
         {
-            get { return tipoPlantas; }
-            set { tipoPlantas = value; }
+            get { return equiposInstalados; }
+            set { equiposInstalados = value;}
         }
-        public string Estatus
+        public string Tipo
         {
-            get { return estatus; }
-            set { estatus = value; }
+            get { return tipo; }
+            set { tipo = value; }
         }
-        public string DescFunciones
+        public string GarantOperacion
         {
-            get { return descFunciones; }
-            set { descFunciones = value; }
+            get { return garantOperacion;}
+            set { garantOperacion = value; }
         }
-        public string Colonia
+        public string GastoPromedio
         {
-            get { return colonia; }
-            set { colonia = value; }
+            get { return gastoPromedio;}
+            set { gastoPromedio = value; }
         }
-        public string Sector
+        public string GastoInstalado
         {
-            get { return sector; }
-            set { sector = value; }
-        }
-        public string Latitud
-        {
-            get { return latitud; }
-            set { latitud = value; }
-        }
-        public string Longitud
-        {
-            get { return longitud; }
-            set { longitud = value; }
-        }
-        public string Elevacion
-        {
-            get { return elevacion; }
-            set { elevacion = value; }
+            get { return gastoInstalado;}
+            set { gastoInstalado = value; }
         }
         public string Servicio
         {
-            get { return servicio; }
+            get { return servicio;}
             set { servicio = value; }
         }
-        public string Domicilio
+        public string Observaciones
         {
-            get { return domicilio; }
-            set { domicilio = value; }
+            get { return observaciones;}
+            set { observaciones = value; }
         }
 
-        public ControladorInfo(string IdPlanta)
-        {
-            idPlanta = IdPlanta;
-        }
-        public ControladorInfo()
-        {
 
-        }
     }
 }

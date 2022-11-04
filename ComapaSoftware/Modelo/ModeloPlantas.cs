@@ -61,7 +61,6 @@ namespace ComapaSoftware.Modelo
             }
             return idObtenido;
         }
-
         public List<string> compararDatos(string resultId)
         {
             List<string> helper = new List<string>();
@@ -172,6 +171,17 @@ namespace ComapaSoftware.Modelo
                 return null;
             }
         }
-
+        public bool noRepite(string  idPlanta)
+        {
+            conectarBase();
+            Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE IdPlantas ='"+idPlanta+"'";
+            Query.Connection = Conn;
+            consultar = Query.ExecuteReader();
+            if (consultar.HasRows)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }

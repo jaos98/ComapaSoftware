@@ -2,34 +2,94 @@
 {
     internal class ControladorPlantas
     {
-        public string idInfoTecnica;
-        public string idPlantas;
-        public string capacidadEquipos;
-        public string operacionMinima;
-        public string equiposInstalados;
-        public string tipo;
-        public string garantizarOperacion;
-        public string gastoPromedio;
-        public string gastoInstalado;
-        public string servicio;
-        public string observaciones;
+        private string idPlanta;
+        private string numMedidor;
+        private string numServicio;
+        private string tipoPlantas;
+        private string estatus;
+        private string descFunciones;
+        private string colonia;
+        private string sector;
+        private string latitud;
+        private string longitud;
+        private string elevacion;
+        private string servicio;
+        private string domicilio;
 
 
+        public string IdPlanta
+        {
+            get { return idPlanta; }
+            set { idPlanta = value; }
+        }
+        public string NumMedidor
+        {
+            get { return numMedidor; }
+            set { numMedidor = value; }
+        }
+        public string NumServicio
+        {
+            get { return numServicio; }
+            set { numServicio = value; }
+        }
+        public string TipoPlantas
+        {
+            get { return tipoPlantas; }
+            set { tipoPlantas = value; }
+        }
+        public string Estatus
+        {
+            get { return estatus; }
+            set { estatus = value; }
+        }
+        public string DescFunciones
+        {
+            get { return descFunciones; }
+            set { descFunciones = value; }
+        }
+        public string Colonia
+        {
+            get { return colonia; }
+            set { colonia = value; }
+        }
+        public string Sector
+        {
+            get { return sector; }
+            set { sector = value; }
+        }
+        public string Latitud
+        {
+            get { return latitud; }
+            set { latitud = value; }
+        }
+        public string Longitud
+        {
+            get { return longitud; }
+            set { longitud = value; }
+        }
+        public string Elevacion
+        {
+            get { return elevacion; }
+            set { elevacion = value; }
+        }
+        public string Servicio
+        {
+            get { return servicio; }
+            set { servicio = value; }
+        }
+        public string Domicilio
+        {
+            get { return domicilio; }
+            set { domicilio = value; }
+        }
 
+        public ControladorPlantas(string IdPlanta)
+        {
+            idPlanta = IdPlanta;
+        }
+        public ControladorPlantas()
+        {
 
-        public string IDFicha { get; }
-        public string IDPlanta { get; set; }
-        public string CapacidadEquipos { get; set; }
-        public string OperacionMinima { get; set; }
-        public string EquiposInstalados { get; set; }
-        public string Tipo { get; set; }
-        public string GarantizarOperacion { get; set; }
-        public string GastoPromedio { get; set; }
-        public string GastoInstalado { get; set; }
-        public string Servicio { get; set; }
-        public string Observaciones { get; set; }
-
+        }
     }
 }
-
-

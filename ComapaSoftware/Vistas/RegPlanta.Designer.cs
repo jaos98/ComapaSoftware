@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtLongitud = new System.Windows.Forms.MaskedTextBox();
             this.txtLatitud = new System.Windows.Forms.MaskedTextBox();
@@ -57,6 +58,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +104,7 @@
             this.txtLongitud.Name = "txtLongitud";
             this.txtLongitud.Size = new System.Drawing.Size(237, 20);
             this.txtLongitud.TabIndex = 34;
+            this.txtLongitud.Click += new System.EventHandler(this.txtLongitud_Click);
             // 
             // txtLatitud
             // 
@@ -110,6 +113,7 @@
             this.txtLatitud.Name = "txtLatitud";
             this.txtLatitud.Size = new System.Drawing.Size(237, 20);
             this.txtLatitud.TabIndex = 33;
+            this.txtLatitud.Click += new System.EventHandler(this.txtLatitud_Click);
             // 
             // cmbSector
             // 
@@ -133,6 +137,7 @@
             // 
             // cmbEstatus
             // 
+            this.cmbEstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstatus.FormattingEnabled = true;
             this.cmbEstatus.Items.AddRange(new object[] {
             "Activa",
@@ -364,6 +369,10 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Id Planta";
             // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            // 
             // FormPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -410,5 +419,6 @@
         private System.Windows.Forms.ComboBox cmbColonia;
         private System.Windows.Forms.MaskedTextBox txtLongitud;
         private System.Windows.Forms.MaskedTextBox txtLatitud;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

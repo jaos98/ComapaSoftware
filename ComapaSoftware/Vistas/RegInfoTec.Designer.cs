@@ -30,15 +30,17 @@
         {
             this.cmbId = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtObservacion = new System.Windows.Forms.TextBox();
             this.cmbServicio = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtInst = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.txtProm = new System.Windows.Forms.TextBox();
             this.txtGarant = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.txtEquinst = new System.Windows.Forms.TextBox();
             this.txtOpmin = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -54,8 +56,7 @@
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtObservacion = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
+            this.btnVolver2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,10 +79,10 @@
             this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.cmbTipo);
             this.panel1.Controls.Add(this.txtInst);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnVolver);
             this.panel1.Controls.Add(this.txtProm);
             this.panel1.Controls.Add(this.txtGarant);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.txtEquinst);
             this.panel1.Controls.Add(this.txtOpmin);
             this.panel1.Controls.Add(this.label7);
@@ -98,8 +99,26 @@
             this.panel1.TabIndex = 1;
             this.panel1.Visible = false;
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(446, 222);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(78, 13);
+            this.label14.TabIndex = 19;
+            this.label14.Text = "Observaciones";
+            // 
+            // txtObservacion
+            // 
+            this.txtObservacion.Location = new System.Drawing.Point(443, 254);
+            this.txtObservacion.Multiline = true;
+            this.txtObservacion.Name = "txtObservacion";
+            this.txtObservacion.Size = new System.Drawing.Size(200, 112);
+            this.txtObservacion.TabIndex = 18;
+            // 
             // cmbServicio
             // 
+            this.cmbServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbServicio.FormattingEnabled = true;
             this.cmbServicio.Items.AddRange(new object[] {
             "Bombeo",
@@ -113,7 +132,6 @@
             this.cmbServicio.Name = "cmbServicio";
             this.cmbServicio.Size = new System.Drawing.Size(134, 21);
             this.cmbServicio.TabIndex = 17;
-            this.cmbServicio.Text = "--Seleccione servicio--";
             // 
             // label13
             // 
@@ -135,6 +153,7 @@
             // 
             // cmbTipo
             // 
+            this.cmbTipo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipo.FormattingEnabled = true;
             this.cmbTipo.Items.AddRange(new object[] {
             "Manual",
@@ -143,7 +162,6 @@
             this.cmbTipo.Name = "cmbTipo";
             this.cmbTipo.Size = new System.Drawing.Size(121, 21);
             this.cmbTipo.TabIndex = 14;
-            this.cmbTipo.Text = "--Seleccione Tipo--";
             // 
             // txtInst
             // 
@@ -152,15 +170,15 @@
             this.txtInst.Size = new System.Drawing.Size(121, 20);
             this.txtInst.TabIndex = 13;
             // 
-            // button2
+            // btnVolver
             // 
-            this.button2.Location = new System.Drawing.Point(443, 413);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "Volver";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnVolver.Location = new System.Drawing.Point(443, 413);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(200, 23);
+            this.btnVolver.TabIndex = 3;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // txtProm
             // 
@@ -176,15 +194,15 @@
             this.txtGarant.Size = new System.Drawing.Size(121, 20);
             this.txtGarant.TabIndex = 11;
             // 
-            // button1
+            // btnAgregar
             // 
-            this.button1.Location = new System.Drawing.Point(79, 413);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Agregar Informacion";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnAgregar.Location = new System.Drawing.Point(79, 413);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(201, 23);
+            this.btnAgregar.TabIndex = 2;
+            this.btnAgregar.Text = "Agregar Informacion";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtEquinst
             // 
@@ -323,28 +341,22 @@
             this.label12.TabIndex = 8;
             this.label12.Text = "Categoria";
             // 
-            // txtObservacion
+            // btnVolver2
             // 
-            this.txtObservacion.Location = new System.Drawing.Point(443, 254);
-            this.txtObservacion.Multiline = true;
-            this.txtObservacion.Name = "txtObservacion";
-            this.txtObservacion.Size = new System.Drawing.Size(200, 112);
-            this.txtObservacion.TabIndex = 18;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(446, 222);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(78, 13);
-            this.label14.TabIndex = 19;
-            this.label14.Text = "Observaciones";
+            this.btnVolver2.Location = new System.Drawing.Point(9, 415);
+            this.btnVolver2.Name = "btnVolver2";
+            this.btnVolver2.Size = new System.Drawing.Size(141, 23);
+            this.btnVolver2.TabIndex = 9;
+            this.btnVolver2.Text = "Volver";
+            this.btnVolver2.UseVisualStyleBackColor = true;
+            this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
             // RegInfoTec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(849, 450);
+            this.Controls.Add(this.btnVolver2);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.cmbCategoria);
@@ -380,8 +392,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCap;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAgregar;
+        private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -392,5 +404,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtObservacion;
+        private System.Windows.Forms.Button btnVolver2;
     }
 }

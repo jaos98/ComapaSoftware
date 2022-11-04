@@ -12,7 +12,6 @@ namespace ComapaSoftware.Vistas
         MySqlCommand Query = new MySqlCommand();
         MySqlConnection Conn;
         MySqlDataReader consultar;
-        ControladorPlantas controladorPlantas = new ControladorPlantas();
         public FormResultado(string senderInfo)
         {
             globalReceiver = senderInfo;
