@@ -55,7 +55,7 @@
             this.panel1.Controls.Add(this.dataGridView1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1100, 572);
+            this.panel1.Size = new System.Drawing.Size(1100, 494);
             this.panel1.TabIndex = 0;
             // 
             // btnBuscar
@@ -70,7 +70,7 @@
             // 
             // btnMostrar
             // 
-            this.btnMostrar.Location = new System.Drawing.Point(487, 455);
+            this.btnMostrar.Location = new System.Drawing.Point(139, 9);
             this.btnMostrar.Name = "btnMostrar";
             this.btnMostrar.Size = new System.Drawing.Size(154, 23);
             this.btnMostrar.TabIndex = 7;
@@ -96,9 +96,9 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(281, 533);
+            this.btnVolver.Location = new System.Drawing.Point(922, 454);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(539, 23);
+            this.btnVolver.Size = new System.Drawing.Size(156, 23);
             this.btnVolver.TabIndex = 4;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
@@ -107,7 +107,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 8);
+            this.label1.Location = new System.Drawing.Point(11, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
             this.label1.TabIndex = 3;
@@ -115,7 +115,7 @@
             // 
             // btnAdicional
             // 
-            this.btnAdicional.Location = new System.Drawing.Point(695, 489);
+            this.btnAdicional.Location = new System.Drawing.Point(414, 454);
             this.btnAdicional.Name = "btnAdicional";
             this.btnAdicional.Size = new System.Drawing.Size(355, 23);
             this.btnAdicional.TabIndex = 2;
@@ -124,7 +124,7 @@
             // 
             // btnTecnica
             // 
-            this.btnTecnica.Location = new System.Drawing.Point(57, 489);
+            this.btnTecnica.Location = new System.Drawing.Point(14, 454);
             this.btnTecnica.Name = "btnTecnica";
             this.btnTecnica.Size = new System.Drawing.Size(355, 23);
             this.btnTecnica.TabIndex = 1;
@@ -152,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1102, 572);
+            this.ClientSize = new System.Drawing.Size(1102, 498);
             this.Controls.Add(this.panel1);
             this.Name = "FormResultado";
             this.Text = "Resultados de Busqueda";

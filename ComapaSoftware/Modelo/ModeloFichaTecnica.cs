@@ -4,19 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 namespace ComapaSoftware.Modelo
 {
-    internal class ModeloFichaTecnica
+    internal class ModeloFichaTecnica : Conexion
     {
-        MySqlCommand Query = new MySqlCommand();
-        MySqlConnection Conn;
-        MySqlDataReader consultar;
-        public void conectarBase()
-        {
-            Conn = new MySqlConnection();
-            string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-            Conn.ConnectionString = sql;
-            Conn.Open();
-        }
-
         public List<string> obtenerId(string catString)
         {
             List<string> result = new List<string>();
@@ -25,10 +14,10 @@ namespace ComapaSoftware.Modelo
                 conectarBase();
                 Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + catString + "'";
                 Query.Connection = Conn;
-                consultar = Query.ExecuteReader();
-                while (consultar.Read())
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
                 {
-                    catString = consultar.GetString(0);
+                    catString = Consultar.GetString(0);
                     Console.WriteLine(catString);
                     result.Add(catString);
                 }
@@ -111,10 +100,10 @@ namespace ComapaSoftware.Modelo
             {
                 Query.CommandText = "SELECT Observaciones FROM informaciontecnica WHERE idInfoTecnica= '" + idFicha + "'";
                 Query.Connection = Conn;
-                consultar = Query.ExecuteReader();
-                while (consultar.Read())
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
                 {
-                    idFicha = consultar.GetString(0);
+                    idFicha = Consultar.GetString(0);
                 }
             }
             catch (Exception ex)

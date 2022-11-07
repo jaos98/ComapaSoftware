@@ -7,18 +7,8 @@ using System.Windows.Forms;
 
 namespace ComapaSoftware.Modelo
 {
-    internal class ModeloPlantas
+    internal class ModeloPlantas : Conexion
     {
-        MySqlCommand Query = new MySqlCommand();
-        MySqlConnection Conn;
-        MySqlDataReader consultar;
-        public void conectarBase()
-        {
-            Conn = new MySqlConnection();
-            string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-            Conn.ConnectionString = sql;
-            Conn.Open();
-        }
         public List<string> consultarSector()
         {
             List<string> lista = new List<string>();
@@ -27,10 +17,10 @@ namespace ComapaSoftware.Modelo
                 conectarBase();
                 Query.CommandText = "SELECT IdSector,NombreSector FROM sector";
                 Query.Connection = Conn;
-                consultar = Query.ExecuteReader();
-                while (consultar.Read())
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
                 {
-                    string result = consultar.GetString(1);
+                    string result = Consultar.GetString(1);
                     Console.WriteLine(result);
                     lista.Add(result);
                 }
@@ -48,10 +38,10 @@ namespace ComapaSoftware.Modelo
                 conectarBase();
                 Query.CommandText = "SELECT IdSector FROM sector WHERE NombreSector = '" + idObtenido + "'";
                 Query.Connection = Conn;
-                consultar = Query.ExecuteReader();
-                while (consultar.Read())
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
                 {
-                    idObtenido = consultar.GetString(0);
+                    idObtenido = Consultar.GetString(0);
                     Console.WriteLine(idObtenido);
                 }
             }
@@ -68,10 +58,10 @@ namespace ComapaSoftware.Modelo
             Query.CommandText = "SELECT sector.IdSector, colonia.NombreColonia FROM sector " +
                 "INNER JOIN colonia ON sector.IdSector = colonia.IdSector WHERE sector.IdSector = '" + resultId + "'";
             Query.Connection = Conn;
-            consultar = Query.ExecuteReader();
-            while (consultar.Read())
+            Consultar = Query.ExecuteReader();
+            while (Consultar.Read())
             {
-                string res = consultar.GetString(1);
+                string res = Consultar.GetString(1);
                 helper.Add(res);
             }
             return helper;
@@ -176,8 +166,8 @@ namespace ComapaSoftware.Modelo
             conectarBase();
             Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE IdPlantas ='"+idPlanta+"'";
             Query.Connection = Conn;
-            consultar = Query.ExecuteReader();
-            if (consultar.HasRows)
+            Consultar = Query.ExecuteReader();
+            if (Consultar.HasRows)
             {
                 return false;
             }

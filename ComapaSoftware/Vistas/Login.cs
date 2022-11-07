@@ -5,18 +5,15 @@ namespace ComapaSoftware
 {
     public partial class FormLogin : Form
     {
-        Conexion con = new Conexion();
         public FormLogin()
         {
             InitializeComponent();
         }
         public bool validacionDatos()
         {
-            string usuario = txtUsuario.Text;
-            string contraseña = txtContraseña.Text;
-            if (usuario == "" || contraseña == "")
+            if (txtUsuario.Text == "" || txtContraseña.Text == "")
             {
-                MessageBox.Show("Porfavor introduzca datos validos");
+                MessageBox.Show("Llene todos los campos");
                 return false;
             }
             return true;
@@ -25,19 +22,18 @@ namespace ComapaSoftware
         {
             if (validacionDatos())
             {
-                string usuario = txtUsuario.Text;
-                string contraseña = txtContraseña.Text;
-                if (con.validarUsuario(usuario, contraseña))
+                if (new Conexion().LogIn(txtUsuario.Text, txtContraseña.Text))
                 {
                     MessageBox.Show("Bienvenido");
-                    this.Close();
+                    Close();
                     FormPanel formPanel = new FormPanel();
                     formPanel.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Datos incorrectos");
+                    MessageBox.Show("Error en el usuario o contraseña");
                 }
+
             }
         }
         private void FormLogin_Load(object sender, EventArgs e)

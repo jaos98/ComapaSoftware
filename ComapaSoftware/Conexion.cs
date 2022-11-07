@@ -1,26 +1,63 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ComapaSoftware
 {
-    public class Conexion
+    internal class Conexion
     {
-        MySqlCommand Query = new MySqlCommand();
-        MySqlConnection Conn;
+        MySqlCommand query = new MySqlCommand();
+        MySqlConnection conn;
         MySqlDataReader consultar;
-        string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-        public void conectarBase()
+        private string sql = "server=localhost;user id=root; database=comapainfo;password=;";
+
+        public MySqlCommand Query
         {
-            Conn = new MySqlConnection();
-            Conn.ConnectionString = sql;
-            Conn.Open();
-            Console.WriteLine("Conectado con exito!");
+            get { return query; }
+            set { query = value; }
         }
-        public bool validarUsuario(string usuario, string contraseña)
+        public MySqlConnection Conn
+        {
+            get { return conn; }
+            set { conn = value; }
+        }
+        public MySqlDataReader Consultar
+        {
+            get { return consultar; }
+            set { consultar = value; }
+        }
+        public string Sql
+        {
+            set { sql = value; }
+        }
+
+        public Conexion()
+        {
+            conectarBase();
+        }
+        public void conectarBase()
         {
             try
             {
-                conectarBase();
+                Conn = new MySqlConnection();
+                if (Conn != null)
+                {
+                    Conn.ConnectionString = sql;
+                    Conn.Open();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
+        public bool LogIn(string usuario, string contraseña)
+        {
+            try
+            {
                 Query.CommandText = "SELECT CuentaUsuario,ContraseñaUsuario FROM `usuarios` WHERE CuentaUsuario = '" + usuario + "' AND ContraseñaUsuario='" + contraseña + "'";
                 Query.Connection = Conn;
                 consultar = Query.ExecuteReader();
@@ -32,5 +69,6 @@ namespace ComapaSoftware
                 return false;
             }
         }
+
     }
 }

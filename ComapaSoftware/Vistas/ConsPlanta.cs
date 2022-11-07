@@ -8,10 +8,9 @@ namespace ComapaSoftware.Vistas
 {
     public partial class FormResultado : Form
     {
+        ModeloPlantas m = new ModeloPlantas();
         string globalReceiver;
-        MySqlCommand Query = new MySqlCommand();
-        MySqlConnection Conn;
-        MySqlDataReader consultar;
+        string getIndex;
         public FormResultado(string senderInfo)
         {
             globalReceiver = senderInfo;
@@ -20,45 +19,37 @@ namespace ComapaSoftware.Vistas
             formPlanta.FormBorderStyle = FormBorderStyle.FixedDialog;
             formPlanta.StartPosition = FormStartPosition.CenterScreen;
         }
-        public void conectarBase()
-        {
-            Conn = new MySqlConnection();
-            string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-            Conn.ConnectionString = sql;
-            Conn.Open();
-        }
 
         public void traerDatos()
         {
-            ModeloPlantas modeloPlantas = new ModeloPlantas();
-            dataGridView1.DataSource = modeloPlantas.llevarDatos(globalReceiver);
+
+            dataGridView1.DataSource = m.llevarDatos(globalReceiver);
         }
         public void traerTodo()
         {
-            ModeloPlantas modeloPlantas = new ModeloPlantas();
-            dataGridView1.DataSource = modeloPlantas.dataSender();
+
+            dataGridView1.DataSource = m.dataSender();
         }
         public void consultaTecnica()
         {
-            ModeloPlantas modeloPlantas = new ModeloPlantas();
-            dataGridView1.DataSource = modeloPlantas.dataSender();
+
+            dataGridView1.DataSource = m.dataSender();
         }
         public void consultaAdicional()
         {
             string globalEntry = txtAdicional.Text;
-            ModeloPlantas modeloPlantas = new ModeloPlantas();
-            dataGridView1.DataSource = modeloPlantas.consultaAdicional(globalEntry);
+
+            dataGridView1.DataSource = m.consultaAdicional(globalEntry);
             dataGridView1.Refresh();
         }
-
-
-
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
-
+            //Aqui me quede
+            string result = dataGridView1.Rows[ new RowsP().Arg.RowIndex].Cells[0].Value.ToString();
+            MessageBox.Show(result);
+            //Close();
+            //ConsInfoTec consInfoTec = new ConsInfoTec(result);
+            //consInfoTec.Show();
         }
 
         private void FormResultado_Load(object sender, EventArgs e)
@@ -95,9 +86,31 @@ namespace ComapaSoftware.Vistas
             if (e.RowIndex >= 0)
             {
                 string result = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
-                this.Close();
+                Close();
                 ConsInfoTec consInfoTec = new ConsInfoTec(result);
                 consInfoTec.Show();
+            }
+
+
+        }
+        class RowsP
+        {
+            DataGridViewCellEventArgs arg;
+
+
+            public DataGridViewCellEventArgs Arg
+            {
+                get { return arg; }
+                set { arg = value; }
+            }
+            public RowsP(DataGridViewCellEventArgs Arg)
+            {
+                this.Arg = Arg;
+            }
+
+            public RowsP()
+            {
+
             }
 
 

@@ -47,7 +47,6 @@ namespace ComapaSoftware.Vistas
                 else
                 {
                     MessageBox.Show("El id ingresado ya se utilizo, cambie o elimine el anterior");
-
                 }
             }
             else
