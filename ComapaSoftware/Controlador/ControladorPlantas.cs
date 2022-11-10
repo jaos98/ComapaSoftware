@@ -87,6 +87,25 @@
         {
             idPlanta = IdPlanta;
         }
+        public ControladorPlantas(string idPlanta, string numMedidor, string numServicio,
+            string tipoPlantas,string estatus, string descFunciones,string colonia,string sector,
+            string latitud, string longitud, string elevacion, string servicio,string domicilio)
+        {
+            this.idPlanta = idPlanta;
+            this.numMedidor = numMedidor;
+            this.numServicio = numServicio;
+            this.tipoPlantas = tipoPlantas;
+            this.estatus = estatus;
+            this.descFunciones = descFunciones;
+            this.colonia = colonia;
+            this.sector = sector;
+            this.latitud = latitud;
+            this.longitud = longitud;
+            this.elevacion = elevacion;
+            this.servicio = servicio;
+            this.domicilio = domicilio;
+
+        }
         public ControladorPlantas()
         {
 

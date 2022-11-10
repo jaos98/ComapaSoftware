@@ -5,13 +5,16 @@ namespace ComapaSoftware.Vistas
 {
     public partial class FormPanel : Form
     {
+        //DECLARACION DE VARIABLES A UTILIZAR EN LA CLASE FormPanel
         MySqlCommand Query = new MySqlCommand();
         MySqlConnection Conn;
         MySqlDataReader consultar;
+        //ACCESO PUBLICO A LA CLASE FormPanel
         public FormPanel()
         {
             InitializeComponent();
         }
+        //METODO DE CONEXION A BASE DE DATOS
         public void conectarBase()
         {
             Conn = new MySqlConnection();
@@ -19,12 +22,28 @@ namespace ComapaSoftware.Vistas
             Conn.ConnectionString = sql;
             Conn.Open();
         }
+        //DECLARACION DE BOTONES, BOTON QUE MUESTRA LA VISTA AGREGAR PLANTA
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             Hide();
             FormPlanta formPlanta = new FormPlanta();
             formPlanta.Show();
         }
+        //DECLARACION DE BOTONES, BOTON QUE MUESTRA LA VISTA AGREGAR INFO TECNICA
+        private void btnInfoTec_Click(object sender, EventArgs e)
+        {
+            Hide();
+            RegInfoTec regInfoTec = new RegInfoTec();
+            regInfoTec.Show();
+        }
+        //DECLARACION DE BOTONES, BOTON QUE MUESTRA LA VISTA AGREGAR BOMBAS
+        private void btnBombas_Click(object sender, EventArgs e)
+        {
+            Hide();
+            RegBomba regBomba = new RegBomba();
+            regBomba.Show();
+        }
+        //DECLARACION DE BOTONES, BOTON QUE ENVIA LA VARIABLE A LA SIGUIENTE VISTA FormResultado PARA SU CONSULTA
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             //consultarDato();
@@ -40,6 +59,7 @@ namespace ComapaSoftware.Vistas
                 formResultado.Show();
             }
         }
+        //DECLARACION DE BOTONES, BOTON QUE ENVIA UN RESULTADO DE UN CMBOX A LA SIGUIENTE VISTA FormResultado PARA SU CONSULTA
         private void btnBuscarCat_Click(object sender, EventArgs e)
         {
             if (cmbCategoria.Text == "--Seleccione categoria--")
@@ -54,47 +74,10 @@ namespace ComapaSoftware.Vistas
                 formResultado.Show();
             }
         }
-
-        private void btnInfoTec_Click(object sender, EventArgs e)
-        {
-            Hide();
-            RegInfoTec regInfoTec = new RegInfoTec();
-            regInfoTec.Show();
-        }
-
-        private void btnBombas_Click(object sender, EventArgs e)
-        {
-            Hide();
-            RegBomba regBomba = new RegBomba();
-            regBomba.Show();
-        }
-
+        //METODO QUE EJECUTA CODIGO CUANDO CARGA LA VISTA (SIN UTILIZAR)
         private void FormPanel_Load(object sender, EventArgs e)
         {
 
-        }
-        public void consultarDato()
-        {
-            try
-            {
-                conectarBase();
-                Console.WriteLine("Conectado con exito!");
-                Query.CommandText = "SELECT IdPlantas,NumMedidor,NumServicio FROM plantascomapa";
-                Query.Connection = Conn;
-                consultar = Query.ExecuteReader();
-                while (consultar.Read())
-                {
-                    string IdPlantas = consultar.GetString(0);
-                    string NumMedidor = consultar.GetString(1);
-                    string NumServicio = consultar.GetString(2);
-                    MessageBox.Show("Resultados: \n" + IdPlantas + "\n" + NumMedidor + "\n" + NumServicio + "\n");
-                }
-                Conn.Close();
-            }
-            catch (MySqlException e)
-            {
-                MessageBox.Show(e.Message);
-            }
         }
     }
 }

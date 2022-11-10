@@ -9,11 +9,13 @@ namespace ComapaSoftware
 {
     internal class Conexion
     {
+        //DECLARACION DE VARIABLES A UTILIZAR PARA CONEXION
         MySqlCommand query = new MySqlCommand();
         MySqlConnection conn;
         MySqlDataReader consultar;
         private string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-
+        
+        //VARIABLES PUBLICAS DE LA CLASE
         public MySqlCommand Query
         {
             get { return query; }
@@ -33,11 +35,12 @@ namespace ComapaSoftware
         {
             set { sql = value; }
         }
-
+        //ACCESO A LA CLASE Y SUS METODOS
         public Conexion()
         {
             conectarBase();
         }
+        //METODO DE CONEXION A LA BASE DE DATOS
         public void conectarBase()
         {
             try
@@ -54,6 +57,7 @@ namespace ComapaSoftware
                 Console.WriteLine(ex);
             }
         }
+        //METODO DE COMPROBACION DE INICIO DE SESION DE USUARIO
         public bool LogIn(string usuario, string contraseña)
         {
             try
