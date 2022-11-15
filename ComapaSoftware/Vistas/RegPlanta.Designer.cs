@@ -59,11 +59,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtKva = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.txtKva);
             this.panel1.Controls.Add(this.txtLongitud);
             this.panel1.Controls.Add(this.txtLatitud);
             this.panel1.Controls.Add(this.cmbSector);
@@ -373,6 +377,22 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
+            // txtKva
+            // 
+            this.txtKva.Location = new System.Drawing.Point(519, 234);
+            this.txtKva.Name = "txtKva";
+            this.txtKva.Size = new System.Drawing.Size(237, 20);
+            this.txtKva.TabIndex = 35;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(444, 237);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(26, 13);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "Kva";
+            // 
             // FormPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,5 +440,7 @@
         private System.Windows.Forms.MaskedTextBox txtLongitud;
         private System.Windows.Forms.MaskedTextBox txtLatitud;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtKva;
     }
 }

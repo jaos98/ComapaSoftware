@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnBack = new System.Windows.Forms.Button();
             this.labelDom = new System.Windows.Forms.Label();
             this.labelSer = new System.Windows.Forms.Label();
             this.labelEle = new System.Windows.Forms.Label();
@@ -64,13 +65,16 @@
             this.btnAdicional = new System.Windows.Forms.Button();
             this.btnTecnica = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnBack = new System.Windows.Forms.Button();
+            this.titleKva = new System.Windows.Forms.Label();
+            this.labelKva = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.labelKva);
+            this.panel1.Controls.Add(this.titleKva);
             this.panel1.Controls.Add(this.btnBack);
             this.panel1.Controls.Add(this.labelDom);
             this.panel1.Controls.Add(this.labelSer);
@@ -112,10 +116,20 @@
             this.panel1.Size = new System.Drawing.Size(1100, 494);
             this.panel1.TabIndex = 0;
             // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(508, 377);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(173, 23);
+            this.btnBack.TabIndex = 36;
+            this.btnBack.Text = "Volver";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
             // labelDom
             // 
             this.labelDom.AutoSize = true;
-            this.labelDom.Location = new System.Drawing.Point(606, 268);
+            this.labelDom.Location = new System.Drawing.Point(606, 308);
             this.labelDom.Name = "labelDom";
             this.labelDom.Size = new System.Drawing.Size(41, 13);
             this.labelDom.TabIndex = 34;
@@ -124,7 +138,7 @@
             // labelSer
             // 
             this.labelSer.AutoSize = true;
-            this.labelSer.Location = new System.Drawing.Point(606, 227);
+            this.labelSer.Location = new System.Drawing.Point(606, 268);
             this.labelSer.Name = "labelSer";
             this.labelSer.Size = new System.Drawing.Size(41, 13);
             this.labelSer.TabIndex = 33;
@@ -133,7 +147,7 @@
             // labelEle
             // 
             this.labelEle.AutoSize = true;
-            this.labelEle.Location = new System.Drawing.Point(606, 185);
+            this.labelEle.Location = new System.Drawing.Point(606, 227);
             this.labelEle.Name = "labelEle";
             this.labelEle.Size = new System.Drawing.Size(41, 13);
             this.labelEle.TabIndex = 32;
@@ -142,7 +156,7 @@
             // labelLon
             // 
             this.labelLon.AutoSize = true;
-            this.labelLon.Location = new System.Drawing.Point(606, 149);
+            this.labelLon.Location = new System.Drawing.Point(606, 185);
             this.labelLon.Name = "labelLon";
             this.labelLon.Size = new System.Drawing.Size(41, 13);
             this.labelLon.TabIndex = 31;
@@ -151,7 +165,7 @@
             // labelLa
             // 
             this.labelLa.AutoSize = true;
-            this.labelLa.Location = new System.Drawing.Point(606, 105);
+            this.labelLa.Location = new System.Drawing.Point(606, 149);
             this.labelLa.Name = "labelLa";
             this.labelLa.Size = new System.Drawing.Size(41, 13);
             this.labelLa.TabIndex = 30;
@@ -160,7 +174,7 @@
             // labelSec
             // 
             this.labelSec.AutoSize = true;
-            this.labelSec.Location = new System.Drawing.Point(603, 74);
+            this.labelSec.Location = new System.Drawing.Point(606, 105);
             this.labelSec.Name = "labelSec";
             this.labelSec.Size = new System.Drawing.Size(41, 13);
             this.labelSec.TabIndex = 29;
@@ -169,7 +183,7 @@
             // labelCol
             // 
             this.labelCol.AutoSize = true;
-            this.labelCol.Location = new System.Drawing.Point(208, 308);
+            this.labelCol.Location = new System.Drawing.Point(606, 74);
             this.labelCol.Name = "labelCol";
             this.labelCol.Size = new System.Drawing.Size(41, 13);
             this.labelCol.TabIndex = 28;
@@ -232,7 +246,7 @@
             // titleDom
             // 
             this.titleDom.AutoSize = true;
-            this.titleDom.Location = new System.Drawing.Point(533, 268);
+            this.titleDom.Location = new System.Drawing.Point(529, 308);
             this.titleDom.Name = "titleDom";
             this.titleDom.Size = new System.Drawing.Size(49, 13);
             this.titleDom.TabIndex = 21;
@@ -241,7 +255,7 @@
             // titleServ
             // 
             this.titleServ.AutoSize = true;
-            this.titleServ.Location = new System.Drawing.Point(533, 227);
+            this.titleServ.Location = new System.Drawing.Point(529, 267);
             this.titleServ.Name = "titleServ";
             this.titleServ.Size = new System.Drawing.Size(45, 13);
             this.titleServ.TabIndex = 20;
@@ -250,7 +264,7 @@
             // titleEle
             // 
             this.titleEle.AutoSize = true;
-            this.titleEle.Location = new System.Drawing.Point(530, 186);
+            this.titleEle.Location = new System.Drawing.Point(529, 227);
             this.titleEle.Name = "titleEle";
             this.titleEle.Size = new System.Drawing.Size(54, 13);
             this.titleEle.TabIndex = 19;
@@ -259,7 +273,7 @@
             // titleLong
             // 
             this.titleLong.AutoSize = true;
-            this.titleLong.Location = new System.Drawing.Point(530, 150);
+            this.titleLong.Location = new System.Drawing.Point(529, 185);
             this.titleLong.Name = "titleLong";
             this.titleLong.Size = new System.Drawing.Size(48, 13);
             this.titleLong.TabIndex = 18;
@@ -268,7 +282,7 @@
             // titleLat
             // 
             this.titleLat.AutoSize = true;
-            this.titleLat.Location = new System.Drawing.Point(530, 105);
+            this.titleLat.Location = new System.Drawing.Point(529, 149);
             this.titleLat.Name = "titleLat";
             this.titleLat.Size = new System.Drawing.Size(39, 13);
             this.titleLat.TabIndex = 17;
@@ -277,7 +291,7 @@
             // titleSec
             // 
             this.titleSec.AutoSize = true;
-            this.titleSec.Location = new System.Drawing.Point(530, 74);
+            this.titleSec.Location = new System.Drawing.Point(530, 105);
             this.titleSec.Name = "titleSec";
             this.titleSec.Size = new System.Drawing.Size(38, 13);
             this.titleSec.TabIndex = 16;
@@ -286,7 +300,7 @@
             // titleCol
             // 
             this.titleCol.AutoSize = true;
-            this.titleCol.Location = new System.Drawing.Point(41, 308);
+            this.titleCol.Location = new System.Drawing.Point(529, 74);
             this.titleCol.Name = "titleCol";
             this.titleCol.Size = new System.Drawing.Size(42, 13);
             this.titleCol.TabIndex = 15;
@@ -440,15 +454,23 @@
             this.dataGridView1.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowLeave);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // btnBack
+            // titleKva
             // 
-            this.btnBack.Location = new System.Drawing.Point(508, 377);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(173, 23);
-            this.btnBack.TabIndex = 36;
-            this.btnBack.Text = "Volver";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            this.titleKva.AutoSize = true;
+            this.titleKva.Location = new System.Drawing.Point(43, 308);
+            this.titleKva.Name = "titleKva";
+            this.titleKva.Size = new System.Drawing.Size(26, 13);
+            this.titleKva.TabIndex = 37;
+            this.titleKva.Text = "Kva";
+            // 
+            // labelKva
+            // 
+            this.labelKva.AutoSize = true;
+            this.labelKva.Location = new System.Drawing.Point(208, 308);
+            this.labelKva.Name = "labelKva";
+            this.labelKva.Size = new System.Drawing.Size(35, 13);
+            this.labelKva.TabIndex = 38;
+            this.labelKva.Text = "label4";
             // 
             // FormResultado
             // 
@@ -505,5 +527,7 @@
         private System.Windows.Forms.Label titleNm;
         private System.Windows.Forms.Label titleId;
         private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.Label labelKva;
+        private System.Windows.Forms.Label titleKva;
     }
 }

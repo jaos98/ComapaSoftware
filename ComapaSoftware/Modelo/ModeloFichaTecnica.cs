@@ -31,14 +31,14 @@ namespace ComapaSoftware.Modelo
         }
 
 
-        public int registrarInfo(string idPlantas, string capEquipos, string operacionMinima, string equiposInstalados,
+        public int registrarInfo(string idPlantas,string nombre, string capEquipos, string operacionMinima, string equiposInstalados,
             string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado, string servicio, string observaciones)
         {
 
             int numRegistros = 0;
-            string sqlEjecutar = "INSERT INTO `informaciontecnica`(`IdPlantas`, `CapacidadEquipos`, `OperacionMinima`, `EquiposInstalados`, `Tipo`, " +
+            string sqlEjecutar = "INSERT INTO `informaciontecnica`(`IdPlantas`,`Nombre`, `CapacidadEquipos`, `OperacionMinima`, `EquiposInstalados`, `Tipo`, " +
                     "`GarantOperacion`, `GastoPromedio`, `GastoInstalado`, `Servicio`, `Observaciones`) " +
-                    "VALUES (@idPlantas,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio,@observaciones);";
+                    "VALUES (@idPlantas,@nombre,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio,@observaciones);";
             try
             {
 
@@ -46,6 +46,7 @@ namespace ComapaSoftware.Modelo
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
                 Query.Parameters.Add("@idPlantas", MySqlDbType.String).Value = idPlantas;
+                Query.Parameters.Add("@nombre", MySqlDbType.String).Value = nombre;
                 Query.Parameters.Add("@capacidadEquipos", MySqlDbType.String).Value = capEquipos;
                 Query.Parameters.Add("@operacionMinima", MySqlDbType.String).Value = operacionMinima;
                 Query.Parameters.Add("@equiposInstalados", MySqlDbType.String).Value = equiposInstalados;
@@ -72,7 +73,7 @@ namespace ComapaSoftware.Modelo
         }
         public DataTable llevarDatos(string globalReceiver)
         {
-            string sql = "SELECT `IdInfoTecnica`, `IdPlantas`, `slug`, `CapacidadEquipos`, `OperacionMinima`, " +
+            string sql = "SELECT `IdInfoTecnica`, `IdPlantas`,`Nombre`, `slug`, `CapacidadEquipos`, `OperacionMinima`, " +
                 "`EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`, `GastoInstalado`, " +
                 "`Servicio`" +
                 " FROM informaciontecnica WHERE IdPlantas = '" + globalReceiver + "' ";

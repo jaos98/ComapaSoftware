@@ -8,6 +8,7 @@
         private string tipoPlantas;
         private string estatus;
         private string descFunciones;
+        private string subestacionKva;
         private string colonia;
         private string sector;
         private string latitud;
@@ -46,6 +47,11 @@
         {
             get { return descFunciones; }
             set { descFunciones = value; }
+        }
+        public string SubestacionKva
+        {
+            get { return subestacionKva;}
+            set { subestacionKva = value; }
         }
         public string Colonia
         {
@@ -88,7 +94,7 @@
             idPlanta = IdPlanta;
         }
         public ControladorPlantas(string idPlanta, string numMedidor, string numServicio,
-            string tipoPlantas,string estatus, string descFunciones,string colonia,string sector,
+            string tipoPlantas,string estatus, string descFunciones,string subestacionKva, string colonia,string sector,
             string latitud, string longitud, string elevacion, string servicio,string domicilio)
         {
             this.idPlanta = idPlanta;
@@ -97,6 +103,7 @@
             this.tipoPlantas = tipoPlantas;
             this.estatus = estatus;
             this.descFunciones = descFunciones;
+            this.subestacionKva = subestacionKva;
             this.colonia = colonia;
             this.sector = sector;
             this.latitud = latitud;

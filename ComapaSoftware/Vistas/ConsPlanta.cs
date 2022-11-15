@@ -63,6 +63,7 @@ namespace ComapaSoftware.Vistas
                 labelTp.Text = list.TipoPlantas;
                 labelEst.Text = list.Estatus;
                 labelDesc.Text = list.DescFunciones;
+                labelKva.Text = list.SubestacionKva;
                 labelSec.Text = list.Sector;
                 labelCol.Text = list.Colonia;
                 labelSec.Text = list.Sector;
@@ -153,6 +154,7 @@ namespace ComapaSoftware.Vistas
             titleTp.Hide();
             titleEs.Hide();
             titleDesc.Hide();
+            titleKva.Hide();
             titleSec.Hide();
             titleCol.Hide();
             titleSec.Hide();
@@ -167,6 +169,7 @@ namespace ComapaSoftware.Vistas
             labelTp.Hide();
             labelEst.Hide();
             labelDesc.Hide();
+            labelKva.Hide();
             labelSec.Hide();
             labelCol.Hide();
             labelSec.Hide();
@@ -187,6 +190,7 @@ namespace ComapaSoftware.Vistas
             titleTp.Show();
             titleEs.Show();
             titleDesc.Show();
+            titleKva.Show();
             titleSec.Show();
             titleCol.Show();
             titleSec.Show();
@@ -201,6 +205,7 @@ namespace ComapaSoftware.Vistas
             labelTp.Show();
             labelEst.Show();
             labelDesc.Show();
+            labelKva.Show();
             labelSec.Show();
             labelCol.Show();
             labelSec.Show();

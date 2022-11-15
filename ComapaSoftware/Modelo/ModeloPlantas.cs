@@ -1,5 +1,4 @@
 ﻿using ComapaSoftware.Controlador;
-using ComapaSoftware.Vistas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -39,12 +38,12 @@ namespace ComapaSoftware.Modelo
             return lista;
         }
         //EL METODO INSERTA EL CODIGO CON PARAMETROS Y EVITAR POSIBLE ROBO DE DATOS
-        public int insertarPlanta(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
+        public int insertarPlanta(string idPlantas, string numMedidor, string numServicio, string tipoPlanta, string estatus, string descFunciones,string subestacionkva, string colonia, string sector, string latitud, string longitud, string elevacion, string servicio, string domicilio)
         {
             int numRegistros = 0;
             string sqlEjecutar = "INSERT INTO `plantascomapa`(`IdPlantas`, `NumMedidor`, `NumServicio`, `TipoPlantas`, `Estatus`, " +
-                    "`DescFunciones`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
-                    "VALUES (@idPlantas,@numMedidor,@numServicio,@tipoPlanta,@estatus,@descFunciones,@colonia,@sector,@latitud,@longitud,@elevacion,@servicio,@domicilio);";
+                    "`DescFunciones`,`SubestacionKva`, `Colonia`, `Sector`, `Latitud`, `Longitud`, `Elevacion`, `Servicio`, `Domicilio`) " +
+                    "VALUES (@idPlantas,@numMedidor,@numServicio,@tipoPlanta,@estatus,@descFunciones,@subestacionkva,@colonia,@sector,@latitud,@longitud,@elevacion,@servicio,@domicilio);";
             try
             {
                 Conn.Close();
@@ -56,11 +55,12 @@ namespace ComapaSoftware.Modelo
                 Query.Parameters.Add("@tipoPlanta", MySqlDbType.String).Value = tipoPlanta;
                 Query.Parameters.Add("@estatus", MySqlDbType.String).Value = estatus;
                 Query.Parameters.Add("@descFunciones", MySqlDbType.String).Value = descFunciones;
+                Query.Parameters.Add("@subestacionkva", MySqlDbType.String).Value = subestacionkva+" kva";
                 Query.Parameters.Add("@colonia", MySqlDbType.String).Value = colonia;
                 Query.Parameters.Add("@sector", MySqlDbType.String).Value = sector;
                 Query.Parameters.Add("@latitud", MySqlDbType.String).Value = latitud;
                 Query.Parameters.Add("@longitud", MySqlDbType.String).Value = longitud;
-                Query.Parameters.Add("@elevacion", MySqlDbType.String).Value = elevacion;
+                Query.Parameters.Add("@elevacion", MySqlDbType.String).Value = elevacion+" mts";
                 Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
                 Query.Parameters.Add("@domicilio", MySqlDbType.String).Value = domicilio;
                 Conn.Open();
@@ -116,12 +116,7 @@ namespace ComapaSoftware.Modelo
             }
             return helper;
         }
-         //EL METODO VALIDA SI EXISTE UNA PLANTA CON EL MISMO ID
-         /// <summary>
-         /// 
-         /// </summary>
-         /// <param name="idPlanta"></param>
-         /// <returns></returns>
+        //EL METODO VALIDA SI EXISTE UNA PLANTA CON EL MISMO ID
         public bool noRepite(string idPlanta)
         {
             conectarBase();
@@ -135,14 +130,9 @@ namespace ComapaSoftware.Modelo
             return true;
         }
         //COMIENZA CREACION DE METODOS PARA LA CLASE ConsPlanta
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="globalReceiver"></param>
-        /// <returns></returns>
         public DataTable llevarDatos(string globalReceiver)
         {
-            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio " +
+            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio,SubestacionKva " +
                 "FROM plantascomapa WHERE IdPlantas = '" + globalReceiver + "' OR TipoPlantas = '" + globalReceiver + "' ";
             conectarBase();
             try
@@ -160,9 +150,9 @@ namespace ComapaSoftware.Modelo
                 throw;
             }
         }
-        
-        
-       
+
+
+
         public DataTable dataSender()
         {
             string sql = "SELECT * " +
@@ -182,7 +172,7 @@ namespace ComapaSoftware.Modelo
         }
         public DataTable consultaAdicional(string globalEntry)
         {
-            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio " +
+            string sql = "SELECT IdPlantas,NumMedidor,NumServicio,TipoPlantas,Estatus,Domicilio,Servicio,SubestacionKva " +
                 "FROM plantascomapa WHERE (IdPlantas = '" + globalEntry + "') OR (TipoPlantas ='" + globalEntry + "') ";
             conectarBase();
             try
@@ -213,7 +203,7 @@ namespace ComapaSoftware.Modelo
                         , Consultar.GetString(2), Consultar.GetString(3), Consultar.GetString(4)
                         , Consultar.GetString(5), Consultar.GetString(6), Consultar.GetString(7)
                         , Consultar.GetString(8), Consultar.GetString(9), Consultar.GetString(10)
-                        , Consultar.GetString(11), Consultar.GetString(12)));
+                        , Consultar.GetString(11), Consultar.GetString(12),Consultar.GetString(13)));
                 }
             }
             catch (Exception ex)

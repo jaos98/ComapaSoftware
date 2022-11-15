@@ -57,6 +57,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.btnVolver2 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtNom = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +74,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.txtNom);
+            this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.txtObservacion);
             this.panel1.Controls.Add(this.cmbServicio);
@@ -145,7 +149,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 16);
+            this.label10.Location = new System.Drawing.Point(455, 7);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(201, 13);
             this.label10.TabIndex = 15;
@@ -351,6 +355,22 @@
             this.btnVolver2.UseVisualStyleBackColor = true;
             this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(24, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 20;
+            this.label15.Text = "Nombre";
+            // 
+            // txtNom
+            // 
+            this.txtNom.Location = new System.Drawing.Point(279, 21);
+            this.txtNom.Name = "txtNom";
+            this.txtNom.Size = new System.Drawing.Size(121, 20);
+            this.txtNom.TabIndex = 21;
+            // 
             // RegInfoTec
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,5 +425,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtObservacion;
         private System.Windows.Forms.Button btnVolver2;
+        private System.Windows.Forms.TextBox txtNom;
+        private System.Windows.Forms.Label label15;
     }
 }

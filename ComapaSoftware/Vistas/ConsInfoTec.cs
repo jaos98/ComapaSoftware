@@ -7,6 +7,7 @@ namespace ComapaSoftware.Vistas
     public partial class ConsInfoTec : Form
     {
         ModeloFichaTecnica modelo = new ModeloFichaTecnica();
+        AttsInfo atts = new AttsInfo();
         string globalReceiver;
         public ConsInfoTec(string result)
         {
@@ -27,15 +28,17 @@ namespace ComapaSoftware.Vistas
         {
             if (e.RowIndex >= 0)
             {
-                richTextBox1.Text = modelo.traerDescripcion(dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString());
+                dataGridView1.Refresh();
+                richTextBox1.Text = modelo.traerDescripcion(atts.Result);
             }
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            dataGridView1.Refresh();
             if (e.RowIndex >= 0)
             {
-                string result = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                string result = dataGridView1.CurrentRow.Cells[3].Value.ToString();
                 this.Close();
                 ConsBombas consBombas = new ConsBombas(result);
                 consBombas.Show();
@@ -49,6 +52,37 @@ namespace ComapaSoftware.Vistas
             controlPanel.Show();
         }
 
+        class AttsInfo
+        {
+            private string result;
+            private string result2;
 
+            public string Result
+            {
+                get { return result; }
+                set { result = value; }
+            }
+            public string Result2
+            {
+                get { return result2; }
+                set { result2 = value; }
+            }
+
+            public AttsInfo()
+            {
+
+            }
+
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if(dataGridView1.CurrentRow != null)
+            {
+                atts.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                atts.Result2 = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                modelo.traerDescripcion(atts.Result);
+            }
+        }
     }
 }

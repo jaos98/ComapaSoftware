@@ -32,7 +32,7 @@ namespace ComapaSoftware.Vistas
                 if (m.noRepite(c.IdPlanta))
                 {
                     if (m.insertarPlanta(c.IdPlanta, c.NumMedidor, c.NumServicio,
-               c.TipoPlantas, c.Estatus, c.DescFunciones, c.Colonia, c.Sector,
+               c.TipoPlantas, c.Estatus, c.DescFunciones,c.SubestacionKva, c.Colonia, c.Sector,
                c.Latitud, c.Longitud, c.Elevacion, c.Servicio, c.Domicilio) > 0)
                     {
                         MessageBox.Show("Se han registrado todos los datos");
@@ -109,6 +109,7 @@ namespace ComapaSoftware.Vistas
             c.TipoPlantas = cmbTipoPlanta.Text;
             c.Estatus = cmbEstatus.Text;
             c.DescFunciones = txtDescFunciones.Text;
+            c.SubestacionKva = txtKva.Text;
             c.Colonia = cmbColonia.Text;
             c.Sector = cmbSector.Text;
             c.Latitud = txtLatitud.Text;
@@ -121,7 +122,7 @@ namespace ComapaSoftware.Vistas
         {
             if (c.IdPlanta == "" || c.NumMedidor == "" || c.NumServicio == "" ||
                 c.TipoPlantas == "" || c.Estatus == "" || c.DescFunciones == "" ||
-                c.Colonia == "" || c.Sector == "" || c.Latitud == "" || c.Longitud == "" ||
+                c.SubestacionKva==""||c.Colonia == "" || c.Sector == "" || c.Latitud == "" || c.Longitud == "" ||
                 c.Elevacion == "" || c.Servicio == "" || c.Domicilio == "")
             {
                 return false;
@@ -136,6 +137,7 @@ namespace ComapaSoftware.Vistas
             cmbTipoPlanta.ResetText();
             cmbEstatus.ResetText();
             txtDescFunciones.Clear();
+            txtKva.Clear();
             cmbColonia.ResetText();
             cmbSector.ResetText();
             txtLatitud.Clear();

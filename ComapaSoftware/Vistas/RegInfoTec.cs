@@ -23,7 +23,7 @@ namespace ComapaSoftware.Vistas
             if (Validate())
             {
                 MessageBox.Show("Todos los datos son correctos");
-                if (model.registrarInfo(c.IdPlantas, c.CapEquipos, c.OperacionMinima,
+                if (model.registrarInfo(c.IdPlantas,c.Nombre, c.CapEquipos, c.OperacionMinima,
                     c.EquiposInstalados, c.Tipo, c.GarantOperacion, c.GastoPromedio,
                     c.GastoInstalado, c.Servicio, c.Observaciones) > 0)
                 {
@@ -74,7 +74,7 @@ namespace ComapaSoftware.Vistas
         }
         new bool Validate()
         {
-            if (c.IdPlantas == ""|| c.CapEquipos =="" ||c.OperacionMinima==""||
+            if (c.IdPlantas == ""||c.Nombre ==""|| c.CapEquipos =="" ||c.OperacionMinima==""||
                 c.EquiposInstalados==""||c.Tipo==""||c.GarantOperacion==""||
                 c.GastoPromedio==""||c.GastoInstalado==""||c.Servicio==""||
                 c.Observaciones=="")
@@ -99,6 +99,7 @@ namespace ComapaSoftware.Vistas
         private void Clean()
         {
             cmbId.Text = "";
+            txtNom.Text = "";
             txtCap.Clear();
             txtOpmin.Clear();
             txtEquinst.Clear();
@@ -113,6 +114,7 @@ namespace ComapaSoftware.Vistas
         private void DataView()
         {
             c.IdPlantas = cmbId.Text;
+            c.Nombre = txtNom.Text;
             c.CapEquipos = txtCap.Text;
             c.OperacionMinima = txtOpmin.Text;
             c.EquiposInstalados = txtEquinst.Text;
