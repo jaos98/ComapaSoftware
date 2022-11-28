@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Text.RegularExpressions;
+
 namespace ComapaSoftware.Modelo
 {
     internal class ModeloFichaTecnica : Conexion
@@ -31,14 +33,14 @@ namespace ComapaSoftware.Modelo
         }
 
 
-        public int registrarInfo(string idPlantas,string nombre, string capEquipos, string operacionMinima, string equiposInstalados,
+        public int registrarInfo(string idPlantas,string idEstacion,string nombre, string capEquipos, string operacionMinima, string equiposInstalados,
             string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado, string servicio, string observaciones)
         {
 
             int numRegistros = 0;
-            string sqlEjecutar = "INSERT INTO `informaciontecnica`(`IdPlantas`,`Nombre`, `CapacidadEquipos`, `OperacionMinima`, `EquiposInstalados`, `Tipo`, " +
+            string sqlEjecutar = "INSERT INTO `estaciones`(`IdPlantas`,`IdEstacion`,`Nombre`, `CapacidadEquipos`, `OperacionMinima`, `EquiposInstalados`, `Tipo`, " +
                     "`GarantOperacion`, `GastoPromedio`, `GastoInstalado`, `Servicio`, `Observaciones`) " +
-                    "VALUES (@idPlantas,@nombre,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio,@observaciones);";
+                    "VALUES (@idPlantas,@idEstacion,@nombre,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio,@observaciones);";
             try
             {
 
@@ -46,6 +48,7 @@ namespace ComapaSoftware.Modelo
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
                 Query.Parameters.Add("@idPlantas", MySqlDbType.String).Value = idPlantas;
+                Query.Parameters.Add("@idEstacion", MySqlDbType.String).Value = idEstacion;
                 Query.Parameters.Add("@nombre", MySqlDbType.String).Value = nombre;
                 Query.Parameters.Add("@capacidadEquipos", MySqlDbType.String).Value = capEquipos;
                 Query.Parameters.Add("@operacionMinima", MySqlDbType.String).Value = operacionMinima;
@@ -68,7 +71,7 @@ namespace ComapaSoftware.Modelo
             }
             finally
             {
-                Conn.Close();
+                
             }
         }
         public DataTable llevarDatos(string globalReceiver)
@@ -76,7 +79,7 @@ namespace ComapaSoftware.Modelo
             string sql = "SELECT `IdInfoTecnica`, `IdPlantas`,`Nombre`, `slug`, `CapacidadEquipos`, `OperacionMinima`, " +
                 "`EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`, `GastoInstalado`, " +
                 "`Servicio`" +
-                " FROM informaciontecnica WHERE IdPlantas = '" + globalReceiver + "' ";
+                " FROM estaciones WHERE IdPlantas = '" + globalReceiver + "' ";
             conectarBase();
             try
             {
@@ -99,7 +102,7 @@ namespace ComapaSoftware.Modelo
             conectarBase();
             try
             {
-                Query.CommandText = "SELECT Observaciones FROM informaciontecnica WHERE idInfoTecnica= '" + idFicha + "'";
+                Query.CommandText = "SELECT Observaciones FROM estaciones WHERE idInfoTecnica= '" + idFicha + "'";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
@@ -115,5 +118,36 @@ namespace ComapaSoftware.Modelo
             }
             return idFicha;
         }
+        public int internalTrigger(string receiver)
+        {
+            int counter = 0;
+            try
+            {
+                
+                conectarBase();
+                Query.CommandText = "SELECT count(*) FROM estaciones WHERE IdPlantas= '" + receiver + "'";
+                Query.Connection = Conn;
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
+                {
+                    counter = Consultar.GetInt32(0);
+                }
+            }
+            catch(MySqlException ex) {
+                Console.WriteLine(ex);
+            }
+            return counter;
+        }
+        public string internalTrigger2(string n)
+        {
+            string s = n.ToLower();
+            s = Regex.Replace(s, @"[^a-z0-9s-]", "");
+            s = Regex.Replace(s, @"[s-]+", " ").Trim();
+            s = s.Substring(0, s.Length <= 5 ? s.Length : 5).Trim();
+            s = Regex.Replace(s, @"s", "-");
+            return s;
+        }
+
+
     }
 }

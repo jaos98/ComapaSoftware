@@ -105,6 +105,12 @@
     <Compile Include="Vistas\ConsInfoTec.Designer.cs">
       <DependentUpon>ConsInfoTec.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vistas\ActPlanta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ActPlanta.Designer.cs">
+      <DependentUpon>ActPlanta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\RegBomba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -157,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsInfoTec.resx">
       <DependentUpon>ConsInfoTec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ActPlanta.resx">
+      <DependentUpon>ActPlanta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.cmbEstatus = new System.Windows.Forms.ComboBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.txtModelo = new System.Windows.Forms.TextBox();
@@ -57,11 +59,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.cmbCategoria = new System.Windows.Forms.ComboBox();
-            this.cmbIdPlanta = new System.Windows.Forms.ComboBox();
+            this.cmbPlanta = new System.Windows.Forms.ComboBox();
+            this.cmbEstacion = new System.Windows.Forms.ComboBox();
             this.labelId = new System.Windows.Forms.Label();
-            this.txtObservaciones = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.cmbCategoria = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +102,23 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(723, 399);
             this.mainPanel.TabIndex = 0;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(461, 286);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(78, 13);
+            this.label15.TabIndex = 29;
+            this.label15.Text = "Observaciones";
+            // 
+            // txtObservaciones
+            // 
+            this.txtObservaciones.Location = new System.Drawing.Point(461, 305);
+            this.txtObservaciones.Multiline = true;
+            this.txtObservaciones.Name = "txtObservaciones";
+            this.txtObservaciones.Size = new System.Drawing.Size(243, 80);
+            this.txtObservaciones.TabIndex = 28;
             // 
             // cmbEstatus
             // 
@@ -330,81 +349,82 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 110);
+            this.label1.Location = new System.Drawing.Point(23, 175);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Servicio";
+            this.label1.Text = "Estacion";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 30);
+            this.label2.Location = new System.Drawing.Point(23, 111);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 13);
+            this.label2.Size = new System.Drawing.Size(37, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Categorias";
+            this.label2.Text = "Planta";
             // 
-            // cmbCategoria
+            // cmbPlanta
             // 
-            this.cmbCategoria.FormattingEnabled = true;
-            this.cmbCategoria.Items.AddRange(new object[] {
-            "Bombeo",
-            "Rebombeo",
-            "Potabilizadora",
-            "Tanque",
-            "Pozo",
-            "Carcamo",
-            "Sin sub-categoria"});
-            this.cmbCategoria.Location = new System.Drawing.Point(26, 57);
-            this.cmbCategoria.Name = "cmbCategoria";
-            this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
-            this.cmbCategoria.TabIndex = 3;
-            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cmbPlanta.FormattingEnabled = true;
+            this.cmbPlanta.Location = new System.Drawing.Point(26, 140);
+            this.cmbPlanta.Name = "cmbPlanta";
+            this.cmbPlanta.Size = new System.Drawing.Size(121, 21);
+            this.cmbPlanta.TabIndex = 3;
+            this.cmbPlanta.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // cmbIdPlanta
+            // cmbEstacion
             // 
-            this.cmbIdPlanta.FormattingEnabled = true;
-            this.cmbIdPlanta.Location = new System.Drawing.Point(26, 142);
-            this.cmbIdPlanta.Name = "cmbIdPlanta";
-            this.cmbIdPlanta.Size = new System.Drawing.Size(121, 21);
-            this.cmbIdPlanta.TabIndex = 4;
-            this.cmbIdPlanta.SelectedIndexChanged += new System.EventHandler(this.cmbIdPlanta_SelectedIndexChanged);
+            this.cmbEstacion.FormattingEnabled = true;
+            this.cmbEstacion.Location = new System.Drawing.Point(26, 205);
+            this.cmbEstacion.Name = "cmbEstacion";
+            this.cmbEstacion.Size = new System.Drawing.Size(121, 21);
+            this.cmbEstacion.TabIndex = 4;
+            this.cmbEstacion.SelectedIndexChanged += new System.EventHandler(this.cmbIdPlanta_SelectedIndexChanged);
             // 
             // labelId
             // 
             this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(26, 213);
+            this.labelId.Location = new System.Drawing.Point(23, 320);
             this.labelId.Name = "labelId";
             this.labelId.Size = new System.Drawing.Size(41, 13);
             this.labelId.TabIndex = 5;
             this.labelId.Text = "label15";
             // 
-            // txtObservaciones
+            // cmbCategoria
             // 
-            this.txtObservaciones.Location = new System.Drawing.Point(461, 305);
-            this.txtObservaciones.Multiline = true;
-            this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(243, 80);
-            this.txtObservaciones.TabIndex = 28;
+            this.cmbCategoria.FormattingEnabled = true;
+            this.cmbCategoria.Items.AddRange(new object[] {
+            "Potable",
+            "Residual",
+            "PTAR",
+            "EBAR",
+            "EBAP"});
+            this.cmbCategoria.Location = new System.Drawing.Point(26, 79);
+            this.cmbCategoria.Name = "cmbCategoria";
+            this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
+            this.cmbCategoria.TabIndex = 6;
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_1);
             // 
-            // label15
+            // label16
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(461, 286);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(78, 13);
-            this.label15.TabIndex = 29;
-            this.label15.Text = "Observaciones";
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(26, 47);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(52, 13);
+            this.label16.TabIndex = 7;
+            this.label16.Text = "Categoria";
             // 
             // RegBomba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 433);
-            this.Controls.Add(this.labelId);
-            this.Controls.Add(this.cmbIdPlanta);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.cmbCategoria);
+            this.Controls.Add(this.labelId);
+            this.Controls.Add(this.cmbEstacion);
+            this.Controls.Add(this.cmbPlanta);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainPanel);
@@ -423,8 +443,8 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox cmbCategoria;
-        private System.Windows.Forms.ComboBox cmbIdPlanta;
+        private System.Windows.Forms.ComboBox cmbPlanta;
+        private System.Windows.Forms.ComboBox cmbEstacion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
@@ -454,5 +474,7 @@
         private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtObservaciones;
+        private System.Windows.Forms.ComboBox cmbCategoria;
+        private System.Windows.Forms.Label label16;
     }
 }

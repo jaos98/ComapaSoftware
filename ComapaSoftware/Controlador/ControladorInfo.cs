@@ -8,7 +8,7 @@ namespace ComapaSoftware.Controlador
 {
     internal class ControladorInfo
     {
-        private string idPlantas,nombre,capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
+        private string idPlantas,idEstacion,nombre,capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
            , gastoPromedio, gastoInstalado, servicio, observaciones;
 
 
@@ -17,6 +17,11 @@ namespace ComapaSoftware.Controlador
         {
             get{ return idPlantas; }
             set { idPlantas = value; }
+        }
+        public string IdEstacion
+        {
+            get{ return idEstacion; }
+            set { idEstacion = value; }
         }
         public string Nombre
         {

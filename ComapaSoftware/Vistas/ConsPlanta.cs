@@ -234,5 +234,12 @@ namespace ComapaSoftware.Vistas
 
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            att.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+            ActPlanta actPlanta = new ActPlanta(att.Result);
+            actPlanta.Show();
+        }
     }
 }

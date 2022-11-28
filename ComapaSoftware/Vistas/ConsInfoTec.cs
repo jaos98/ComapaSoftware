@@ -84,5 +84,13 @@ namespace ComapaSoftware.Vistas
                 modelo.traerDescripcion(atts.Result);
             }
         }
+
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            string result = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            Close();
+            ConsBombas consBombas = new ConsBombas(result);
+            consBombas.Show();
+        }
     }
 }

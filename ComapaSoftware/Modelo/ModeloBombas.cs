@@ -8,18 +8,52 @@ namespace ComapaSoftware.Modelo
 {
     internal class ModeloBombas : Conexion
     {
+
+        public List<string> ObtenerIdPlantas(string receiver) 
+        {
+        List<string> list = new List<string>();
+            
+            try
+            {
+                conectarBase();
+                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + receiver + "'";
+                Query.Connection = Conn;
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
+                {
+                    string helper;
+                    helper = Consultar.GetString(0);
+                    Console.WriteLine(helper);
+                    list.Add(helper);
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        
+        
+        
+        }
+
+
+
+
+
+
         public List<string> obtenerId(string idReceipt)
         {
             List<string> result = new List<string>();
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas,Servicio FROM informaciontecnica WHERE Servicio= '" + idReceipt + "'";
+                Query.CommandText = "SELECT IdEstacion,Servicio FROM estaciones WHERE Servicio= '" + idReceipt + "'";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
                 {
-
                     idReceipt = Consultar.GetString(0);
                     idReceipt = Consultar.GetString(1);
                     Console.WriteLine(idReceipt);
@@ -41,7 +75,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT slug FROM informaciontecnica WHERE Servicio= '" + receiver + "' ";
+                Query.CommandText = "SELECT slug FROM estaciones WHERE Servicio= '" + receiver + "' ";
                 Query.Connection = Conn;
                Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
@@ -66,7 +100,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM informaciontecnica WHERE Servicio= '" + receiver + "' ";
+                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM estaciones WHERE Servicio= '" + receiver + "' ";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
@@ -76,7 +110,7 @@ namespace ComapaSoftware.Modelo
                 }
                 return list;
             }
-            catch (Exception ex)
+            catch (MySqlException ex)
             {
                 return null;
                 Console.WriteLine(ex);
@@ -90,7 +124,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM informaciontecnica WHERE Servicio= '" + receiver + "' ";
+                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM estaciones WHERE Servicio= '" + receiver + "' ";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
