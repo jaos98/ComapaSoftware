@@ -20,6 +20,15 @@ namespace ComapaSoftware.Vistas
                 cmbPlanta.Items.Add(item);
             }
         }
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (var item in modeloBombas.ObtenerIdEstacion(cmbPlanta.Text))
+            {
+                cmbEstacion.Items.Add(item);
+            }
+            cmbEstacion.Enabled = true;
+        }
+        //AQUI ME QUEDE
         public RegBomba()
         {
             InitializeComponent();
@@ -67,29 +76,7 @@ namespace ComapaSoftware.Vistas
 
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {   
-            int i=0;
-            if (cmbPlanta.SelectedIndex >= 0)
-            {
-                cmbEstacion.Enabled = true;
-                cmbEstacion.Items.Clear();
-                foreach (CriterioRegistroBomba cr in modeloBombas.obtenerIdFicha3(cmbPlanta.Text))
-                {
-                    int u = 0;
-                    cmbEstacion.Items.Add(cr.IdPlantas +" - "+ cr.Slug +" - "+ cr.Servicio);
-                    var stringCollection = new IdentificadorBombas<string>();
-                    stringCollection[i] = cr.Slug;
-                    catcher[i] = stringCollection[i];
-                    Console.WriteLine(i+stringCollection[i]); 
-                    i++;
-                }
-            }
-            else
-            {
-                Console.WriteLine("Algo ha salido mal");
-            }
-        }
+
 
         private void RegBomba_Load(object sender, EventArgs e)
         {
@@ -113,4 +100,24 @@ namespace ComapaSoftware.Vistas
 
         }
     }
+//    int i = 0;
+//            if (cmbPlanta.SelectedIndex >= 0)
+//            {
+//                cmbEstacion.Enabled = true;
+//                cmbEstacion.Items.Clear();
+//                foreach (CriterioRegistroBomba cr in modeloBombas.obtenerIdFicha3(cmbPlanta.Text))
+//                {
+//                    int u = 0;
+//    cmbEstacion.Items.Add(cr.IdPlantas +" - "+ cr.Slug +" - "+ cr.Servicio);
+//                    var stringCollection = new IdentificadorBombas<string>();
+//    stringCollection[i] = cr.Slug;
+//                    catcher[i] = stringCollection[i];
+//                    Console.WriteLine(i+stringCollection[i]); 
+//                    i++;
+//                }
+//            }
+//            else
+//{
+//    Console.WriteLine("Algo ha salido mal");
+//}
 }

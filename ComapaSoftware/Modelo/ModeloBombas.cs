@@ -33,10 +33,47 @@ namespace ComapaSoftware.Modelo
 
                 throw;
             }
-        
-        
-        
         }
+        public List<string> ObtenerIdEstacion(string receiver)
+        {
+            List<string> list = new List<string>();
+
+            try
+            {
+                conectarBase();
+                Query.CommandText = "SELECT IdEstacion FROM estaciones WHERE IdPlantas= '" + receiver + "'";
+                Query.Connection = Conn;
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
+                {
+                    string helper;
+                    helper = Consultar.GetString(0);
+                    Console.WriteLine(helper);
+                    list.Add(helper);
+                }
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
