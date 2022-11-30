@@ -55,7 +55,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPosicion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,11 +63,13 @@
             this.labelId = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
+            this.cmbPosicion = new System.Windows.Forms.ComboBox();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.cmbPosicion);
             this.mainPanel.Controls.Add(this.label15);
             this.mainPanel.Controls.Add(this.txtObservaciones);
             this.mainPanel.Controls.Add(this.cmbEstatus);
@@ -95,7 +96,6 @@
             this.mainPanel.Controls.Add(this.label6);
             this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.label4);
-            this.mainPanel.Controls.Add(this.txtPosicion);
             this.mainPanel.Controls.Add(this.label3);
             this.mainPanel.Enabled = false;
             this.mainPanel.Location = new System.Drawing.Point(233, 12);
@@ -330,13 +330,6 @@
             this.label4.Text = "Marca";
             this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
-            // txtPosicion
-            // 
-            this.txtPosicion.Location = new System.Drawing.Point(170, 25);
-            this.txtPosicion.Name = "txtPosicion";
-            this.txtPosicion.Size = new System.Drawing.Size(100, 20);
-            this.txtPosicion.TabIndex = 1;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -366,6 +359,7 @@
             // 
             // cmbPlanta
             // 
+            this.cmbPlanta.Enabled = false;
             this.cmbPlanta.FormattingEnabled = true;
             this.cmbPlanta.Location = new System.Drawing.Point(26, 140);
             this.cmbPlanta.Name = "cmbPlanta";
@@ -375,6 +369,7 @@
             // 
             // cmbEstacion
             // 
+            this.cmbEstacion.Enabled = false;
             this.cmbEstacion.FormattingEnabled = true;
             this.cmbEstacion.Location = new System.Drawing.Point(26, 205);
             this.cmbEstacion.Name = "cmbEstacion";
@@ -415,6 +410,26 @@
             this.label16.TabIndex = 7;
             this.label16.Text = "Categoria";
             // 
+            // cmbPosicion
+            // 
+            this.cmbPosicion.FormattingEnabled = true;
+            this.cmbPosicion.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cmbPosicion.Location = new System.Drawing.Point(170, 23);
+            this.cmbPosicion.Name = "cmbPosicion";
+            this.cmbPosicion.Size = new System.Drawing.Size(121, 21);
+            this.cmbPosicion.TabIndex = 30;
+            this.cmbPosicion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
+            // 
             // RegBomba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -450,7 +465,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPosicion;
         private System.Windows.Forms.TextBox txtFpm;
         private System.Windows.Forms.TextBox txtRpm;
         private System.Windows.Forms.TextBox txtDinamica;
@@ -476,5 +490,6 @@
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.ComboBox cmbPosicion;
     }
 }
