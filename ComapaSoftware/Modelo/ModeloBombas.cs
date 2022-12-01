@@ -16,7 +16,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + receiver + "'";
+                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + receiver + "' ORDER BY IdPlantas DESC";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
@@ -68,8 +68,8 @@ namespace ComapaSoftware.Modelo
 
             int numRegistros = 0;
             string sqlEjecutar = "INSERT INTO `bombas`(`IdEstacion`, `Posicion`, `Marca`, `Tipo`, `Modelo`, " +
-                    "`Hp`, `Voltaje`, `DiametroDescarga`, `GastoLps`, `CargaDinamica`, `Rpm`, `Estatus`, `Fpm`, `Observaciones`) " +
-                    "VALUES (@idEstacion,@posicion,@marca,@tipo,@modelo,@hp,@voltaje,@diametroDescarga,@gastoLps,@cargaDinamica,@rpm,@estatus,@fpm,@observaciones);";
+                    "`Hp`, `Voltaje`, `Diametro`, `Lps`, `Carga`, `Rpm`, `Estatus`, `Fpm`, `Observaciones`) " +
+                    "VALUES (@idEstacion,@posicion,@marca,@tipo,@modelo,@hp,@voltaje,@diametro,@lps,@cargaDinamica,@rpm,@estatus,@fpm,@observaciones);";
             try
             {
                 Conn.Close();
@@ -82,8 +82,8 @@ namespace ComapaSoftware.Modelo
                 Query.Parameters.Add("@modelo", MySqlDbType.String).Value = modelo;
                 Query.Parameters.Add("@hp", MySqlDbType.String).Value = hp;
                 Query.Parameters.Add("@voltaje", MySqlDbType.String).Value = voltaje;
-                Query.Parameters.Add("@diametroDescarga", MySqlDbType.String).Value = diametroDescarga;
-                Query.Parameters.Add("@gastoLps", MySqlDbType.String).Value = gastoLps;
+                Query.Parameters.Add("@diametro", MySqlDbType.String).Value = diametroDescarga;
+                Query.Parameters.Add("@lps", MySqlDbType.String).Value = gastoLps;
                 Query.Parameters.Add("@cargaDinamica", MySqlDbType.String).Value = cargaDinamica;
                 Query.Parameters.Add("@rpm", MySqlDbType.String).Value = rpm;
                 Query.Parameters.Add("@estatus", MySqlDbType.String).Value = estatus;
@@ -105,28 +105,29 @@ namespace ComapaSoftware.Modelo
             }
         }
 
+        //METODO DE VALIDACION, CUANTOS REGISTROS EXISTEN DENTRO DE UNA COLUMNA
+        //public int ValidarPosicion(string idEstacion)
+        //{
+        //    int value = 0;
+        //    try
+        //    {
+        //        string answer;
+        //        conectarBase();
+        //        Query.CommandText = "SELECT count(*) FROM bombas WHERE IdEstacion= '" + idEstacion + "'";
+        //        Query.Connection = Conn;
+        //        value = Convert.ToInt32(Query.ExecuteScalar());
+        //        return value;
 
-        public int ValidarPosicion(string idEstacion)
-        {
-            int value = 0;
-            try
-            {
-                string answer;
-                conectarBase();
-                Query.CommandText = "SELECT count(*) FROM bombas WHERE IdEstacion= '" + idEstacion + "'";
-                Query.Connection = Conn;
-                value = Convert.ToInt32(Query.ExecuteScalar());
-                return value;
+        //    }
+        //    catch (Exception)
+        //    {
 
-            }
-            catch (Exception)
-            {
+        //        throw;
+        //    }
+        //    return value;
+        //}
 
-                throw;
-            }
-            return value;
-        }
-
+        //TOMA UN VALOR Y LO CONSULTA A LA BDD, RETORNA FALSO O VERDADERO SI EXISTE EN CADA CONSULTA
         public bool ConsultarPosicion(string idEstacion,int i)
         {
             try
@@ -177,118 +178,6 @@ namespace ComapaSoftware.Modelo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public List<string> obtenerId(string idReceipt)
-        {
-            List<string> result = new List<string>();
-            try
-            {
-                conectarBase();
-                Query.CommandText = "SELECT IdEstacion,Servicio FROM estaciones WHERE Servicio= '" + idReceipt + "'";
-                Query.Connection = Conn;
-                Consultar = Query.ExecuteReader();
-                while (Consultar.Read())
-                {
-                    idReceipt = Consultar.GetString(0);
-                    idReceipt = Consultar.GetString(1);
-                    Console.WriteLine(idReceipt);
-                    result.Add(idReceipt);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-
-            }
-            return result;
-        }
-        //MODIFICAR
-        public List<string> obtenerIdFicha(string receiver)
-        {
-            List<string> helper = new List<string>();
-            string values;
-            try
-            {
-                conectarBase();
-                Query.CommandText = "SELECT slug FROM estaciones WHERE Servicio= '" + receiver + "' ";
-                Query.Connection = Conn;
-               Consultar = Query.ExecuteReader();
-                while (Consultar.Read())
-                {
-                    values = Consultar.GetString(0);
-
-                    helper.Add(values);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-                throw;
-            }
-            return helper;
-        }
-        public List<string> obtenerIdFicha2(string receiver)
-        {
-
-            List<string> list = new List<string>(3);
-
-            try
-            {
-                conectarBase();
-                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM estaciones WHERE Servicio= '" + receiver + "' ";
-                Query.Connection = Conn;
-                Consultar = Query.ExecuteReader();
-                while (Consultar.Read())
-                {
-                    list.Add(Consultar.GetString(0) + ", " + Consultar.GetString(1) + ", " + Consultar.GetString(2));
-
-                }
-                return list;
-            }
-            catch (MySqlException ex)
-            {
-                return null;
-                Console.WriteLine(ex);
-                throw;
-            }
-
-        }
-        public List<CriterioRegistroBomba> obtenerIdFicha3(string receiver)
-        {
-            List<CriterioRegistroBomba> list = new List<CriterioRegistroBomba>();
-            try
-            {
-                conectarBase();
-                Query.CommandText = "SELECT IdPlantas,slug,Servicio FROM estaciones WHERE Servicio= '" + receiver + "' ";
-                Query.Connection = Conn;
-                Consultar = Query.ExecuteReader();
-                while (Consultar.Read())
-                {
-                    list.Add(new CriterioRegistroBomba(Consultar.GetString(0), Consultar.GetString(1)
-                        ,Consultar.GetString(2)));
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            return list;
-        }
-
-
-       
 
 
         public DataTable llevarDatos(string globalReceiver)

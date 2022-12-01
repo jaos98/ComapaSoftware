@@ -5,7 +5,7 @@
         private string idPlantas;
         private string idEstacion;
         private string idBombas;
-        private string posicion;
+        private int posicion;
         private string marca;
         private string modelo;
         private string tipo;
@@ -36,7 +36,7 @@
             get { return idEstacion; }
             set { idEstacion = value; }
         }
-        public string Posicion
+        public int Posicion
         {
             get { return posicion; }
             set { posicion = value; }

@@ -10,9 +10,17 @@ namespace ComapaSoftware.Vistas
     {
         ControladorBombas c = new ControladorBombas();
         ModeloBombas modeloBombas = new ModeloBombas();
-        string[] catcher = new string[99];
+        private void RegBomba_Load(object sender, EventArgs e)
+        {
+            cmbEstacion.Enabled = false;
+        }
+        //PRIMER COMBOBOX DE ID PLANTAS
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            cmbEstacion.Items.Clear();
+            cmbPlanta.Items.Clear();
+            cmbEstacion.Text = "";
+            cmbPlanta.Text = "";
             foreach  (var item in modeloBombas.ObtenerIdPlantas(cmbCategoria.Text))
             {
                 cmbPlanta.Items.Add(item);
@@ -21,45 +29,34 @@ namespace ComapaSoftware.Vistas
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cmbEstacion.Items.Clear();
+            cmbEstacion.Text = "";
             foreach (var item in modeloBombas.ObtenerIdEstacion(cmbPlanta.Text))
             {
                 cmbEstacion.Items.Add(item);
             }
             cmbEstacion.Enabled = true;
         }
+        //COMBO BOX DE ID ESTACION PARA REGISTRO DE BOMBAS
         private void cmbIdPlanta_SelectedIndexChanged(object sender, EventArgs e)
         { 
             if (cmbEstacion.SelectedIndex >= 0)
             {
                 int num = cmbEstacion.SelectedIndex;
                 mainPanel.Enabled = true;
-                //AQUI SIGO, AQUI ME QUEDE
-                int helper = modeloBombas.ValidarPosicion(cmbEstacion.Text);
-                Console.WriteLine(helper);
-                int catcher = 0;
+                //CICLO PARA IDENTIFICAR LA POSICION DE LA BOMBA
                 for (int i = 1; i <= 10; i++)
                 {
                     Console.WriteLine("Iteracion "+i);
-                    if (modeloBombas.ConsultarPosicion(cmbEstacion.Text,i))
+                    if (!modeloBombas.ConsultarPosicion(cmbEstacion.Text,i))
                     {
-                        catcher = i; 
-                        Console.WriteLine("Linea 1 " + catcher);
-                        cmbPosicion.Text = catcher.ToString();
-                    }
-                    else
-                    {
-                        catcher = i;
-                            Console.WriteLine("Linea 2 " + catcher);
-                        cmbPosicion.Text = catcher.ToString();
+                        cmbPosicion.Text = i.ToString();
                         break;
                     }
                 }
-                
             }
-
+            btnVolver.Hide();
         }
-
-        //AQUI ME QUEDE
         public RegBomba()
         {
             InitializeComponent();
@@ -71,41 +68,28 @@ namespace ComapaSoftware.Vistas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //switch (validarDatos())
-            //{
-            //    case 0:
-            //        MessageBox.Show("Llene todos los campos");
-            //        break;
-
-            //    case 1:
-            //        MessageBox.Show("Todos los datos son correctos");
-            //        if (modeloBombas.registrarInfoBomba(idplanta,pos,marca,modelo,tipo,hp,voltaje,diametro,lps,carga,rpm,estatus,fpm,observaciones) > 0)
-            //        {
-            //            MessageBox.Show("Informacion registrada");
-            //        }
-            //        else
-            //        {
-            //            MessageBox.Show("Hubo un error");
-            //        }
-            //        break;
-            //}
-
+            DataView();
+            if (Validar())
+            {
+                if (modeloBombas.registrarInfoBomba(c.IdEstacion, c.Posicion, c.Marca, c.Tipo,
+                    c.Modelo, c.Hp, c.Voltaje, c.Diametro, c.Lps, c.Carga, c.Rpm, c.Estatus,
+                    c.Fpm, c.Observaciones)>0)
+                {
+                    MessageBox.Show("Se ha registrado todo correctamente");
+                    Clean();
+                }
+                else
+                {
+                    MessageBox.Show("Ha sucedido un error");
+                }
+                
+            }
         }
-
-
-
-        private void RegBomba_Load(object sender, EventArgs e)
-        {
-            cmbEstacion.Enabled = false;
-
-        }
-
-
-        private void Validar()
+        private void DataView()
         {
             c.IdBombas = cmbPlanta.Text;
             c.IdEstacion = cmbEstacion.Text;
-            c.Posicion = cmbPosicion.Text;
+            c.Posicion = Convert.ToInt32(cmbPosicion.Text);
             c.Marca = txtMarca.Text;
             c.Modelo = txtModelo.Text;
             c.Tipo = cmbTipo.Text;
@@ -137,31 +121,35 @@ namespace ComapaSoftware.Vistas
             txtFpm.Text = "";
             txtObservaciones.Text = "";
         }
+        private bool Validar()
+        {
+            if (c.Marca == ""||c.Modelo ==""|| c.Tipo ==""||c.Hp ==""|| c.Voltaje ==""||
+                c.Diametro ==""||c.Lps ==""||c.Carga ==""||c.Rpm==""||c.Estatus==""||
+                c.Fpm ==""||c.Observaciones=="")
+            {
+                MessageBox.Show("Porfavor ingrese todos los datos");
+                return false;
+            }
+            return true;
+        }
 
         private void comboBox1_SelectedIndexChanged_2(object sender, EventArgs e)
         {
 
         }
-    }
-//    int i = 0;
-//            if (cmbPlanta.SelectedIndex >= 0)
-//            {
-//                cmbEstacion.Enabled = true;
-//                cmbEstacion.Items.Clear();
-//                foreach (CriterioRegistroBomba cr in modeloBombas.obtenerIdFicha3(cmbPlanta.Text))
-//                {
-//                    int u = 0;
-//    cmbEstacion.Items.Add(cr.IdPlantas +" - "+ cr.Slug +" - "+ cr.Servicio);
-//                    var stringCollection = new IdentificadorBombas<string>();
-//    stringCollection[i] = cr.Slug;
-//                    catcher[i] = stringCollection[i];
-//                    Console.WriteLine(i+stringCollection[i]); 
-//                    i++;
-//                }
-//            }
-//            else
-//{
-//    Console.WriteLine("Algo ha salido mal");
-//}
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormPanel control = new FormPanel();
+            this.Close();
+            control.Show();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FormPanel control = new FormPanel();
+            this.Close();
+            control.Show();
+        }
+    }
 }

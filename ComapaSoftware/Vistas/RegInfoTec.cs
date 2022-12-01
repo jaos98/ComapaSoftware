@@ -29,8 +29,7 @@ namespace ComapaSoftware.Vistas
                     c.GastoInstalado, c.Servicio, c.Observaciones) > 0)
                 {
                     MessageBox.Show("Informacion registrada");
-                    Clean();
-                    
+                    Clean();    
                 }
                 else
                 {
@@ -88,10 +87,6 @@ namespace ComapaSoftware.Vistas
             }
             return true;
         }
-        //private bool Validate2()
-        //{
-            
-        //}
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -112,11 +107,11 @@ namespace ComapaSoftware.Vistas
             txtCap.Clear();
             txtOpmin.Clear();
             txtEquinst.Clear();
-            cmbTipo.Text="";
+            cmbTipo.Text = "";
             txtGarant.Clear();
             txtProm.Clear();
             txtInst.Clear();
-            cmbServicio.Text="";
+            cmbServicio.Text = "";
             txtObservacion.Clear();
 
         }
@@ -135,11 +130,6 @@ namespace ComapaSoftware.Vistas
             c.Servicio = cmbServicio.Text;
             c.Observaciones = txtObservacion.Text;
         }
-        private void onAction()
-        {
-            
-        }
-
         private void txtIdFicha_TextChanged(object sender, EventArgs e)
         {
 

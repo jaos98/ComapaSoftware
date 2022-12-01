@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.cmbPosicion = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.cmbEstatus = new System.Windows.Forms.ComboBox();
@@ -60,10 +61,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlanta = new System.Windows.Forms.ComboBox();
             this.cmbEstacion = new System.Windows.Forms.ComboBox();
-            this.labelId = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.cmbPosicion = new System.Windows.Forms.ComboBox();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +102,26 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(723, 399);
             this.mainPanel.TabIndex = 0;
+            // 
+            // cmbPosicion
+            // 
+            this.cmbPosicion.FormattingEnabled = true;
+            this.cmbPosicion.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.cmbPosicion.Location = new System.Drawing.Point(170, 23);
+            this.cmbPosicion.Name = "cmbPosicion";
+            this.cmbPosicion.Size = new System.Drawing.Size(121, 21);
+            this.cmbPosicion.TabIndex = 30;
+            this.cmbPosicion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
             // 
             // label15
             // 
@@ -166,12 +186,13 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(225, 352);
+            this.button2.Location = new System.Drawing.Point(249, 352);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(155, 23);
             this.button2.TabIndex = 23;
             this.button2.Text = "Volver";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnReg
             // 
@@ -359,6 +380,7 @@
             // 
             // cmbPlanta
             // 
+            this.cmbPlanta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPlanta.Enabled = false;
             this.cmbPlanta.FormattingEnabled = true;
             this.cmbPlanta.Location = new System.Drawing.Point(26, 140);
@@ -369,6 +391,7 @@
             // 
             // cmbEstacion
             // 
+            this.cmbEstacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEstacion.Enabled = false;
             this.cmbEstacion.FormattingEnabled = true;
             this.cmbEstacion.Location = new System.Drawing.Point(26, 205);
@@ -377,17 +400,9 @@
             this.cmbEstacion.TabIndex = 4;
             this.cmbEstacion.SelectedIndexChanged += new System.EventHandler(this.cmbIdPlanta_SelectedIndexChanged);
             // 
-            // labelId
-            // 
-            this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(23, 320);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(41, 13);
-            this.labelId.TabIndex = 5;
-            this.labelId.Text = "label15";
-            // 
             // cmbCategoria
             // 
+            this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
@@ -410,34 +425,24 @@
             this.label16.TabIndex = 7;
             this.label16.Text = "Categoria";
             // 
-            // cmbPosicion
+            // btnVolver
             // 
-            this.cmbPosicion.FormattingEnabled = true;
-            this.cmbPosicion.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10"});
-            this.cmbPosicion.Location = new System.Drawing.Point(170, 23);
-            this.cmbPosicion.Name = "cmbPosicion";
-            this.cmbPosicion.Size = new System.Drawing.Size(121, 21);
-            this.cmbPosicion.TabIndex = 30;
-            this.cmbPosicion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
+            this.btnVolver.Location = new System.Drawing.Point(29, 363);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(118, 23);
+            this.btnVolver.TabIndex = 8;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // RegBomba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 433);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.cmbCategoria);
-            this.Controls.Add(this.labelId);
             this.Controls.Add(this.cmbEstacion);
             this.Controls.Add(this.cmbPlanta);
             this.Controls.Add(this.label2);
@@ -485,11 +490,11 @@
         private System.Windows.Forms.TextBox txtModelo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbEstatus;
-        private System.Windows.Forms.Label labelId;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox txtObservaciones;
         private System.Windows.Forms.ComboBox cmbCategoria;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbPosicion;
+        private System.Windows.Forms.Button btnVolver;
     }
 }

@@ -150,9 +150,6 @@ namespace ComapaSoftware.Modelo
                 throw;
             }
         }
-
-
-
         public DataTable dataSender()
         {
             string sql = "SELECT * " +

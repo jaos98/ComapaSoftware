@@ -13,6 +13,7 @@ namespace ComapaSoftware.Vistas
         {
             InitializeComponent();
         }
+        //CARGA DE ELEMENTOS AL ABRIR FORM
         private void FormPlanta_Load(object sender, EventArgs e)
         {
             cmbColonia.Enabled = false;
@@ -22,11 +23,11 @@ namespace ComapaSoftware.Vistas
             }
         }
        
-        //Informacion a llenar con boton
+        //BOTON DE REGISTRO DE INFORMACION
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            getInfo();
-            if (validate())
+            GetInfo();
+            if (Validate())
             {
                 //VALIDAR ANTES DE INGRESAR LA INFO
                 if (m.noRepite(c.IdPlanta))
@@ -36,7 +37,7 @@ namespace ComapaSoftware.Vistas
                c.Latitud, c.Longitud, c.Elevacion, c.Servicio, c.Domicilio) > 0)
                     {
                         MessageBox.Show("Se han registrado todos los datos");
-                        clean();
+                        Clean();
                     }
                     else
                     {
@@ -101,7 +102,7 @@ namespace ComapaSoftware.Vistas
         {
             txtLongitud.Select(0, 0);
         }
-        public void getInfo()
+        public void GetInfo()
         {
             c.IdPlanta = txtPlanta.Text.Trim();
             c.NumMedidor = txtNumMed.Text.Trim();
@@ -118,7 +119,7 @@ namespace ComapaSoftware.Vistas
             c.Servicio = cmbServicio.Text;
             c.Domicilio = txtDomicilio.Text;
         }
-        private bool validate()
+        private bool Validate()
         {
             if (c.IdPlanta == "" || c.NumMedidor == "" || c.NumServicio == "" ||
                 c.TipoPlantas == "" || c.Estatus == "" || c.DescFunciones == "" ||
@@ -129,17 +130,17 @@ namespace ComapaSoftware.Vistas
             }
             return true;
         }
-        private void clean()
+        private void Clean()
         {
             txtPlanta.Clear();
             txtNumMed.Clear();
             txtNumServ.Clear();
-            cmbTipoPlanta.ResetText();
-            cmbEstatus.ResetText();
+            cmbTipoPlanta.Text = "";
+            cmbEstatus.Text = "";
             txtDescFunciones.Clear();
             txtKva.Clear();
-            cmbColonia.ResetText();
-            cmbSector.ResetText();
+            cmbColonia.Text = "";
+            cmbSector.Text = "";
             txtLatitud.Clear();
             txtLongitud.Clear();
             txtElevacion.Clear();

@@ -14,16 +14,18 @@ namespace ComapaSoftware.Vistas
             InitializeComponent();
             globalReceiver = result;
         }
-
+        //METODO QUE CARGA LOS DATOS EN LA TABLA PRINCIPAL
         public void traerDatos()
         {
             dataGridView1.DataSource = modelo.llevarDatos(globalReceiver);
         }
+        //METODO DE CARGA DE ELEMENTOS DEL FORM
         private void ConsInfoTec_Load(object sender, EventArgs e)
         {
             MessageBox.Show(globalReceiver);
             traerDatos();
         }
+        //METODO AL HACER UN CLICK EN LA TABLA
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -32,7 +34,7 @@ namespace ComapaSoftware.Vistas
                 richTextBox1.Text = modelo.traerDescripcion(atts.Result);
             }
         }
-
+        //METODO AL HACER DOBLE CLICK EN LA TABLA
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Refresh();
@@ -51,7 +53,23 @@ namespace ComapaSoftware.Vistas
             FormPanel controlPanel = new FormPanel();
             controlPanel.Show();
         }
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridView1.CurrentRow != null)
+            {
+                atts.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                atts.Result2 = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                modelo.traerDescripcion(atts.Result);
+            }
+        }
 
+        private void btnMostrar_Click(object sender, EventArgs e)
+        {
+            string result = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            Close();
+            ConsBombas consBombas = new ConsBombas(result);
+            consBombas.Show();
+        }
         class AttsInfo
         {
             private string result;
@@ -75,22 +93,6 @@ namespace ComapaSoftware.Vistas
 
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            if(dataGridView1.CurrentRow != null)
-            {
-                atts.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                atts.Result2 = dataGridView1.CurrentRow.Cells[2].Value.ToString();
-                modelo.traerDescripcion(atts.Result);
-            }
-        }
-
-        private void btnMostrar_Click(object sender, EventArgs e)
-        {
-            string result = dataGridView1.CurrentRow.Cells[3].Value.ToString();
-            Close();
-            ConsBombas consBombas = new ConsBombas(result);
-            consBombas.Show();
-        }
+     
     }
 }

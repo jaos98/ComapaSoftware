@@ -14,7 +14,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + catString + "'";
+                Query.CommandText = "SELECT IdPlantas FROM plantascomapa WHERE TipoPlantas= '" + catString + "' ORDER BY IdPlantas ASC";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 while (Consultar.Read())
@@ -43,7 +43,6 @@ namespace ComapaSoftware.Modelo
                     "VALUES (@idPlantas,@idEstacion,@nombre,@capacidadEquipos,@operacionMinima,@equiposInstalados,@tipo,@garantOperacion,@gastoPromedio,@gastoInstalado,@servicio,@observaciones);";
             try
             {
-
                 Conn.Close();
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
@@ -76,10 +75,9 @@ namespace ComapaSoftware.Modelo
         }
         public DataTable llevarDatos(string globalReceiver)
         {
-            string sql = "SELECT `IdInfoTecnica`, `IdPlantas`,`Nombre`, `slug`, `CapacidadEquipos`, `OperacionMinima`, " +
-                "`EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`, `GastoInstalado`, " +
-                "`Servicio`" +
-                " FROM estaciones WHERE IdPlantas = '" + globalReceiver + "' ";
+            string sql = "SELECT `IdPlantas`, `IdEstacion`, `Nombre`, `CapacidadEquipos`," +
+                " `OperacionMinima`, `EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`," +
+                " `GastoInstalado`, `Servicio`, `Observaciones` FROM `estaciones` WHERE IdPlantas='"+globalReceiver+"'";
             conectarBase();
             try
             {
@@ -97,14 +95,16 @@ namespace ComapaSoftware.Modelo
                 throw;
             }
         }
+        //AQUI ME QUEDE 01/12/2022
         public string traerDescripcion(string idFicha)
         {
             conectarBase();
             try
             {
-                Query.CommandText = "SELECT Observaciones FROM estaciones WHERE idInfoTecnica= '" + idFicha + "'";
+                Query.CommandText = "SELECT Observaciones FROM estaciones WHERE IdEstacion= '" + idFicha + "'";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
+
                 while (Consultar.Read())
                 {
                     idFicha = Consultar.GetString(0);
@@ -123,7 +123,6 @@ namespace ComapaSoftware.Modelo
             int counter = 0;
             try
             {
-                
                 conectarBase();
                 Query.CommandText = "SELECT count(*) FROM estaciones WHERE IdPlantas= '" + receiver + "'";
                 Query.Connection = Conn;
