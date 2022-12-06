@@ -185,7 +185,8 @@ namespace ComapaSoftware.Modelo
                 return null;
             }
         }
-        public List<ControladorPlantas> UpdateInfo(string idReceiver)
+        //ACTUALIZAR INFORMACION
+        public List<ControladorPlantas> GetUpdateInfo(string idReceiver)
         {
             List<ControladorPlantas> list = new List<ControladorPlantas>();
             try
@@ -209,5 +210,56 @@ namespace ComapaSoftware.Modelo
             }
             return list;
         }
+        public int UpdateInfo(string idPlantas, string numMedidor, string numServicio, 
+            string tipoPlanta, string estatus, string descFunciones, string subestacionkva, 
+            string colonia, string sector, string latitud, string longitud, 
+            string elevacion, string servicio, string domicilio)
+        {
+            int numRegistros = 0;
+            string sqlEjecutar = "UPDATE `plantascomapa` SET `IdPlantas`=@idPlantas," +
+                   "`NumMedidor`=@numMedidor,`NumServicio`=@numServicio,`TipoPlantas`=@tipoPlanta," +
+                   "`Estatus`=@estatus,`DescFunciones`=@descFunciones,`SubestacionKva`=@subestacionKva," +
+                   "`Colonia`=@colonia,`Sector`=@sector,`Latitud`=@latitud," +
+                   "`Longitud`=@longitud,`Elevacion`=@elevacion,`Servicio`=@servicio," +
+                   "`Domicilio`=@domicilio WHERE IdPlantas = '" + idPlantas + "'";
+            try
+            {
+               
+
+                    Conn.Close();
+                    Query.Connection = Conn;
+                    Query.CommandText = sqlEjecutar;
+                    Query.Parameters.Add("@idPlantas", MySqlDbType.String).Value = idPlantas;
+                    Query.Parameters.Add("@numMedidor", MySqlDbType.String).Value = numMedidor;
+                    Query.Parameters.Add("@numServicio", MySqlDbType.String).Value = numServicio;
+                    Query.Parameters.Add("@tipoPlanta", MySqlDbType.String).Value = tipoPlanta;
+                    Query.Parameters.Add("@estatus", MySqlDbType.String).Value = estatus;
+                    Query.Parameters.Add("@descFunciones", MySqlDbType.String).Value = descFunciones;
+                    Query.Parameters.Add("@subestacionkva", MySqlDbType.String).Value = subestacionkva + " kva";
+                    Query.Parameters.Add("@colonia", MySqlDbType.String).Value = colonia;
+                    Query.Parameters.Add("@sector", MySqlDbType.String).Value = sector;
+                    Query.Parameters.Add("@latitud", MySqlDbType.String).Value = latitud;
+                    Query.Parameters.Add("@longitud", MySqlDbType.String).Value = longitud;
+                    Query.Parameters.Add("@elevacion", MySqlDbType.String).Value = elevacion + " mts";
+                    Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
+                    Query.Parameters.Add("@domicilio", MySqlDbType.String).Value = domicilio;
+                    Conn.Open();
+                numRegistros = Query.ExecuteNonQuery();
+                return numRegistros;//1 si se ha registrado
+            }
+            catch(MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                return numRegistros;
+                throw;
+            }
+            finally
+            {
+                Conn.Close();
+            }
+            }
+        
+
+
     }
 }

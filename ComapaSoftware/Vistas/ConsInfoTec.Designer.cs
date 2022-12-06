@@ -62,6 +62,7 @@
             this.btnEditar.TabIndex = 10;
             this.btnEditar.Text = "Editar Informacion Tecnica";
             this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // label1
             // 

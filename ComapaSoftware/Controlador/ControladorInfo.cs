@@ -74,6 +74,27 @@ namespace ComapaSoftware.Controlador
             set { observaciones = value; }
         }
 
+        public ControladorInfo(string idPlantas, string idEstacion, string nombre,
+            string capEquipos, string operacionMinima, string equiposInstalados,
+            string tipo, string garantOperacion, string gastoPromedio,
+            string gastoInstalado, string servicio, string observaciones)
+        {
+            this.idPlantas = idPlantas;
+            this.idEstacion = idEstacion;
+            this.nombre = nombre;
+            this.capEquipos = capEquipos;
+            this.operacionMinima = operacionMinima;
+            this.equiposInstalados = equiposInstalados;
+            this.tipo = tipo;
+            this.garantOperacion = garantOperacion;
+            this.gastoPromedio = gastoPromedio;
+            this.gastoInstalado = gastoInstalado;
+            this.servicio = servicio;
+            this.observaciones = observaciones;
+        }
+        public ControladorInfo()
+        {
 
+        }
     }
 }

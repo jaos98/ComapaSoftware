@@ -91,6 +91,12 @@
     <Compile Include="Modelo\ModeloBombas.cs" />
     <Compile Include="Modelo\ModeloFichaTecnica.cs" />
     <Compile Include="Modelo\ModeloPlantas.cs" />
+    <Compile Include="Vistas\ActInfoTec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ActInfoTec.Designer.cs">
+      <DependentUpon>ActInfoTec.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ConsBombas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vistas\ActInfoTec.resx">
+      <DependentUpon>ActInfoTec.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsBombas.resx">
       <DependentUpon>ConsBombas.cs</DependentUpon>
     </EmbeddedResource>

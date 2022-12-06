@@ -182,7 +182,9 @@ namespace ComapaSoftware.Modelo
 
         public DataTable llevarDatos(string globalReceiver)
         {
-            string sql = "SELECT * FROM bombas WHERE IdPlantas = '"+globalReceiver+"'";
+            string sql = "SELECT `Posicion`, `Marca`, `Modelo`, " +
+                "`Tipo`, `Hp`, `Voltaje`, `Diametro`, `Lps`, `Carga`, `Rpm`, `Estatus`, " +
+                "`Fpm`, `Observaciones` FROM bombas WHERE IdEstacion = '" + globalReceiver+"' ORDER BY Posicion";
             conectarBase();
             try
             {

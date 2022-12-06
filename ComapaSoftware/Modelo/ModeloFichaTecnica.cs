@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ComapaSoftware.Controlador;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -95,7 +96,7 @@ namespace ComapaSoftware.Modelo
                 throw;
             }
         }
-        //AQUI ME QUEDE 01/12/2022
+        //AQUI ME QUEDE 01/12/2022 
         public string traerDescripcion(string idFicha)
         {
             conectarBase();
@@ -146,7 +147,73 @@ namespace ComapaSoftware.Modelo
             s = Regex.Replace(s, @"s", "-");
             return s;
         }
-
+        //ACTUALIZAR INFORMACION (UPDATE)
+        public List<ControladorInfo> GetUpdateInfo(string receiver)
+        {
+            List<ControladorInfo> list = new List<ControladorInfo>();
+            try
+            {
+                conectarBase();
+                Query.CommandText = "SELECT * FROM estaciones WHERE IdEstacion= '" + receiver + "' ";
+                Query.Connection = Conn;
+                Consultar = Query.ExecuteReader();
+                while (Consultar.Read())
+                {
+                    list.Add(new ControladorInfo(Consultar.GetString(0), Consultar.GetString(1)
+                        , Consultar.GetString(2), Consultar.GetString(3), Consultar.GetString(4)
+                        , Consultar.GetString(5), Consultar.GetString(6), Consultar.GetString(7)
+                        , Consultar.GetString(8), Consultar.GetString(9), Consultar.GetString(10)
+                        , Consultar.GetString(11)));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return list;
+        }
+        public int UpdateInfo(string idEstacion, string nombre,
+           string capEquipos, string opMinima, string eqInstalados, string tipo,
+           string garantOp, string gastoProm, string gastoInst, string servicio,
+           string observaciones)
+        {
+            int numRegistros = 0;
+            string sqlEjecutar = "UPDATE `estaciones` SET `Nombre`=@nombre," +
+                   "`CapacidadEquipos`=@capEquipos,`OperacionMinima`=@opMinima,`EquiposInstalados`=@eqInstalados," +
+                   "`Tipo`=@tipo,`GarantOperacion`=@garantOp,`GastoPromedio`=@gastoProm," +
+                   "`GastoInstalado`=@gastoInst,`Servicio`=@servicio,`Observaciones`=@observaciones " +
+                   "WHERE IdEstacion = '"+idEstacion+"'";         
+                  
+            try
+            {
+                Conn.Close();
+                Query.Connection = Conn;
+                Query.CommandText = sqlEjecutar;
+                Query.Parameters.Add("@nombre", MySqlDbType.String).Value = nombre;
+                Query.Parameters.Add("@capEquipos", MySqlDbType.String).Value = capEquipos;
+                Query.Parameters.Add("@opMinima", MySqlDbType.String).Value = opMinima;
+                Query.Parameters.Add("@eqInstalados", MySqlDbType.String).Value = eqInstalados;
+                Query.Parameters.Add("@tipo", MySqlDbType.String).Value = tipo;
+                Query.Parameters.Add("@garantOp", MySqlDbType.String).Value = garantOp;
+                Query.Parameters.Add("@gastoProm", MySqlDbType.String).Value = gastoProm;
+                Query.Parameters.Add("@gastoInst", MySqlDbType.String).Value = gastoInst;
+                Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
+                Query.Parameters.Add("@observaciones", MySqlDbType.String).Value = observaciones;
+                Conn.Open();
+                numRegistros = Query.ExecuteNonQuery();
+                return numRegistros;//1 si se ha registrado
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                return numRegistros;
+                throw;
+            }
+            finally
+            {
+                Conn.Close();
+            }
+        }
 
     }
 }

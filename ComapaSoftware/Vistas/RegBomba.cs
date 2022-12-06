@@ -10,6 +10,30 @@ namespace ComapaSoftware.Vistas
     {
         ControladorBombas c = new ControladorBombas();
         ModeloBombas modeloBombas = new ModeloBombas();
+
+        public RegBomba(string receiver)
+        {
+            InitializeComponent();
+            cmbCategoria.Enabled = false;
+            cmbEstacion.Enabled = false;
+            cmbEstacion.Enabled = false;
+            btnVolver.Hide();
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine("Iteracion " + i);
+                if (!modeloBombas.ConsultarPosicion(receiver, i))
+                {
+                    cmbPosicion.Text = i.ToString();
+                    break;
+                }
+            }
+            mainPanel.Enabled = true;
+        }
+        public RegBomba()
+        {
+            InitializeComponent();
+        }
+
         private void RegBomba_Load(object sender, EventArgs e)
         {
             cmbEstacion.Enabled = false;
@@ -57,10 +81,7 @@ namespace ComapaSoftware.Vistas
             }
             btnVolver.Hide();
         }
-        public RegBomba()
-        {
-            InitializeComponent();
-        }
+
         private void label4_Click(object sender, EventArgs e)
         {
 

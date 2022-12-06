@@ -55,7 +55,7 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE MOSTRAR EN PANTALLA LA INFORMACION GENERAL
         private void btnAdicional_Click(object sender, EventArgs e)
         {
-            foreach (ControladorPlantas list in m.UpdateInfo(att.Result))
+            foreach (ControladorPlantas list in m.GetUpdateInfo(att.Result))
             {
                 labelId.Text = list.IdPlanta;
                 labelNm.Text = list.NumMedidor;

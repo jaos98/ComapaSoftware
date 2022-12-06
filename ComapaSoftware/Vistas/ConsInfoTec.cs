@@ -9,10 +9,14 @@ namespace ComapaSoftware.Vistas
         ModeloFichaTecnica modelo = new ModeloFichaTecnica();
         AttsInfo atts = new AttsInfo();
         string globalReceiver;
+        public ConsInfoTec()
+        {
+
+        }
         public ConsInfoTec(string result)
         {
             InitializeComponent();
-            globalReceiver = result;
+            globalReceiver = result;  
         }
         //METODO QUE CARGA LOS DATOS EN LA TABLA PRINCIPAL
         public void traerDatos()
@@ -31,7 +35,14 @@ namespace ComapaSoftware.Vistas
             if (e.RowIndex >= 0)
             {
                 dataGridView1.Refresh();
-                richTextBox1.Text = modelo.traerDescripcion(atts.Result);
+                //richTextBox1.Text = modelo.traerDescripcion(atts.Result);
+                string result = modelo.traerDescripcion(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+
+                richTextBox1.Text = result;
+                //TRAER DESCRIPCIONES
+                /**
+                
+                 **/
             }
         }
         //METODO AL HACER DOBLE CLICK EN LA TABLA
@@ -40,7 +51,7 @@ namespace ComapaSoftware.Vistas
             dataGridView1.Refresh();
             if (e.RowIndex >= 0)
             {
-                string result = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 this.Close();
                 ConsBombas consBombas = new ConsBombas(result);
                 consBombas.Show();
@@ -57,8 +68,7 @@ namespace ComapaSoftware.Vistas
         {
             if (dataGridView1.CurrentRow != null)
             {
-                atts.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                atts.Result2 = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                atts.Result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 modelo.traerDescripcion(atts.Result);
             }
         }
@@ -93,6 +103,11 @@ namespace ComapaSoftware.Vistas
 
         }
 
-     
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            ActInfoTec actInfoTec = new ActInfoTec(result);
+            actInfoTec.Show();
+        }
     }
 }

@@ -45,19 +45,19 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.txtNm = new System.Windows.Forms.TextBox();
             this.txtSer = new System.Windows.Forms.TextBox();
-            this.txtTp = new System.Windows.Forms.TextBox();
-            this.txtEst = new System.Windows.Forms.TextBox();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.txtKva = new System.Windows.Forms.TextBox();
-            this.txtCol = new System.Windows.Forms.TextBox();
             this.txtEle = new System.Windows.Forms.TextBox();
             this.txtLong = new System.Windows.Forms.TextBox();
             this.txtLat = new System.Windows.Forms.TextBox();
-            this.txtSec = new System.Windows.Forms.TextBox();
-            this.txtServicio = new System.Windows.Forms.TextBox();
             this.txtDom = new System.Windows.Forms.TextBox();
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.cmbColonia = new System.Windows.Forms.ComboBox();
+            this.cmbSector = new System.Windows.Forms.ComboBox();
+            this.cmbServicio = new System.Windows.Forms.ComboBox();
+            this.cmbEstatus = new System.Windows.Forms.ComboBox();
+            this.cmbTipo = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // titleKva
@@ -117,7 +117,7 @@
             // titleSec
             // 
             this.titleSec.AutoSize = true;
-            this.titleSec.Location = new System.Drawing.Point(380, 90);
+            this.titleSec.Location = new System.Drawing.Point(379, 42);
             this.titleSec.Name = "titleSec";
             this.titleSec.Size = new System.Drawing.Size(38, 13);
             this.titleSec.TabIndex = 45;
@@ -126,7 +126,7 @@
             // titleCol
             // 
             this.titleCol.AutoSize = true;
-            this.titleCol.Location = new System.Drawing.Point(380, 48);
+            this.titleCol.Location = new System.Drawing.Point(380, 84);
             this.titleCol.Name = "titleCol";
             this.titleCol.Size = new System.Drawing.Size(42, 13);
             this.titleCol.TabIndex = 44;
@@ -207,20 +207,6 @@
             this.txtSer.Size = new System.Drawing.Size(100, 20);
             this.txtSer.TabIndex = 67;
             // 
-            // txtTp
-            // 
-            this.txtTp.Location = new System.Drawing.Point(203, 167);
-            this.txtTp.Name = "txtTp";
-            this.txtTp.Size = new System.Drawing.Size(100, 20);
-            this.txtTp.TabIndex = 68;
-            // 
-            // txtEst
-            // 
-            this.txtEst.Location = new System.Drawing.Point(203, 209);
-            this.txtEst.Name = "txtEst";
-            this.txtEst.Size = new System.Drawing.Size(100, 20);
-            this.txtEst.TabIndex = 69;
-            // 
             // txtDesc
             // 
             this.txtDesc.Location = new System.Drawing.Point(203, 248);
@@ -234,13 +220,6 @@
             this.txtKva.Name = "txtKva";
             this.txtKva.Size = new System.Drawing.Size(100, 20);
             this.txtKva.TabIndex = 71;
-            // 
-            // txtCol
-            // 
-            this.txtCol.Location = new System.Drawing.Point(456, 38);
-            this.txtCol.Name = "txtCol";
-            this.txtCol.Size = new System.Drawing.Size(100, 20);
-            this.txtCol.TabIndex = 72;
             // 
             // txtEle
             // 
@@ -262,20 +241,6 @@
             this.txtLat.Name = "txtLat";
             this.txtLat.Size = new System.Drawing.Size(100, 20);
             this.txtLat.TabIndex = 74;
-            // 
-            // txtSec
-            // 
-            this.txtSec.Location = new System.Drawing.Point(456, 83);
-            this.txtSec.Name = "txtSec";
-            this.txtSec.Size = new System.Drawing.Size(100, 20);
-            this.txtSec.TabIndex = 73;
-            // 
-            // txtServicio
-            // 
-            this.txtServicio.Location = new System.Drawing.Point(456, 245);
-            this.txtServicio.Name = "txtServicio";
-            this.txtServicio.Size = new System.Drawing.Size(100, 20);
-            this.txtServicio.TabIndex = 77;
             // 
             // txtDom
             // 
@@ -304,24 +269,84 @@
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
+            // cmbColonia
+            // 
+            this.cmbColonia.FormattingEnabled = true;
+            this.cmbColonia.Location = new System.Drawing.Point(456, 81);
+            this.cmbColonia.Name = "cmbColonia";
+            this.cmbColonia.Size = new System.Drawing.Size(121, 21);
+            this.cmbColonia.TabIndex = 81;
+            // 
+            // cmbSector
+            // 
+            this.cmbSector.FormattingEnabled = true;
+            this.cmbSector.Location = new System.Drawing.Point(456, 42);
+            this.cmbSector.Name = "cmbSector";
+            this.cmbSector.Size = new System.Drawing.Size(121, 21);
+            this.cmbSector.TabIndex = 82;
+            this.cmbSector.SelectedIndexChanged += new System.EventHandler(this.cmbSector_SelectedIndexChanged);
+            // 
+            // cmbServicio
+            // 
+            this.cmbServicio.FormattingEnabled = true;
+            this.cmbServicio.Items.AddRange(new object[] {
+            "Bombeo",
+            "Rebombeo",
+            "Potabilizadora",
+            "Tanque",
+            "Pozo",
+            "Carcamo",
+            "Sin sub-categoria"});
+            this.cmbServicio.Location = new System.Drawing.Point(456, 239);
+            this.cmbServicio.Name = "cmbServicio";
+            this.cmbServicio.Size = new System.Drawing.Size(121, 21);
+            this.cmbServicio.TabIndex = 83;
+            // 
+            // cmbEstatus
+            // 
+            this.cmbEstatus.FormattingEnabled = true;
+            this.cmbEstatus.Items.AddRange(new object[] {
+            "Activa",
+            "Fuera de servicio"});
+            this.cmbEstatus.Location = new System.Drawing.Point(203, 209);
+            this.cmbEstatus.Name = "cmbEstatus";
+            this.cmbEstatus.Size = new System.Drawing.Size(121, 21);
+            this.cmbEstatus.TabIndex = 84;
+            // 
+            // cmbTipo
+            // 
+            this.cmbTipo.FormattingEnabled = true;
+            this.cmbTipo.Items.AddRange(new object[] {
+            "Potable",
+            "Residual",
+            "PTAR",
+            "EBAR",
+            "EBAP",
+            "Obra de toma",
+            "Rebombeo de agua cruda"});
+            this.cmbTipo.Location = new System.Drawing.Point(203, 170);
+            this.cmbTipo.Name = "cmbTipo";
+            this.cmbTipo.Size = new System.Drawing.Size(121, 21);
+            this.cmbTipo.TabIndex = 85;
+            // 
             // ActPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(629, 434);
+            this.Controls.Add(this.cmbTipo);
+            this.Controls.Add(this.cmbEstatus);
+            this.Controls.Add(this.cmbServicio);
+            this.Controls.Add(this.cmbSector);
+            this.Controls.Add(this.cmbColonia);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.txtDom);
-            this.Controls.Add(this.txtServicio);
             this.Controls.Add(this.txtEle);
             this.Controls.Add(this.txtLong);
             this.Controls.Add(this.txtLat);
-            this.Controls.Add(this.txtSec);
-            this.Controls.Add(this.txtCol);
             this.Controls.Add(this.txtKva);
             this.Controls.Add(this.txtDesc);
-            this.Controls.Add(this.txtEst);
-            this.Controls.Add(this.txtTp);
             this.Controls.Add(this.txtSer);
             this.Controls.Add(this.txtNm);
             this.Controls.Add(this.txtId);
@@ -366,18 +391,18 @@
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.TextBox txtNm;
         private System.Windows.Forms.TextBox txtSer;
-        private System.Windows.Forms.TextBox txtTp;
-        private System.Windows.Forms.TextBox txtEst;
         private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.TextBox txtKva;
-        private System.Windows.Forms.TextBox txtCol;
         private System.Windows.Forms.TextBox txtEle;
         private System.Windows.Forms.TextBox txtLong;
         private System.Windows.Forms.TextBox txtLat;
-        private System.Windows.Forms.TextBox txtSec;
-        private System.Windows.Forms.TextBox txtServicio;
         private System.Windows.Forms.TextBox txtDom;
         private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.ComboBox cmbColonia;
+        private System.Windows.Forms.ComboBox cmbSector;
+        private System.Windows.Forms.ComboBox cmbServicio;
+        private System.Windows.Forms.ComboBox cmbEstatus;
+        private System.Windows.Forms.ComboBox cmbTipo;
     }
 }

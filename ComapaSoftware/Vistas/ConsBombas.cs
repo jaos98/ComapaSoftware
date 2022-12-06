@@ -14,11 +14,21 @@ namespace ComapaSoftware.Vistas
     public partial class ConsBombas : Form
     {
         ModeloBombas model = new ModeloBombas();
-        string globalReceiver;
+        
+        private string globalReceiver;
+        public string GlobalReceiver
+        {
+            get { return globalReceiver; }
+            set { globalReceiver = value; }
+        }
+
+
+
+
         public ConsBombas(string result)
         {
             InitializeComponent();
-            globalReceiver = result;
+            GlobalReceiver = result;
         }
         public void traerDatos()
         {
@@ -33,6 +43,13 @@ namespace ComapaSoftware.Vistas
         {
             MessageBox.Show(globalReceiver);
             traerDatos();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            RegBomba regBomba = new RegBomba(globalReceiver);
+            this.Hide();
+            regBomba.Show();
         }
     }
 }
