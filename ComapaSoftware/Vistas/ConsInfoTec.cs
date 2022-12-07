@@ -75,7 +75,7 @@ namespace ComapaSoftware.Vistas
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
-            string result = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+            string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             Close();
             ConsBombas consBombas = new ConsBombas(result);
             consBombas.Show();

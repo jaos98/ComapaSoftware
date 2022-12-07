@@ -1,4 +1,5 @@
-﻿using ComapaSoftware.Modelo;
+﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,8 @@ namespace ComapaSoftware.Vistas
 {
     public partial class ConsBombas : Form
     {
-        ModeloBombas model = new ModeloBombas();
+        ControladorBombas c = new ControladorBombas();
+        ModeloBombas m = new ModeloBombas();
         
         private string globalReceiver;
         public string GlobalReceiver
@@ -21,35 +23,128 @@ namespace ComapaSoftware.Vistas
             get { return globalReceiver; }
             set { globalReceiver = value; }
         }
-
-
-
-
         public ConsBombas(string result)
         {
             InitializeComponent();
             GlobalReceiver = result;
+            HideElements();
+        }
+        private void ConsBombas_Load(object sender, EventArgs e)
+        {
+            MessageBox.Show(globalReceiver);
+            traerDatos();
+            HideElements();
         }
         public void traerDatos()
         {
-            dgvBombas.DataSource = model.llevarDatos(globalReceiver);
+            dgvBombas.DataSource = m.llevarDatos(globalReceiver);
         }
         private void dgvBombas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
            
         }
-
-        private void ConsBombas_Load(object sender, EventArgs e)
-        {
-            MessageBox.Show(globalReceiver);
-            traerDatos();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             RegBomba regBomba = new RegBomba(globalReceiver);
             this.Hide();
             regBomba.Show();
+        }
+        void HideElements()
+        {
+            label1.Hide();
+            lblEstacion.Hide();
+            label3.Hide();
+            lblPosicion.Hide();
+            label5.Hide();
+            lblMarca.Hide();
+            label7.Hide();
+            lblModelo.Hide();
+            label9.Hide();
+            lblTipo.Hide();
+            label11.Hide();
+            lblHp.Hide();
+            label13.Hide();
+            lblVoltaje.Hide();
+            label15.Hide();
+            lblDiametro.Hide();
+            label17.Hide();
+            lblLps.Hide();
+            label19.Hide();
+            lblCarga.Hide();
+            label21.Hide();
+            lblRpm.Hide();
+            label23.Hide();
+            lblEstatus.Hide();
+            label25.Hide();
+            lblFpm.Hide();
+            label27.Hide();
+            btnRegresar.Hide();
+            richTextBox1.Hide();
+        }
+        void ShowElements()
+        {
+            dgvBombas.Hide();
+            label1.Show();
+            lblEstacion.Show();
+            label3.Show();
+            lblPosicion.Show();
+            label5.Show();
+            lblMarca.Show();
+            label7.Show();
+            lblModelo.Show();
+            label9.Show();
+            lblTipo.Show();
+            label11.Show();
+            lblHp.Show();
+            label13.Show();
+            lblVoltaje.Show();
+            label15.Show();
+            lblDiametro.Show();
+            label17.Show();
+            lblLps.Show();
+            label19.Show();
+            lblCarga.Show();
+            label21.Show();
+            lblRpm.Show();
+            label23.Show();
+            lblEstatus.Show();
+            label25.Show();
+            lblFpm.Show();
+            label27.Show();
+            btnRegresar.Show();
+            richTextBox1.Show();
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+           string result = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+            
+            Console.WriteLine(result);
+            foreach(ControladorBombas list in m.GetUpdateInfo(result,GlobalReceiver))
+            {
+
+                lblEstacion.Text = list.IdEstacion;
+                lblPosicion.Text = list.Posicion.ToString(); 
+                lblMarca.Text = list.Marca;
+                lblModelo.Text = list.Modelo;
+                lblTipo.Text = list.Tipo;
+                lblHp.Text = list.Hp;
+                lblVoltaje.Text = list.Voltaje;
+                lblDiametro.Text = list.Diametro;
+                lblLps.Text = list.Lps;
+                lblCarga.Text = list.Carga;
+                lblRpm.Text = list.Rpm;
+                lblFpm.Text = list.Fpm;
+                lblEstatus.Text = list.Estatus;
+                richTextBox1.Text = list.Observaciones;
+            }
+            ShowElements();
+        }
+
+        private void btnRegresar_Click(object sender, EventArgs e)
+        {
+            HideElements();
+            dgvBombas.Show();
         }
     }
 }

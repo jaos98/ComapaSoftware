@@ -3,8 +3,8 @@
     internal class ControladorBombas
     {
         private string idPlantas;
-        private string idEstacion;
         private string idBombas;
+        private string idEstacion;
         private int posicion;
         private string marca;
         private string modelo;
@@ -22,9 +22,24 @@
         {
 
         }
-        public ControladorBombas(string idPlantas)
+        public ControladorBombas(string idEstacion,int posicion, string marca
+            , string modelo, string tipo, string hp, string voltaje, string diametro,
+            string lps, string carga, string rpm,string estatus, string fpm,string observaciones)
         {
-            this.idPlantas = idPlantas;
+            this.idEstacion = idEstacion;
+            this.posicion = posicion;
+            this.marca = marca;
+            this.modelo = modelo;
+            this.tipo = tipo;
+            this.hp = hp;
+            this.voltaje = voltaje;
+            this.diametro = diametro;
+            this.lps = lps;
+            this.carga = carga;
+            this.rpm = rpm;
+            this.estatus = estatus;
+            this.fpm = fpm;
+            this.observaciones = observaciones;
         }
         public string IdBombas
         {

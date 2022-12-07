@@ -9,10 +9,10 @@ namespace ComapaSoftware.Modelo
     internal class ModeloBombas : Conexion
     {
         //CONSULTA DE ID PLANTAS PARA EL PRIMER COMBOBOX
-        public List<string> ObtenerIdPlantas(string receiver) 
+        public List<string> ObtenerIdPlantas(string receiver)
         {
-        List<string> list = new List<string>();
-            
+            List<string> list = new List<string>();
+
             try
             {
                 conectarBase();
@@ -104,36 +104,12 @@ namespace ComapaSoftware.Modelo
                 Conn.Close();
             }
         }
-
-        //METODO DE VALIDACION, CUANTOS REGISTROS EXISTEN DENTRO DE UNA COLUMNA
-        //public int ValidarPosicion(string idEstacion)
-        //{
-        //    int value = 0;
-        //    try
-        //    {
-        //        string answer;
-        //        conectarBase();
-        //        Query.CommandText = "SELECT count(*) FROM bombas WHERE IdEstacion= '" + idEstacion + "'";
-        //        Query.Connection = Conn;
-        //        value = Convert.ToInt32(Query.ExecuteScalar());
-        //        return value;
-
-        //    }
-        //    catch (Exception)
-        //    {
-
-        //        throw;
-        //    }
-        //    return value;
-        //}
-
-        //TOMA UN VALOR Y LO CONSULTA A LA BDD, RETORNA FALSO O VERDADERO SI EXISTE EN CADA CONSULTA
-        public bool ConsultarPosicion(string idEstacion,int i)
+        public bool ConsultarPosicion(string idEstacion, int i)
         {
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT Posicion FROM bombas WHERE IdEstacion= '" + idEstacion + "'AND Posicion = '"+i+"'";
+                Query.CommandText = "SELECT Posicion FROM bombas WHERE IdEstacion= '" + idEstacion + "'AND Posicion = '" + i + "'";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
                 if (Consultar.HasRows)
@@ -151,40 +127,12 @@ namespace ComapaSoftware.Modelo
             }
             return false;
         }
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         public DataTable llevarDatos(string globalReceiver)
         {
             string sql = "SELECT `Posicion`, `Marca`, `Modelo`, " +
                 "`Tipo`, `Hp`, `Voltaje`, `Diametro`, `Lps`, `Carga`, `Rpm`, `Estatus`, " +
-                "`Fpm`, `Observaciones` FROM bombas WHERE IdEstacion = '" + globalReceiver+"' ORDER BY Posicion";
+                "`Fpm`, `Observaciones` FROM bombas WHERE IdEstacion = '" + globalReceiver + "' ORDER BY Posicion";
             conectarBase();
             try
             {
@@ -200,6 +148,78 @@ namespace ComapaSoftware.Modelo
                 Conn.Close();
                 Console.WriteLine(ex);
                 throw;
+            }
+        }
+        //ACTUALIZAR INFORMACION BOMBAS (UPDATE)
+        public List<ControladorBombas> GetUpdateInfo(string receiver, string receiver2)
+        {
+            List<ControladorBombas> list = new List<ControladorBombas>();
+            try
+            {
+                conectarBase();
+                Query.CommandText = "SELECT `IdEstacion`,`Posicion`, `Marca`, " +
+                    "`Modelo`, `Tipo`, `Hp`, `Voltaje`, `Diametro`, " +
+                    "`Lps`, `Carga`, `Rpm`, `Estatus`, `Fpm`, " +
+                    "`Observaciones` FROM bombas WHERE Posicion= '" + receiver + "'AND IdEstacion='" + receiver2 + "' ";
+                Query.Connection = Conn;
+                Consultar = Query.ExecuteReader();
+
+                while (Consultar.Read())
+                {
+                    list.Add(new ControladorBombas(Consultar.GetString(0), Consultar.GetInt32(1)
+                        , Consultar.GetString(2), Consultar.GetString(3), Consultar.GetString(4)
+                        , Consultar.GetString(5), Consultar.GetString(6), Consultar.GetString(7)
+                        , Consultar.GetString(8), Consultar.GetString(9), Consultar.GetString(10)
+                        , Consultar.GetString(11), Consultar.GetString(12), Consultar.GetString(13)));
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+            }
+            return list;
+        }
+        //Aqui me quede UPDATE
+        public int UpdateInfo(string idEstacion, string nombre,
+           string capEquipos, string opMinima, string eqInstalados, string tipo,
+           string garantOp, string gastoProm, string gastoInst, string servicio,
+           string observaciones)
+        {
+            int numRegistros = 0;
+            string sqlEjecutar = "UPDATE `estaciones` SET `Nombre`=@nombre," +
+                   "`CapacidadEquipos`=@capEquipos,`OperacionMinima`=@opMinima,`EquiposInstalados`=@eqInstalados," +
+                   "`Tipo`=@tipo,`GarantOperacion`=@garantOp,`GastoPromedio`=@gastoProm," +
+                   "`GastoInstalado`=@gastoInst,`Servicio`=@servicio,`Observaciones`=@observaciones " +
+                   "WHERE IdEstacion = '" + idEstacion + "'";
+
+            try
+            {
+                Conn.Close();
+                Query.Connection = Conn;
+                Query.CommandText = sqlEjecutar;
+                Query.Parameters.Add("@nombre", MySqlDbType.String).Value = nombre;
+                Query.Parameters.Add("@capEquipos", MySqlDbType.String).Value = capEquipos;
+                Query.Parameters.Add("@opMinima", MySqlDbType.String).Value = opMinima;
+                Query.Parameters.Add("@eqInstalados", MySqlDbType.String).Value = eqInstalados;
+                Query.Parameters.Add("@tipo", MySqlDbType.String).Value = tipo;
+                Query.Parameters.Add("@garantOp", MySqlDbType.String).Value = garantOp;
+                Query.Parameters.Add("@gastoProm", MySqlDbType.String).Value = gastoProm;
+                Query.Parameters.Add("@gastoInst", MySqlDbType.String).Value = gastoInst;
+                Query.Parameters.Add("@servicio", MySqlDbType.String).Value = servicio;
+                Query.Parameters.Add("@observaciones", MySqlDbType.String).Value = observaciones;
+                Conn.Open();
+                numRegistros = Query.ExecuteNonQuery();
+                return numRegistros;//1 si se ha registrado
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                return numRegistros;
+                throw;
+            }
+            finally
+            {
+                Conn.Close();
             }
         }
 
