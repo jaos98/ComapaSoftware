@@ -45,6 +45,7 @@ namespace ComapaSoftware.Vistas
         }
         private void button1_Click(object sender, EventArgs e)
         {
+            //RECIBE ID ESTACION
             RegBomba regBomba = new RegBomba(globalReceiver);
             this.Hide();
             regBomba.Show();
@@ -117,12 +118,12 @@ namespace ComapaSoftware.Vistas
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-           string result = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+           string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
             
-            Console.WriteLine(result);
-            foreach(ControladorBombas list in m.GetUpdateInfo(result,GlobalReceiver))
+            Console.WriteLine(posicion);
+            foreach(ControladorBombas list in m.GetUpdateInfo(posicion,GlobalReceiver))
             {
-
+                lblIdbomba.Text = list.IdBombas;
                 lblEstacion.Text = list.IdEstacion;
                 lblPosicion.Text = list.Posicion.ToString(); 
                 lblMarca.Text = list.Marca;
@@ -145,6 +146,27 @@ namespace ComapaSoftware.Vistas
         {
             HideElements();
             dgvBombas.Show();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+            Actbomba act = new Actbomba(posicion,GlobalReceiver);
+            Console.WriteLine("Aqui llego "+posicion+"-"+GlobalReceiver);
+            act.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool pressedButton = true;
+            if (pressedButton && (MessageBox.Show("¿Desea eliminar esta planta?", "Eliminar registro",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+                == System.Windows.Forms.DialogResult.Yes))
+            {
+                string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+                m.Delete(GlobalReceiver,posicion);
+                traerDatos();
+            }
         }
     }
 }

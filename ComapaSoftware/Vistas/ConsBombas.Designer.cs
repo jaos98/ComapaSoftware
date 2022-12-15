@@ -64,6 +64,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.lblIdbomba = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBombas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,6 +96,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "Eliminar Bomba";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -104,6 +106,7 @@
             this.button3.TabIndex = 3;
             this.button3.Text = "Corregir datos";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button4
             // 
@@ -342,7 +345,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(502, 33);
+            this.label25.Location = new System.Drawing.Point(511, 33);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(27, 13);
             this.label25.TabIndex = 30;
@@ -351,7 +354,7 @@
             // lblFpm
             // 
             this.lblFpm.AutoSize = true;
-            this.lblFpm.Location = new System.Drawing.Point(578, 33);
+            this.lblFpm.Location = new System.Drawing.Point(588, 33);
             this.lblFpm.Name = "lblFpm";
             this.lblFpm.Size = new System.Drawing.Size(37, 13);
             this.lblFpm.TabIndex = 31;
@@ -360,7 +363,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(502, 152);
+            this.label27.Location = new System.Drawing.Point(779, 66);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(78, 13);
             this.label27.TabIndex = 32;
@@ -368,7 +371,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(600, 107);
+            this.richTextBox1.Location = new System.Drawing.Point(691, 104);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(255, 145);
             this.richTextBox1.TabIndex = 33;
@@ -386,7 +389,7 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(467, 273);
+            this.btnRegresar.Location = new System.Drawing.Point(307, 285);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(144, 23);
             this.btnRegresar.TabIndex = 35;
@@ -394,11 +397,21 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // lblIdbomba
+            // 
+            this.lblIdbomba.AutoSize = true;
+            this.lblIdbomba.Location = new System.Drawing.Point(511, 239);
+            this.lblIdbomba.Name = "lblIdbomba";
+            this.lblIdbomba.Size = new System.Drawing.Size(35, 13);
+            this.lblIdbomba.TabIndex = 36;
+            this.lblIdbomba.Text = "label2";
+            // 
             // ConsBombas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1012, 450);
+            this.Controls.Add(this.lblIdbomba);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.richTextBox1);
@@ -482,5 +495,6 @@
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.Button btnRegresar;
+        private System.Windows.Forms.Label lblIdbomba;
     }
 }

@@ -396,7 +396,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbId);
             this.Name = "RegInfoTec";
-            this.Text = "Agregar Informacion tecnica";
+            this.Text = "Agregar Estacion";
             this.Load += new System.EventHandler(this.RegInfoTec_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -37,7 +37,6 @@
             this.txtModelo = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.btnReg = new System.Windows.Forms.Button();
             this.txtFpm = new System.Windows.Forms.TextBox();
             this.txtRpm = new System.Windows.Forms.TextBox();
             this.txtDinamica = new System.Windows.Forms.TextBox();
@@ -57,6 +56,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnReg = new System.Windows.Forms.Button();
+            this.btnReg2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlanta = new System.Windows.Forms.ComboBox();
@@ -77,7 +78,6 @@
             this.mainPanel.Controls.Add(this.txtModelo);
             this.mainPanel.Controls.Add(this.label14);
             this.mainPanel.Controls.Add(this.button2);
-            this.mainPanel.Controls.Add(this.btnReg);
             this.mainPanel.Controls.Add(this.txtFpm);
             this.mainPanel.Controls.Add(this.txtRpm);
             this.mainPanel.Controls.Add(this.txtDinamica);
@@ -97,6 +97,8 @@
             this.mainPanel.Controls.Add(this.label5);
             this.mainPanel.Controls.Add(this.label4);
             this.mainPanel.Controls.Add(this.label3);
+            this.mainPanel.Controls.Add(this.btnReg);
+            this.mainPanel.Controls.Add(this.btnReg2);
             this.mainPanel.Enabled = false;
             this.mainPanel.Location = new System.Drawing.Point(233, 12);
             this.mainPanel.Name = "mainPanel";
@@ -193,16 +195,6 @@
             this.button2.Text = "Volver";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnReg
-            // 
-            this.btnReg.Location = new System.Drawing.Point(33, 352);
-            this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(157, 23);
-            this.btnReg.TabIndex = 22;
-            this.btnReg.Text = "Registrar Bomba";
-            this.btnReg.UseVisualStyleBackColor = true;
-            this.btnReg.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtFpm
             // 
@@ -360,6 +352,27 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Posicion";
             // 
+            // btnReg
+            // 
+            this.btnReg.Location = new System.Drawing.Point(35, 352);
+            this.btnReg.Name = "btnReg";
+            this.btnReg.Size = new System.Drawing.Size(157, 23);
+            this.btnReg.TabIndex = 22;
+            this.btnReg.Text = "Registrar Bomba";
+            this.btnReg.UseVisualStyleBackColor = true;
+            this.btnReg.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnReg2
+            // 
+            this.btnReg2.Location = new System.Drawing.Point(35, 351);
+            this.btnReg2.Name = "btnReg2";
+            this.btnReg2.Size = new System.Drawing.Size(155, 23);
+            this.btnReg2.TabIndex = 31;
+            this.btnReg2.Text = "Registrar Bomba";
+            this.btnReg2.UseVisualStyleBackColor = true;
+            this.btnReg2.Visible = false;
+            this.btnReg2.Click += new System.EventHandler(this.btnReg2_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -496,5 +509,6 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbPosicion;
         private System.Windows.Forms.Button btnVolver;
+        private System.Windows.Forms.Button btnReg2;
     }
 }

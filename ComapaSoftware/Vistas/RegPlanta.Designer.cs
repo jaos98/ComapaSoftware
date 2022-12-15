@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtKva = new System.Windows.Forms.TextBox();
             this.txtLongitud = new System.Windows.Forms.MaskedTextBox();
             this.txtLatitud = new System.Windows.Forms.MaskedTextBox();
             this.cmbSector = new System.Windows.Forms.ComboBox();
@@ -59,8 +61,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.txtKva = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +100,22 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(444, 237);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(26, 13);
+            this.label14.TabIndex = 36;
+            this.label14.Text = "Kva";
+            // 
+            // txtKva
+            // 
+            this.txtKva.Location = new System.Drawing.Point(519, 234);
+            this.txtKva.Name = "txtKva";
+            this.txtKva.Size = new System.Drawing.Size(237, 20);
+            this.txtKva.TabIndex = 35;
             // 
             // txtLongitud
             // 
@@ -195,11 +211,8 @@
             this.cmbTipoPlanta.Items.AddRange(new object[] {
             "Potable",
             "Residual",
-            "PTAR",
-            "EBAR",
-            "EBAP",
             "Obra de toma",
-            "Rebombeo de agua cruda"});
+            "Tratamiento"});
             this.cmbTipoPlanta.Location = new System.Drawing.Point(172, 146);
             this.cmbTipoPlanta.Name = "cmbTipoPlanta";
             this.cmbTipoPlanta.Size = new System.Drawing.Size(237, 21);
@@ -376,22 +389,6 @@
             // toolTip1
             // 
             this.toolTip1.IsBalloon = true;
-            // 
-            // txtKva
-            // 
-            this.txtKva.Location = new System.Drawing.Point(519, 234);
-            this.txtKva.Name = "txtKva";
-            this.txtKva.Size = new System.Drawing.Size(237, 20);
-            this.txtKva.TabIndex = 35;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(444, 237);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(26, 13);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "Kva";
             // 
             // FormPlanta
             // 

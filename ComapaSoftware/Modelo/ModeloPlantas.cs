@@ -258,7 +258,27 @@ namespace ComapaSoftware.Modelo
                 Conn.Close();
             }
             }
-        
+        //BORRAR INFORMACION (DELETE SQL)
+        public bool Delete(string receiver)
+        {
+            conectarBase();
+            try
+            {
+                Query.CommandText = "DELETE FROM `plantascomapa` WHERE IdPlantas = '"+receiver+"' ";
+                Query.Connection = Conn;
+                if (Query.ExecuteNonQuery()>0)
+                {
+                    return true;
+                }
+
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            return false;
+        }
 
 
     }

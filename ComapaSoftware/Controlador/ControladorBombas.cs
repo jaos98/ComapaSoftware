@@ -22,10 +22,11 @@
         {
 
         }
-        public ControladorBombas(string idEstacion,int posicion, string marca
+        public ControladorBombas(string idBombas,string idEstacion,int posicion, string marca
             , string modelo, string tipo, string hp, string voltaje, string diametro,
             string lps, string carga, string rpm,string estatus, string fpm,string observaciones)
         {
+            this.idBombas = idBombas;
             this.idEstacion = idEstacion;
             this.posicion = posicion;
             this.marca = marca;

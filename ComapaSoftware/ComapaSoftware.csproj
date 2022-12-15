@@ -115,11 +115,11 @@
     <Compile Include="Vistas\ActPlanta.Designer.cs">
       <DependentUpon>ActPlanta.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Form1.cs">
+    <Compile Include="Vistas\Actbomba.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Vistas\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Vistas\Actbomba.Designer.cs">
+      <DependentUpon>Actbomba.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\RegBomba.cs">
       <SubType>Form</SubType>
@@ -180,8 +180,8 @@
     <EmbeddedResource Include="Vistas\ActPlanta.resx">
       <DependentUpon>ActPlanta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Vistas\Actbomba.resx">
+      <DependentUpon>Actbomba.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

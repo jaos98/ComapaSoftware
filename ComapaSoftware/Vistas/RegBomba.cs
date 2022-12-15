@@ -10,18 +10,27 @@ namespace ComapaSoftware.Vistas
     {
         ControladorBombas c = new ControladorBombas();
         ModeloBombas modeloBombas = new ModeloBombas();
+        private string idEstacion;
+        public string IdEstacion
+        {
+            get { return idEstacion; }
+            set { idEstacion = value; }
+        }
 
         public RegBomba(string receiver)
         {
+            IdEstacion = receiver;
             InitializeComponent();
             cmbCategoria.Enabled = false;
             cmbEstacion.Enabled = false;
             cmbEstacion.Enabled = false;
+            btnReg.Visible = false;
+            btnReg2.Visible = true;
             btnVolver.Hide();
             for (int i = 1; i <= 10; i++)
             {
                 Console.WriteLine("Iteracion " + i);
-                if (!modeloBombas.ConsultarPosicion(receiver, i))
+                if (!modeloBombas.ConsultarPosicion(IdEstacion, i))
                 {
                     cmbPosicion.Text = i.ToString();
                     break;
@@ -171,6 +180,21 @@ namespace ComapaSoftware.Vistas
             FormPanel control = new FormPanel();
             this.Close();
             control.Show();
+        }
+
+        private void btnReg2_Click(object sender, EventArgs e)
+        {
+
+            DataView();
+            Console.WriteLine("Este es el id: "+IdEstacion);
+            Console.WriteLine(c.Posicion);
+            if (modeloBombas.registrarInfoBomba2(IdEstacion, c.Posicion, c.Marca, c.Tipo,
+                c.Modelo, c.Hp, c.Voltaje, c.Diametro, c.Lps, c.Carga, c.Rpm, c.Estatus,
+                c.Fpm, c.Observaciones) > 0)
+            {
+                MessageBox.Show("Se ha registrado todo correctamente");
+                Clean();
+            }
         }
     }
 }

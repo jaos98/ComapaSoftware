@@ -13,6 +13,11 @@ namespace ComapaSoftware.Vistas
         ModeloPlantas m = new ModeloPlantas();
         Atts att = new Atts();
         string globalReceiver;
+        public string GlobalReceiver
+        {
+            get { return globalReceiver; }
+            set { globalReceiver = value; }
+        }
         //LA CLASE PRINCIPAL RECIBE UN PARAMETRO DE SU VISTA ANTERIOR FormPanel EN LA VARIABLE senderInfo
         public FormResultado(string senderInfo)
         {
@@ -240,6 +245,21 @@ namespace ComapaSoftware.Vistas
             att.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             ActPlanta actPlanta = new ActPlanta(att.Result);
             actPlanta.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            bool pressedButton = true;
+            if (pressedButton &&(MessageBox.Show("¿Desea eliminar esta planta?","Eliminar registro",
+                MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button1) 
+                ==System.Windows.Forms.DialogResult.Yes))
+            {
+                string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
+                m.Delete(result);
+                traerDatos();
+            }
+            
+
         }
     }
 }

@@ -51,6 +51,7 @@ namespace ComapaSoftware.Vistas
             dataGridView1.Refresh();
             if (e.RowIndex >= 0)
             {
+                //RECIBE ID ESTACION
                 string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 this.Close();
                 ConsBombas consBombas = new ConsBombas(result);
@@ -75,6 +76,7 @@ namespace ComapaSoftware.Vistas
 
         private void btnMostrar_Click(object sender, EventArgs e)
         {
+            //RECIBE ID ESTACION
             string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             Close();
             ConsBombas consBombas = new ConsBombas(result);
@@ -108,6 +110,19 @@ namespace ComapaSoftware.Vistas
             string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             ActInfoTec actInfoTec = new ActInfoTec(result);
             actInfoTec.Show();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            bool pressedButton = true;
+            if (pressedButton && (MessageBox.Show("¿Desea eliminar esta planta?", "Eliminar registro",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+                == System.Windows.Forms.DialogResult.Yes))
+            {
+                string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                modelo.Delete(result);
+                traerDatos();
+            }
         }
     }
 }

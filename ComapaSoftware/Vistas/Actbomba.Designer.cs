@@ -1,6 +1,6 @@
 ﻿namespace ComapaSoftware.Vistas
 {
-    partial class Form1
+    partial class Actbomba
     {
         /// <summary>
         /// Required designer variable.
@@ -54,6 +54,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // cmbPosicion
@@ -284,12 +286,23 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnActualizar);
             this.panel1.Location = new System.Drawing.Point(2, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(786, 445);
             this.panel1.TabIndex = 56;
             // 
-            // Form1
+            // btnActualizar
+            // 
+            this.btnActualizar.Location = new System.Drawing.Point(65, 381);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(201, 23);
+            this.btnActualizar.TabIndex = 3;
+            this.btnActualizar.Text = "Actualizar info";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
+            // 
+            // Actbomba
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -320,8 +333,10 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Actbomba";
+            this.Text = "Actualizar Datos";
+            this.Load += new System.EventHandler(this.Actbomba_Load);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,5 +370,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnActualizar;
     }
 }
