@@ -1,6 +1,10 @@
 ﻿using ComapaSoftware.Controlador;
 using ComapaSoftware.Modelo;
 using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
@@ -150,6 +154,64 @@ namespace ComapaSoftware.Vistas
         private void cmbColonia_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        public async Task ValidarIdPlantas()
+        {
+
+        }
+
+
+        //HTTP REGISTRO
+        public async Task EnviarDatos()
+        {
+            GetInfo();
+            if (Validate())
+            {
+
+                using (var client = new HttpClient())
+                {
+                    var values = new Dictionary<string, string> {
+                    {"IdPlantas", c.IdPlanta },
+                    {"NumMedidor", c.NumMedidor },
+                    {"NumServicio",c.NumServicio },
+                    {"TipoPlantas",c.TipoPlantas },
+                    {"Estatus",c.Estatus },
+                    {"DescFunciones",c.DescFunciones },
+                    {"SubestacionKva",c.SubestacionKva },
+                    {"Colonia",c.Colonia },
+                    {"Sector",c.Sector },
+                    {"Latitud",c.Latitud },
+                    {"Longitud",c.Longitud },
+                    {"Elevacion",c.Elevacion },
+                    {"Servicio",c.Servicio },
+                    {"Domicilio",c.Domicilio }
+            };
+                    var content = new FormUrlEncodedContent(values);
+                    var response = await client.PostAsync("http://localhost/api/plantas.php", content);
+                    //var responseString = await response.Content.ReadAsStringAsync();
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("¡La informacion se ha registrado con exito!");
+                        Clean();
+                    }
+                    else
+                    {
+                        MessageBox.Show("-Ha ocurrido un error, favor de revisar su conexion a internet," +
+                            "si el problema persiste, consulte con el administrador");
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Llene toda la informacion");
+            }
+        }
+
+        private void btnRegHttp_Click(object sender, EventArgs e)
+        {
+            EnviarDatos();
         }
     }
 }

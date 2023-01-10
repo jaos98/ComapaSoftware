@@ -61,11 +61,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnRegHttp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnRegHttp);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.txtKva);
             this.panel1.Controls.Add(this.txtLongitud);
@@ -390,6 +392,16 @@
             // 
             this.toolTip1.IsBalloon = true;
             // 
+            // btnRegHttp
+            // 
+            this.btnRegHttp.Location = new System.Drawing.Point(255, 422);
+            this.btnRegHttp.Name = "btnRegHttp";
+            this.btnRegHttp.Size = new System.Drawing.Size(75, 23);
+            this.btnRegHttp.TabIndex = 37;
+            this.btnRegHttp.Text = "Agregar Http";
+            this.btnRegHttp.UseVisualStyleBackColor = true;
+            this.btnRegHttp.Click += new System.EventHandler(this.btnRegHttp_Click);
+            // 
             // FormPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -439,5 +451,6 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtKva;
+        private System.Windows.Forms.Button btnRegHttp;
     }
 }
