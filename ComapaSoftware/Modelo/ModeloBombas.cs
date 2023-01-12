@@ -3,6 +3,9 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
 
 namespace ComapaSoftware.Modelo
 {
@@ -292,6 +295,51 @@ namespace ComapaSoftware.Modelo
                 throw;
             }
             return false;
+        }
+
+
+        //HTTPREQUEST
+
+        //CONSULTA DE DATOS
+        public DataTable llevarDatosHttp(string idPlantas)
+        {
+            DataTable dt = new DataTable("Tabla Estaciones");
+            dt.Columns.Add("Id Estacion", typeof(string));
+            dt.Columns.Add("Posicion", typeof(string));
+            dt.Columns.Add("Marca", typeof(string));
+            dt.Columns.Add("Modelo", typeof(string));
+            dt.Columns.Add("Tipo", typeof(string));
+            dt.Columns.Add("Hp", typeof(string));
+            dt.Columns.Add("Voltaje", typeof(string));
+            dt.Columns.Add("Diametro", typeof(string));
+            dt.Columns.Add("Lps", typeof(string));
+            dt.Columns.Add("Carga", typeof(string));
+            dt.Columns.Add("Rpm", typeof(string));
+            dt.Columns.Add("Estatus", typeof(string));
+            dt.Columns.Add("Fpm", typeof(string));
+            dt.Columns.Add("Observaciones", typeof(string));
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("/api/getPlantas.php").Result;
+                response.EnsureSuccessStatusCode();
+                var result = response.Content.ReadAsStringAsync().Result; ;
+                List<ControladorBombas> json = JsonSerializer.Deserialize<List<ControladorBombas>>(result);
+
+                foreach (var items in json)
+                {
+
+                    dt.Rows.Add(items.IdEstacion,items.Posicion,items.Marca,items.Modelo,items.Tipo,
+                        items.Hp,items.Voltaje,items.Diametro,items.Lps,items.Carga,items.Rpm,
+                        items.Estatus,items.Fpm,items.Observaciones);
+
+                }
+                return dt;
+            }
         }
     }
 }

@@ -3,6 +3,9 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace ComapaSoftware.Modelo
@@ -119,25 +122,6 @@ namespace ComapaSoftware.Modelo
             }
             return idFicha;
         }
-        public int internalTrigger(string receiver)
-        {
-            int counter = 0;
-            try
-            {
-                conectarBase();
-                Query.CommandText = "SELECT count(*) FROM estaciones WHERE IdPlantas= '" + receiver + "'";
-                Query.Connection = Conn;
-                Consultar = Query.ExecuteReader();
-                while (Consultar.Read())
-                {
-                    counter = Consultar.GetInt32(0);
-                }
-            }
-            catch(MySqlException ex) {
-                Console.WriteLine(ex);
-            }
-            return counter;
-        }
         public string internalTrigger2(string n)
         {
             string s = n.ToLower();
@@ -172,6 +156,7 @@ namespace ComapaSoftware.Modelo
             }
             return list;
         }
+        //UPDATE
         public int UpdateInfo(string idEstacion, string nombre,
            string capEquipos, string opMinima, string eqInstalados, string tipo,
            string garantOp, string gastoProm, string gastoInst, string servicio,
@@ -235,5 +220,50 @@ namespace ComapaSoftware.Modelo
             }
             return false;
         }
+
+        //HTTP REQUEST METHODS
+
+
+        //CONSULTAR INF0RMACION
+        public DataTable llevarDatosHttp(string idPlantas)
+        {
+            DataTable dt = new DataTable("Tabla Estaciones");
+            dt.Columns.Add("Id Planta", typeof(string));
+            dt.Columns.Add("Id Estacion", typeof(string));
+            dt.Columns.Add("Nombre", typeof(string));
+            dt.Columns.Add("Capacidad de equipos", typeof(string));
+            dt.Columns.Add("Operacion Minima", typeof(string));
+            dt.Columns.Add("Equipos Instalados", typeof(string));
+            dt.Columns.Add("Tipo", typeof(string));
+            dt.Columns.Add("Garantizar Operacion", typeof(string));
+            dt.Columns.Add("Gasto Promedio", typeof(string));
+            dt.Columns.Add("Gasto Instalado", typeof(string));
+            dt.Columns.Add("Servicio", typeof(string));
+            dt.Columns.Add("Observaciones", typeof(string));
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("/api/getPlantas.php").Result;
+                response.EnsureSuccessStatusCode();
+                var result = response.Content.ReadAsStringAsync().Result; ;
+                List<ControladorInfo> json = JsonSerializer.Deserialize<List<ControladorInfo>>(result);
+
+                foreach (var items in json)
+                {
+
+                    dt.Rows.Add(items.IdEstacion, items.IdEstacion,items.Nombre,items.CapEquipos,items.OperacionMinima,
+                        items.EquiposInstalados,items.Tipo,items.GarantOperacion,items.GastoPromedio,items.GastoInstalado,
+                        items.Servicio,items.Observaciones);
+
+                }
+                return dt;
+            }
+        }
+
+
     }
 }

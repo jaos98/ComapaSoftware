@@ -3,6 +3,8 @@ using ComapaSoftware.Modelo;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
@@ -89,7 +91,12 @@ namespace ComapaSoftware.Vistas
         //EL METODO PERMITE TRAER UN RESUMEN DE DATOS DESDE LA BASE EN UN DATASOURCE PARA INGRESARLO EN UN datagridview1
         public void traerDatos()
         {
-            dataGridView1.DataSource = m.llevarDatos(globalReceiver);
+            //PRUEBA HTTP
+            dataGridView1.DataSource = m.llevarDatosHttp(globalReceiver);
+
+
+            //si funciona, devolver a la normalidad
+            //dataGridView1.DataSource = m.llevarDatos(globalReceiver);
         }
         //EL METODO PERMITE TRAER TODA LA INFORMACION E INSERTARLA AL datagridview1 (POSIBLE ELIMINACION)
         public void traerTodo()
@@ -103,7 +110,7 @@ namespace ComapaSoftware.Vistas
             dataGridView1.DataSource = m.consultaAdicional(globalEntry);
             dataGridView1.Refresh();
         }
-       
+
         //EL METODO PERMITE EJECUTAR LA OBTENCION DE DATOS Y OCULTAR ELEMENTOS DE CONSULTA GENERAL
         private void FormResultado_Load(object sender, EventArgs e)
         {
@@ -111,7 +118,7 @@ namespace ComapaSoftware.Vistas
             HideElements();
         }
 
-      //DECLARACION DE EVENTOS, AL HACER CLICK, EL METODO OBTENDRA EL VALOR DE LA FILA EN LA POSICION 0 (IdPlanta)
+        //DECLARACION DE EVENTOS, AL HACER CLICK, EL METODO OBTENDRA EL VALOR DE LA FILA EN LA POSICION 0 (IdPlanta)
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.Refresh();
@@ -232,7 +239,7 @@ namespace ComapaSoftware.Vistas
             public Atts(string result)
             {
                 this.result = Result;
-            }    
+            }
             //CONSTRUCTOR DE ACCESO PUBLICO A LOS ATRIBUTOS
             public Atts()
             {
@@ -250,15 +257,44 @@ namespace ComapaSoftware.Vistas
         private void button2_Click(object sender, EventArgs e)
         {
             bool pressedButton = true;
-            if (pressedButton &&(MessageBox.Show("¿Desea eliminar esta planta?","Eliminar registro",
-                MessageBoxButtons.YesNo,MessageBoxIcon.Question,MessageBoxDefaultButton.Button1) 
-                ==System.Windows.Forms.DialogResult.Yes))
+            if (pressedButton && (MessageBox.Show("¿Desea eliminar esta planta?", "Eliminar registro",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
+                == System.Windows.Forms.DialogResult.Yes))
             {
                 string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 m.Delete(result);
                 traerDatos();
             }
-            
+
+
+        }
+
+
+        //HTTP CONSULTA
+        public async Task ComprobarInicio()
+        {
+            using (var client = new HttpClient())
+            {
+                var values = new Dictionary<string, string> {
+                    {"TipoPlantas", globalReceiver }
+
+            };
+                var content = new FormUrlEncodedContent(values);
+                var response = await client.PostAsync("http://localhost/api/validation.php", content);
+                var responseString = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseString);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("¡Bienvenido!");
+
+                }
+                else
+                {
+
+
+                }
+            }
+
 
         }
     }

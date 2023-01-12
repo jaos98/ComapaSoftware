@@ -1,5 +1,6 @@
 ﻿using ComapaSoftware.Http;
 using ComapaSoftware.Vistas;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -52,55 +53,58 @@ namespace ComapaSoftware
             ComprobarInicio();
         }
 
+        //HTTP
         public async Task ComprobarInicio()
         {
             using (var client = new HttpClient())
             {
                 var values = new Dictionary<string, string> {
                     {"CuentaUsuario", txtUsuario.Text },
-                    {"ContraseñaUsuario",txtContraseña.Text }
+                    {"ContraseñaUsuario", txtContraseña.Text }
             };
                 var content = new FormUrlEncodedContent(values);
                 var response = await client.PostAsync("http://localhost/api/validation.php", content);
                 var responseString = await response.Content.ReadAsStringAsync();
-
                 Console.WriteLine(responseString);
-                //if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("¡Bienvenido!");
+                    Close();
+                    FormPanel formPanel = new FormPanel();
+                    formPanel.Show();
+                }
+                else
+                {
+                    MessageBox.Show("No se ha encontrado el usuario o no esta conectado a internet");
+                }
+
+            }
+
+
+                //string url = "http://localhost/api/validation.php";
+                //var client = new HttpClient();
+                //PostUser post = new PostUser()
                 //{
-                //    MessageBox.Show("¡Existe!");
+                //    CuentaUsuario = "comapa",
+                //    ContraseñaUsuario = "prueba"
+
+                //};
+
+                //var data = System.Text.Json.JsonSerializer.Serialize<PostUser>(post);
+                //HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
+                //var httpResponse = await client.PostAsync(url, content);
+                //var result = await httpResponse.Content.ReadAsStringAsync();
+                //Console.WriteLine(result);
+                //if (httpResponse.IsSuccessStatusCode)
+                //{
+                //    var resultado = await httpResponse.Content.ReadAsStringAsync();
+                //    Console.WriteLine(result);
+
                 //}
                 //else
                 //{
-                //    MessageBox.Show("-Ha ocurrido un error, favor de revisar su conexion a internet," +
-                //        "si el problema persiste, consulte con el administrador");
+                //    Console.WriteLine("Algo ha salido mal");
                 //}
             }
-            //string url = "http://localhost/api/validation.php";
-            //var client = new HttpClient();
-            //PostUser post = new PostUser()
-            //{
-            //    CuentaUsuario = "comapa",
-            //    ContraseñaUsuario = "prueba"
-
-            //};
-
-            //var data = JsonSerializer.Serialize<PostUser>(post);
-            //HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
-            //var httpResponse = await client.PostAsync(url, content);
-            //var result = await httpResponse.Content.ReadAsStringAsync();
-            //Console.WriteLine(result);
-            //if (httpResponse.IsSuccessStatusCode)
-            //{
-            //    var result = await httpResponse.Content.ReadAsStringAsync();
-            //    Console.WriteLine(result);
-            //    var postResult = JsonSerializer.Deserialize<PostUser>(result);
-            //    Console.WriteLine(postResult);
-
-            //}
-            //else
-            //{
-            //    Console.WriteLine("Algo ha salido mal");
-            //}
-        }
     }
 }
