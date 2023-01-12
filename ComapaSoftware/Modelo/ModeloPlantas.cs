@@ -287,7 +287,7 @@ namespace ComapaSoftware.Modelo
         }
 
 
-        //HTTP  CONSULTA
+        //HTTP REQUEST CONSULTA DATATABLE
         public DataTable llevarDatosHttp(string tipoPlanta)
         {
             DataTable dt = new DataTable("TablaPlantas");
@@ -327,6 +327,25 @@ namespace ComapaSoftware.Modelo
             }
         }
 
+        // TRAER INFO (SELECT) HTTP REQUEST
+        public List<ControladorPlantas> getDatosHttp(string tipoPlanta)
+        {
+            List<ControladorPlantas> list = new List<ControladorPlantas>();
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("/api/getPlantas.php?TipoPlanta="+tipoPlanta).Result;
+                response.EnsureSuccessStatusCode();
+                var result = response.Content.ReadAsStringAsync().Result; ;
+                List<ControladorPlantas> json = JsonSerializer.Deserialize<List<ControladorPlantas>>(result);
+
+             return json; 
+            }
+        }
         //HTTP REGISTRO
         public int insertarPlantaHttp(string IdPlantas, string NumMedidor, string NumServicio,
             string TipoPlanta, string Estatus, string DescFunciones, string Subestacionkva,
@@ -369,6 +388,50 @@ namespace ComapaSoftware.Modelo
                     return 0;
                 }
                 
+            }
+        }
+        //ACTUALIZAR HTTPREQUEST
+        public int actualizarPlantaHttp(string IdPlantas, string NumMedidor, string NumServicio,
+            string TipoPlanta, string Estatus, string DescFunciones, string Subestacionkva,
+            string Colonia, string Sector, string Latitud, string Longitud,
+            string Elevacion, string Servicio, string Domicilio)
+        {
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string,string>("IdPlantas",IdPlantas),
+                    new KeyValuePair<string,string>("NumMedidor",NumMedidor),
+                    new KeyValuePair<string,string>("NumServicio",NumServicio),
+                    new KeyValuePair<string,string>("TipoPlantas",TipoPlanta),
+                    new KeyValuePair<string,string>("Estatus",Estatus),
+                    new KeyValuePair<string,string>("DescFunciones",DescFunciones),
+                    new KeyValuePair<string,string>("SubestacionKva",Subestacionkva),
+                    new KeyValuePair<string,string>("Colonia",Colonia),
+                    new KeyValuePair<string,string>("Sector",Sector),
+                    new KeyValuePair<string,string>("Latitud",Latitud),
+                    new KeyValuePair<string,string>("Longitud",Longitud),
+                    new KeyValuePair<string,string>("Elevacion",Elevacion),
+                    new KeyValuePair<string,string>("Servicio",Servicio),
+                    new KeyValuePair<string,string>("Domicilio",Domicilio)
+
+                });
+                var response = client.PostAsync("/api/getPlantas.php", content).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+                    return 1;
+                }
+                else
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+                    return 0;
+                }
+
             }
         }
     }

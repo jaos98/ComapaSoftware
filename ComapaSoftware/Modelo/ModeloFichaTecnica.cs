@@ -263,6 +263,46 @@ namespace ComapaSoftware.Modelo
                 return dt;
             }
         }
+        //REGISTRO HTTP REQUEST
+        public int insertarInfoHttp(string IdPlantas, string IdEstacion, string Nombre, string CapEquipos, string OperacionMinima, string EquiposInstalados,
+            string Tipo, string GarantOperacion, string GastoPromedio, string GastoInstalado, string Servicio, string Observaciones)
+        {
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string,string>("IdPlantas",IdPlantas),
+                    new KeyValuePair<string,string>("NumMedidor",IdEstacion),
+                    new KeyValuePair<string,string>("NumServicio",Nombre),
+                    new KeyValuePair<string,string>("TipoPlantas",CapEquipos),
+                    new KeyValuePair<string,string>("Estatus",OperacionMinima),
+                    new KeyValuePair<string,string>("DescFunciones",EquiposInstalados),
+                    new KeyValuePair<string,string>("SubestacionKva",Tipo),
+                    new KeyValuePair<string,string>("Colonia",GarantOperacion),
+                    new KeyValuePair<string,string>("Sector",GastoPromedio),
+                    new KeyValuePair<string,string>("Latitud",GastoInstalado),
+                    new KeyValuePair<string,string>("Longitud",Servicio),
+                    new KeyValuePair<string,string>("Elevacion",Observaciones)
+
+                });
+                var response = client.PostAsync("/api/getPlantas.php", content).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+                    return 1;
+                }
+                else
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+                    return 0;
+                }
+
+            }
+        }
 
 
     }
