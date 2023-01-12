@@ -14,8 +14,8 @@ namespace ComapaSoftware.Vistas
 {
     public partial class ActInfoTec : Form
     {
-        ModeloFichaTecnica m = new ModeloFichaTecnica();
-        ControladorInfo c = new ControladorInfo();
+        ControladorFicha c = new ControladorFicha();
+        ModeloInfo m = new ModeloInfo();
 
         private string globalReceiver;
         public string GlobalReceiver
@@ -35,7 +35,7 @@ namespace ComapaSoftware.Vistas
 
         private void ActInfoTec_Load(object sender, EventArgs e)
         {
-            foreach (ControladorInfo list in m.GetUpdateInfo(GlobalReceiver))
+            foreach (ModeloInfo list in c.GetUpdateInfo(GlobalReceiver))
             {
                 lblPlanta.Text = list.IdPlantas;
                 lblEstacion.Text = list.IdEstacion;
@@ -55,9 +55,9 @@ namespace ComapaSoftware.Vistas
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             GetData();
-            if (m.UpdateInfo(c.IdEstacion,c.Nombre,c.CapEquipos,c.OperacionMinima,
-                c.EquiposInstalados,c.Tipo,c.GarantOperacion,c.GastoPromedio,c.GastoInstalado,
-                c.Servicio,c.Observaciones)>0)
+            if (c.UpdateInfo(m.IdEstacion,m.Nombre,m.CapEquipos,m.OperacionMinima,
+                m.EquiposInstalados,m.Tipo,m.GarantOperacion,m.GastoPromedio,m.GastoInstalado,
+                m.Servicio,m.Observaciones)>0)
             {
                 MessageBox.Show("La informacion se ha registrado con exito");
                 Close();
@@ -74,18 +74,18 @@ namespace ComapaSoftware.Vistas
         }
         void GetData()
         {
-            c.IdPlantas = lblPlanta.Text;
-            c.IdEstacion = lblEstacion.Text;
-            c.Nombre = txtNombre.Text;
-            c.CapEquipos = txtCapEq.Text;
-            c.OperacionMinima = txtOp.Text;
-            c.EquiposInstalados = txtEquInst.Text;
-            c.Tipo = cmbTipo.Text;
-            c.GarantOperacion = txtGarant.Text;
-            c.GastoPromedio = txtProm.Text;
-            c.GastoInstalado = txtInst.Text;
-            c.Servicio = cmbServ.Text;
-            c.Observaciones = txtObs.Text;
+            m.IdPlantas = lblPlanta.Text;
+            m.IdEstacion = lblEstacion.Text;
+            m.Nombre = txtNombre.Text;
+            m.CapEquipos = txtCapEq.Text;
+            m.OperacionMinima = txtOp.Text;
+            m.EquiposInstalados = txtEquInst.Text;
+            m.Tipo = cmbTipo.Text;
+            m.GarantOperacion = txtGarant.Text;
+            m.GastoPromedio = txtProm.Text;
+            m.GastoInstalado = txtInst.Text;
+            m.Servicio = cmbServ.Text;
+            m.Observaciones = txtObs.Text;
         }
     }
 }

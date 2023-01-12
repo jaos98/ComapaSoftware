@@ -6,7 +6,7 @@ namespace ComapaSoftware.Vistas
 {
     public partial class ConsInfoTec : Form
     {
-        ModeloFichaTecnica modelo = new ModeloFichaTecnica();
+        ControladorFicha c = new ControladorFicha();
         AttsInfo atts = new AttsInfo();
         string globalReceiver;
         public ConsInfoTec()
@@ -21,7 +21,7 @@ namespace ComapaSoftware.Vistas
         //METODO QUE CARGA LOS DATOS EN LA TABLA PRINCIPAL
         public void traerDatos()
         {
-            dataGridView1.DataSource = modelo.llevarDatos(globalReceiver);
+            dataGridView1.DataSource = c.llevarDatos(globalReceiver);
         }
         //METODO DE CARGA DE ELEMENTOS DEL FORM
         private void ConsInfoTec_Load(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace ComapaSoftware.Vistas
             {
                 dataGridView1.Refresh();
                 //richTextBox1.Text = modelo.traerDescripcion(atts.Result);
-                string result = modelo.traerDescripcion(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+                string result = c.traerDescripcion(dataGridView1.CurrentRow.Cells[1].Value.ToString());
 
                 richTextBox1.Text = result;
                 //TRAER DESCRIPCIONES
@@ -70,7 +70,7 @@ namespace ComapaSoftware.Vistas
             if (dataGridView1.CurrentRow != null)
             {
                 atts.Result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                modelo.traerDescripcion(atts.Result);
+                c.traerDescripcion(atts.Result);
             }
         }
 
@@ -120,7 +120,7 @@ namespace ComapaSoftware.Vistas
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                modelo.Delete(result);
+                c.Delete(result);
                 traerDatos();
             }
         }

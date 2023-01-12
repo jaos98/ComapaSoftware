@@ -9,10 +9,10 @@ using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
-    public partial class FormResultado : Form
+    public partial class ConsPlanta : Form
     {
         //INSTANCIAS Y VARIABLES GLOBALES
-        ModeloPlantas m = new ModeloPlantas();
+        ControladorPlantas c = new ControladorPlantas();
         Atts att = new Atts();
         string globalReceiver;
         public string GlobalReceiver
@@ -21,7 +21,7 @@ namespace ComapaSoftware.Vistas
             set { globalReceiver = value; }
         }
         //LA CLASE PRINCIPAL RECIBE UN PARAMETRO DE SU VISTA ANTERIOR FormPanel EN LA VARIABLE senderInfo
-        public FormResultado(string senderInfo)
+        public ConsPlanta(string senderInfo)
         {
             //LA VARIABLE RECIBIDA senderInfo SE ALMACENA EN UNA VARIABLE GLOBAL globalReceiver PARA SU POSTERIOR USO
             globalReceiver = senderInfo;
@@ -31,7 +31,7 @@ namespace ComapaSoftware.Vistas
             formPlanta.StartPosition = FormStartPosition.CenterScreen;
         }
         //ACCESO A LA CLASE FormResultado
-        public FormResultado()
+        public ConsPlanta()
         {
 
         }
@@ -62,7 +62,7 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE MOSTRAR EN PANTALLA LA INFORMACION GENERAL
         private void btnAdicional_Click(object sender, EventArgs e)
         {
-            foreach (ControladorPlantas list in m.GetUpdateInfo(att.Result))
+            foreach (ModeloPlantas list in c.GetUpdateInfo(att.Result))
             {
                 labelId.Text = list.IdPlanta;
                 labelNm.Text = list.NumMedidor;
@@ -92,22 +92,22 @@ namespace ComapaSoftware.Vistas
         public void traerDatos()
         {
             //PRUEBA HTTP
-            dataGridView1.DataSource = m.llevarDatosHttp(globalReceiver);
+            //dataGridView1.DataSource = c.llevarDatosHttp(globalReceiver);
 
 
             //si funciona, devolver a la normalidad
-            //dataGridView1.DataSource = m.llevarDatos(globalReceiver);
+            dataGridView1.DataSource = c.llevarDatos(globalReceiver);
         }
         //EL METODO PERMITE TRAER TODA LA INFORMACION E INSERTARLA AL datagridview1 (POSIBLE ELIMINACION)
         public void traerTodo()
         {
-            dataGridView1.DataSource = m.dataSender();
+            dataGridView1.DataSource = c.dataSender();
         }
         //EL METODO PERMITE REALIZAR UNA CONSULTA CON 1 DATO QUE COINCIDA CON 2 CRITERIOS IdPlantas || TipoPlantas
         public void consultaAdicional()
         {
             string globalEntry = txtAdicional.Text;
-            dataGridView1.DataSource = m.consultaAdicional(globalEntry);
+            dataGridView1.DataSource = c.consultaAdicional(globalEntry);
             dataGridView1.Refresh();
         }
 
@@ -262,7 +262,7 @@ namespace ComapaSoftware.Vistas
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                m.Delete(result);
+                c.Delete(result);
                 traerDatos();
             }
 

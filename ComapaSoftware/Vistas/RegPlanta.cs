@@ -11,8 +11,8 @@ namespace ComapaSoftware.Vistas
 {
     public partial class FormPlanta : Form
     {
-        ControladorPlantas c = new ControladorPlantas();
         ModeloPlantas m = new ModeloPlantas();
+        ControladorPlantas c = new ControladorPlantas();
         public FormPlanta()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace ComapaSoftware.Vistas
         private void FormPlanta_Load(object sender, EventArgs e)
         {
             cmbColonia.Enabled = false;
-            foreach (var item in m.consultarSector())
+            foreach (var item in c.consultarSector())
             {
                 cmbSector.Items.Add(item);
             }
@@ -34,11 +34,11 @@ namespace ComapaSoftware.Vistas
             if (Validate())
             {
                 //VALIDAR ANTES DE INGRESAR LA INFO
-                if (m.noRepite(c.IdPlanta))
+                if (c.noRepite(m.IdPlanta))
                 {
-                    if (m.insertarPlanta(c.IdPlanta, c.NumMedidor, c.NumServicio,
-               c.TipoPlantas, c.Estatus, c.DescFunciones,c.SubestacionKva, c.Colonia, c.Sector,
-               c.Latitud, c.Longitud, c.Elevacion, c.Servicio, c.Domicilio) > 0)
+                    if (c.insertarPlanta(m.IdPlanta, m.NumMedidor, m.NumServicio,
+               m.TipoPlantas, m.Estatus, m.DescFunciones,m.SubestacionKva, m.Colonia, m.Sector,
+               m.Latitud, m.Longitud, m.Elevacion, m.Servicio, m.Domicilio) > 0)
                     {
                         MessageBox.Show("Se han registrado todos los datos");
                         Clean();
@@ -76,9 +76,9 @@ namespace ComapaSoftware.Vistas
             {
                 cmbColonia.Items.Clear();
                 cmbColonia.Enabled = true;
-                string resultId = m.obtenerID(cmbSector.Text);
+                string resultId = c.obtenerID(cmbSector.Text);
                 cmbColonia.Enabled = true;
-                foreach (var item in m.compararDatos(resultId))
+                foreach (var item in c.compararDatos(resultId))
                 {
                     cmbColonia.Items.Add(item);
                 }
@@ -108,27 +108,27 @@ namespace ComapaSoftware.Vistas
         }
         public void GetInfo()
         {
-            c.IdPlanta = txtPlanta.Text.Trim();
-            c.NumMedidor = txtNumMed.Text.Trim();
-            c.NumServicio = txtNumServ.Text.Trim();
-            c.TipoPlantas = cmbTipoPlanta.Text;
-            c.Estatus = cmbEstatus.Text;
-            c.DescFunciones = txtDescFunciones.Text;
-            c.SubestacionKva = txtKva.Text;
-            c.Colonia = cmbColonia.Text;
-            c.Sector = cmbSector.Text;
-            c.Latitud = txtLatitud.Text;
-            c.Longitud = txtLongitud.Text;
-            c.Elevacion = txtElevacion.Text;
-            c.Servicio = cmbServicio.Text;
-            c.Domicilio = txtDomicilio.Text;
+            m.IdPlanta = txtPlanta.Text.Trim();
+            m.NumMedidor = txtNumMed.Text.Trim();
+            m.NumServicio = txtNumServ.Text.Trim();
+            m.TipoPlantas = cmbTipoPlanta.Text;
+            m.Estatus = cmbEstatus.Text;
+            m.DescFunciones = txtDescFunciones.Text;
+            m.SubestacionKva = txtKva.Text;
+            m.Colonia = cmbColonia.Text;
+            m.Sector = cmbSector.Text;
+            m.Latitud = txtLatitud.Text;
+            m.Longitud = txtLongitud.Text;
+            m.Elevacion = txtElevacion.Text;
+            m.Servicio = cmbServicio.Text;
+            m.Domicilio = txtDomicilio.Text;
         }
         private bool Validate()
         {
-            if (c.IdPlanta == "" || c.NumMedidor == "" || c.NumServicio == "" ||
-                c.TipoPlantas == "" || c.Estatus == "" || c.DescFunciones == "" ||
-                c.SubestacionKva==""||c.Colonia == "" || c.Sector == "" || c.Latitud == "" || c.Longitud == "" ||
-                c.Elevacion == "" || c.Servicio == "" || c.Domicilio == "")
+            if (m.IdPlanta == "" || m.NumMedidor == "" || m.NumServicio == "" ||
+                m.TipoPlantas == "" || m.Estatus == "" || m.DescFunciones == "" ||
+                m.SubestacionKva==""||m.Colonia == "" || m.Sector == "" || m.Latitud == "" || m.Longitud == "" ||
+                m.Elevacion == "" || m.Servicio == "" || m.Domicilio == "")
             {
                 return false;
             }
@@ -212,7 +212,7 @@ namespace ComapaSoftware.Vistas
 
         private void btnRegHttp_Click(object sender, EventArgs e)
         {
-            EnviarDatos();
+            //EnviarDatos();
         }
     }
 }

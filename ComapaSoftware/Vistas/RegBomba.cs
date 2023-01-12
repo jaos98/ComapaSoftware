@@ -8,8 +8,8 @@ namespace ComapaSoftware.Vistas
 
     public partial class RegBomba : Form
     {
+        ModeloBombas m = new ModeloBombas();
         ControladorBombas c = new ControladorBombas();
-        ModeloBombas modeloBombas = new ModeloBombas();
         private string idEstacion;
         public string IdEstacion
         {
@@ -30,7 +30,7 @@ namespace ComapaSoftware.Vistas
             for (int i = 1; i <= 10; i++)
             {
                 Console.WriteLine("Iteracion " + i);
-                if (!modeloBombas.ConsultarPosicion(IdEstacion, i))
+                if (!c.ConsultarPosicion(IdEstacion, i))
                 {
                     cmbPosicion.Text = i.ToString();
                     break;
@@ -54,7 +54,7 @@ namespace ComapaSoftware.Vistas
             cmbPlanta.Items.Clear();
             cmbEstacion.Text = "";
             cmbPlanta.Text = "";
-            foreach  (var item in modeloBombas.ObtenerIdPlantas(cmbCategoria.Text))
+            foreach  (var item in c.ObtenerIdPlantas(cmbCategoria.Text))
             {
                 cmbPlanta.Items.Add(item);
             }
@@ -64,7 +64,7 @@ namespace ComapaSoftware.Vistas
         {
             cmbEstacion.Items.Clear();
             cmbEstacion.Text = "";
-            foreach (var item in modeloBombas.ObtenerIdEstacion(cmbPlanta.Text))
+            foreach (var item in c.ObtenerIdEstacion(cmbPlanta.Text))
             {
                 cmbEstacion.Items.Add(item);
             }
@@ -81,7 +81,7 @@ namespace ComapaSoftware.Vistas
                 for (int i = 1; i <= 10; i++)
                 {
                     Console.WriteLine("Iteracion "+i);
-                    if (!modeloBombas.ConsultarPosicion(cmbEstacion.Text,i))
+                    if (!c.ConsultarPosicion(cmbEstacion.Text,i))
                     {
                         cmbPosicion.Text = i.ToString();
                         break;
@@ -101,9 +101,9 @@ namespace ComapaSoftware.Vistas
             DataView();
             if (Validar())
             {
-                if (modeloBombas.registrarInfoBomba(c.IdEstacion, c.Posicion, c.Marca, c.Tipo,
-                    c.Modelo, c.Hp, c.Voltaje, c.Diametro, c.Lps, c.Carga, c.Rpm, c.Estatus,
-                    c.Fpm, c.Observaciones)>0)
+                if (c.registrarInfoBomba(m.IdEstacion, m.Posicion, m.Marca, m.Tipo,
+                    m.Modelo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
+                    m.Fpm, m.Observaciones)>0)
                 {
                     MessageBox.Show("Se ha registrado todo correctamente");
                     Clean();
@@ -117,21 +117,21 @@ namespace ComapaSoftware.Vistas
         }
         private void DataView()
         {
-            c.IdBombas = cmbPlanta.Text;
-            c.IdEstacion = cmbEstacion.Text;
-            c.Posicion = Convert.ToInt32(cmbPosicion.Text);
-            c.Marca = txtMarca.Text;
-            c.Modelo = txtModelo.Text;
-            c.Tipo = cmbTipo.Text;
-            c.Hp = txtHp.Text;
-            c.Voltaje = txtVoltaje.Text;
-            c.Diametro = txtDiametro.Text;
-            c.Lps = txtGastolps.Text;
-            c.Carga = txtDinamica.Text;
-            c.Rpm = txtRpm.Text;
-            c.Estatus = cmbEstatus.Text;
-            c.Fpm = txtFpm.Text;
-            c.Observaciones = txtObservaciones.Text;
+            m.IdBombas = cmbPlanta.Text;
+            m.IdEstacion = cmbEstacion.Text;
+            m.Posicion = Convert.ToInt32(cmbPosicion.Text);
+            m.Marca = txtMarca.Text;
+            m.Modelo = txtModelo.Text;
+            m.Tipo = cmbTipo.Text;
+            m.Hp = txtHp.Text;
+            m.Voltaje = txtVoltaje.Text;
+            m.Diametro = txtDiametro.Text;
+            m.Lps = txtGastolps.Text;
+            m.Carga = txtDinamica.Text;
+            m.Rpm = txtRpm.Text;
+            m.Estatus = cmbEstatus.Text;
+            m.Fpm = txtFpm.Text;
+            m.Observaciones = txtObservaciones.Text;
         }
         private void Clean()
         { 
@@ -153,9 +153,9 @@ namespace ComapaSoftware.Vistas
         }
         private bool Validar()
         {
-            if (c.Marca == ""||c.Modelo ==""|| c.Tipo ==""||c.Hp ==""|| c.Voltaje ==""||
-                c.Diametro ==""||c.Lps ==""||c.Carga ==""||c.Rpm==""||c.Estatus==""||
-                c.Fpm ==""||c.Observaciones=="")
+            if (m.Marca == ""||m.Modelo ==""|| m.Tipo ==""||m.Hp ==""|| m.Voltaje ==""||
+                m.Diametro ==""||m.Lps ==""||m.Carga ==""||m.Rpm==""||m.Estatus==""||
+                m.Fpm ==""||m.Observaciones=="")
             {
                 MessageBox.Show("Porfavor ingrese todos los datos");
                 return false;
@@ -187,10 +187,10 @@ namespace ComapaSoftware.Vistas
 
             DataView();
             Console.WriteLine("Este es el id: "+IdEstacion);
-            Console.WriteLine(c.Posicion);
-            if (modeloBombas.registrarInfoBomba2(IdEstacion, c.Posicion, c.Marca, c.Tipo,
-                c.Modelo, c.Hp, c.Voltaje, c.Diametro, c.Lps, c.Carga, c.Rpm, c.Estatus,
-                c.Fpm, c.Observaciones) > 0)
+            Console.WriteLine(m.Posicion);
+            if (c.registrarInfoBomba2(IdEstacion, m.Posicion, m.Marca, m.Tipo,
+                m.Modelo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
+                m.Fpm, m.Observaciones) > 0)
             {
                 MessageBox.Show("Se ha registrado todo correctamente");
                 Clean();

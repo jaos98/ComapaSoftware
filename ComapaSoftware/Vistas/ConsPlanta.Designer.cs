@@ -1,6 +1,6 @@
 ﻿namespace ComapaSoftware.Vistas
 {
-    partial class FormResultado
+    partial class ConsPlanta
     {
         /// <summary>
         /// Required designer variable.
@@ -496,13 +496,13 @@
             this.dataGridView1.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowLeave);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // FormResultado
+            // ConsPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1102, 606);
             this.Controls.Add(this.panel1);
-            this.Name = "FormResultado";
+            this.Name = "ConsPlanta";
             this.Text = "Resultados de Busqueda";
             this.Load += new System.EventHandler(this.FormResultado_Load);
             this.panel1.ResumeLayout(false);

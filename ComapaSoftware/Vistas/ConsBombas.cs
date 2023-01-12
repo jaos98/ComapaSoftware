@@ -1,22 +1,15 @@
 ﻿using ComapaSoftware.Controlador;
 using ComapaSoftware.Modelo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
     public partial class ConsBombas : Form
     {
-        ControladorBombas c = new ControladorBombas();
         ModeloBombas m = new ModeloBombas();
-        
+        ControladorBombas c = new ControladorBombas();
+
         private string globalReceiver;
         public string GlobalReceiver
         {
@@ -37,11 +30,11 @@ namespace ComapaSoftware.Vistas
         }
         public void traerDatos()
         {
-            dgvBombas.DataSource = m.llevarDatos(globalReceiver);
+            dgvBombas.DataSource = c.llevarDatos(globalReceiver);
         }
         private void dgvBombas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -118,14 +111,14 @@ namespace ComapaSoftware.Vistas
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-           string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-            
+            string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+
             Console.WriteLine(posicion);
-            foreach(ControladorBombas list in m.GetUpdateInfo(posicion,GlobalReceiver))
+            foreach (ModeloBombas list in c.GetUpdateInfo(posicion, GlobalReceiver))
             {
                 lblIdbomba.Text = list.IdBombas;
                 lblEstacion.Text = list.IdEstacion;
-                lblPosicion.Text = list.Posicion.ToString(); 
+                lblPosicion.Text = list.Posicion.ToString();
                 lblMarca.Text = list.Marca;
                 lblModelo.Text = list.Modelo;
                 lblTipo.Text = list.Tipo;
@@ -151,8 +144,8 @@ namespace ComapaSoftware.Vistas
         private void button3_Click(object sender, EventArgs e)
         {
             string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-            Actbomba act = new Actbomba(posicion,GlobalReceiver);
-            Console.WriteLine("Aqui llego "+posicion+"-"+GlobalReceiver);
+            Actbomba act = new Actbomba(posicion, GlobalReceiver);
+            Console.WriteLine("Aqui llego " + posicion + "-" + GlobalReceiver);
             act.Show();
         }
 
@@ -164,7 +157,7 @@ namespace ComapaSoftware.Vistas
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string posicion = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-                m.Delete(GlobalReceiver,posicion);
+                c.Delete(GlobalReceiver, posicion);
                 traerDatos();
             }
         }

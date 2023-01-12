@@ -1,22 +1,15 @@
 ﻿using ComapaSoftware.Controlador;
 using ComapaSoftware.Modelo;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
-    
+
     public partial class Actbomba : Form
     {
-        ControladorBombas c = new ControladorBombas();
         ModeloBombas m = new ModeloBombas();
+        ControladorBombas c = new ControladorBombas();
         private string globalReceiver;
         private string globalPos;
         public string GlobalPos
@@ -29,14 +22,14 @@ namespace ComapaSoftware.Vistas
             get { return globalReceiver; }
             set { globalReceiver = value; }
         }
-        public Actbomba(string receiver,string receiver2)
+        public Actbomba(string receiver, string receiver2)
         {
             GlobalPos = receiver;
             GlobalReceiver = receiver2;
 
-            Console.WriteLine("Hasta aqui vamos bien "+GlobalPos+GlobalReceiver);
+            Console.WriteLine("Hasta aqui vamos bien " + GlobalPos + GlobalReceiver);
             InitializeComponent();
-            
+
         }
         public Actbomba()
         {
@@ -46,28 +39,28 @@ namespace ComapaSoftware.Vistas
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             GetInfo();
-            Console.WriteLine("Esta info esta bien, creo: "+GlobalReceiver + c.Posicion);
-                if (m.UpdateInfo(GlobalReceiver, c.Posicion, c.Marca, c.Modelo,
-                c.Tipo, c.Hp, c.Voltaje, c.Diametro, c.Lps, c.Carga, c.Rpm, c.Estatus,
-                c.Fpm, c.Observaciones) > 0)
-                {
+            Console.WriteLine("Esta info esta bien, creo: " + GlobalReceiver + m.Posicion);
+            if (c.UpdateInfo(GlobalReceiver, m.Posicion, m.Marca, m.Modelo,
+            m.Tipo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
+            m.Fpm, m.Observaciones) > 0)
+            {
                 MessageBox.Show("Actualizado correctamente");
                 Close();
-                }
+            }
             else
             {
                 MessageBox.Show("Ha ocurrido un error");
             }
-            
-        
-            
-            
+
+
+
+
 
         }
 
         private void Actbomba_Load(object sender, EventArgs e)
         {
-            foreach (ControladorBombas list in m.GetUpdateInfo(GlobalPos,GlobalReceiver))
+            foreach (ModeloBombas list in c.GetUpdateInfo(GlobalPos, GlobalReceiver))
             {
 
                 //lblEstacion.Text = list.IdEstacion;
@@ -88,19 +81,19 @@ namespace ComapaSoftware.Vistas
         }
         void GetInfo()
         {
-            c.Posicion = Convert.ToInt32(cmbPosicion.Text);
-            c.Marca = txtMarca.Text;
-            c.Modelo = txtModelo.Text;
-            c.Tipo = cmbTipo.Text;
-            c.Hp = txtHp.Text;
-            c.Voltaje = txtVoltaje.Text;
-            c.Diametro = txtDiametro.Text;
-            c.Lps = txtGastolps.Text;
-            c.Carga = txtDinamica.Text;
-            c.Rpm = txtRpm.Text;
-            c.Fpm = txtFpm.Text;
-            c.Estatus = cmbEstatus.Text;
-            c.Observaciones = txtObservaciones.Text;
+            m.Posicion = Convert.ToInt32(cmbPosicion.Text);
+            m.Marca = txtMarca.Text;
+            m.Modelo = txtModelo.Text;
+            m.Tipo = cmbTipo.Text;
+            m.Hp = txtHp.Text;
+            m.Voltaje = txtVoltaje.Text;
+            m.Diametro = txtDiametro.Text;
+            m.Lps = txtGastolps.Text;
+            m.Carga = txtDinamica.Text;
+            m.Rpm = txtRpm.Text;
+            m.Fpm = txtFpm.Text;
+            m.Estatus = cmbEstatus.Text;
+            m.Observaciones = txtObservaciones.Text;
 
         }
     }

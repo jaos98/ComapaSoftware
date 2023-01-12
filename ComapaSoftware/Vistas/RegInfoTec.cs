@@ -8,8 +8,8 @@ namespace ComapaSoftware.Vistas
 {
     public partial class RegInfoTec : Form
     {
-        ModeloFichaTecnica model = new ModeloFichaTecnica();
-        ControladorInfo c = new ControladorInfo();
+        ControladorFicha c = new ControladorFicha();
+        ModeloInfo m = new ModeloInfo();
         public RegInfoTec()
         {
             InitializeComponent();
@@ -24,9 +24,9 @@ namespace ComapaSoftware.Vistas
             if (Validate())
             {
                 MessageBox.Show("Todos los datos son correctos");
-                if (model.registrarInfo(c.IdPlantas,c.IdEstacion,c.Nombre, c.CapEquipos, c.OperacionMinima,
-                    c.EquiposInstalados, c.Tipo, c.GarantOperacion, c.GastoPromedio,
-                    c.GastoInstalado, c.Servicio, c.Observaciones) > 0)
+                if (c.registrarInfo(m.IdPlantas,m.IdEstacion,m.Nombre, m.CapEquipos, m.OperacionMinima,
+                    m.EquiposInstalados, m.Tipo, m.GarantOperacion, m.GastoPromedio,
+                    m.GastoInstalado, m.Servicio, m.Observaciones) > 0)
                 {
                     MessageBox.Show("Informacion registrada");
                     Clean();    
@@ -53,7 +53,7 @@ namespace ComapaSoftware.Vistas
                 cmbId.Items.Clear();
                 string catString = cmbCategoria.Text;
                 MessageBox.Show(catString);
-                foreach (var item in model.obtenerId(catString))
+                foreach (var item in c.obtenerId(catString))
                 {
                     cmbId.Refresh();
                     cmbId.Items.Add(item);
@@ -78,10 +78,10 @@ namespace ComapaSoftware.Vistas
         }
         new bool Validate()
         {
-            if (c.IdPlantas == ""||c.IdEstacion =="" || c.Nombre ==""|| c.CapEquipos =="" ||c.OperacionMinima==""||
-                c.EquiposInstalados==""||c.Tipo==""||c.GarantOperacion==""||
-                c.GastoPromedio==""||c.GastoInstalado==""||c.Servicio==""||
-                c.Observaciones=="")
+            if (m.IdPlantas == ""||m.IdEstacion =="" || m.Nombre ==""|| m.CapEquipos =="" ||m.OperacionMinima==""||
+                m.EquiposInstalados==""||m.Tipo==""||m.GarantOperacion==""||
+                m.GastoPromedio==""||m.GastoInstalado==""||m.Servicio==""||
+                m.Observaciones=="")
             {
                 return false;
             }
@@ -117,18 +117,18 @@ namespace ComapaSoftware.Vistas
         }
         private void DataView()
         {
-            c.IdPlantas = cmbId.Text;
-            c.IdEstacion = labelIdFicha.Text;
-            c.Nombre = txtNombre.Text;
-            c.CapEquipos = txtCap.Text;
-            c.OperacionMinima = txtOpmin.Text;
-            c.EquiposInstalados = txtEquinst.Text;
-            c.Tipo = cmbTipo.Text;
-            c.GarantOperacion = txtGarant.Text;
-            c.GastoPromedio = txtProm.Text;
-            c.GastoInstalado = txtInst.Text;
-            c.Servicio = cmbServicio.Text;
-            c.Observaciones = txtObservacion.Text;
+            m.IdPlantas = cmbId.Text;
+            m.IdEstacion = labelIdFicha.Text;
+            m.Nombre = txtNombre.Text;
+            m.CapEquipos = txtCap.Text;
+            m.OperacionMinima = txtOpmin.Text;
+            m.EquiposInstalados = txtEquinst.Text;
+            m.Tipo = cmbTipo.Text;
+            m.GarantOperacion = txtGarant.Text;
+            m.GastoPromedio = txtProm.Text;
+            m.GastoInstalado = txtInst.Text;
+            m.Servicio = cmbServicio.Text;
+            m.Observaciones = txtObservacion.Text;
         }
         private void txtIdFicha_TextChanged(object sender, EventArgs e)
         {

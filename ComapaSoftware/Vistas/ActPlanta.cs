@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using ComapaSoftware.Controlador;
 using ComapaSoftware.Modelo;
-using ComapaSoftware.Controlador;
+using System;
+using System.Windows.Forms;
 namespace ComapaSoftware.Vistas
 {
     public partial class ActPlanta : Form
     {
-        ModeloPlantas m = new ModeloPlantas();
         ControladorPlantas c = new ControladorPlantas();
+        ModeloPlantas m = new ModeloPlantas();
         private string globalReceiver;
-        public string GlobalReceiver{
+        public string GlobalReceiver
+        {
             get { return globalReceiver; }
             set { globalReceiver = value; }
-            }
+        }
         public ActPlanta(string globalReceiver)
         {
             this.globalReceiver = globalReceiver;
@@ -29,11 +23,11 @@ namespace ComapaSoftware.Vistas
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbColonia.Enabled = false;
-            foreach (var item in m.consultarSector())
+            foreach (var item in c.consultarSector())
             {
                 cmbSector.Items.Add(item);
             }
-            foreach  (ControladorPlantas list in m.GetUpdateInfo(GlobalReceiver))
+            foreach (ModeloPlantas list in c.GetUpdateInfo(GlobalReceiver))
             {
                 txtId.Text = list.IdPlanta;
                 txtNm.Text = list.NumMedidor;
@@ -51,14 +45,14 @@ namespace ComapaSoftware.Vistas
                 cmbServicio.Text = list.Servicio;
                 txtDom.Text = list.Domicilio;
             }
-            }
+        }
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             GetData();
-            if (m.UpdateInfo(c.IdPlanta, c.NumMedidor, c.NumServicio, c.TipoPlantas, c.Estatus,
-                 c.DescFunciones, c.SubestacionKva, c.Colonia, c.Sector, c.Latitud,
-                 c.Longitud, c.Elevacion, c.Servicio, c.Domicilio)>0)
+            if (c.UpdateInfo(m.IdPlanta, m.NumMedidor, m.NumServicio, m.TipoPlantas, m.Estatus,
+                 m.DescFunciones, m.SubestacionKva, m.Colonia, m.Sector, m.Latitud,
+                 m.Longitud, m.Elevacion, m.Servicio, m.Domicilio) > 0)
             {
                 MessageBox.Show("Actualizado con exito!");
                 this.Close();
@@ -67,7 +61,7 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("Algo salio mal, por favor revise la informacion");
             }
-            
+
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -76,20 +70,20 @@ namespace ComapaSoftware.Vistas
         }
         private void GetData()
         {
-            c.IdPlanta = txtId.Text;
-            c.NumMedidor = txtNm.Text;
-            c.NumServicio = txtSer.Text;
-            c.TipoPlantas = cmbTipo.Text;
-            c.Estatus = cmbEstatus.Text;
-            c.DescFunciones = txtDesc.Text;
-            c.SubestacionKva = txtKva.Text;
-            c.Colonia = cmbColonia.Text;
-            c.Sector = cmbSector.Text;
-            c.Latitud = txtLat.Text;
-            c.Longitud = txtLong.Text;
-            c.Elevacion = txtEle.Text;
-            c.Servicio = cmbServicio.Text;
-            c.Domicilio = txtDom.Text;
+            m.IdPlanta = txtId.Text;
+            m.NumMedidor = txtNm.Text;
+            m.NumServicio = txtSer.Text;
+            m.TipoPlantas = cmbTipo.Text;
+            m.Estatus = cmbEstatus.Text;
+            m.DescFunciones = txtDesc.Text;
+            m.SubestacionKva = txtKva.Text;
+            m.Colonia = cmbColonia.Text;
+            m.Sector = cmbSector.Text;
+            m.Latitud = txtLat.Text;
+            m.Longitud = txtLong.Text;
+            m.Elevacion = txtEle.Text;
+            m.Servicio = cmbServicio.Text;
+            m.Domicilio = txtDom.Text;
         }
 
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
@@ -103,9 +97,9 @@ namespace ComapaSoftware.Vistas
             {
                 cmbColonia.Items.Clear();
                 cmbColonia.Enabled = true;
-                string resultId = m.obtenerID(cmbSector.Text);
+                string resultId = c.obtenerID(cmbSector.Text);
                 cmbColonia.Enabled = true;
-                foreach (var item in m.compararDatos(resultId))
+                foreach (var item in c.compararDatos(resultId))
                 {
                     cmbColonia.Items.Add(item);
                 }
