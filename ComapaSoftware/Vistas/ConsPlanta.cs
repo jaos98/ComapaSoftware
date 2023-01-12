@@ -1,4 +1,5 @@
 ﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using MySql.Data.MySqlClient;
 using System;
@@ -13,6 +14,7 @@ namespace ComapaSoftware.Vistas
     {
         //INSTANCIAS Y VARIABLES GLOBALES
         ControladorPlantas c = new ControladorPlantas();
+        Plantas p = new Plantas();
         Atts att = new Atts();
         string globalReceiver;
         public string GlobalReceiver
@@ -92,7 +94,7 @@ namespace ComapaSoftware.Vistas
         public void traerDatos()
         {
             //PRUEBA HTTP
-            //dataGridView1.DataSource = c.llevarDatosHttp(globalReceiver);
+            //dataGridView1.DataSource = p.llevarDatosHttp(globalReceiver);
 
 
             //si funciona, devolver a la normalidad

@@ -171,15 +171,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="Http\Bombas.cs" />
+    <Compile Include="Http\Estaciones.cs" />
     <Compile Include="Modelo\ModeloBombas.cs" />
-    <Compile Include="Modelo\ModeloInfo.cs" />
+    <Compile Include="Modelo\ModeloEstaciones.cs" />
     <Compile Include="Modelo\ModeloPlantas.cs" />
-    <Compile Include="Http\ConectionBdd.cs" />
-    <Compile Include="Http\InfoHttp.cs" />
-    <Compile Include="Http\PlantasHttp.cs" />
-    <Compile Include="Http\PostUser.cs" />
+    <Compile Include="Http\Plantas.cs" />
     <Compile Include="Controlador\ControladorBombas.cs" />
-    <Compile Include="Controlador\ControladorInfo.cs" />
+    <Compile Include="Controlador\ControladorEstaciones.cs" />
     <Compile Include="Controlador\ControladorPlantas.cs" />
     <Compile Include="Vistas\ActInfoTec.cs">
       <SubType>Form</SubType>

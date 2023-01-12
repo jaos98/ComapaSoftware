@@ -1,10 +1,7 @@
-﻿using ComapaSoftware.Http;
-using ComapaSoftware.Vistas;
-using Newtonsoft.Json;
+﻿using ComapaSoftware.Vistas;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace ComapaSoftware
@@ -81,30 +78,7 @@ namespace ComapaSoftware
             }
 
 
-                //string url = "http://localhost/api/validation.php";
-                //var client = new HttpClient();
-                //PostUser post = new PostUser()
-                //{
-                //    CuentaUsuario = "comapa",
-                //    ContraseñaUsuario = "prueba"
 
-                //};
-
-                //var data = System.Text.Json.JsonSerializer.Serialize<PostUser>(post);
-                //HttpContent content = new StringContent(data, System.Text.Encoding.UTF8, "application/json");
-                //var httpResponse = await client.PostAsync(url, content);
-                //var result = await httpResponse.Content.ReadAsStringAsync();
-                //Console.WriteLine(result);
-                //if (httpResponse.IsSuccessStatusCode)
-                //{
-                //    var resultado = await httpResponse.Content.ReadAsStringAsync();
-                //    Console.WriteLine(result);
-
-                //}
-                //else
-                //{
-                //    Console.WriteLine("Algo ha salido mal");
-                //}
-            }
+        }
     }
 }

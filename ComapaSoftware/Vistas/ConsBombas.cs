@@ -74,6 +74,7 @@ namespace ComapaSoftware.Vistas
             label27.Hide();
             btnRegresar.Hide();
             richTextBox1.Hide();
+            lblIdbomba.Hide();
         }
         void ShowElements()
         {
@@ -107,6 +108,7 @@ namespace ComapaSoftware.Vistas
             label27.Show();
             btnRegresar.Show();
             richTextBox1.Show();
+            lblIdbomba.Show();
         }
 
         private void btnInfo_Click(object sender, EventArgs e)
