@@ -52,17 +52,17 @@ namespace ComapaSoftware.Vistas
             if (e.RowIndex >= 0)
             {
                 //RECIBE ID ESTACION
-                string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                this.Close();
-                ConsBombas consBombas = new ConsBombas(result);
+                string idEstacion = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                Close();
+                ConsBombas consBombas = new ConsBombas(idEstacion);
                 consBombas.Show();
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.Close();
-            FormPanel controlPanel = new FormPanel();
+            Close();
+            ControlPanel controlPanel = new ControlPanel();
             controlPanel.Show();
         }
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -77,9 +77,9 @@ namespace ComapaSoftware.Vistas
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             //RECIBE ID ESTACION
-            string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+            string idEstacion = dataGridView1.CurrentRow.Cells[1].Value.ToString();
             Close();
-            ConsBombas consBombas = new ConsBombas(result);
+            ConsBombas consBombas = new ConsBombas(idEstacion);
             consBombas.Show();
         }
         class AttsInfo

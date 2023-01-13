@@ -1,6 +1,6 @@
 ﻿namespace ComapaSoftware.Vistas
 {
-    partial class FormPanel
+    partial class ControlPanel
     {
         /// <summary>
         /// Required designer variable.
@@ -174,13 +174,13 @@
             this.btnAgregar.UseVisualStyleBackColor = true;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // FormPanel
+            // ControlPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(469, 450);
             this.Controls.Add(this.tabControl1);
-            this.Name = "FormPanel";
+            this.Name = "ControlPanel";
             this.Text = "Panel de Control";
             this.Load += new System.EventHandler(this.FormPanel_Load);
             this.tabControl1.ResumeLayout(false);

@@ -3,14 +3,14 @@ using System;
 using System.Windows.Forms;
 namespace ComapaSoftware.Vistas
 {
-    public partial class FormPanel : Form
+    public partial class ControlPanel : Form
     {
         //DECLARACION DE VARIABLES A UTILIZAR EN LA CLASE FormPanel
         MySqlCommand Query = new MySqlCommand();
         MySqlConnection Conn;
         MySqlDataReader consultar;
         //ACCESO PUBLICO A LA CLASE FormPanel
-        public FormPanel()
+        public ControlPanel()
         {
             InitializeComponent();
         }

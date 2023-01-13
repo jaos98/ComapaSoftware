@@ -55,6 +55,25 @@ namespace ComapaSoftware.Http
                 return dt;
             }
         }
+        //
+        public List<ModeloPlantas> getDatosHttp(string tipoPlanta)
+        {
+            List<ModeloPlantas> list = new List<ModeloPlantas>();
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("http://localhost");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("/api/getPlantas.php?TipoPlanta=" + tipoPlanta).Result;
+                response.EnsureSuccessStatusCode();
+                var result = response.Content.ReadAsStringAsync().Result; ;
+                List<ModeloPlantas> json = JsonSerializer.Deserialize<List<ModeloPlantas>>(result);
+
+                return json;
+            }
+        }
         //REGISTRO HTTP REQUEST
         public int insertarInfoHttp(string IdPlantas, string IdEstacion, string Nombre, string CapEquipos, string OperacionMinima, string EquiposInstalados,
             string Tipo, string GarantOperacion, string GastoPromedio, string GastoInstalado, string Servicio, string Observaciones)
@@ -95,5 +114,7 @@ namespace ComapaSoftware.Http
 
             }
         }
+
+        //
     }
 }

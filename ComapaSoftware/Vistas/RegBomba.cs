@@ -17,9 +17,9 @@ namespace ComapaSoftware.Vistas
             set { idEstacion = value; }
         }
 
-        public RegBomba(string receiver)
+        public RegBomba(string idEstacion)
         {
-            IdEstacion = receiver;
+            IdEstacion = idEstacion;
             InitializeComponent();
             cmbCategoria.Enabled = false;
             cmbEstacion.Enabled = false;
@@ -96,7 +96,7 @@ namespace ComapaSoftware.Vistas
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnReg_Click(object sender, EventArgs e)
         {
             DataView();
             if (Validar())
@@ -170,15 +170,15 @@ namespace ComapaSoftware.Vistas
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FormPanel control = new FormPanel();
-            this.Close();
+            ControlPanel control = new ControlPanel();
+            Close();
             control.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            FormPanel control = new FormPanel();
-            this.Close();
+            ControlPanel control = new ControlPanel();
+            Close();
             control.Show();
         }
 

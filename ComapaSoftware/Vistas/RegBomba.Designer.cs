@@ -354,13 +354,13 @@
             // 
             // btnReg
             // 
-            this.btnReg.Location = new System.Drawing.Point(35, 352);
+            this.btnReg.Location = new System.Drawing.Point(35, 351);
             this.btnReg.Name = "btnReg";
             this.btnReg.Size = new System.Drawing.Size(157, 23);
             this.btnReg.TabIndex = 22;
             this.btnReg.Text = "Registrar Bomba";
             this.btnReg.UseVisualStyleBackColor = true;
-            this.btnReg.Click += new System.EventHandler(this.button1_Click);
+            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // btnReg2
             // 

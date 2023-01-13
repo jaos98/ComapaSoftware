@@ -31,7 +31,7 @@
             this.dgvBombas = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -98,15 +98,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // btnActualizar
             // 
-            this.button3.Location = new System.Drawing.Point(238, 415);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(202, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Corregir datos";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnActualizar.Location = new System.Drawing.Point(238, 415);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(202, 23);
+            this.btnActualizar.TabIndex = 3;
+            this.btnActualizar.Text = "Corregir datos";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // button4
             // 
@@ -125,6 +125,7 @@
             this.btnVolver.TabIndex = 5;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // label1
             // 
@@ -444,7 +445,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvBombas);
@@ -462,7 +463,7 @@
         private System.Windows.Forms.DataGridView dgvBombas;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnActualizar;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.Label label1;

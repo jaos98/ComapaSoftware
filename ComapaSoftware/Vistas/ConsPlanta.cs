@@ -58,7 +58,7 @@ namespace ComapaSoftware.Vistas
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-            FormPanel formPanel = new FormPanel();
+            ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE MOSTRAR EN PANTALLA LA INFORMACION GENERAL

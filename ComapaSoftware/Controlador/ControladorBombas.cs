@@ -175,11 +175,9 @@ namespace ComapaSoftware.Modelo
             return false;
         }
 
-        public DataTable llevarDatos(string globalReceiver)
+        public DataTable llevarDatos(string IdEstacion)
         {
-            string sql = "SELECT `Posicion`, `Marca`, `Modelo`, " +
-                "`Tipo`, `Hp`, `Voltaje`, `Diametro`, `Lps`, `Carga`, `Rpm`, `Estatus`, " +
-                "`Fpm`, `Observaciones` FROM bombas WHERE IdEstacion = '" + globalReceiver + "' ORDER BY Posicion";
+            string sql = "SELECT * FROM bombas WHERE IdEstacion = '" + IdEstacion + "' ORDER BY Posicion";
             conectarBase();
             try
             {
@@ -198,16 +196,13 @@ namespace ComapaSoftware.Modelo
             }
         }
         //ACTUALIZAR INFORMACION BOMBAS (UPDATE)
-        public List<ModeloBombas> GetUpdateInfo(string pos,string estacion)
+        public List<ModeloBombas> GetUpdateInfo(string idBombas)
         {
             List<ModeloBombas> list = new List<ModeloBombas>();
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT `IdBombas`,`IdEstacion`,`Posicion`, `Marca`, " +
-                    "`Modelo`, `Tipo`, `Hp`, `Voltaje`, `Diametro`, " +
-                    "`Lps`, `Carga`, `Rpm`, `Estatus`, `Fpm`, " +
-                    "`Observaciones` FROM bombas WHERE Posicion= '" + pos + "'AND IdEstacion = '"+estacion+"'";
+                Query.CommandText = "SELECT * FROM bombas WHERE IdBombas="+idBombas+"";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
 
@@ -228,7 +223,7 @@ namespace ComapaSoftware.Modelo
             return list;
         }
         //ACTUALIZAR INFORMACION UPDATE
-        public int UpdateInfo(string idEstacion,int posicion, string marca,
+        public int UpdateInfo(string idBombas,int posicion, string marca,
            string modelo, string tipo, string hp, string voltaje,
            string diametro, string lps, string carga, string rpm,
            string estatus,string fpm,string observaciones)
@@ -239,11 +234,11 @@ namespace ComapaSoftware.Modelo
                 "`Tipo`=@tipo,`Hp`=@hp,`Voltaje`=@voltaje," +
                 "`Diametro`=@diametro,`Lps`=@lps,`Carga`=@carga," +
                 "`Rpm`=@rpm,`Estatus`=@estatus,`Fpm`=@fpm," +
-                "`Observaciones`=@observaciones WHERE Posicion ='"+posicion+"'AND IdEstacion = '"+idEstacion+"'";
+                "`Observaciones`=@observaciones WHERE IdBombas ="+idBombas;
 
             try
             {
-                Console.WriteLine("Entro al metodo: "+posicion+idEstacion);
+                Console.WriteLine("Entro al metodo: "+idBombas);
                 Conn.Close();
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
@@ -276,12 +271,12 @@ namespace ComapaSoftware.Modelo
             }
         }
         //ELIMINAR REGISTROS
-        public bool Delete(string estacion, string posicion)
+        public bool Delete(string idBombas)
         {
             conectarBase();
             try
             {
-                Query.CommandText = "DELETE FROM `bombas` WHERE IdEstacion = '" + estacion + "' AND Posicion= '" + posicion + "' ";
+                Query.CommandText = "DELETE FROM `bombas` WHERE IdBombas = "+ idBombas;
                 Query.Connection = Conn;
                 if (Query.ExecuteNonQuery() > 0)
                 {

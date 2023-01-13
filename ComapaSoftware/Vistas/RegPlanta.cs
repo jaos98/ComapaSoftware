@@ -62,7 +62,7 @@ namespace ComapaSoftware.Vistas
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-            FormPanel formPanel = new FormPanel();
+            ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)

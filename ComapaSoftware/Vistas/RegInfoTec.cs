@@ -90,13 +90,13 @@ namespace ComapaSoftware.Vistas
         private void btnVolver_Click(object sender, EventArgs e)
         {
             this.Close();
-            FormPanel formPanel = new FormPanel();
+            ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
         private void btnVolver2_Click(object sender, EventArgs e)
         {
             this.Close();
-            FormPanel formPanel = new FormPanel();
+            ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
 

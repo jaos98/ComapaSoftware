@@ -10,24 +10,19 @@ namespace ComapaSoftware.Vistas
     {
         ModeloBombas m = new ModeloBombas();
         ControladorBombas c = new ControladorBombas();
-        private string globalReceiver;
-        private string globalPos;
-        public string GlobalPos
-        {
-            get { return globalPos; }
-            set { globalPos = value; }
-        }
-        public string GlobalReceiver
-        {
-            get { return globalReceiver; }
-            set { globalReceiver = value; }
-        }
-        public Actbomba(string receiver, string receiver2)
-        {
-            GlobalPos = receiver;
-            GlobalReceiver = receiver2;
+        private string idBomba;
 
-            Console.WriteLine("Hasta aqui vamos bien " + GlobalPos + GlobalReceiver);
+        public string IdBomba
+        {
+            get { return idBomba; }
+            set { idBomba = value; }
+        }
+        public Actbomba(string idBomba)
+        {
+            IdBomba = idBomba;
+            
+
+            Console.WriteLine("Hasta aqui vamos bien " +IdBomba);
             InitializeComponent();
 
         }
@@ -39,8 +34,8 @@ namespace ComapaSoftware.Vistas
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             GetInfo();
-            Console.WriteLine("Esta info esta bien, creo: " + GlobalReceiver + m.Posicion);
-            if (c.UpdateInfo(GlobalReceiver, m.Posicion, m.Marca, m.Modelo,
+            //Console.WriteLine("Esta info esta bien, creo: " + GlobalReceiver + m.Posicion);
+            if (c.UpdateInfo(IdBomba,m.Posicion, m.Marca, m.Modelo,
             m.Tipo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
             m.Fpm, m.Observaciones) > 0)
             {
@@ -60,10 +55,11 @@ namespace ComapaSoftware.Vistas
 
         private void Actbomba_Load(object sender, EventArgs e)
         {
-            foreach (ModeloBombas list in c.GetUpdateInfo(GlobalPos, GlobalReceiver))
+            foreach (ModeloBombas list in c.GetUpdateInfo(IdBomba))
             {
 
                 //lblEstacion.Text = list.IdEstacion;
+
                 cmbPosicion.Text = list.Posicion.ToString();
                 txtMarca.Text = list.Marca;
                 txtModelo.Text = list.Modelo;

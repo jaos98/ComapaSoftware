@@ -29,7 +29,7 @@ namespace ComapaSoftware
                 {
                     MessageBox.Show("Bienvenido");
                     Close();
-                    FormPanel formPanel = new FormPanel();
+                    ControlPanel formPanel = new ControlPanel();
                     formPanel.Show();
                 }
                 else
@@ -67,7 +67,7 @@ namespace ComapaSoftware
                 {
                     MessageBox.Show("¡Bienvenido!");
                     Close();
-                    FormPanel formPanel = new FormPanel();
+                    ControlPanel formPanel = new ControlPanel();
                     formPanel.Show();
                 }
                 else
