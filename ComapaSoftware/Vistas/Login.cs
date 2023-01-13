@@ -1,4 +1,5 @@
-﻿using ComapaSoftware.Vistas;
+﻿using ComapaSoftware.Http;
+using ComapaSoftware.Vistas;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -8,6 +9,8 @@ namespace ComapaSoftware
 {
     public partial class FormLogin : Form
     {
+        Usuarios u = new Usuarios();
+
         public FormLogin()
         {
             InitializeComponent();
@@ -53,29 +56,48 @@ namespace ComapaSoftware
         //HTTP
         public async Task ComprobarInicio()
         {
-            using (var client = new HttpClient())
-            {
-                var values = new Dictionary<string, string> {
-                    {"CuentaUsuario", txtUsuario.Text },
-                    {"ContraseñaUsuario", txtContraseña.Text }
-            };
-                var content = new FormUrlEncodedContent(values);
-                var response = await client.PostAsync("http://localhost/api/validation.php", content);
-                var responseString = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseString);
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("¡Bienvenido!");
-                    Close();
-                    ControlPanel formPanel = new ControlPanel();
-                    formPanel.Show();
-                }
-                else
-                {
-                    MessageBox.Show("No se ha encontrado el usuario o no esta conectado a internet");
-                }
 
+
+            if (u.validarSesionHttp(u.Usuario = txtUsuario.Text,
+            u.Password = txtContraseña.Text))
+            {
+                MessageBox.Show("TodoBien");
             }
+            else
+            {
+                MessageBox.Show("Salio Mal");
+            }
+
+
+
+
+
+
+
+
+            //using (var client = new HttpClient())
+            //{
+            //    var values = new Dictionary<string, string> {
+            //        {"CuentaUsuario", txtUsuario.Text },
+            //        {"ContraseñaUsuario", txtContraseña.Text }
+            //};
+            //    var content = new FormUrlEncodedContent(values);
+            //    var response = await client.PostAsync("http://localhost/api/validation.php", content);
+            //    var responseString = await response.Content.ReadAsStringAsync();
+            //    Console.WriteLine(responseString);
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        MessageBox.Show("¡Bienvenido!");
+            //        Close();
+            //        ControlPanel formPanel = new ControlPanel();
+            //        formPanel.Show();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("No se ha encontrado el usuario o no esta conectado a internet");
+            //    }
+
+            //}
 
 
 

@@ -1,4 +1,5 @@
 ﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Windows.Forms;
@@ -8,6 +9,8 @@ namespace ComapaSoftware.Vistas
     {
         ControladorPlantas c = new ControladorPlantas();
         ModeloPlantas m = new ModeloPlantas();
+        Plantas p = new Plantas();
+        ModelsPlantas mp = new ModelsPlantas();
         private string globalReceiver;
         public string GlobalReceiver
         {
@@ -22,29 +25,48 @@ namespace ComapaSoftware.Vistas
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            cmbColonia.Enabled = false;
-            foreach (var item in c.consultarSector())
+            if (p.getDatosHttp(globalReceiver))
             {
-                cmbSector.Items.Add(item);
+                txtId.Text = p.mp.IdPlantas;
+                txtNm.Text = p.mp.NumMedidor;
+                txtSer.Text = p.mp.NumServicio;
+                cmbTipo.Text = p.mp.TipoPlantas;
+                cmbEstatus.Text = p.mp.Estatus;
+                txtDesc.Text = p.mp.DescFunciones;
+                txtKva.Text = p.mp.SubestacionKva;
+                cmbSector.Text = p.mp.Sector;
+                cmbColonia.Text = p.mp.Colonia;
+                cmbSector.Text = p.mp.Sector;
+                txtLat.Text = p.mp.Latitud;
+                txtLong.Text = p.mp.Longitud;
+                txtEle.Text = p.mp.Elevacion;
+                cmbServicio.Text = p.mp.Servicio;
+                txtDom.Text = p.mp.Domicilio;
             }
-            foreach (ModeloPlantas list in c.GetUpdateInfo(GlobalReceiver))
-            {
-                txtId.Text = list.IdPlanta;
-                txtNm.Text = list.NumMedidor;
-                txtSer.Text = list.NumServicio;
-                cmbTipo.Text = list.TipoPlantas;
-                cmbEstatus.Text = list.Estatus;
-                txtDesc.Text = list.DescFunciones;
-                txtKva.Text = list.SubestacionKva;
-                cmbSector.Text = list.Sector;
-                cmbColonia.Text = list.Colonia;
-                cmbSector.Text = list.Sector;
-                txtLat.Text = list.Latitud;
-                txtLong.Text = list.Longitud;
-                txtEle.Text = list.Elevacion;
-                cmbServicio.Text = list.Servicio;
-                txtDom.Text = list.Domicilio;
-            }
+
+            //cmbColonia.Enabled = false;
+            //foreach (var item in c.consultarSector())
+            //{
+            //    cmbSector.Items.Add(item);
+            //}
+            //foreach (ModeloPlantas list in c.GetUpdateInfo(GlobalReceiver))
+            //{
+            //    txtId.Text = list.IdPlanta;
+            //    txtNm.Text = list.NumMedidor;
+            //    txtSer.Text = list.NumServicio;
+            //    cmbTipo.Text = list.TipoPlantas;
+            //    cmbEstatus.Text = list.Estatus;
+            //    txtDesc.Text = list.DescFunciones;
+            //    txtKva.Text = list.SubestacionKva;
+            //    cmbSector.Text = list.Sector;
+            //    cmbColonia.Text = list.Colonia;
+            //    cmbSector.Text = list.Sector;
+            //    txtLat.Text = list.Latitud;
+            //    txtLong.Text = list.Longitud;
+            //    txtEle.Text = list.Elevacion;
+            //    cmbServicio.Text = list.Servicio;
+            //    txtDom.Text = list.Domicilio;
+            //}
         }
 
         private void btnActualizar_Click(object sender, EventArgs e)

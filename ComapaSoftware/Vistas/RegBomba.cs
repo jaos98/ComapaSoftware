@@ -1,4 +1,5 @@
 ﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,8 @@ namespace ComapaSoftware.Vistas
     {
         ModeloBombas m = new ModeloBombas();
         ControladorBombas c = new ControladorBombas();
+        Bombas b = new Bombas();
+        ModelBombas mb = new ModelBombas();
         private string idEstacion;
         public string IdEstacion
         {
@@ -98,12 +101,28 @@ namespace ComapaSoftware.Vistas
 
         private void btnReg_Click(object sender, EventArgs e)
         {
-            DataView();
+            //DataView();
+            //if (Validar())
+            //{
+            //    if (b.insertarPlantaHttp(m.IdEstacion, m.Posicion, m.Marca, m.Tipo,
+            //        m.Modelo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
+            //        m.Fpm, m.Observaciones)>0)
+            //    {
+            //        MessageBox.Show("Se ha registrado todo correctamente");
+            //        Clean();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Ha sucedido un error");
+            //    }
+
+            //}
+            DataHttp();
             if (Validar())
             {
-                if (c.registrarInfoBomba(m.IdEstacion, m.Posicion, m.Marca, m.Tipo,
-                    m.Modelo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
-                    m.Fpm, m.Observaciones)>0)
+                if (b.insertarBombaHttp(mb.IdEstacion, mb.Posicion, mb.Marca, mb.Tipo,
+                    mb.Modelo, mb.HP, mb.Voltaje, mb.DiametroDescarga, mb.GastoLPS, mb.CargaDinamica, mb.RPM, mb.Estatus,
+                    mb.FPM, mb.Observaciones) > 0)
                 {
                     MessageBox.Show("Se ha registrado todo correctamente");
                     Clean();
@@ -112,7 +131,7 @@ namespace ComapaSoftware.Vistas
                 {
                     MessageBox.Show("Ha sucedido un error");
                 }
-                
+
             }
         }
         private void DataView()
@@ -132,6 +151,23 @@ namespace ComapaSoftware.Vistas
             m.Estatus = cmbEstatus.Text;
             m.Fpm = txtFpm.Text;
             m.Observaciones = txtObservaciones.Text;
+        }
+        public void DataHttp()
+        {
+            mb.IdEstacion = cmbEstacion.Text;
+            mb.Posicion = Convert.ToInt32(cmbPosicion.Text);
+            mb.Marca = txtMarca.Text;
+            mb.Modelo = txtModelo.Text;
+            mb.Tipo = cmbTipo.Text;
+            mb.HP = txtHp.Text;
+            mb.Voltaje = txtVoltaje.Text;
+            mb.DiametroDescarga = txtDiametro.Text;
+            mb.GastoLPS = txtGastolps.Text;
+            mb.CargaDinamica = txtDinamica.Text;
+            mb.RPM = txtRpm.Text;
+            mb.Estatus = cmbEstatus.Text;
+            mb.FPM = txtFpm.Text;
+            mb.Observaciones = txtObservaciones.Text;
         }
         private void Clean()
         { 

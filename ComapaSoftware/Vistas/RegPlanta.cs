@@ -1,4 +1,5 @@
 ﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ namespace ComapaSoftware.Vistas
     {
         ModeloPlantas m = new ModeloPlantas();
         ControladorPlantas c = new ControladorPlantas();
+        ModelsPlantas mp = new ModelsPlantas();
         public FormPlanta()
         {
             InitializeComponent();
@@ -106,6 +108,24 @@ namespace ComapaSoftware.Vistas
         {
             txtLongitud.Select(0, 0);
         }
+        public void GetInfoHttp()
+        {
+            
+            mp.IdPlantas = txtPlanta.Text.Trim();
+            mp.NumMedidor = txtNumMed.Text.Trim();
+            mp.NumServicio = txtNumServ.Text.Trim();
+            mp.TipoPlantas = cmbTipoPlanta.Text;
+            mp.Estatus = cmbEstatus.Text;
+            mp.DescFunciones = txtDescFunciones.Text;
+            mp.SubestacionKva = txtKva.Text;
+            mp.Colonia = cmbColonia.Text;
+            mp.Sector = cmbSector.Text;
+            mp.Latitud = txtLatitud.Text;
+            mp.Longitud = txtLongitud.Text;
+            mp.Elevacion = txtElevacion.Text;
+            mp.Servicio = cmbServicio.Text;
+            mp.Domicilio = txtDomicilio.Text;
+        }
         public void GetInfo()
         {
             m.IdPlanta = txtPlanta.Text.Trim();
@@ -161,58 +181,21 @@ namespace ComapaSoftware.Vistas
         {
 
         }
-
-
-        //HTTP REGISTRO
-        //public async Task EnviarDatos()
-        //{
-        //    GetInfo();
-        //    if (Validate())
-        //    {
-
-        //        using (var client = new HttpClient())
-        //        {
-        //            var values = new Dictionary<string, string> {
-        //            {"IdPlantas", c.IdPlanta },
-        //            {"NumMedidor", c.NumMedidor },
-        //            {"NumServicio",c.NumServicio },
-        //            {"TipoPlantas",c.TipoPlantas },
-        //            {"Estatus",c.Estatus },
-        //            {"DescFunciones",c.DescFunciones },
-        //            {"SubestacionKva",c.SubestacionKva },
-        //            {"Colonia",c.Colonia },
-        //            {"Sector",c.Sector },
-        //            {"Latitud",c.Latitud },
-        //            {"Longitud",c.Longitud },
-        //            {"Elevacion",c.Elevacion },
-        //            {"Servicio",c.Servicio },
-        //            {"Domicilio",c.Domicilio }
-        //    };
-        //            var content = new FormUrlEncodedContent(values);
-        //            var response = await client.PostAsync("http://localhost/api/plantas.php", content);
-        //            //var responseString = await response.Content.ReadAsStringAsync();
-        //            if (response.IsSuccessStatusCode)
-        //            {
-        //                MessageBox.Show("¡La informacion se ha registrado con exito!");
-        //                Clean();
-        //            }
-        //            else
-        //            {
-        //                MessageBox.Show("-Ha ocurrido un error, favor de revisar su conexion a internet," +
-        //                    "si el problema persiste, consulte con el administrador");
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Llene toda la informacion");
-        //    }
-        //}
-
-
         private void btnRegHttp_Click(object sender, EventArgs e)
         {
-            //EnviarDatos();
+            GetInfoHttp();
+            Plantas p = new Plantas();
+            if (p.insertarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio,
+               mp.TipoPlantas, mp.Estatus, mp.DescFunciones, mp.SubestacionKva, mp.Colonia, mp.Sector,
+               mp.Latitud, mp.Longitud, mp.Elevacion, mp.Servicio, mp.Domicilio) > 0)
+            {
+                MessageBox.Show("Registrado Exitosamente");
+                Clean();
+            }
+            else
+            {
+                MessageBox.Show("Algo salio mal");
+            }
         }
     }
 }

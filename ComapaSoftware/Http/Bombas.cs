@@ -57,36 +57,38 @@ namespace ComapaSoftware.Http
             }
         }
 
-        //REGISTRO HTTPREQUEST
-        public int insertarPlantaHttp(string IdEstacion, int Posicion, string Marca, string Tipo,
-          string Modelo, string Hp, string Voltaje, string DiametroDescarga, string GastoLps,
-          string CargaDinamica, string Rpm, string Estatus, string Fpm, string Observaciones)
+        //REGISTRO HTTPREQUEST FUNCIONA!
+        public int insertarBombaHttp(string IdEstacion, int Posicion, string Marca, string Tipo,
+          string Modelo, string HP, string Voltaje, string DiametroDescarga, string GastoLPS,
+          string CargaDinamica, string RPM, string Estatus, string FPM, string Observaciones)
         {
             using (var client = new HttpClient())
             {
 
-                client.BaseAddress = new Uri("http://localhost");
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("Function", "create");
                 client.DefaultRequestHeaders.Add("User-Agent", "Anything");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var content = new FormUrlEncodedContent(new[]
                 {
-                    new KeyValuePair<string,string>("IdPlantas",IdEstacion),
-                    new KeyValuePair<string,string>("NumMedidor",Posicion.ToString()),
-                    new KeyValuePair<string,string>("NumServicio",Marca),
-                    new KeyValuePair<string,string>("TipoPlantas",Tipo),
-                    new KeyValuePair<string,string>("Estatus",Modelo),
-                    new KeyValuePair<string,string>("DescFunciones",Hp),
-                    new KeyValuePair<string,string>("SubestacionKva",Voltaje),
-                    new KeyValuePair<string,string>("Colonia",DiametroDescarga),
-                    new KeyValuePair<string,string>("Sector",GastoLps),
-                    new KeyValuePair<string,string>("Latitud",CargaDinamica),
-                    new KeyValuePair<string,string>("Longitud",Rpm),
-                    new KeyValuePair<string,string>("Elevacion",Estatus),
-                    new KeyValuePair<string,string>("Servicio",Fpm),
-                    new KeyValuePair<string,string>("Domicilio",Observaciones)
+                    new KeyValuePair<string,string>("IdEstacion",IdEstacion),
+                    new KeyValuePair<string,string>("Posicion",Posicion.ToString()),
+                    new KeyValuePair<string,string>("Marca",Marca),
+                    new KeyValuePair<string,string>("Tipo",Tipo),
+                    new KeyValuePair<string,string>("Modelo",Modelo),
+                    new KeyValuePair<string,string>("HP",HP),
+                    new KeyValuePair<string,string>("Voltaje",Voltaje),
+                    new KeyValuePair<string,string>("DiametroDescarga",DiametroDescarga),
+                    new KeyValuePair<string,string>("GastoLPS",GastoLPS),
+                    new KeyValuePair<string,string>("CargaDinamica",CargaDinamica),
+                    new KeyValuePair<string,string>("RPM",RPM),
+                    new KeyValuePair<string,string>("Estatus",Estatus),
+                    new KeyValuePair<string,string>("FPM",FPM),
+                    new KeyValuePair<string,string>("Observaciones",Observaciones)
 
                 });
-                var response = client.PostAsync("/api/getPlantas.php", content).Result;
+                var response = client.PostAsync("api/bombas.php", content).Result;
+                Console.WriteLine(response);
                 if (response.StatusCode == System.Net.HttpStatusCode.Created)
                 {
                     Console.WriteLine(response.Content.ReadAsStringAsync().Result);

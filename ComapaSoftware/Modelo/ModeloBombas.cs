@@ -2,7 +2,6 @@
 {
     internal class ModeloBombas
     {
-        private string idPlantas;
         private string idBombas;
         private string idEstacion;
         private int posicion;

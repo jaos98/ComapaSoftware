@@ -172,7 +172,12 @@
   <ItemGroup>
     <Compile Include="Conexion.cs" />
     <Compile Include="Http\Bombas.cs" />
+    <Compile Include="Http\Colonia.cs" />
     <Compile Include="Http\Estaciones.cs" />
+    <Compile Include="Http\ModelBombas.cs" />
+    <Compile Include="Http\ModelsPlantas.cs" />
+    <Compile Include="Http\Sector.cs" />
+    <Compile Include="Http\Usuarios.cs" />
     <Compile Include="Modelo\ModeloBombas.cs" />
     <Compile Include="Modelo\ModeloEstaciones.cs" />
     <Compile Include="Modelo\ModeloPlantas.cs" />

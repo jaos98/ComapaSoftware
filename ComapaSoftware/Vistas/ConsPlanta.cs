@@ -15,6 +15,7 @@ namespace ComapaSoftware.Vistas
         //INSTANCIAS Y VARIABLES GLOBALES
         ControladorPlantas c = new ControladorPlantas();
         Plantas p = new Plantas();
+
         Atts att = new Atts();
         string globalReceiver;
         public string GlobalReceiver
@@ -52,6 +53,7 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON REALIZA NUEVAMENTE LA BUSQUEDA EN FUNCION A UN TEXTBOX
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            //consultaAdicionalHttp();
             consultaAdicional();
         }
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE VOLVER AL PANEL DE CONTROL
@@ -94,11 +96,9 @@ namespace ComapaSoftware.Vistas
         public void traerDatos()
         {
             //PRUEBA HTTP
-            //dataGridView1.DataSource = p.llevarDatosHttp(globalReceiver);
-
-
+            dataGridView1.DataSource = p.getDatosHttpByTipo(globalReceiver);
             //si funciona, devolver a la normalidad
-            dataGridView1.DataSource = c.llevarDatos(globalReceiver);
+            //dataGridView1.DataSource = c.llevarDatos(globalReceiver);
         }
         //EL METODO PERMITE TRAER TODA LA INFORMACION E INSERTARLA AL datagridview1 (POSIBLE ELIMINACION)
         public void traerTodo()
@@ -110,6 +110,12 @@ namespace ComapaSoftware.Vistas
         {
             string globalEntry = txtAdicional.Text;
             dataGridView1.DataSource = c.consultaAdicional(globalEntry);
+            dataGridView1.Refresh();
+        }
+        public void consultaAdicionalHttp()
+        {
+            string globalEntry = txtAdicional.Text;
+            dataGridView1.DataSource = p.getDatosHttpByTipo(globalEntry);
             dataGridView1.Refresh();
         }
 
