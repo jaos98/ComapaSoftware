@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
-    internal class ModelBombas
+    internal class ModelsBombas
     {
         public string IdEstacion { get; set; }
         public int Posicion{get;set;}

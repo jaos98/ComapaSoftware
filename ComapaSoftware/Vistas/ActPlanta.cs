@@ -71,18 +71,35 @@ namespace ComapaSoftware.Vistas
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            GetData();
-            if (c.UpdateInfo(m.IdPlanta, m.NumMedidor, m.NumServicio, m.TipoPlantas, m.Estatus,
-                 m.DescFunciones, m.SubestacionKva, m.Colonia, m.Sector, m.Latitud,
-                 m.Longitud, m.Elevacion, m.Servicio, m.Domicilio) > 0)
+            GetInfoHttp();
+            if (p.actualizarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio, mp.TipoPlantas, mp.Estatus,
+                 mp.DescFunciones, mp.SubestacionKva, mp.Colonia, mp.Sector, mp.Latitud,
+                 mp.Longitud, mp.Elevacion, mp.Servicio, mp.Domicilio))
             {
                 MessageBox.Show("Actualizado con exito!");
-                this.Close();
+                Close();
             }
             else
             {
-                MessageBox.Show("Algo salio mal, por favor revise la informacion");
+                MessageBox.Show("Ha ocurrido un error, vuelva a intentarlo revise su conexion a internet");
+                Close();
             }
+
+            
+
+            //FUNCIONA EN LOCAL
+            //GetInfo();
+            //if (c.UpdateInfo(m.IdPlanta, m.NumMedidor, m.NumServicio, m.TipoPlantas, m.Estatus,
+            //     m.DescFunciones, m.SubestacionKva, m.Colonia, m.Sector, m.Latitud,
+            //     m.Longitud, m.Elevacion, m.Servicio, m.Domicilio) > 0)
+            //{
+            //    MessageBox.Show("Actualizado con exito!");
+            //    this.Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Algo salio mal, por favor revise la informacion");
+            //}
 
         }
 
@@ -90,7 +107,7 @@ namespace ComapaSoftware.Vistas
         {
             Close();
         }
-        private void GetData()
+        private void GetInfo()
         {
             m.IdPlanta = txtId.Text;
             m.NumMedidor = txtNm.Text;
@@ -106,6 +123,24 @@ namespace ComapaSoftware.Vistas
             m.Elevacion = txtEle.Text;
             m.Servicio = cmbServicio.Text;
             m.Domicilio = txtDom.Text;
+        }
+        private void GetInfoHttp()
+        {
+            mp.ID = globalReceiver;
+            mp.IdPlantas = txtId.Text;
+            mp.NumMedidor = txtNm.Text;
+            mp.NumServicio = txtSer.Text;
+            mp.TipoPlantas = cmbTipo.Text;
+            mp.Estatus = cmbEstatus.Text;
+            mp.DescFunciones = txtDesc.Text;
+            mp.SubestacionKva = txtKva.Text;
+            mp.Colonia = cmbColonia.Text;
+            mp.Sector = cmbSector.Text;
+            mp.Latitud = txtLat.Text;
+            mp.Longitud = txtLong.Text;
+            mp.Elevacion = txtEle.Text;
+            mp.Servicio = cmbServicio.Text;
+            mp.Domicilio = txtDom.Text;
         }
 
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)

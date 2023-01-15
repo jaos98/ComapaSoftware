@@ -13,11 +13,12 @@ namespace ComapaSoftware.Http
 {
     internal class Estaciones
     {
+        public ModelsEstaciones me;
         //HTTP REQUEST METHODS
 
 
         //CONSULTAR INF0RMACION
-        public DataTable llevarDatosHttp(string idPlantas)
+        public DataTable llevarDatosHttp(string IdPlantas)
         {
             DataTable dt = new DataTable("Tabla Estaciones");
             dt.Columns.Add("Id Planta", typeof(string));
@@ -35,45 +36,52 @@ namespace ComapaSoftware.Http
             using (var client = new HttpClient())
             {
 
-                client.BaseAddress = new Uri("http://localhost");
-                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("USER-AGENT", "Anything");
+                client.DefaultRequestHeaders.Add("function", "IdPlantas");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("/api/getPlantas.php").Result;
-                response.EnsureSuccessStatusCode();
-                var result = response.Content.ReadAsStringAsync().Result; ;
-                List<ModeloInfo> json = JsonSerializer.Deserialize<List<ModeloInfo>>(result);
-
-                foreach (var items in json)
+                var response = client.GetAsync("api/estaciones.php?IdPlantas="+IdPlantas).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    Console.WriteLine(response);
+                    var result = response.Content.ReadAsStringAsync().Result; ;
+                    List<ModelsEstaciones> json = JsonSerializer.Deserialize<List<ModelsEstaciones>>(result);
 
-                    dt.Rows.Add(items.IdEstacion, items.IdEstacion, items.Nombre, items.CapEquipos, items.OperacionMinima,
-                        items.EquiposInstalados, items.Tipo, items.GarantOperacion, items.GastoPromedio, items.GastoInstalado,
-                        items.Servicio, items.Observaciones);
-
+                    foreach (var items in json)
+                    {
+                        dt.Rows.Add(items.IdPlantas, items.IdEstacion, items.Nombre, items.CapacidadEquipos, items.OperacionMinima,
+                            items.EquiposInstalados, items.Tipo, items.GarantOperacion, items.GastoPromedio, items.GastoInstalado,
+                            items.Servicio, items.Observaciones);
+                    }
+                    return dt;
                 }
                 return dt;
             }
         }
-        //
-        public List<ModeloPlantas> getDatosHttp(string tipoPlanta)
+        // TRAER UN SOLO DATO PARA ACTUALIZAR (SELECT) HTTP REQUEST
+        public bool getDatosHttp(string IdEstacion)
         {
-            List<ModeloPlantas> list = new List<ModeloPlantas>();
             using (var client = new HttpClient())
             {
-
-                client.BaseAddress = new Uri("http://localhost");
-                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("Function", "read");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("/api/getPlantas.php?TipoPlanta=" + tipoPlanta).Result;
-                response.EnsureSuccessStatusCode();
-                var result = response.Content.ReadAsStringAsync().Result; ;
-                List<ModeloPlantas> json = JsonSerializer.Deserialize<List<ModeloPlantas>>(result);
+                var response = client.GetAsync("api/estaciones.php?IdEstacion=" + IdEstacion).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    me = JsonSerializer.Deserialize<ModelsEstaciones>(result);
 
-                return json;
+                    return true;
+                }
+                return false;
             }
         }
+        //
+      
         //REGISTRO HTTP REQUEST
         public int insertarInfoHttp(string IdPlantas, string IdEstacion, string Nombre, string CapEquipos, string OperacionMinima, string EquiposInstalados,
             string Tipo, string GarantOperacion, string GastoPromedio, string GastoInstalado, string Servicio, string Observaciones)

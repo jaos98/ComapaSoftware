@@ -8,6 +8,7 @@ namespace ComapaSoftware.Http
 {
     internal class ModelsPlantas
     {
+        public string ID { get; set; }
         public string IdPlantas { get; set; }
         public string NumMedidor{get; set;}
         public string NumServicio{get; set;}

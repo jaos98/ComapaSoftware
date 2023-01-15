@@ -13,9 +13,9 @@ namespace ComapaSoftware.Http
 {
     internal class Plantas
     {
-       public ModelsPlantas mp;
+        public ModelsPlantas mp;
         //HTTP REQUEST CONSULTA DATATABLE
-        public DataTable llevarDatosHttp(string tipoPlanta)
+        public DataTable llevarDatosHttp(string entry)
         {
             DataTable dt = new DataTable("TablaPlantas");
             dt.Columns.Add("Id Planta", typeof(string));
@@ -34,13 +34,12 @@ namespace ComapaSoftware.Http
             dt.Columns.Add("Domicilio", typeof(string));
             using (var client = new HttpClient())
             {
-
                 client.BaseAddress = new Uri("http://comabadbb.online");
                 client.DefaultRequestHeaders.Add("USER-AGENT", "Anything");
                 client.DefaultRequestHeaders.Add("function", "Entry");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/plantas.php").Result;
+                var response = client.GetAsync("api/plantas.php?Entry=" + entry).Result;
                 Console.WriteLine(response);
                 response.EnsureSuccessStatusCode();
                 var result = response.Content.ReadAsStringAsync().Result; ;
@@ -66,7 +65,7 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
                 var response = client.GetAsync("api/plantas.php?IdPlantas=" + IdPlantas).Result;
-                
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var result = response.Content.ReadAsStringAsync().Result;
@@ -104,8 +103,8 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("function", "readall");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/plantas.php?Entry="+TipoPlanta).Result;
-                if (response.StatusCode ==System.Net.HttpStatusCode.OK)
+                var response = client.GetAsync("api/plantas.php?Entry=" + TipoPlanta).Result;
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var result = response.Content.ReadAsStringAsync().Result;
                     List<ModelsPlantas> json = JsonSerializer.Deserialize<List<ModelsPlantas>>(result);
@@ -135,7 +134,7 @@ namespace ComapaSoftware.Http
 
                 client.BaseAddress = new Uri("https://comapadbb.online");
                 client.DefaultRequestHeaders.Add("Function", "create");
-                client.DefaultRequestHeaders.Add("User-Agent","Anything");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var content = new FormUrlEncodedContent(new[]
                 {
@@ -156,7 +155,7 @@ namespace ComapaSoftware.Http
 
                 });
                 var response = client.PostAsync("api/plantas.php", content).Result;
-                Console.WriteLine(response);
+                //Console.WriteLine(response);
                 if (response.StatusCode == System.Net.HttpStatusCode.Created)
                 {
                     Console.WriteLine(response.Content.ReadAsStringAsync().Result);
@@ -171,7 +170,7 @@ namespace ComapaSoftware.Http
             }
         }
         //ACTUALIZAR HTTPREQUEST
-        public int actualizarPlantaHttp(string IdPlantas, string NumMedidor, string NumServicio,
+        public bool actualizarPlantaHttp(string IdPlantas, string NumMedidor, string NumServicio,
             string TipoPlanta, string Estatus, string DescFunciones, string Subestacionkva,
             string Colonia, string Sector, string Latitud, string Longitud,
             string Elevacion, string Servicio, string Domicilio)
@@ -179,8 +178,9 @@ namespace ComapaSoftware.Http
             using (var client = new HttpClient())
             {
 
-                client.BaseAddress = new Uri("http://localhost");
+                client.BaseAddress = new Uri("https://comapadbb.online");
                 client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("Function", "update");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 var content = new FormUrlEncodedContent(new[]
                 {
@@ -200,22 +200,67 @@ namespace ComapaSoftware.Http
                     new KeyValuePair<string,string>("Domicilio",Domicilio)
 
                 });
-                var response = client.PostAsync("/api/getPlantas.php", content).Result;
-                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                var response = client.PostAsync("api/plantas.php?IdPlantas="+IdPlantas, content).Result;
+                Console.WriteLine(response);
+
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-                    return 1;
+                    return true;
                 }
                 else
                 {
                     Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-                    return 0;
+                    return false;
                 }
 
             }
         }
 
         //DELETE 
+        public bool BorrarPlanta(string IdPlantas)
+        {
+            using (var client = new HttpClient())
+            {
 
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("function", "delete");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("api/plantas.php?IdPlantas=" + IdPlantas).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    
+                    return true;
+
+                }
+                return false;
+            }
+        }
+
+        //EXISTE
+        public bool DoesNotExists(string IdPlantas)
+        {
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("function", "validate");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("api/plantas.php?IdPlantas=" +IdPlantas).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+
+                    return false;
+
+                }
+                return true;
+            }
+        }
     }
 }

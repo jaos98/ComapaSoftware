@@ -1,11 +1,6 @@
-﻿using ComapaSoftware.Controlador;
-using ComapaSoftware.Http;
+﻿using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
@@ -41,6 +36,7 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON ENVIA LA INFORMACION A LA VISTA ConsInfoTec MEDIANTE EL ID RECOGIDO POR LA CLASE ATT
         private void btnTecnica_Click(object sender, EventArgs e)
         {
+
             Close();
             ConsInfoTec consInfoTec = new ConsInfoTec(att.Result);
             consInfoTec.Show();
@@ -53,8 +49,8 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON REALIZA NUEVAMENTE LA BUSQUEDA EN FUNCION A UN TEXTBOX
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            //consultaAdicionalHttp();
-            consultaAdicional();
+            consultaAdicionalHttp();
+            //consultaAdicional();
         }
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE VOLVER AL PANEL DE CONTROL
         private void btnVolver_Click(object sender, EventArgs e)
@@ -66,25 +62,44 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE MOSTRAR EN PANTALLA LA INFORMACION GENERAL
         private void btnAdicional_Click(object sender, EventArgs e)
         {
-            foreach (ModeloPlantas list in c.GetUpdateInfo(att.Result))
+            if (p.getDatosHttp(att.Result))
             {
-                labelId.Text = list.IdPlanta;
-                labelNm.Text = list.NumMedidor;
-                labelNs.Text = list.NumServicio;
-                labelTp.Text = list.TipoPlantas;
-                labelEst.Text = list.Estatus;
-                labelDesc.Text = list.DescFunciones;
-                labelKva.Text = list.SubestacionKva;
-                labelSec.Text = list.Sector;
-                labelCol.Text = list.Colonia;
-                labelSec.Text = list.Sector;
-                labelLa.Text = list.Latitud;
-                labelLon.Text = list.Longitud;
-                labelEle.Text = list.Elevacion;
-                labelSer.Text = list.Servicio;
-                labelDom.Text = list.Domicilio;
+                labelId.Text = p.mp.IdPlantas;
+                labelNm.Text = p.mp.NumMedidor;
+                labelNs.Text = p.mp.NumServicio;
+                labelTp.Text = p.mp.TipoPlantas;
+                labelEst.Text = p.mp.Estatus;
+                labelDesc.Text = p.mp.DescFunciones;
+                labelKva.Text = p.mp.SubestacionKva;
+                labelSec.Text = p.mp.Sector;
+                labelCol.Text = p.mp.Colonia;
+                labelSec.Text = p.mp.Sector;
+                labelLa.Text = p.mp.Latitud;
+                labelLon.Text = p.mp.Longitud;
+                labelEle.Text = p.mp.Elevacion;
+                labelSer.Text = p.mp.Servicio;
+                labelDom.Text = p.mp.Domicilio;
                 ShowElements();
             }
+            //foreach (ModeloPlantas list in c.GetUpdateInfo(att.Result))
+            //{
+            //    labelId.Text = list.IdPlanta;
+            //    labelNm.Text = list.NumMedidor;
+            //    labelNs.Text = list.NumServicio;
+            //    labelTp.Text = list.TipoPlantas;
+            //    labelEst.Text = list.Estatus;
+            //    labelDesc.Text = list.DescFunciones;
+            //    labelKva.Text = list.SubestacionKva;
+            //    labelSec.Text = list.Sector;
+            //    labelCol.Text = list.Colonia;
+            //    labelSec.Text = list.Sector;
+            //    labelLa.Text = list.Latitud;
+            //    labelLon.Text = list.Longitud;
+            //    labelEle.Text = list.Elevacion;
+            //    labelSer.Text = list.Servicio;
+            //    labelDom.Text = list.Domicilio;
+            //    ShowElements();
+            //}
         }
         //DECLARACION DE BOTONES, CUANDO SE MUESTRA LA INFORMACION GENERAL,
         //ESTE BOTON SE ENCARGA DE ESCONDER LA INFORMACION GENERAL Y MOSTRAR EL RESUMEN EN EL datagridview1
@@ -104,6 +119,10 @@ namespace ComapaSoftware.Vistas
         public void traerTodo()
         {
             dataGridView1.DataSource = c.dataSender();
+        }
+        public void traerTodoHttp()
+        {
+            dataGridView1.DataSource = p.llevarDatosHttp(globalReceiver);
         }
         //EL METODO PERMITE REALIZAR UNA CONSULTA CON 1 DATO QUE COINCIDA CON 2 CRITERIOS IdPlantas || TipoPlantas
         public void consultaAdicional()
@@ -270,7 +289,9 @@ namespace ComapaSoftware.Vistas
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                c.Delete(result);
+                Console.WriteLine(result);
+                p.BorrarPlanta(result);
+                //c.Delete(result);
                 traerDatos();
             }
 
@@ -278,32 +299,5 @@ namespace ComapaSoftware.Vistas
         }
 
 
-        //HTTP CONSULTA
-        public async Task ComprobarInicio()
-        {
-            using (var client = new HttpClient())
-            {
-                var values = new Dictionary<string, string> {
-                    {"TipoPlantas", globalReceiver }
-
-            };
-                var content = new FormUrlEncodedContent(values);
-                var response = await client.PostAsync("http://localhost/api/validation.php", content);
-                var responseString = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(responseString);
-                if (response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("¡Bienvenido!");
-
-                }
-                else
-                {
-
-
-                }
-            }
-
-
-        }
     }
 }

@@ -106,7 +106,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 Query.CommandText = "SELECT Observaciones FROM estaciones WHERE IdEstacion= '" + idFicha + "'";
-                Query.Connection = Conn;
+                Query.Connection = Conn;    
                 Consultar = Query.ExecuteReader();
 
                 while (Consultar.Read())

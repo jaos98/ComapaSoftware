@@ -12,7 +12,7 @@ namespace ComapaSoftware.Vistas
         ModeloBombas m = new ModeloBombas();
         ControladorBombas c = new ControladorBombas();
         Bombas b = new Bombas();
-        ModelBombas mb = new ModelBombas();
+        ModelsBombas mb = new ModelsBombas();
         private string idEstacion;
         public string IdEstacion
         {

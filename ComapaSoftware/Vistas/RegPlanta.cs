@@ -15,6 +15,11 @@ namespace ComapaSoftware.Vistas
         ModeloPlantas m = new ModeloPlantas();
         ControladorPlantas c = new ControladorPlantas();
         ModelsPlantas mp = new ModelsPlantas();
+        Colonia col = new Colonia();
+        Sector s = new Sector();
+        List<ModelsSector> catcher = new List<ModelsSector>();
+        //List<ModelsColonia> listcol = new List<ModelsColonia>();
+        public string IdSector;
         public FormPlanta()
         {
             InitializeComponent();
@@ -23,10 +28,19 @@ namespace ComapaSoftware.Vistas
         private void FormPlanta_Load(object sender, EventArgs e)
         {
             cmbColonia.Enabled = false;
-            foreach (var item in c.consultarSector())
+
+            foreach (ModelsSector item in s.getDatosHttpByTipo())
             {
-                cmbSector.Items.Add(item);
+                catcher.Add(item);
+                cmbSector.Items.Add(item.NombreSector);
+                
             }
+
+
+            //foreach (var item in c.consultarSector())
+            //{
+            //    cmbSector.Items.Add(item);
+            //}
         }
        
         //BOTON DE REGISTRO DE INFORMACION
@@ -70,21 +84,64 @@ namespace ComapaSoftware.Vistas
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
             int value = cmbSector.SelectedIndex;
-            if (cmbSector.SelectedIndex < 0)
-            {
-                cmbColonia.Items.Clear();
-            }
-            else if (cmbSector.SelectedIndex >= 0)
+            if (cmbSector.SelectedIndex >= 0)
             {
                 cmbColonia.Items.Clear();
                 cmbColonia.Enabled = true;
-                string resultId = c.obtenerID(cmbSector.Text);
-                cmbColonia.Enabled = true;
-                foreach (var item in c.compararDatos(resultId))
+                foreach (ModelsSector sector in catcher)
                 {
-                    cmbColonia.Items.Add(item);
+                    if (sector.NombreSector == cmbSector.Text)
+                    {
+                        IdSector = sector.IdSector;
+                        Console.WriteLine(IdSector);
+                        break;
+                    }
                 }
+                Console.WriteLine("Aqui llego");
+                Console.WriteLine(IdSector);
+                foreach (ModelsColonia mcl in col.getDatosHttpBySector(IdSector))
+                {
+                    cmbColonia.Items.Add(mcl.NombreColonia);
+                }
+
             }
+            else
+            {
+                MessageBox.Show("Ha ocurrido un error");
+            }
+
+            //int value = cmbSector.SelectedIndex;
+            //if (cmbSector.SelectedIndex < 0)
+            //{
+            //    cmbColonia.Items.Clear();
+            //}
+            //else if (cmbSector.SelectedIndex >= 0)
+            //{
+            //    cmbColonia.Items.Clear();
+            //    cmbColonia.Enabled = true;
+                //string resultId = c.obtenerID(cmbSector.Text);
+                //cmbColonia.Enabled = true;
+                //foreach (var item in c.compararDatos(resultId))
+                //{
+                //    cmbColonia.Items.Add(item);
+                //}
+          //  }
+            //int value = cmbSector.SelectedIndex;
+            //if (cmbSector.SelectedIndex < 0)
+            //{
+            //    cmbColonia.Items.Clear();
+            //}
+            //else if (cmbSector.SelectedIndex >= 0)
+            //{
+            //    cmbColonia.Items.Clear();
+            //    cmbColonia.Enabled = true;
+            //    string resultId = c.obtenerID(cmbSector.Text);
+            //    cmbColonia.Enabled = true;
+            //    foreach (var item in c.compararDatos(resultId))
+            //    {
+            //        cmbColonia.Items.Add(item);
+            //    }
+            //}
         }
         private void txtNumServ_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -185,16 +242,25 @@ namespace ComapaSoftware.Vistas
         {
             GetInfoHttp();
             Plantas p = new Plantas();
-            if (p.insertarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio,
+
+
+            if (p.DoesNotExists(mp.IdPlantas))
+            {
+                if (p.insertarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio,
                mp.TipoPlantas, mp.Estatus, mp.DescFunciones, mp.SubestacionKva, mp.Colonia, mp.Sector,
                mp.Latitud, mp.Longitud, mp.Elevacion, mp.Servicio, mp.Domicilio) > 0)
-            {
-                MessageBox.Show("Registrado Exitosamente");
-                Clean();
+                {
+                    MessageBox.Show("Registrado Exitosamente");
+                    Clean();
+                }
+                else
+                {
+                    MessageBox.Show("Algo salio mal");
+                }
             }
             else
             {
-                MessageBox.Show("Algo salio mal");
+                MessageBox.Show("El Id que esta ingresando ya se encuentra en uso");
             }
         }
     }

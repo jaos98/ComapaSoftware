@@ -1,4 +1,5 @@
 ﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Windows.Forms;
@@ -34,6 +35,16 @@ namespace ComapaSoftware.Vistas
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             GetInfo();
+
+
+
+
+
+
+
+
+
+            
             //Console.WriteLine("Esta info esta bien, creo: " + GlobalReceiver + m.Posicion);
             if (c.UpdateInfo(IdBomba,m.Posicion, m.Marca, m.Modelo,
             m.Tipo, m.Hp, m.Voltaje, m.Diametro, m.Lps, m.Carga, m.Rpm, m.Estatus,
@@ -76,6 +87,23 @@ namespace ComapaSoftware.Vistas
             }
         }
         void GetInfo()
+        {
+            m.Posicion = Convert.ToInt32(cmbPosicion.Text);
+            m.Marca = txtMarca.Text;
+            m.Modelo = txtModelo.Text;
+            m.Tipo = cmbTipo.Text;
+            m.Hp = txtHp.Text;
+            m.Voltaje = txtVoltaje.Text;
+            m.Diametro = txtDiametro.Text;
+            m.Lps = txtGastolps.Text;
+            m.Carga = txtDinamica.Text;
+            m.Rpm = txtRpm.Text;
+            m.Fpm = txtFpm.Text;
+            m.Estatus = cmbEstatus.Text;
+            m.Observaciones = txtObservaciones.Text;
+
+        }
+        void GetInfoHttp()
         {
             m.Posicion = Convert.ToInt32(cmbPosicion.Text);
             m.Marca = txtMarca.Text;

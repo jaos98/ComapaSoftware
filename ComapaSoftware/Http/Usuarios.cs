@@ -22,7 +22,7 @@ namespace ComapaSoftware.Http
             using (var client = new HttpClient())
             {
 
-                client.BaseAddress = new Uri("http://comapadbb.online");
+                client.BaseAddress = new Uri("https://comapadbb.online");
                 client.DefaultRequestHeaders.Add("User-Agent", "Anything");
                 client.DefaultRequestHeaders.Add("Function", "login");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
