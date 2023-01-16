@@ -179,6 +179,7 @@
     <Compile Include="Http\ModelsEstaciones.cs" />
     <Compile Include="Http\ModelsPlantas.cs" />
     <Compile Include="Http\ModelsSector.cs" />
+    <Compile Include="Http\PosBombas.cs" />
     <Compile Include="Http\Sector.cs" />
     <Compile Include="Http\Usuarios.cs" />
     <Compile Include="Modelo\ModeloBombas.cs" />

@@ -13,6 +13,10 @@ namespace ComapaSoftware.Http
 {
     internal class Bombas
     {
+        List<ModelsPlantas> plantas = new List<ModelsPlantas>();
+        List<ModelsEstaciones> estaciones = new List<ModelsEstaciones>();
+        List<PosBombas> posbombas = new List<PosBombas>();
+        public PosBombas pb;
         //HTTPREQUEST
 
         //CONSULTA DE DATOS
@@ -102,5 +106,118 @@ namespace ComapaSoftware.Http
 
             }
         }
+
+        // TRAE EL ID DE LAS PLANTAS PARA REGISTRO
+        public List<ModelsPlantas> getDatosHttpByTipo(string TipoPlantas)
+        {
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("function", "getidp");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("api/estaciones.php?TipoPlantas=" + TipoPlantas).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    plantas = JsonSerializer.Deserialize<List<ModelsPlantas>>(result);
+                    return plantas;
+
+                }
+                else
+                {
+                    return plantas;
+                }
+            }
+        }
+
+        // OBTIENE LA ESTACION PARA REGISTRO
+        public List<ModelsEstaciones> getDatosHttpById(string IdPlantas)
+        {
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("function", "getest");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("api/estaciones.php?IdPlantas=" + IdPlantas).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    estaciones = JsonSerializer.Deserialize<List<ModelsEstaciones>>(result);
+
+                    return estaciones;
+
+                }
+                else
+                {
+                    return estaciones;
+                }
+            }
+        }
+
+
+
+
+
+        public List<PosBombas> getDatosHttpByPos(string IdEstacion)
+        {
+            int Posicion = 0;
+
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("function", "getallpos");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("api/bombas.php?IdEstacion=" + IdEstacion+"?Posicion="+Posicion).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    posbombas = JsonSerializer.Deserialize<List<PosBombas>>(result);
+
+                    for (int i = 1; i == 10; i++)
+                    {
+                        foreach (var item in posbombas)
+                        {
+                            if (item.Posicion==i)
+                            {
+                                pb.IsBombas = true;
+                                pb.IdBombas = item.IdBombas;
+                                pb.Posicion = item.Posicion;
+                            }
+                            else
+                            {
+                                pb.IdBombas = item.IdBombas;
+                                pb.Posicion = item.Posicion;
+                                pb.IsBombas = false;
+                            }
+                        }
+                    }
+                    return posbombas;
+                }
+                else
+                {
+                    return posbombas;
+                }
+            }
+        }
+
+
+
+
+
+
     }
 }

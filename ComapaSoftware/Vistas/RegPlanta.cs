@@ -83,6 +83,7 @@ namespace ComapaSoftware.Vistas
         }
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cmbColonia.Items.Clear();
             int value = cmbSector.SelectedIndex;
             if (cmbSector.SelectedIndex >= 0)
             {
@@ -243,7 +244,7 @@ namespace ComapaSoftware.Vistas
             GetInfoHttp();
             Plantas p = new Plantas();
 
-
+            
             if (p.DoesNotExists(mp.IdPlantas))
             {
                 if (p.insertarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio,

@@ -3,6 +3,8 @@ using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Windows.Forms;
 namespace ComapaSoftware.Vistas
 {
@@ -13,6 +15,7 @@ namespace ComapaSoftware.Vistas
         ControladorBombas c = new ControladorBombas();
         Bombas b = new Bombas();
         ModelsBombas mb = new ModelsBombas();
+        List<PosBombas>  catcherpos = new List<PosBombas>();
         private string idEstacion;
         public string IdEstacion
         {
@@ -53,45 +56,84 @@ namespace ComapaSoftware.Vistas
         //PRIMER COMBOBOX DE ID PLANTAS
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
+            cmbPlanta.Enabled = true;
             cmbEstacion.Items.Clear();
             cmbPlanta.Items.Clear();
             cmbEstacion.Text = "";
             cmbPlanta.Text = "";
-            foreach  (var item in c.ObtenerIdPlantas(cmbCategoria.Text))
+            foreach (ModelsPlantas mdp in b.getDatosHttpByTipo(cmbCategoria.Text))
             {
-                cmbPlanta.Items.Add(item);
+                cmbPlanta.Items.Add(mdp.IdPlantas);
             }
-            cmbPlanta.Enabled = true;
+            
+
+
+
+            //cmbEstacion.Items.Clear();
+            //cmbPlanta.Items.Clear();
+            //cmbEstacion.Text = "";
+            //cmbPlanta.Text = "";
+            //foreach  (var item in c.ObtenerIdPlantas(cmbCategoria.Text))
+            //{
+            //    cmbPlanta.Items.Add(item);
+            //}
+            //cmbPlanta.Enabled = true;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cmbEstacion.Enabled = true;
             cmbEstacion.Items.Clear();
             cmbEstacion.Text = "";
-            foreach (var item in c.ObtenerIdEstacion(cmbPlanta.Text))
+            foreach (ModelsEstaciones mde in b.getDatosHttpById(cmbPlanta.Text))
             {
-                cmbEstacion.Items.Add(item);
+                cmbEstacion.Items.Add(mde.IdEstacion);
             }
-            cmbEstacion.Enabled = true;
+
+
+            //FUNCIONA EN LOCAL
+            //foreach (var item in c.ObtenerIdEstacion(cmbPlanta.Text))
+            //{
+            //    cmbEstacion.Items.Add(item);
+            //}
+            //cmbEstacion.Enabled = true;
         }
         //COMBO BOX DE ID ESTACION PARA REGISTRO DE BOMBAS
         private void cmbIdPlanta_SelectedIndexChanged(object sender, EventArgs e)
-        { 
-            if (cmbEstacion.SelectedIndex >= 0)
+        {
+            foreach (PosBombas pb in b.getDatosHttpByPos(cmbEstacion.Text))
             {
-                int num = cmbEstacion.SelectedIndex;
-                mainPanel.Enabled = true;
-                //CICLO PARA IDENTIFICAR LA POSICION DE LA BOMBA
-                for (int i = 1; i <= 10; i++)
-                {
-                    Console.WriteLine("Iteracion "+i);
-                    if (!c.ConsultarPosicion(cmbEstacion.Text,i))
-                    {
-                        cmbPosicion.Text = i.ToString();
-                        break;
-                    }
-                }
+                catcherpos.Add(pb);
             }
-            btnVolver.Hide();
+            Console.WriteLine(catcherpos);
+
+            foreach (var item in catcherpos)
+            {
+                Console.WriteLine(item.IdBombas);
+                Console.WriteLine(item.IdEstacion);
+                Console.WriteLine(item.Posicion);
+                Console.WriteLine(item.IsBombas);
+            }
+
+
+
+
+
+            //if (cmbEstacion.SelectedIndex >= 0)
+            //{
+            //    int num = cmbEstacion.SelectedIndex;
+            //    mainPanel.Enabled = true;
+            //    //CICLO PARA IDENTIFICAR LA POSICION DE LA BOMBA
+            //    for (int i = 1; i <= 10; i++)
+            //    {
+            //        Console.WriteLine("Iteracion "+i);
+            //        if (!c.ConsultarPosicion(cmbEstacion.Text,i))
+            //        {
+            //            cmbPosicion.Text = i.ToString();
+            //            break;
+            //        }
+            //    }
+            //}
+            //btnVolver.Hide();
         }
 
         private void label4_Click(object sender, EventArgs e)

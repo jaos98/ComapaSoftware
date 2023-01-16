@@ -14,9 +14,53 @@ namespace ComapaSoftware.Http
     internal class Estaciones
     {
         public ModelsEstaciones me;
+        List<ModelsPlantas> estaciones = new List<ModelsPlantas>();
         //HTTP REQUEST METHODS
 
+        //HTTP REGISTRO
+        public bool insertarInfoHttp(string IdPlantas, string IdEstacion, string Nombre,
+            string CapacidadEquipos, string OperacionMinima, string EquiposInstalados, string Tipo,
+            string GarantOperacion, string GastoPromedio, string GastoInstalado, string Servicio,
+            string Observaciones)
+        {
+            Console.WriteLine(IdPlantas);
+            using (var client = new HttpClient())
+            {
 
+                client.BaseAddress = new Uri("https://comapadbb.online");
+                client.DefaultRequestHeaders.Add("Function", "create");
+                client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var content = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string,string>("IdPlantas",IdPlantas),
+                    new KeyValuePair<string,string>("IdEstacion",IdEstacion),
+                    new KeyValuePair<string,string>("Nombre",Nombre),
+                    new KeyValuePair<string,string>("CapacidadEquipos",CapacidadEquipos),
+                    new KeyValuePair<string,string>("OperacionMinima",OperacionMinima),
+                    new KeyValuePair<string,string>("EquiposInstalados",EquiposInstalados),
+                    new KeyValuePair<string,string>("Tipo",Tipo),
+                    new KeyValuePair<string,string>("GarantOperacion",GarantOperacion),
+                    new KeyValuePair<string,string>("GastoPromedio",GastoPromedio),
+                    new KeyValuePair<string,string>("GastoInstalado",GastoInstalado),
+                    new KeyValuePair<string,string>("Servicio",Servicio),
+                    new KeyValuePair<string,string>("Observaciones",Observaciones),
+                });
+                var response = client.PostAsync("api/estaciones.php", content).Result;
+                //Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.Created)
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
+                    return false;
+                }
+
+            }
+        }
         //CONSULTAR INF0RMACION
         public DataTable llevarDatosHttp(string IdPlantas)
         {
@@ -82,47 +126,35 @@ namespace ComapaSoftware.Http
         }
         //
       
-        //REGISTRO HTTP REQUEST
-        public int insertarInfoHttp(string IdPlantas, string IdEstacion, string Nombre, string CapEquipos, string OperacionMinima, string EquiposInstalados,
-            string Tipo, string GarantOperacion, string GastoPromedio, string GastoInstalado, string Servicio, string Observaciones)
+        
+
+        // TRAE EL ID DE LAS PLANTAS PARA REGISTRO
+        public List<ModelsPlantas> getDatosHttpByTipo(string TipoPlantas)
         {
+
             using (var client = new HttpClient())
             {
 
-                client.BaseAddress = new Uri("http://localhost");
+                client.BaseAddress = new Uri("https://comapadbb.online");
                 client.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                client.DefaultRequestHeaders.Add("function", "getidp");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var content = new FormUrlEncodedContent(new[]
+                //?TipoPlanta=" + tipoPlanta
+                var response = client.GetAsync("api/estaciones.php?TipoPlantas=" + TipoPlantas).Result;
+                Console.WriteLine(response);
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    new KeyValuePair<string,string>("IdPlantas",IdPlantas),
-                    new KeyValuePair<string,string>("NumMedidor",IdEstacion),
-                    new KeyValuePair<string,string>("NumServicio",Nombre),
-                    new KeyValuePair<string,string>("TipoPlantas",CapEquipos),
-                    new KeyValuePair<string,string>("Estatus",OperacionMinima),
-                    new KeyValuePair<string,string>("DescFunciones",EquiposInstalados),
-                    new KeyValuePair<string,string>("SubestacionKva",Tipo),
-                    new KeyValuePair<string,string>("Colonia",GarantOperacion),
-                    new KeyValuePair<string,string>("Sector",GastoPromedio),
-                    new KeyValuePair<string,string>("Latitud",GastoInstalado),
-                    new KeyValuePair<string,string>("Longitud",Servicio),
-                    new KeyValuePair<string,string>("Elevacion",Observaciones)
+                    var result = response.Content.ReadAsStringAsync().Result;
+                    estaciones = JsonSerializer.Deserialize<List<ModelsPlantas>>(result);
+                    return estaciones;
 
-                });
-                var response = client.PostAsync("/api/getPlantas.php", content).Result;
-                if (response.StatusCode == System.Net.HttpStatusCode.Created)
-                {
-                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-                    return 1;
                 }
                 else
                 {
-                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-                    return 0;
+                    return estaciones;
                 }
-
             }
         }
-
-        //
+      
     }
 }

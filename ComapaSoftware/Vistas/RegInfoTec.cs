@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using ComapaSoftware.Controlador;
 using System.Text.RegularExpressions;
+using ComapaSoftware.Http;
 
 namespace ComapaSoftware.Vistas
 {
@@ -10,6 +11,9 @@ namespace ComapaSoftware.Vistas
     {
         ControladorFicha c = new ControladorFicha();
         ModeloInfo m = new ModeloInfo();
+        ModelsPlantas mp = new ModelsPlantas();
+        Estaciones es = new Estaciones();
+        ModelsEstaciones ms = new ModelsEstaciones();
         public RegInfoTec()
         {
             InitializeComponent();
@@ -20,45 +24,82 @@ namespace ComapaSoftware.Vistas
         }
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            DataView();
             if (Validate())
             {
-                MessageBox.Show("Todos los datos son correctos");
-                if (c.registrarInfo(m.IdPlantas,m.IdEstacion,m.Nombre, m.CapEquipos, m.OperacionMinima,
-                    m.EquiposInstalados, m.Tipo, m.GarantOperacion, m.GastoPromedio,
-                    m.GastoInstalado, m.Servicio, m.Observaciones) > 0)
+                GetInfoHttp();
+                if (es.insertarInfoHttp(ms.IdPlantas, ms.IdEstacion, ms.Nombre, ms.CapacidadEquipos,
+                    ms.OperacionMinima, ms.EquiposInstalados, ms.Tipo, ms.GarantOperacion, ms.GastoPromedio,
+                    ms.GastoInstalado, ms.Servicio, ms.Observaciones))
                 {
-                    MessageBox.Show("Informacion registrada");
-                    Clean();    
+                    MessageBox.Show("Registrado Exitosamente");
+                    Clean();
                 }
                 else
                 {
-                    MessageBox.Show("Hubo un error");
+                    MessageBox.Show("Algo salio mal");
                 }
             }
             else
             {
-                MessageBox.Show("Llene todos los campos");
+                MessageBox.Show("Porfavor rellene todos los campos");
             }
-        }
+            
+
+
+        //DataView();
+        //if (Validate())
+        //{
+        //    MessageBox.Show("Todos los datos son correctos");
+        //    if (c.registrarInfo(m.IdPlantas, m.IdEstacion, m.Nombre, m.CapEquipos, m.OperacionMinima,
+        //        m.EquiposInstalados, m.Tipo, m.GarantOperacion, m.GastoPromedio,
+        //        m.GastoInstalado, m.Servicio, m.Observaciones) > 0)
+        //    {
+        //        MessageBox.Show("Informacion registrada");
+        //        Clean();
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Hubo un error");
+        //    }
+        //}
+        //else
+        //{
+        //    MessageBox.Show("Llene todos los campos");
+        //}
+    }
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbCategoria.SelectedIndex < 0)
-            {
-                MessageBox.Show("Hubo un error, consulte con el administrador");
-            }
-            else if (cmbCategoria.SelectedIndex >= 0)
+
+            if (cmbCategoria.SelectedIndex >= 0)
             {
                 cmbId.Enabled = true;
                 cmbId.Items.Clear();
                 string catString = cmbCategoria.Text;
                 MessageBox.Show(catString);
-                foreach (var item in c.obtenerId(catString))
+                foreach (ModelsPlantas item in es.getDatosHttpByTipo(catString))
                 {
-                    cmbId.Refresh();
-                    cmbId.Items.Add(item);
+                    cmbId.Items.Add(item.IdPlantas);
                 }
             }
+
+
+
+            //if (cmbCategoria.SelectedIndex < 0)
+            //{
+            //    MessageBox.Show("Hubo un error, consulte con el administrador");
+            //}
+            //else if (cmbCategoria.SelectedIndex >= 0)
+            //{
+            //    cmbId.Enabled = true;
+            //    cmbId.Items.Clear();
+            //    string catString = cmbCategoria.Text;
+            //    MessageBox.Show(catString);
+            //    foreach (var item in c.obtenerId(catString))
+            //    {
+            //        cmbId.Refresh();
+            //        cmbId.Items.Add(item);
+            //    }
+            //}
         }
         private void cmbId_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -115,7 +156,7 @@ namespace ComapaSoftware.Vistas
             txtObservacion.Clear();
 
         }
-        private void DataView()
+        private void GetInfo()
         {
             m.IdPlantas = cmbId.Text;
             m.IdEstacion = labelIdFicha.Text;
@@ -129,6 +170,21 @@ namespace ComapaSoftware.Vistas
             m.GastoInstalado = txtInst.Text;
             m.Servicio = cmbServicio.Text;
             m.Observaciones = txtObservacion.Text;
+        }
+        private void GetInfoHttp()
+        {
+            ms.IdPlantas = cmbId.Text;
+            ms.IdEstacion = labelIdFicha.Text;
+            ms.Nombre = txtNombre.Text;
+            ms.CapacidadEquipos = txtCap.Text;
+            ms.OperacionMinima = txtOpmin.Text;
+            ms.EquiposInstalados = txtEquinst.Text;
+            ms.Tipo = cmbTipo.Text;
+            ms.GarantOperacion = txtGarant.Text;
+            ms.GastoPromedio = txtProm.Text;
+            ms.GastoInstalado = txtInst.Text;
+            ms.Servicio = cmbServicio.Text;
+            ms.Observaciones = txtObservacion.Text;
         }
         private void txtIdFicha_TextChanged(object sender, EventArgs e)
         {

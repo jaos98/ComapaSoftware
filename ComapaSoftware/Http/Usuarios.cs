@@ -28,20 +28,14 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
                 var response = client.GetAsync("api/usuarios.php?Usuario="+Usuario+"&Password="+Password+"").Result;
-                response.EnsureSuccessStatusCode();
-                var result = response.Content.ReadAsStringAsync().Result; 
-                if (response.IsSuccessStatusCode)
+               
+                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
+                    var result = response.Content.ReadAsStringAsync().Result;
                     return true;
                 }
-                else if (!response.IsSuccessStatusCode)
-                {
-                    return false;
-                }
-                else
-                {
-                    return false;
-                }
+                return false;
+
             }
         }
     }
