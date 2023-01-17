@@ -16,6 +16,8 @@ namespace ComapaSoftware.Vistas
         Bombas b = new Bombas();
         ModelsBombas mb = new ModelsBombas();
         List<PosBombas>  catcherpos = new List<PosBombas>();
+        PosBombas pb = new PosBombas();
+        List<bool> catcherbool = new List<bool>();
         private string idEstacion;
         public string IdEstacion
         {
@@ -57,6 +59,7 @@ namespace ComapaSoftware.Vistas
         private void comboBox1_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             cmbPlanta.Enabled = true;
+            cmbPosicion.Items.Clear();
             cmbEstacion.Items.Clear();
             cmbPlanta.Items.Clear();
             cmbEstacion.Text = "";
@@ -81,6 +84,7 @@ namespace ComapaSoftware.Vistas
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            cmbPosicion.Items.Clear();
             cmbEstacion.Enabled = true;
             cmbEstacion.Items.Clear();
             cmbEstacion.Text = "";
@@ -100,19 +104,39 @@ namespace ComapaSoftware.Vistas
         //COMBO BOX DE ID ESTACION PARA REGISTRO DE BOMBAS
         private void cmbIdPlanta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            foreach (PosBombas pb in b.getDatosHttpByPos(cmbEstacion.Text))
-            {
-                catcherpos.Add(pb);
-            }
-            Console.WriteLine(catcherpos);
+            validatePos();
+            //if (cmbEstacion.SelectedIndex>=0)
+            //{
+            //    cmbPosicion.Items.Clear();
+                
+            //    for (int i = 1; i <= 10; i++)
+            //    {
+            //        if (b.VerificarPosicion(cmbEstacion.Text, i))
+            //        {
 
-            foreach (var item in catcherpos)
-            {
-                Console.WriteLine(item.IdBombas);
-                Console.WriteLine(item.IdEstacion);
-                Console.WriteLine(item.Posicion);
-                Console.WriteLine(item.IsBombas);
-            }
+            //        }
+            //        else
+            //        {
+            //            cmbPosicion.Items.Add(i);
+            //        }
+                    
+            //    }
+            //    mainPanel.Enabled = true;
+            //    btnVolver.Hide();
+
+
+            //}
+
+           
+            //Console.WriteLine(catcherpos);
+
+            //foreach (var item in catcherpos)
+            //{
+            //    Console.WriteLine(item.IdBombas);
+            //    Console.WriteLine(item.IdEstacion);
+            //    Console.WriteLine(item.Posicion);
+            //    Console.WriteLine(item.IsBombas);
+            //}
 
 
 
@@ -134,6 +158,30 @@ namespace ComapaSoftware.Vistas
             //    }
             //}
             //btnVolver.Hide();
+        }
+        void validatePos()
+        {
+            if (cmbEstacion.SelectedIndex >= 0)
+            {
+                cmbPosicion.Items.Clear();
+
+                for (int i = 1; i <= 10; i++)
+                {
+                    if (b.VerificarPosicion(cmbEstacion.Text, i))
+                    {
+
+                    }
+                    else
+                    {
+                        cmbPosicion.Items.Add(i);
+                    }
+
+                }
+                mainPanel.Enabled = true;
+                btnVolver.Hide();
+
+
+            }
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -163,11 +211,15 @@ namespace ComapaSoftware.Vistas
             if (Validar())
             {
                 if (b.insertarBombaHttp(mb.IdEstacion, mb.Posicion, mb.Marca, mb.Tipo,
-                    mb.Modelo, mb.HP, mb.Voltaje, mb.DiametroDescarga, mb.GastoLPS, mb.CargaDinamica, mb.RPM, mb.Estatus,
-                    mb.FPM, mb.Observaciones) > 0)
+                    mb.Modelo, mb.Hp, mb.Voltaje, mb.Diametro, mb.Lps, mb.Carga, mb.Rpm, mb.Estatus,
+                    mb.Fpm, mb.Observaciones) > 0)
                 {
                     MessageBox.Show("Se ha registrado todo correctamente");
                     Clean();
+                    Close();
+                    ControlPanel cpanel = new ControlPanel();
+                    cpanel.Show();
+                   
                 }
                 else
                 {
@@ -201,14 +253,14 @@ namespace ComapaSoftware.Vistas
             mb.Marca = txtMarca.Text;
             mb.Modelo = txtModelo.Text;
             mb.Tipo = cmbTipo.Text;
-            mb.HP = txtHp.Text;
+            mb.Hp = txtHp.Text;
             mb.Voltaje = txtVoltaje.Text;
-            mb.DiametroDescarga = txtDiametro.Text;
-            mb.GastoLPS = txtGastolps.Text;
-            mb.CargaDinamica = txtDinamica.Text;
-            mb.RPM = txtRpm.Text;
+            mb.Diametro = txtDiametro.Text;
+            mb.Lps = txtGastolps.Text;
+            mb.Carga = txtDinamica.Text;
+            mb.Rpm = txtRpm.Text;
             mb.Estatus = cmbEstatus.Text;
-            mb.FPM = txtFpm.Text;
+            mb.Fpm = txtFpm.Text;
             mb.Observaciones = txtObservaciones.Text;
         }
         private void Clean()

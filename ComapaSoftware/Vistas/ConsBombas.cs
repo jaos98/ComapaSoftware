@@ -1,4 +1,5 @@
 ﻿using ComapaSoftware.Controlador;
+using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Windows.Forms;
@@ -9,6 +10,8 @@ namespace ComapaSoftware.Vistas
     {
         ModeloBombas m = new ModeloBombas();
         ControladorBombas c = new ControladorBombas();
+        Bombas b = new Bombas();
+        ModelsBombas mb;
 
         private string estacion;
         public string IdEstacion
@@ -25,12 +28,19 @@ namespace ComapaSoftware.Vistas
         private void ConsBombas_Load(object sender, EventArgs e)
         {
             MessageBox.Show(IdEstacion);
-            traerDatos();
+            traerDatosHttp();
+
+            //traerDatos();
             HideElements();
         }
         public void traerDatos()
         {
+
             dgvBombas.DataSource = c.llevarDatos(IdEstacion);
+        }
+        public void traerDatosHttp()
+        {
+            dgvBombas.DataSource = b.getDatosBomba(IdEstacion);
         }
         private void dgvBombas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -113,26 +123,51 @@ namespace ComapaSoftware.Vistas
 
         private void btnInfo_Click(object sender, EventArgs e)
         {
-            string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-            foreach (ModeloBombas list in c.GetUpdateInfo(idBombas))
-            {
-                lblIdbomba.Text = list.IdBombas;
-                lblEstacion.Text = list.IdEstacion;
-                lblPosicion.Text = list.Posicion.ToString();
-                lblMarca.Text = list.Marca;
-                lblModelo.Text = list.Modelo;
-                lblTipo.Text = list.Tipo;
-                lblHp.Text = list.Hp;
-                lblVoltaje.Text = list.Voltaje;
-                lblDiametro.Text = list.Diametro;
-                lblLps.Text = list.Lps;
-                lblCarga.Text = list.Carga;
-                lblRpm.Text = list.Rpm;
-                lblFpm.Text = list.Fpm;
-                lblEstatus.Text = list.Estatus;
-                richTextBox1.Text = list.Observaciones;
-            }
+            string IdBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+            mb = b.Leer(IdBombas);
+            lblIdbomba.Text = mb.IdBombas.ToString();
+            lblEstacion.Text = mb.IdEstacion;
+            lblPosicion.Text = mb.Posicion.ToString();
+            lblMarca.Text = mb.Marca;
+            lblModelo.Text = mb.Modelo;
+            lblTipo.Text = mb.Tipo;
+            lblHp.Text = mb.Hp;
+            lblVoltaje.Text = mb.Voltaje;
+            lblDiametro.Text = mb.Diametro;
+            lblLps.Text = mb.Lps;
+            lblCarga.Text = mb.Carga;
+            lblRpm.Text = mb.Rpm;
+            lblFpm.Text = mb.Fpm;
+            lblEstatus.Text = mb.Estatus;
+            richTextBox1.Text = mb.Observaciones;
             ShowElements();
+
+
+
+
+
+
+
+            //string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
+            //foreach (ModeloBombas list in c.GetUpdateInfo(idBombas))
+            //{
+            //    lblIdbomba.Text = list.IdBombas;
+            //    lblEstacion.Text = list.IdEstacion;
+            //    lblPosicion.Text = list.Posicion.ToString();
+            //    lblMarca.Text = list.Marca;
+            //    lblModelo.Text = list.Modelo;
+            //    lblTipo.Text = list.Tipo;
+            //    lblHp.Text = list.Hp;
+            //    lblVoltaje.Text = list.Voltaje;
+            //    lblDiametro.Text = list.Diametro;
+            //    lblLps.Text = list.Lps;
+            //    lblCarga.Text = list.Carga;
+            //    lblRpm.Text = list.Rpm;
+            //    lblFpm.Text = list.Fpm;
+            //    lblEstatus.Text = list.Estatus;
+            //    richTextBox1.Text = list.Observaciones;
+            //}
+            //ShowElements();
         }
 
         private void btnRegresar_Click(object sender, EventArgs e)
@@ -144,7 +179,8 @@ namespace ComapaSoftware.Vistas
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-            Actbomba act = new Actbomba(idBombas);
+            string idEstacion = dgvBombas.CurrentRow.Cells[1].Value.ToString();
+            Actbomba act = new Actbomba(idBombas,idEstacion);
             Console.WriteLine("Aqui llego " + idBombas);
             act.Show();
         }
@@ -157,8 +193,10 @@ namespace ComapaSoftware.Vistas
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-                c.Delete(idBombas);
-                traerDatos();
+                b.Borrar(idBombas);
+                traerDatosHttp();
+                //c.Delete(idBombas);
+                //traerDatos();
             }
         }
 

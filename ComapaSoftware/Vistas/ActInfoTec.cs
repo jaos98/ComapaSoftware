@@ -75,11 +75,12 @@ namespace ComapaSoftware.Vistas
 
         private void btnActualizar_Click(object sender, EventArgs e)
         {
-            GetInfo();
-            if (c.UpdateInfo(m.IdEstacion,m.Nombre,m.CapEquipos,m.OperacionMinima,
-                m.EquiposInstalados,m.Tipo,m.GarantOperacion,m.GastoPromedio,m.GastoInstalado,
-                m.Servicio,m.Observaciones)>0)
+            GetInfoHttp();
+            if (es.Actualizar(me.IdEstacion, me.Nombre, me.CapacidadEquipos, me.OperacionMinima,
+               me.EquiposInstalados,me.Tipo,me.GarantOperacion,me.GastoPromedio,me.GastoInstalado,
+               me.Servicio,me.Observaciones))
             {
+
                 MessageBox.Show("La informacion se ha registrado con exito");
                 Close();
             }
@@ -87,9 +88,26 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("Ha ocurrido un error, reinicie la aplicacion");
             }
+
+
+
+
+
+            //GetInfo();
+            //if (c.UpdateInfo(m.IdEstacion,m.Nombre,m.CapEquipos,m.OperacionMinima,
+            //    m.EquiposInstalados,m.Tipo,m.GarantOperacion,m.GastoPromedio,m.GastoInstalado,
+            //    m.Servicio,m.Observaciones)>0)
+            //{
+            //    MessageBox.Show("La informacion se ha registrado con exito");
+            //    Close();
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Ha ocurrido un error, reinicie la aplicacion");
+            //}
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
+            private void btnVolver_Click(object sender, EventArgs e)
         {
             Close();
         }

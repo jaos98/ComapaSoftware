@@ -155,6 +155,89 @@ namespace ComapaSoftware.Http
                 }
             }
         }
-      
+
+        //ELIMINAR ESTACION
+        public bool Borrar(string IdEstacion)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("https://comapadbb.online");
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                httpClient.DefaultRequestHeaders.Add("Function", "delete");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage respuesta = httpClient.GetAsync("api/estaciones.php?IdEstacion=" + IdEstacion).Result;
+
+                Console.WriteLine(respuesta.StatusCode.ToString());
+                if (respuesta.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+
+        //ACTUALIZAR ESTACION HTTP
+        public bool Actualizar(string idEstacion, string nombre, string capacidadEquipos, string operacionMinima, string equiposInstalados, string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado, string servicio, string observaciones)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("https://comapadbb.online");
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                httpClient.DefaultRequestHeaders.Add("Function", "update");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                FormUrlEncodedContent contenido = new FormUrlEncodedContent(new[]
+                {
+                    new KeyValuePair<string, string>("IdEstacion", idEstacion),
+                    new KeyValuePair<string, string>("Nombre", nombre),
+                    new KeyValuePair<string, string>("CapacidadEquipos", capacidadEquipos),
+                    new KeyValuePair<string, string>("OperacionMinima", operacionMinima),
+                    new KeyValuePair<string, string>("EquiposInstalados", equiposInstalados),
+                    new KeyValuePair<string, string>("Tipo", tipo),
+                    new KeyValuePair<string, string>("GarantOperacion", garantOperacion),
+                    new KeyValuePair<string, string>("GastoPromedio", gastoPromedio),
+                    new KeyValuePair<string, string>("GastoInstalado", gastoInstalado),
+                    new KeyValuePair<string, string>("Servicio", servicio),
+                    new KeyValuePair<string, string>("Observaciones", observaciones)
+                });
+
+                HttpResponseMessage respuesta = httpClient.PostAsync("api/estaciones.php?", contenido).Result;
+
+                Console.WriteLine(respuesta.StatusCode.ToString());
+                if (respuesta.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    return true;
+                }
+                return false;
+            }
+        }
+
+        public string ObtenerObservaciones(string IdEstacion)
+        {
+            using (HttpClient httpClient = new HttpClient())
+            {
+                httpClient.BaseAddress = new Uri("https://comapadbb.online");
+                httpClient.DefaultRequestHeaders.Add("User-Agent", "Anything");
+                httpClient.DefaultRequestHeaders.Add("Function", "getdesc");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage respuesta = httpClient.GetAsync("api/estaciones.php?IdEstacion="+ IdEstacion).Result;
+
+                Console.WriteLine(respuesta.StatusCode.ToString());
+                if (respuesta.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    var stringRespuesta = respuesta.Content.ReadAsStringAsync().Result;
+                    ModelsEstaciones estaciones = JsonSerializer.Deserialize<ModelsEstaciones>(stringRespuesta);
+                    return estaciones.Observaciones;
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+        }
+
     }
 }

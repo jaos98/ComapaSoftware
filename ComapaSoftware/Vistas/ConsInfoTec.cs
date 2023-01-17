@@ -10,7 +10,7 @@ namespace ComapaSoftware.Vistas
         ControladorFicha c = new ControladorFicha();
         AttsInfo atts = new AttsInfo();
         ModelsEstaciones me = new ModelsEstaciones();
-        Estaciones e = new Estaciones();
+        Estaciones es = new Estaciones();
 
         string globalReceiver;
         public ConsInfoTec()
@@ -30,7 +30,7 @@ namespace ComapaSoftware.Vistas
         //METODO HTTP
         public void traerDatosHttp()
         {
-            dataGridView1.DataSource = e.llevarDatosHttp(globalReceiver);
+            dataGridView1.DataSource = es.llevarDatosHttp(globalReceiver);
         }
         //METODO DE CARGA DE ELEMENTOS DEL FORM
         private void ConsInfoTec_Load(object sender, EventArgs e)
@@ -43,7 +43,11 @@ namespace ComapaSoftware.Vistas
         //METODO AL HACER UN CLICK EN LA TABLA
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.RowIndex>=0)
+            {
+                dataGridView1.Refresh();
+                richTextBox1.Text = es.ObtenerObservaciones(dataGridView1.CurrentRow.Cells[1].Value.ToString());
+            }
 
             //if (e.RowIndex >= 0)
             //{
@@ -128,13 +132,15 @@ namespace ComapaSoftware.Vistas
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             bool pressedButton = true;
-            if (pressedButton && (MessageBox.Show("¿Desea eliminar esta planta?", "Eliminar registro",
+            if (pressedButton && (MessageBox.Show("¿Desea eliminar esta planta? Al realizar esta accion eliminara tambien todas las bombas almacenadas en esta estacion", "Eliminar registro",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1)
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-                c.Delete(result);
-                traerDatos();
+                es.Borrar(result);
+                traerDatosHttp();
+                //c.Delete(result);
+                //traerDatos();
             }
         }
     }
