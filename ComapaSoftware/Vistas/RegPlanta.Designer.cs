@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRegHttp = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.txtKva = new System.Windows.Forms.TextBox();
             this.txtLongitud = new System.Windows.Forms.MaskedTextBox();
@@ -61,7 +62,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnRegHttp = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,6 +102,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 457);
             this.panel1.TabIndex = 0;
+            // 
+            // btnRegHttp
+            // 
+            this.btnRegHttp.Location = new System.Drawing.Point(38, 422);
+            this.btnRegHttp.Name = "btnRegHttp";
+            this.btnRegHttp.Size = new System.Drawing.Size(163, 23);
+            this.btnRegHttp.TabIndex = 37;
+            this.btnRegHttp.Text = "Agregar";
+            this.btnRegHttp.UseVisualStyleBackColor = true;
+            this.btnRegHttp.Click += new System.EventHandler(this.btnRegHttp_Click);
             // 
             // label14
             // 
@@ -187,6 +197,7 @@
             this.btnAgregar.TabIndex = 28;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Visible = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // cmbServicio
@@ -391,16 +402,6 @@
             // toolTip1
             // 
             this.toolTip1.IsBalloon = true;
-            // 
-            // btnRegHttp
-            // 
-            this.btnRegHttp.Location = new System.Drawing.Point(255, 422);
-            this.btnRegHttp.Name = "btnRegHttp";
-            this.btnRegHttp.Size = new System.Drawing.Size(75, 23);
-            this.btnRegHttp.TabIndex = 37;
-            this.btnRegHttp.Text = "Agregar Http";
-            this.btnRegHttp.UseVisualStyleBackColor = true;
-            this.btnRegHttp.Click += new System.EventHandler(this.btnRegHttp_Click);
             // 
             // FormPlanta
             // 

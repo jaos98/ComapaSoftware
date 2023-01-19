@@ -189,11 +189,23 @@
     <Compile Include="Controlador\ControladorBombas.cs" />
     <Compile Include="Controlador\ControladorEstaciones.cs" />
     <Compile Include="Controlador\ControladorPlantas.cs" />
+    <Compile Include="Vistas\ActCol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ActCol.Designer.cs">
+      <DependentUpon>ActCol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vistas\ActInfoTec.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Vistas\ActInfoTec.Designer.cs">
       <DependentUpon>ActInfoTec.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\ActSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\ActSector.Designer.cs">
+      <DependentUpon>ActSector.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\ConsBombas.cs">
       <SubType>Form</SubType>
@@ -218,6 +230,18 @@
     </Compile>
     <Compile Include="Vistas\Actbomba.Designer.cs">
       <DependentUpon>Actbomba.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegCol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegCol.Designer.cs">
+      <DependentUpon>RegCol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vistas\RegSector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vistas\RegSector.Designer.cs">
+      <DependentUpon>RegSector.cs</DependentUpon>
     </Compile>
     <Compile Include="Vistas\PruebaHttp.cs">
       <SubType>Form</SubType>
@@ -272,8 +296,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vistas\ActCol.resx">
+      <DependentUpon>ActCol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ActInfoTec.resx">
       <DependentUpon>ActInfoTec.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\ActSector.resx">
+      <DependentUpon>ActSector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ConsBombas.resx">
       <DependentUpon>ConsBombas.cs</DependentUpon>
@@ -286,6 +316,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Actbomba.resx">
       <DependentUpon>Actbomba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegCol.resx">
+      <DependentUpon>RegCol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vistas\RegSector.resx">
+      <DependentUpon>RegSector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

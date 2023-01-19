@@ -80,6 +80,20 @@ namespace ComapaSoftware.Vistas
 
         }
 
+        private void btnSector_Click(object sender, EventArgs e)
+        {
+            RegSector rs = new RegSector();
+            Close();
+            rs.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            RegCol rc = new RegCol();
+            Close();
+            rc.Show();
+        }
+
 
 
         //http
