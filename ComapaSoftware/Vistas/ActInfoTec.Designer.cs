@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActInfoTec));
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbServ = new System.Windows.Forms.ComboBox();
             this.cmbTipo = new System.Windows.Forms.ComboBox();
@@ -116,22 +117,26 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(497, 532);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(497, 522);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(128, 23);
+            this.btnVolver.Size = new System.Drawing.Size(128, 33);
             this.btnVolver.TabIndex = 23;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(50, 532);
+            this.btnActualizar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnActualizar.Location = new System.Drawing.Point(50, 522);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(128, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(128, 33);
             this.btnActualizar.TabIndex = 22;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // txtObs
@@ -306,6 +311,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(662, 584);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActInfoTec";
             this.Text = "ActInfoTec";
             this.Load += new System.EventHandler(this.ActInfoTec_Load);

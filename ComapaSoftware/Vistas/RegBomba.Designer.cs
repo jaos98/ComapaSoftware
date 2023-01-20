@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegBomba));
             this.mainPanel = new System.Windows.Forms.Panel();
             this.cmbPosicion = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -56,7 +57,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnReg = new System.Windows.Forms.Button();
             this.btnReg2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -65,6 +65,7 @@
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
+            this.btnReg = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -177,12 +178,14 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(249, 352);
+            this.button2.BackColor = System.Drawing.Color.DarkRed;
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(249, 340);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(155, 23);
+            this.button2.Size = new System.Drawing.Size(155, 35);
             this.button2.TabIndex = 23;
             this.button2.Text = "Volver";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // txtFpm
@@ -341,16 +344,6 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Posicion";
             // 
-            // btnReg
-            // 
-            this.btnReg.Location = new System.Drawing.Point(35, 351);
-            this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(157, 23);
-            this.btnReg.TabIndex = 22;
-            this.btnReg.Text = "Registrar Bomba";
-            this.btnReg.UseVisualStyleBackColor = true;
-            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
-            // 
             // btnReg2
             // 
             this.btnReg2.Location = new System.Drawing.Point(35, 351);
@@ -429,13 +422,28 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(29, 363);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(29, 352);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(118, 23);
+            this.btnVolver.Size = new System.Drawing.Size(118, 34);
             this.btnVolver.TabIndex = 8;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btnReg
+            // 
+            this.btnReg.BackColor = System.Drawing.Color.DarkRed;
+            this.btnReg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReg.Location = new System.Drawing.Point(35, 340);
+            this.btnReg.Name = "btnReg";
+            this.btnReg.Size = new System.Drawing.Size(157, 34);
+            this.btnReg.TabIndex = 22;
+            this.btnReg.Text = "Registrar Bomba";
+            this.btnReg.UseVisualStyleBackColor = false;
+            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // RegBomba
             // 
@@ -451,6 +459,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegBomba";
             this.Text = "RegBomba";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegBomba_FormClosing);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ControlPanel));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnBuscarCat = new System.Windows.Forms.Button();
@@ -59,6 +60,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
             this.tabPage1.Controls.Add(this.btnBuscarCat);
             this.tabPage1.Controls.Add(this.cmbCategoria);
             this.tabPage1.Controls.Add(this.label2);
@@ -71,21 +73,24 @@
             this.tabPage1.Size = new System.Drawing.Size(459, 419);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Consulta";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnBuscarCat
             // 
+            this.btnBuscarCat.BackColor = System.Drawing.Color.DarkRed;
+            this.btnBuscarCat.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBuscarCat.Location = new System.Drawing.Point(58, 289);
             this.btnBuscarCat.Name = "btnBuscarCat";
-            this.btnBuscarCat.Size = new System.Drawing.Size(313, 23);
+            this.btnBuscarCat.Size = new System.Drawing.Size(313, 32);
             this.btnBuscarCat.TabIndex = 5;
             this.btnBuscarCat.Text = "Buscar Categoria";
-            this.btnBuscarCat.UseVisualStyleBackColor = true;
+            this.btnBuscarCat.UseVisualStyleBackColor = false;
             this.btnBuscarCat.Click += new System.EventHandler(this.btnBuscarCat_Click);
             // 
             // cmbCategoria
             // 
+            this.cmbCategoria.BackColor = System.Drawing.Color.DarkRed;
             this.cmbCategoria.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCategoria.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.cmbCategoria.FormattingEnabled = true;
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
@@ -109,12 +114,14 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBuscar.Location = new System.Drawing.Point(58, 102);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(313, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(313, 29);
             this.btnBuscar.TabIndex = 2;
             this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label1
@@ -135,6 +142,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
             this.tabPage2.Controls.Add(this.button2);
             this.tabPage2.Controls.Add(this.btnSector);
             this.tabPage2.Controls.Add(this.btnBombas);
@@ -146,56 +154,70 @@
             this.tabPage2.Size = new System.Drawing.Size(459, 419);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Agregar";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(117, 359);
+            this.button2.BackColor = System.Drawing.Color.DarkRed;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(117, 350);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(216, 23);
+            this.button2.Size = new System.Drawing.Size(216, 34);
             this.button2.TabIndex = 4;
             this.button2.Text = "Agregar/Consultar Colonia";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnSector
             // 
+            this.btnSector.BackColor = System.Drawing.Color.DarkRed;
+            this.btnSector.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSector.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSector.Location = new System.Drawing.Point(117, 296);
             this.btnSector.Name = "btnSector";
-            this.btnSector.Size = new System.Drawing.Size(216, 23);
+            this.btnSector.Size = new System.Drawing.Size(216, 35);
             this.btnSector.TabIndex = 3;
             this.btnSector.Text = "Agregar/Consultar Sector";
-            this.btnSector.UseVisualStyleBackColor = true;
+            this.btnSector.UseVisualStyleBackColor = false;
             this.btnSector.Click += new System.EventHandler(this.btnSector_Click);
             // 
             // btnBombas
             // 
+            this.btnBombas.BackColor = System.Drawing.Color.DarkRed;
+            this.btnBombas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBombas.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBombas.Location = new System.Drawing.Point(31, 175);
             this.btnBombas.Name = "btnBombas";
-            this.btnBombas.Size = new System.Drawing.Size(392, 23);
+            this.btnBombas.Size = new System.Drawing.Size(392, 33);
             this.btnBombas.TabIndex = 2;
             this.btnBombas.Text = "Agregar Informacion de bombas";
-            this.btnBombas.UseVisualStyleBackColor = true;
+            this.btnBombas.UseVisualStyleBackColor = false;
             this.btnBombas.Click += new System.EventHandler(this.btnBombas_Click);
             // 
             // btnInfoTec
             // 
+            this.btnInfoTec.BackColor = System.Drawing.Color.DarkRed;
+            this.btnInfoTec.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInfoTec.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnInfoTec.Location = new System.Drawing.Point(31, 105);
             this.btnInfoTec.Name = "btnInfoTec";
-            this.btnInfoTec.Size = new System.Drawing.Size(392, 23);
+            this.btnInfoTec.Size = new System.Drawing.Size(392, 33);
             this.btnInfoTec.TabIndex = 1;
             this.btnInfoTec.Text = "Agregar Informacion Tecnica";
-            this.btnInfoTec.UseVisualStyleBackColor = true;
+            this.btnInfoTec.UseVisualStyleBackColor = false;
             this.btnInfoTec.Click += new System.EventHandler(this.btnInfoTec_Click);
             // 
             // btnAgregar
             // 
+            this.btnAgregar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAgregar.Location = new System.Drawing.Point(31, 39);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(392, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(392, 31);
             this.btnAgregar.TabIndex = 0;
             this.btnAgregar.Text = "Agregar planta";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // ControlPanel
@@ -205,6 +227,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(469, 450);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ControlPanel";
             this.Text = "Panel de Control";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ControlPanel_FormClosing);

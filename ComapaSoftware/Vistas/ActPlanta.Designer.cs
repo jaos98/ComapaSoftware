@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActPlanta));
             this.titleKva = new System.Windows.Forms.Label();
             this.titleDom = new System.Windows.Forms.Label();
             this.titleServ = new System.Windows.Forms.Label();
@@ -251,22 +252,26 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(48, 368);
+            this.btnActualizar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnActualizar.ForeColor = System.Drawing.Color.White;
+            this.btnActualizar.Location = new System.Drawing.Point(48, 360);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(192, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(192, 31);
             this.btnActualizar.TabIndex = 79;
             this.btnActualizar.Text = "Actualizar";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(364, 368);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(364, 360);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(192, 23);
+            this.btnVolver.Size = new System.Drawing.Size(192, 31);
             this.btnVolver.TabIndex = 80;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // cmbColonia
@@ -365,6 +370,7 @@
             this.Controls.Add(this.titleTp);
             this.Controls.Add(this.titleNs);
             this.Controls.Add(this.titleNm);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActPlanta";
             this.Text = "Actualizar Planta";
             this.Load += new System.EventHandler(this.Form1_Load);

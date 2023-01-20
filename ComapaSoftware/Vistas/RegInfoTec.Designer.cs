@@ -203,12 +203,14 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(458, 534);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(458, 523);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(200, 23);
+            this.btnVolver.Size = new System.Drawing.Size(200, 34);
             this.btnVolver.TabIndex = 3;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // txtProm
@@ -227,12 +229,14 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(26, 534);
+            this.btnAgregar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnAgregar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAgregar.Location = new System.Drawing.Point(26, 523);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(201, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(201, 34);
             this.btnAgregar.TabIndex = 2;
             this.btnAgregar.Text = "Agregar Informacion";
-            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.UseVisualStyleBackColor = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtEquinst
@@ -374,12 +378,14 @@
             // 
             // btnVolver2
             // 
-            this.btnVolver2.Location = new System.Drawing.Point(9, 535);
+            this.btnVolver2.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver2.Location = new System.Drawing.Point(9, 524);
             this.btnVolver2.Name = "btnVolver2";
-            this.btnVolver2.Size = new System.Drawing.Size(141, 23);
+            this.btnVolver2.Size = new System.Drawing.Size(141, 34);
             this.btnVolver2.TabIndex = 9;
             this.btnVolver2.Text = "Volver";
-            this.btnVolver2.UseVisualStyleBackColor = true;
+            this.btnVolver2.UseVisualStyleBackColor = false;
             this.btnVolver2.Click += new System.EventHandler(this.btnVolver2_Click);
             // 
             // RegInfoTec

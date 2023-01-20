@@ -49,7 +49,7 @@ namespace ComapaSoftware.Vistas
             //consultarDato();
             if (txtConsulta.Text == "")
             {
-                MessageBox.Show("Por favor introduzca la informacion correcta");
+                MessageBox.Show("Debe rellenar primero el campo");
             }
             else
             {

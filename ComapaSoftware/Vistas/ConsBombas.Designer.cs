@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsBombas));
             this.dgvBombas = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -92,22 +93,26 @@
             // 
             // button2
             // 
+            this.button2.BackColor = System.Drawing.Color.DarkRed;
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button2.Location = new System.Drawing.Point(473, 346);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(202, 23);
+            this.button2.Size = new System.Drawing.Size(202, 36);
             this.button2.TabIndex = 2;
             this.button2.Text = "Eliminar Bomba";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnActualizar
             // 
+            this.btnActualizar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnActualizar.Location = new System.Drawing.Point(236, 346);
             this.btnActualizar.Name = "btnActualizar";
-            this.btnActualizar.Size = new System.Drawing.Size(202, 23);
+            this.btnActualizar.Size = new System.Drawing.Size(202, 36);
             this.btnActualizar.TabIndex = 3;
             this.btnActualizar.Text = "Corregir datos";
-            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.UseVisualStyleBackColor = false;
             this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
             // button4
@@ -383,22 +388,26 @@
             // 
             // btnInfo
             // 
+            this.btnInfo.BackColor = System.Drawing.Color.DarkRed;
+            this.btnInfo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnInfo.Location = new System.Drawing.Point(12, 346);
             this.btnInfo.Name = "btnInfo";
-            this.btnInfo.Size = new System.Drawing.Size(202, 23);
+            this.btnInfo.Size = new System.Drawing.Size(202, 36);
             this.btnInfo.TabIndex = 34;
             this.btnInfo.Text = "Mostrar informacion";
-            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.UseVisualStyleBackColor = false;
             this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // btnRegresar
             // 
+            this.btnRegresar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnRegresar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnRegresar.Location = new System.Drawing.Point(514, 268);
             this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(144, 23);
+            this.btnRegresar.Size = new System.Drawing.Size(144, 30);
             this.btnRegresar.TabIndex = 35;
             this.btnRegresar.Text = "Regresar";
-            this.btnRegresar.UseVisualStyleBackColor = true;
+            this.btnRegresar.UseVisualStyleBackColor = false;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
             // lblIdbomba
@@ -412,12 +421,14 @@
             // 
             // btnVolverIni
             // 
+            this.btnVolverIni.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolverIni.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnVolverIni.Location = new System.Drawing.Point(716, 346);
             this.btnVolverIni.Name = "btnVolverIni";
-            this.btnVolverIni.Size = new System.Drawing.Size(141, 23);
+            this.btnVolverIni.Size = new System.Drawing.Size(141, 36);
             this.btnVolverIni.TabIndex = 37;
             this.btnVolverIni.Text = "Volver";
-            this.btnVolverIni.UseVisualStyleBackColor = true;
+            this.btnVolverIni.UseVisualStyleBackColor = false;
             this.btnVolverIni.Click += new System.EventHandler(this.btnVolverIni_Click);
             // 
             // ConsBombas
@@ -464,6 +475,7 @@
             this.Controls.Add(this.dgvBombas);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button4);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsBombas";
             this.Text = "ConsBombas";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsBombas_FormClosing);

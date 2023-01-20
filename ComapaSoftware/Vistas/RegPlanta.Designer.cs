@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPlanta));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegHttp = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -105,12 +106,14 @@
             // 
             // btnRegHttp
             // 
-            this.btnRegHttp.Location = new System.Drawing.Point(38, 422);
+            this.btnRegHttp.BackColor = System.Drawing.Color.DarkRed;
+            this.btnRegHttp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRegHttp.Location = new System.Drawing.Point(38, 413);
             this.btnRegHttp.Name = "btnRegHttp";
-            this.btnRegHttp.Size = new System.Drawing.Size(163, 23);
+            this.btnRegHttp.Size = new System.Drawing.Size(163, 32);
             this.btnRegHttp.TabIndex = 37;
             this.btnRegHttp.Text = "Agregar";
-            this.btnRegHttp.UseVisualStyleBackColor = true;
+            this.btnRegHttp.UseVisualStyleBackColor = false;
             this.btnRegHttp.Click += new System.EventHandler(this.btnRegHttp_Click);
             // 
             // label14
@@ -181,12 +184,14 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(591, 422);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(591, 413);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(165, 23);
+            this.btnVolver.Size = new System.Drawing.Size(165, 32);
             this.btnVolver.TabIndex = 29;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnAgregar
@@ -410,6 +415,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 459);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormPlanta";
             this.Text = "Agregar Planta";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPlanta_FormClosing);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsPlanta));
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -122,22 +123,26 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(247, 545);
+            this.button2.BackColor = System.Drawing.Color.DarkRed;
+            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button2.Location = new System.Drawing.Point(247, 535);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(122, 23);
+            this.button2.Size = new System.Drawing.Size(122, 33);
             this.button2.TabIndex = 40;
             this.button2.Text = "Eliminar Planta";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(14, 545);
+            this.button1.BackColor = System.Drawing.Color.DarkRed;
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.Location = new System.Drawing.Point(14, 535);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(125, 23);
+            this.button1.Size = new System.Drawing.Size(125, 33);
             this.button1.TabIndex = 39;
             this.button1.Text = "Actualizar Planta";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelKva
@@ -160,12 +165,14 @@
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(508, 377);
+            this.btnBack.BackColor = System.Drawing.Color.DarkRed;
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBack.Location = new System.Drawing.Point(508, 367);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(173, 23);
+            this.btnBack.Size = new System.Drawing.Size(173, 33);
             this.btnBack.TabIndex = 36;
             this.btnBack.Text = "Volver";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // labelDom
@@ -404,12 +411,14 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnBuscar.Location = new System.Drawing.Point(377, 7);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(101, 23);
+            this.btnBuscar.Size = new System.Drawing.Size(101, 31);
             this.btnBuscar.TabIndex = 8;
             this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.UseVisualStyleBackColor = false;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // label2
@@ -430,32 +439,38 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(613, 545);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(613, 535);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(156, 23);
+            this.btnVolver.Size = new System.Drawing.Size(156, 33);
             this.btnVolver.TabIndex = 4;
             this.btnVolver.Text = "Regresar al inicio";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnAdicional
             // 
+            this.btnAdicional.BackColor = System.Drawing.Color.DarkRed;
+            this.btnAdicional.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAdicional.Location = new System.Drawing.Point(414, 454);
             this.btnAdicional.Name = "btnAdicional";
-            this.btnAdicional.Size = new System.Drawing.Size(355, 23);
+            this.btnAdicional.Size = new System.Drawing.Size(355, 34);
             this.btnAdicional.TabIndex = 2;
             this.btnAdicional.Text = "Mostrar Informacion Adicional";
-            this.btnAdicional.UseVisualStyleBackColor = true;
+            this.btnAdicional.UseVisualStyleBackColor = false;
             this.btnAdicional.Click += new System.EventHandler(this.btnAdicional_Click);
             // 
             // btnTecnica
             // 
+            this.btnTecnica.BackColor = System.Drawing.Color.DarkRed;
+            this.btnTecnica.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnTecnica.Location = new System.Drawing.Point(14, 454);
             this.btnTecnica.Name = "btnTecnica";
-            this.btnTecnica.Size = new System.Drawing.Size(355, 23);
+            this.btnTecnica.Size = new System.Drawing.Size(355, 34);
             this.btnTecnica.TabIndex = 1;
             this.btnTecnica.Text = "Mostrar Informacion tecnica";
-            this.btnTecnica.UseVisualStyleBackColor = true;
+            this.btnTecnica.UseVisualStyleBackColor = false;
             this.btnTecnica.Click += new System.EventHandler(this.btnTecnica_Click);
             // 
             // dataGridView1
@@ -505,6 +520,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1102, 606);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsPlanta";
             this.Text = "Resultados de Busqueda";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsPlanta_FormClosing);

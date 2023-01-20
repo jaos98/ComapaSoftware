@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsInfoTec));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnMostrar = new System.Windows.Forms.Button();
@@ -80,22 +81,26 @@
             // 
             // btnEditar
             // 
+            this.btnEditar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnEditar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEditar.Location = new System.Drawing.Point(366, 271);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(155, 23);
+            this.btnEditar.Size = new System.Drawing.Size(155, 29);
             this.btnEditar.TabIndex = 10;
             this.btnEditar.Text = "Editar Informacion Tecnica";
-            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.UseVisualStyleBackColor = false;
             this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnMostrar
             // 
+            this.btnMostrar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnMostrar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMostrar.Location = new System.Drawing.Point(12, 271);
             this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(151, 23);
+            this.btnMostrar.Size = new System.Drawing.Size(151, 29);
             this.btnMostrar.TabIndex = 1;
             this.btnMostrar.Text = "Mostrar Bombas";
-            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.UseVisualStyleBackColor = false;
             this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
             // 
             // richTextBox1
@@ -108,22 +113,26 @@
             // 
             // btnVolver
             // 
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnVolver.Location = new System.Drawing.Point(716, 271);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(155, 23);
+            this.btnVolver.Size = new System.Drawing.Size(155, 29);
             this.btnVolver.TabIndex = 11;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.button2_Click);
             // 
             // btnEliminar
             // 
+            this.btnEliminar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnEliminar.Location = new System.Drawing.Point(551, 271);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(140, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(140, 29);
             this.btnEliminar.TabIndex = 16;
             this.btnEliminar.Text = "Eliminar Registro";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // label2
@@ -335,22 +344,26 @@
             // 
             // btnMostrarInfo
             // 
+            this.btnMostrarInfo.BackColor = System.Drawing.Color.DarkRed;
+            this.btnMostrarInfo.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnMostrarInfo.Location = new System.Drawing.Point(184, 271);
             this.btnMostrarInfo.Name = "btnMostrarInfo";
-            this.btnMostrarInfo.Size = new System.Drawing.Size(157, 23);
+            this.btnMostrarInfo.Size = new System.Drawing.Size(157, 29);
             this.btnMostrarInfo.TabIndex = 40;
             this.btnMostrarInfo.Text = "Mostrar Informacion Tecnica";
-            this.btnMostrarInfo.UseVisualStyleBackColor = true;
+            this.btnMostrarInfo.UseVisualStyleBackColor = false;
             this.btnMostrarInfo.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnBack
             // 
-            this.btnBack.Location = new System.Drawing.Point(441, 175);
+            this.btnBack.BackColor = System.Drawing.Color.DarkRed;
+            this.btnBack.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnBack.Location = new System.Drawing.Point(441, 168);
             this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(138, 23);
+            this.btnBack.Size = new System.Drawing.Size(138, 30);
             this.btnBack.TabIndex = 41;
             this.btnBack.Text = "Volver";
-            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.UseVisualStyleBackColor = false;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
             // ConsInfoTec
@@ -390,6 +403,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConsInfoTec";
             this.Text = "ConsInfoTec";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsInfoTec_FormClosing);

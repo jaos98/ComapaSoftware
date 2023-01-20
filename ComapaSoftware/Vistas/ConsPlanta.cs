@@ -288,7 +288,6 @@ namespace ComapaSoftware.Vistas
                 == System.Windows.Forms.DialogResult.Yes))
             {
                 string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
-                Console.WriteLine(result);
                 p.BorrarPlanta(result);
                 //c.Delete(result);
                 traerDatos();

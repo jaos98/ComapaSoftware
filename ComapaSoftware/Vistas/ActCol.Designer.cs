@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActCol));
             this.txtCol = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbId = new System.Windows.Forms.ComboBox();
@@ -71,22 +72,26 @@
             // 
             // btnAct
             // 
-            this.btnAct.Location = new System.Drawing.Point(36, 138);
+            this.btnAct.BackColor = System.Drawing.Color.DarkRed;
+            this.btnAct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAct.Location = new System.Drawing.Point(36, 128);
             this.btnAct.Name = "btnAct";
-            this.btnAct.Size = new System.Drawing.Size(75, 23);
+            this.btnAct.Size = new System.Drawing.Size(90, 33);
             this.btnAct.TabIndex = 5;
             this.btnAct.Text = "Actualizar";
-            this.btnAct.UseVisualStyleBackColor = true;
+            this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(221, 138);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(208, 128);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.Size = new System.Drawing.Size(88, 33);
             this.btnVolver.TabIndex = 6;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // ActCol
@@ -101,6 +106,7 @@
             this.Controls.Add(this.cmbId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtCol);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ActCol";
             this.Text = "ActCol";
             this.Load += new System.EventHandler(this.ActCol_Load);

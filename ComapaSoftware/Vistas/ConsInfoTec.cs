@@ -36,7 +36,6 @@ namespace ComapaSoftware.Vistas
         private void ConsInfoTec_Load(object sender, EventArgs e)
         {
             Ocultar();
-            MessageBox.Show(globalReceiver);
             traerDatosHttp();
             
              //traerDatos();

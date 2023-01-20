@@ -27,9 +27,7 @@ namespace ComapaSoftware.Vistas
         }
         private void ConsBombas_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(IdEstacion);
             traerDatosHttp();
-
             //traerDatos();
             HideElements();
         }
@@ -181,7 +179,6 @@ namespace ComapaSoftware.Vistas
             string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
             string idEstacion = dgvBombas.CurrentRow.Cells[1].Value.ToString();
             Actbomba act = new Actbomba(idBombas,idEstacion);
-            Console.WriteLine("Aqui llego " + idBombas);
             act.Show();
         }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegSector));
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,22 +77,26 @@
             // 
             // btnRegistro
             // 
-            this.btnRegistro.Location = new System.Drawing.Point(122, 197);
+            this.btnRegistro.BackColor = System.Drawing.Color.DarkRed;
+            this.btnRegistro.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnRegistro.Location = new System.Drawing.Point(122, 188);
             this.btnRegistro.Name = "btnRegistro";
-            this.btnRegistro.Size = new System.Drawing.Size(75, 23);
+            this.btnRegistro.Size = new System.Drawing.Size(75, 32);
             this.btnRegistro.TabIndex = 4;
             this.btnRegistro.Text = "Registrar";
-            this.btnRegistro.UseVisualStyleBackColor = true;
+            this.btnRegistro.UseVisualStyleBackColor = false;
             this.btnRegistro.Click += new System.EventHandler(this.btnRegistro_Click);
             // 
             // btnAct
             // 
-            this.btnAct.Location = new System.Drawing.Point(294, 197);
+            this.btnAct.BackColor = System.Drawing.Color.DarkRed;
+            this.btnAct.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnAct.Location = new System.Drawing.Point(294, 188);
             this.btnAct.Name = "btnAct";
-            this.btnAct.Size = new System.Drawing.Size(75, 23);
+            this.btnAct.Size = new System.Drawing.Size(75, 32);
             this.btnAct.TabIndex = 5;
             this.btnAct.Text = "Actualizar";
-            this.btnAct.UseVisualStyleBackColor = true;
+            this.btnAct.UseVisualStyleBackColor = false;
             this.btnAct.Click += new System.EventHandler(this.btnAct_Click);
             // 
             // panel1
@@ -112,22 +117,26 @@
             // 
             // btnVolver
             // 
-            this.btnVolver.Location = new System.Drawing.Point(527, 197);
+            this.btnVolver.BackColor = System.Drawing.Color.DarkRed;
+            this.btnVolver.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnVolver.Location = new System.Drawing.Point(527, 188);
             this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.Size = new System.Drawing.Size(75, 32);
             this.btnVolver.TabIndex = 8;
             this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(413, 197);
+            this.btnEliminar.BackColor = System.Drawing.Color.DarkRed;
+            this.btnEliminar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnEliminar.Location = new System.Drawing.Point(413, 188);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(75, 32);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // dgvSector
@@ -151,6 +160,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(678, 252);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegSector";
             this.Text = "Registrar Sector";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegSector_FormClosing);
