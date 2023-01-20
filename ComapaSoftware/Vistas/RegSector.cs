@@ -95,8 +95,13 @@ namespace ComapaSoftware.Vistas
         private void btnVolver_Click(object sender, EventArgs e)
         {
             ControlPanel cpanel = new ControlPanel();
-            Close();
+            Dispose();
             cpanel.Show();
+        }
+
+        private void RegSector_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

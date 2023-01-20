@@ -82,7 +82,7 @@ namespace ComapaSoftware.Vistas
             {
 
                 MessageBox.Show("La informacion se ha registrado con exito");
-                Close();
+                Dispose();
             }
             else
             {
@@ -109,7 +109,7 @@ namespace ComapaSoftware.Vistas
 
             private void btnVolver_Click(object sender, EventArgs e)
         {
-            Close();
+            Dispose();
         }
         void GetInfo()
         {
@@ -141,5 +141,6 @@ namespace ComapaSoftware.Vistas
             me.Servicio = cmbServ.Text;
             me.Observaciones = txtObs.Text;
         }
+
     }
 }

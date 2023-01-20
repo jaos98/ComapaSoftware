@@ -65,13 +65,14 @@
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
             this.lblIdbomba = new System.Windows.Forms.Label();
+            this.btnVolverIni = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBombas)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvBombas
             // 
             this.dgvBombas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBombas.Location = new System.Drawing.Point(12, 12);
+            this.dgvBombas.Location = new System.Drawing.Point(29, 12);
             this.dgvBombas.Name = "dgvBombas";
             this.dgvBombas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBombas.Size = new System.Drawing.Size(988, 305);
@@ -80,17 +81,18 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 415);
+            this.button1.Location = new System.Drawing.Point(514, 284);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(202, 23);
             this.button1.TabIndex = 1;
             this.button1.Text = "Agregar Bomba";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(467, 415);
+            this.button2.Location = new System.Drawing.Point(473, 346);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 23);
             this.button2.TabIndex = 2;
@@ -100,7 +102,7 @@
             // 
             // btnActualizar
             // 
-            this.btnActualizar.Location = new System.Drawing.Point(238, 415);
+            this.btnActualizar.Location = new System.Drawing.Point(236, 346);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(202, 23);
             this.btnActualizar.TabIndex = 3;
@@ -110,12 +112,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 345);
+            this.button4.Location = new System.Drawing.Point(514, 239);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(202, 23);
             this.button4.TabIndex = 4;
             this.button4.Text = "Imprimir Reporte";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Visible = false;
             // 
             // btnVolver
             // 
@@ -125,7 +128,7 @@
             this.btnVolver.TabIndex = 5;
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            this.btnVolver.Click += new System.EventHandler(this.btnVolverIni_Click);
             // 
             // label1
             // 
@@ -380,7 +383,7 @@
             // 
             // btnInfo
             // 
-            this.btnInfo.Location = new System.Drawing.Point(238, 345);
+            this.btnInfo.Location = new System.Drawing.Point(12, 346);
             this.btnInfo.Name = "btnInfo";
             this.btnInfo.Size = new System.Drawing.Size(202, 23);
             this.btnInfo.TabIndex = 34;
@@ -390,7 +393,7 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(307, 285);
+            this.btnRegresar.Location = new System.Drawing.Point(514, 268);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(144, 23);
             this.btnRegresar.TabIndex = 35;
@@ -407,11 +410,23 @@
             this.lblIdbomba.TabIndex = 36;
             this.lblIdbomba.Text = "label2";
             // 
+            // btnVolverIni
+            // 
+            this.btnVolverIni.Location = new System.Drawing.Point(716, 346);
+            this.btnVolverIni.Name = "btnVolverIni";
+            this.btnVolverIni.Size = new System.Drawing.Size(141, 23);
+            this.btnVolverIni.TabIndex = 37;
+            this.btnVolverIni.Text = "Volver";
+            this.btnVolverIni.UseVisualStyleBackColor = true;
+            this.btnVolverIni.Click += new System.EventHandler(this.btnVolverIni_Click);
+            // 
             // ConsBombas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1012, 450);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(1012, 394);
+            this.Controls.Add(this.btnVolverIni);
             this.Controls.Add(this.lblIdbomba);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnInfo);
@@ -444,13 +459,14 @@
             this.Controls.Add(this.lblEstacion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.btnActualizar);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.dgvBombas);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button4);
             this.Name = "ConsBombas";
             this.Text = "ConsBombas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsBombas_FormClosing);
             this.Load += new System.EventHandler(this.ConsBombas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBombas)).EndInit();
             this.ResumeLayout(false);
@@ -497,5 +513,6 @@
         private System.Windows.Forms.Button btnInfo;
         private System.Windows.Forms.Button btnRegresar;
         private System.Windows.Forms.Label lblIdbomba;
+        private System.Windows.Forms.Button btnVolverIni;
     }
 }

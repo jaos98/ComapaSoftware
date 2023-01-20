@@ -69,7 +69,7 @@ namespace ComapaSoftware.Vistas
             else
             {
                 string senderInfo = cmbCategoria.Text;
-                Hide();
+                Dispose();
                 ConsPlanta formResultado = new ConsPlanta(senderInfo);
                 formResultado.Show();
             }
@@ -83,20 +83,20 @@ namespace ComapaSoftware.Vistas
         private void btnSector_Click(object sender, EventArgs e)
         {
             RegSector rs = new RegSector();
-            Close();
+            Dispose();
             rs.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             RegCol rc = new RegCol();
-            Close();
+            Dispose();
             rc.Show();
         }
 
-
-
-        //http
-
+        private void ControlPanel_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

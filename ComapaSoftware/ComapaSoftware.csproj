@@ -243,12 +243,6 @@
     <Compile Include="Vistas\RegSector.Designer.cs">
       <DependentUpon>RegSector.cs</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\PruebaHttp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Vistas\PruebaHttp.Designer.cs">
-      <DependentUpon>PruebaHttp.cs</DependentUpon>
-    </Compile>
     <Compile Include="Vistas\RegBomba.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -328,9 +322,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\ControlPanel.resx">
       <DependentUpon>ControlPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Vistas\PruebaHttp.resx">
-      <DependentUpon>PruebaHttp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Vistas\RegBomba.resx">
       <DependentUpon>RegBomba.cs</DependentUpon>

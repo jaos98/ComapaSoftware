@@ -45,17 +45,19 @@ namespace ComapaSoftware.Vistas
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Close();
+            Dispose();
         }
 
         private void ActSector_Load(object sender, EventArgs e)
         {
            
         }
+
         void GetInfo()
         {
             txtId.Text = IdSector;
             txtNombre.Text = NombreSector;
         }
+
     }
 }

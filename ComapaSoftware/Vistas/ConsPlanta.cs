@@ -36,8 +36,7 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON ENVIA LA INFORMACION A LA VISTA ConsInfoTec MEDIANTE EL ID RECOGIDO POR LA CLASE ATT
         private void btnTecnica_Click(object sender, EventArgs e)
         {
-
-            Close();
+            Dispose();
             ConsInfoTec consInfoTec = new ConsInfoTec(att.Result);
             consInfoTec.Show();
         }
@@ -55,7 +54,7 @@ namespace ComapaSoftware.Vistas
         //DECLARACION DE BOTONES, ESTE BOTON TE PERMITE VOLVER AL PANEL DE CONTROL
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Dispose();
             ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
@@ -164,7 +163,7 @@ namespace ComapaSoftware.Vistas
             {
                 string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 att.Result = result;
-                Close();
+                Dispose();
                 ConsInfoTec consInfoTec = new ConsInfoTec(result);
                 consInfoTec.Show();
             }
@@ -298,6 +297,9 @@ namespace ComapaSoftware.Vistas
 
         }
 
-
+        private void ConsPlanta_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

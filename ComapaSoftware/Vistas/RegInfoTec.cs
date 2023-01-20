@@ -43,30 +43,30 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("Porfavor rellene todos los campos");
             }
-            
 
 
-        //DataView();
-        //if (Validate())
-        //{
-        //    MessageBox.Show("Todos los datos son correctos");
-        //    if (c.registrarInfo(m.IdPlantas, m.IdEstacion, m.Nombre, m.CapEquipos, m.OperacionMinima,
-        //        m.EquiposInstalados, m.Tipo, m.GarantOperacion, m.GastoPromedio,
-        //        m.GastoInstalado, m.Servicio, m.Observaciones) > 0)
-        //    {
-        //        MessageBox.Show("Informacion registrada");
-        //        Clean();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Hubo un error");
-        //    }
-        //}
-        //else
-        //{
-        //    MessageBox.Show("Llene todos los campos");
-        //}
-    }
+
+            //DataView();
+            //if (Validate())
+            //{
+            //    MessageBox.Show("Todos los datos son correctos");
+            //    if (c.registrarInfo(m.IdPlantas, m.IdEstacion, m.Nombre, m.CapEquipos, m.OperacionMinima,
+            //        m.EquiposInstalados, m.Tipo, m.GarantOperacion, m.GastoPromedio,
+            //        m.GastoInstalado, m.Servicio, m.Observaciones) > 0)
+            //    {
+            //        MessageBox.Show("Informacion registrada");
+            //        Clean();
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Hubo un error");
+            //    }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Llene todos los campos");
+            //}
+        }
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -109,7 +109,7 @@ namespace ComapaSoftware.Vistas
                 panel1.Visible = true;
                 btnVolver2.Visible = false;
                 string saver = cmbId.Text;
-                labelIdFicha.Text = "FT" + saver;   
+                labelIdFicha.Text = "FT" + saver;
             }
             else
             {
@@ -119,10 +119,10 @@ namespace ComapaSoftware.Vistas
         }
         new bool Validate()
         {
-            if (m.IdPlantas == ""||m.IdEstacion =="" || m.Nombre ==""|| m.CapEquipos =="" ||m.OperacionMinima==""||
-                m.EquiposInstalados==""||m.Tipo==""||m.GarantOperacion==""||
-                m.GastoPromedio==""||m.GastoInstalado==""||m.Servicio==""||
-                m.Observaciones=="")
+            if (m.IdPlantas == "" || m.IdEstacion == "" || m.Nombre == "" || m.CapEquipos == "" || m.OperacionMinima == "" ||
+                m.EquiposInstalados == "" || m.Tipo == "" || m.GarantOperacion == "" ||
+                m.GastoPromedio == "" || m.GastoInstalado == "" || m.Servicio == "" ||
+                m.Observaciones == "")
             {
                 return false;
             }
@@ -130,13 +130,13 @@ namespace ComapaSoftware.Vistas
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Dispose();
             ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
         private void btnVolver2_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Dispose();
             ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
@@ -189,6 +189,11 @@ namespace ComapaSoftware.Vistas
         private void txtIdFicha_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void RegInfoTec_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

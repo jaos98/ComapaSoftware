@@ -386,6 +386,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(893, 588);
             this.Controls.Add(this.btnVolver2);
             this.Controls.Add(this.label12);
@@ -397,6 +398,7 @@
             this.Controls.Add(this.cmbId);
             this.Name = "RegInfoTec";
             this.Text = "Agregar Estacion";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegInfoTec_FormClosing);
             this.Load += new System.EventHandler(this.RegInfoTec_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

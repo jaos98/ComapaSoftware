@@ -77,7 +77,7 @@ namespace ComapaSoftware.Vistas
         }
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Dispose();
             ControlPanel formPanel = new ControlPanel();
             formPanel.Show();
         }
@@ -263,6 +263,11 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("El Id que esta ingresando ya se encuentra en uso");
             }
+        }
+
+        private void FormPlanta_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

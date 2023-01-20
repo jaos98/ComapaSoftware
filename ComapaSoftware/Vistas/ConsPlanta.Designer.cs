@@ -61,14 +61,14 @@
             this.titleNm = new System.Windows.Forms.Label();
             this.titleId = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnMostrar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtAdicional = new System.Windows.Forms.TextBox();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.btnAdicional = new System.Windows.Forms.Button();
             this.btnTecnica = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnMostrar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -107,14 +107,14 @@
             this.panel1.Controls.Add(this.titleNm);
             this.panel1.Controls.Add(this.titleId);
             this.panel1.Controls.Add(this.btnBuscar);
-            this.panel1.Controls.Add(this.btnMostrar);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtAdicional);
             this.panel1.Controls.Add(this.btnVolver);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.btnAdicional);
             this.panel1.Controls.Add(this.btnTecnica);
             this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.btnMostrar);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1100, 582);
@@ -404,7 +404,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(977, 8);
+            this.btnBuscar.Location = new System.Drawing.Point(377, 7);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(101, 23);
             this.btnBuscar.TabIndex = 8;
@@ -412,20 +412,10 @@
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // btnMostrar
-            // 
-            this.btnMostrar.Location = new System.Drawing.Point(113, 9);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(154, 23);
-            this.btnMostrar.TabIndex = 7;
-            this.btnMostrar.Text = "Mostrar Todo";
-            this.btnMostrar.UseVisualStyleBackColor = true;
-            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(633, 14);
+            this.label2.Location = new System.Drawing.Point(21, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 6;
@@ -433,7 +423,7 @@
             // 
             // txtAdicional
             // 
-            this.txtAdicional.Location = new System.Drawing.Point(695, 11);
+            this.txtAdicional.Location = new System.Drawing.Point(75, 10);
             this.txtAdicional.Name = "txtAdicional";
             this.txtAdicional.Size = new System.Drawing.Size(276, 20);
             this.txtAdicional.TabIndex = 5;
@@ -447,15 +437,6 @@
             this.btnVolver.Text = "Regresar al inicio";
             this.btnVolver.UseVisualStyleBackColor = true;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Elija una opcion";
             // 
             // btnAdicional
             // 
@@ -496,14 +477,37 @@
             this.dataGridView1.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowLeave);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
+            // btnMostrar
+            // 
+            this.btnMostrar.Location = new System.Drawing.Point(119, 48);
+            this.btnMostrar.Name = "btnMostrar";
+            this.btnMostrar.Size = new System.Drawing.Size(154, 23);
+            this.btnMostrar.TabIndex = 7;
+            this.btnMostrar.Text = "Mostrar Todo";
+            this.btnMostrar.UseVisualStyleBackColor = true;
+            this.btnMostrar.Visible = false;
+            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(21, 53);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Elija una opcion";
+            this.label1.Visible = false;
+            // 
             // ConsPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(1102, 606);
             this.Controls.Add(this.panel1);
             this.Name = "ConsPlanta";
             this.Text = "Resultados de Busqueda";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ConsPlanta_FormClosing);
             this.Load += new System.EventHandler(this.FormResultado_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

@@ -77,12 +77,12 @@ namespace ComapaSoftware.Vistas
                  mp.Longitud, mp.Elevacion, mp.Servicio, mp.Domicilio))
             {
                 MessageBox.Show("Actualizado con exito!");
-                Close();
+                Dispose();
             }
             else
             {
                 MessageBox.Show("Ha ocurrido un error, vuelva a intentarlo revise su conexion a internet");
-                Close();
+                Dispose();
             }
 
             
@@ -105,7 +105,7 @@ namespace ComapaSoftware.Vistas
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Close();
+            Dispose();
         }
         private void GetInfo()
         {
@@ -142,7 +142,6 @@ namespace ComapaSoftware.Vistas
             mp.Servicio = cmbServicio.Text;
             mp.Domicilio = txtDom.Text;
         }
-
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
             int value = cmbSector.SelectedIndex;
@@ -163,6 +162,7 @@ namespace ComapaSoftware.Vistas
             }
         }
 
+
         //private void btnPrueba_Click(object sender, EventArgs e)
         //{
         //    GetData();
@@ -182,4 +182,5 @@ namespace ComapaSoftware.Vistas
         //    Console.WriteLine(c.Domicilio);
         //}
     }
+
 }

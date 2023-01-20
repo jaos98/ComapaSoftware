@@ -407,10 +407,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(800, 459);
             this.Controls.Add(this.panel1);
             this.Name = "FormPlanta";
             this.Text = "Agregar Planta";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormPlanta_FormClosing);
             this.Load += new System.EventHandler(this.FormPlanta_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

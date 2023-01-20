@@ -216,7 +216,7 @@ namespace ComapaSoftware.Vistas
                 {
                     MessageBox.Show("Se ha registrado todo correctamente");
                     Clean();
-                    Close();
+                    Dispose();
                     ControlPanel cpanel = new ControlPanel();
                     cpanel.Show();
                    
@@ -301,14 +301,14 @@ namespace ComapaSoftware.Vistas
         private void button2_Click(object sender, EventArgs e)
         {
             ControlPanel control = new ControlPanel();
-            Close();
+            Dispose();
             control.Show();
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             ControlPanel control = new ControlPanel();
-            Close();
+            Dispose();
             control.Show();
         }
 
@@ -325,6 +325,11 @@ namespace ComapaSoftware.Vistas
                 MessageBox.Show("Se ha registrado todo correctamente");
                 Clean();
             }
+        }
+
+        private void RegBomba_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

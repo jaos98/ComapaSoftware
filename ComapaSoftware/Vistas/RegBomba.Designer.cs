@@ -441,6 +441,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(968, 433);
             this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label16);
@@ -452,6 +453,7 @@
             this.Controls.Add(this.mainPanel);
             this.Name = "RegBomba";
             this.Text = "RegBomba";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegBomba_FormClosing);
             this.Load += new System.EventHandler(this.RegBomba_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();

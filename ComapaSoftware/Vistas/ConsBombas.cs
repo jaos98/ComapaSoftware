@@ -50,7 +50,7 @@ namespace ComapaSoftware.Vistas
         {
             //RECIBE ID ESTACION
             RegBomba regBomba = new RegBomba(IdEstacion);
-            Hide();
+            Dispose();
             regBomba.Show();
         }
         void HideElements()
@@ -200,9 +200,16 @@ namespace ComapaSoftware.Vistas
             }
         }
 
-        private void btnVolver_Click(object sender, EventArgs e)
+
+
+        private void ConsBombas_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Close();
+            Application.Exit();
+        }
+
+        private void btnVolverIni_Click(object sender, EventArgs e)
+        {
+            Dispose();
             ControlPanel control = new ControlPanel();
             control.Show();
         }

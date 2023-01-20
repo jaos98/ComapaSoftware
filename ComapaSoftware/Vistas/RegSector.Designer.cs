@@ -35,9 +35,9 @@
             this.btnRegistro = new System.Windows.Forms.Button();
             this.btnAct = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnVolver = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.dgvSector = new System.Windows.Forms.DataGridView();
-            this.btnVolver = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSector)).BeginInit();
             this.SuspendLayout();
@@ -110,6 +110,16 @@
             this.panel1.Size = new System.Drawing.Size(654, 233);
             this.panel1.TabIndex = 6;
             // 
+            // btnVolver
+            // 
+            this.btnVolver.Location = new System.Drawing.Point(527, 197);
+            this.btnVolver.Name = "btnVolver";
+            this.btnVolver.Size = new System.Drawing.Size(75, 23);
+            this.btnVolver.TabIndex = 8;
+            this.btnVolver.Text = "Volver";
+            this.btnVolver.UseVisualStyleBackColor = true;
+            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.Location = new System.Drawing.Point(413, 197);
@@ -134,24 +144,16 @@
             this.dgvSector.TabIndex = 7;
             this.dgvSector.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSector_CellContentClick);
             // 
-            // btnVolver
-            // 
-            this.btnVolver.Location = new System.Drawing.Point(527, 197);
-            this.btnVolver.Name = "btnVolver";
-            this.btnVolver.Size = new System.Drawing.Size(75, 23);
-            this.btnVolver.TabIndex = 8;
-            this.btnVolver.Text = "Volver";
-            this.btnVolver.UseVisualStyleBackColor = true;
-            this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
-            // 
             // RegSector
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(678, 252);
             this.Controls.Add(this.panel1);
             this.Name = "RegSector";
             this.Text = "Registrar Sector";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegSector_FormClosing);
             this.Load += new System.EventHandler(this.RegSector_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

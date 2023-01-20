@@ -151,6 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(775, 252);
             this.Controls.Add(this.lblSector);
             this.Controls.Add(this.label3);
@@ -165,6 +166,7 @@
             this.Controls.Add(this.cmbId);
             this.Name = "RegCol";
             this.Text = "Registrar Colonia";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegCol_FormClosing);
             this.Load += new System.EventHandler(this.RegCol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvColonias)).EndInit();
             this.ResumeLayout(false);

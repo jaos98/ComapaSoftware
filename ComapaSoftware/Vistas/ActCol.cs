@@ -54,7 +54,7 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("¡Actualizado!");
 
-                Close();
+                Dispose();
                 
             }
             else
@@ -65,7 +65,8 @@ namespace ComapaSoftware.Vistas
 
         private void btnVolver_Click(object sender, EventArgs e)
         {
-            Close();
+            Dispose();
         }
+
     }
 }

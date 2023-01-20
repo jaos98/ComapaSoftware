@@ -31,7 +31,7 @@ namespace ComapaSoftware
                 if (new Conexion().LogIn(txtUsuario.Text, txtContraseña.Text))
                 {
                     MessageBox.Show("Bienvenido");
-                    Close();
+                    Dispose();
                     ControlPanel formPanel = new ControlPanel();
                     formPanel.Show();
                 }
@@ -62,7 +62,7 @@ namespace ComapaSoftware
             u.Password = txtContraseña.Text))
             {
                 MessageBox.Show("¡Bienvenido!");
-                Close();
+                Dispose();
                 ControlPanel formPanel = new ControlPanel();
                 formPanel.Show();
             }
@@ -70,6 +70,13 @@ namespace ComapaSoftware
             {
                 MessageBox.Show("Usuario/Contraseña incorrectos. Si el problema persiste, revise su conexion a internet");
             }
+        }
+
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            Application.Exit();
+            
         }
     }
 }
