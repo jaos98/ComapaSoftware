@@ -89,13 +89,12 @@
             this.button1.Text = "Agregar Bomba";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.DarkRed;
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(473, 346);
+            this.button2.Location = new System.Drawing.Point(476, 346);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 36);
             this.button2.TabIndex = 2;
@@ -107,7 +106,7 @@
             // 
             this.btnActualizar.BackColor = System.Drawing.Color.DarkRed;
             this.btnActualizar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnActualizar.Location = new System.Drawing.Point(236, 346);
+            this.btnActualizar.Location = new System.Drawing.Point(246, 346);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Size = new System.Drawing.Size(202, 36);
             this.btnActualizar.TabIndex = 3;

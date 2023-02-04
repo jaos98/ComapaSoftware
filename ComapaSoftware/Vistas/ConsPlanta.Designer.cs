@@ -68,8 +68,6 @@
             this.btnAdicional = new System.Windows.Forms.Button();
             this.btnTecnica = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnMostrar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -114,8 +112,6 @@
             this.panel1.Controls.Add(this.btnAdicional);
             this.panel1.Controls.Add(this.btnTecnica);
             this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Controls.Add(this.btnMostrar);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1100, 582);
@@ -413,7 +409,7 @@
             // 
             this.btnBuscar.BackColor = System.Drawing.Color.DarkRed;
             this.btnBuscar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnBuscar.Location = new System.Drawing.Point(377, 7);
+            this.btnBuscar.Location = new System.Drawing.Point(387, 7);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(101, 31);
             this.btnBuscar.TabIndex = 8;
@@ -492,27 +488,6 @@
             this.dataGridView1.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowLeave);
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
-            // btnMostrar
-            // 
-            this.btnMostrar.Location = new System.Drawing.Point(119, 48);
-            this.btnMostrar.Name = "btnMostrar";
-            this.btnMostrar.Size = new System.Drawing.Size(154, 23);
-            this.btnMostrar.TabIndex = 7;
-            this.btnMostrar.Text = "Mostrar Todo";
-            this.btnMostrar.UseVisualStyleBackColor = true;
-            this.btnMostrar.Visible = false;
-            this.btnMostrar.Click += new System.EventHandler(this.btnMostrar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Elija una opcion";
-            this.label1.Visible = false;
-            // 
             // ConsPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,11 +511,9 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdicional;
         private System.Windows.Forms.Button btnTecnica;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnMostrar;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtAdicional;
         private System.Windows.Forms.Button btnBuscar;

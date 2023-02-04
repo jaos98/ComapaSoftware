@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPlanta));
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnRegHttp = new System.Windows.Forms.Button();
@@ -40,7 +39,6 @@
             this.cmbColonia = new System.Windows.Forms.ComboBox();
             this.cmbEstatus = new System.Windows.Forms.ComboBox();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnAgregar = new System.Windows.Forms.Button();
             this.cmbServicio = new System.Windows.Forms.ComboBox();
             this.cmbTipoPlanta = new System.Windows.Forms.ComboBox();
             this.txtDomicilio = new System.Windows.Forms.TextBox();
@@ -62,7 +60,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +74,6 @@
             this.panel1.Controls.Add(this.cmbColonia);
             this.panel1.Controls.Add(this.cmbEstatus);
             this.panel1.Controls.Add(this.btnVolver);
-            this.panel1.Controls.Add(this.btnAgregar);
             this.panel1.Controls.Add(this.cmbServicio);
             this.panel1.Controls.Add(this.cmbTipoPlanta);
             this.panel1.Controls.Add(this.txtDomicilio);
@@ -108,7 +104,7 @@
             // 
             this.btnRegHttp.BackColor = System.Drawing.Color.DarkRed;
             this.btnRegHttp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnRegHttp.Location = new System.Drawing.Point(38, 413);
+            this.btnRegHttp.Location = new System.Drawing.Point(63, 413);
             this.btnRegHttp.Name = "btnRegHttp";
             this.btnRegHttp.Size = new System.Drawing.Size(163, 32);
             this.btnRegHttp.TabIndex = 37;
@@ -194,17 +190,6 @@
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.btnVolver_Click);
             // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Location = new System.Drawing.Point(36, 422);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(165, 23);
-            this.btnAgregar.TabIndex = 28;
-            this.btnAgregar.Text = "Agregar";
-            this.btnAgregar.UseVisualStyleBackColor = true;
-            this.btnAgregar.Visible = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
             // cmbServicio
             // 
             this.cmbServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -216,6 +201,7 @@
             "Tanque",
             "Pozo",
             "Carcamo",
+            "Obra de toma",
             "Sin sub-categoria"});
             this.cmbServicio.Location = new System.Drawing.Point(519, 193);
             this.cmbServicio.Name = "cmbServicio";
@@ -229,8 +215,7 @@
             this.cmbTipoPlanta.Items.AddRange(new object[] {
             "Potable",
             "Residual",
-            "Obra de toma",
-            "Tratamiento"});
+            "Cruda"});
             this.cmbTipoPlanta.Location = new System.Drawing.Point(172, 146);
             this.cmbTipoPlanta.Name = "cmbTipoPlanta";
             this.cmbTipoPlanta.Size = new System.Drawing.Size(237, 21);
@@ -404,10 +389,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Id Planta";
             // 
-            // toolTip1
-            // 
-            this.toolTip1.IsBalloon = true;
-            // 
             // FormPlanta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,7 +430,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.ComboBox cmbServicio;
         private System.Windows.Forms.ComboBox cmbTipoPlanta;
         private System.Windows.Forms.ComboBox cmbEstatus;
@@ -457,7 +437,6 @@
         private System.Windows.Forms.ComboBox cmbColonia;
         private System.Windows.Forms.MaskedTextBox txtLongitud;
         private System.Windows.Forms.MaskedTextBox txtLatitud;
-        private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtKva;
         private System.Windows.Forms.Button btnRegHttp;

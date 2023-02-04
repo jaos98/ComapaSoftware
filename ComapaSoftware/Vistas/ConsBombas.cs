@@ -8,8 +8,6 @@ namespace ComapaSoftware.Vistas
 {
     public partial class ConsBombas : Form
     {
-        ModeloBombas m = new ModeloBombas();
-        ControladorBombas c = new ControladorBombas();
         Bombas b = new Bombas();
         ModelsBombas mb;
 
@@ -28,13 +26,7 @@ namespace ComapaSoftware.Vistas
         private void ConsBombas_Load(object sender, EventArgs e)
         {
             traerDatosHttp();
-            //traerDatos();
             HideElements();
-        }
-        public void traerDatos()
-        {
-
-            dgvBombas.DataSource = c.llevarDatos(IdEstacion);
         }
         public void traerDatosHttp()
         {
@@ -43,13 +35,6 @@ namespace ComapaSoftware.Vistas
         private void dgvBombas_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //RECIBE ID ESTACION
-            RegBomba regBomba = new RegBomba(IdEstacion);
-            Dispose();
-            regBomba.Show();
         }
         void HideElements()
         {
@@ -139,49 +124,19 @@ namespace ComapaSoftware.Vistas
             lblEstatus.Text = mb.Estatus;
             richTextBox1.Text = mb.Observaciones;
             ShowElements();
-
-
-
-
-
-
-
-            //string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
-            //foreach (ModeloBombas list in c.GetUpdateInfo(idBombas))
-            //{
-            //    lblIdbomba.Text = list.IdBombas;
-            //    lblEstacion.Text = list.IdEstacion;
-            //    lblPosicion.Text = list.Posicion.ToString();
-            //    lblMarca.Text = list.Marca;
-            //    lblModelo.Text = list.Modelo;
-            //    lblTipo.Text = list.Tipo;
-            //    lblHp.Text = list.Hp;
-            //    lblVoltaje.Text = list.Voltaje;
-            //    lblDiametro.Text = list.Diametro;
-            //    lblLps.Text = list.Lps;
-            //    lblCarga.Text = list.Carga;
-            //    lblRpm.Text = list.Rpm;
-            //    lblFpm.Text = list.Fpm;
-            //    lblEstatus.Text = list.Estatus;
-            //    richTextBox1.Text = list.Observaciones;
-            //}
-            //ShowElements();
         }
-
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             HideElements();
             dgvBombas.Show();
         }
-
         private void btnActualizar_Click(object sender, EventArgs e)
         {
             string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
             string idEstacion = dgvBombas.CurrentRow.Cells[1].Value.ToString();
-            Actbomba act = new Actbomba(idBombas,idEstacion);
+            Actbomba act = new Actbomba(idBombas, idEstacion);
             act.Show();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             bool pressedButton = true;
@@ -192,18 +147,12 @@ namespace ComapaSoftware.Vistas
                 string idBombas = dgvBombas.CurrentRow.Cells[0].Value.ToString();
                 b.Borrar(idBombas);
                 traerDatosHttp();
-                //c.Delete(idBombas);
-                //traerDatos();
             }
         }
-
-
-
         private void ConsBombas_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
-
         private void btnVolverIni_Click(object sender, EventArgs e)
         {
             Dispose();

@@ -1,5 +1,4 @@
 ﻿using ComapaSoftware.Http;
-using ComapaSoftware.Modelo;
 using System;
 using System.Windows.Forms;
 
@@ -8,7 +7,7 @@ namespace ComapaSoftware.Vistas
     public partial class ConsPlanta : Form
     {
         //INSTANCIAS Y VARIABLES GLOBALES
-        ControladorPlantas c = new ControladorPlantas();
+
         Plantas p = new Plantas();
 
         Atts att = new Atts();
@@ -39,11 +38,6 @@ namespace ComapaSoftware.Vistas
             Dispose();
             ConsInfoTec consInfoTec = new ConsInfoTec(att.Result);
             consInfoTec.Show();
-        }
-        //DECLARACION DE BOTONES, ESTE BOTON TRAE TODA LA INFORMACION DE LA BASE DE DATOS EN EL datagridview1
-        private void btnMostrar_Click(object sender, EventArgs e)
-        {
-            traerTodo();
         }
         //DECLARACION DE BOTONES, ESTE BOTON REALIZA NUEVAMENTE LA BUSQUEDA EN FUNCION A UN TEXTBOX
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -80,25 +74,7 @@ namespace ComapaSoftware.Vistas
                 labelDom.Text = p.mp.Domicilio;
                 ShowElements();
             }
-            //foreach (ModeloPlantas list in c.GetUpdateInfo(att.Result))
-            //{
-            //    labelId.Text = list.IdPlanta;
-            //    labelNm.Text = list.NumMedidor;
-            //    labelNs.Text = list.NumServicio;
-            //    labelTp.Text = list.TipoPlantas;
-            //    labelEst.Text = list.Estatus;
-            //    labelDesc.Text = list.DescFunciones;
-            //    labelKva.Text = list.SubestacionKva;
-            //    labelSec.Text = list.Sector;
-            //    labelCol.Text = list.Colonia;
-            //    labelSec.Text = list.Sector;
-            //    labelLa.Text = list.Latitud;
-            //    labelLon.Text = list.Longitud;
-            //    labelEle.Text = list.Elevacion;
-            //    labelSer.Text = list.Servicio;
-            //    labelDom.Text = list.Domicilio;
-            //    ShowElements();
-            //}
+
         }
         //DECLARACION DE BOTONES, CUANDO SE MUESTRA LA INFORMACION GENERAL,
         //ESTE BOTON SE ENCARGA DE ESCONDER LA INFORMACION GENERAL Y MOSTRAR EL RESUMEN EN EL datagridview1
@@ -111,32 +87,19 @@ namespace ComapaSoftware.Vistas
         {
             //PRUEBA HTTP
             dataGridView1.DataSource = p.getDatosHttpByTipo(globalReceiver);
-            //si funciona, devolver a la normalidad
-            //dataGridView1.DataSource = c.llevarDatos(globalReceiver);
         }
         //EL METODO PERMITE TRAER TODA LA INFORMACION E INSERTARLA AL datagridview1 (POSIBLE ELIMINACION)
-        public void traerTodo()
-        {
-            dataGridView1.DataSource = c.dataSender();
-        }
         public void traerTodoHttp()
         {
             dataGridView1.DataSource = p.llevarDatosHttp(globalReceiver);
         }
         //EL METODO PERMITE REALIZAR UNA CONSULTA CON 1 DATO QUE COINCIDA CON 2 CRITERIOS IdPlantas || TipoPlantas
-        public void consultaAdicional()
-        {
-            string globalEntry = txtAdicional.Text;
-            dataGridView1.DataSource = c.consultaAdicional(globalEntry);
-            dataGridView1.Refresh();
-        }
         public void consultaAdicionalHttp()
         {
             string globalEntry = txtAdicional.Text;
             dataGridView1.DataSource = p.getDatosHttpByTipo(globalEntry);
             dataGridView1.Refresh();
         }
-
         //EL METODO PERMITE EJECUTAR LA OBTENCION DE DATOS Y OCULTAR ELEMENTOS DE CONSULTA GENERAL
         private void FormResultado_Load(object sender, EventArgs e)
         {
@@ -272,14 +235,12 @@ namespace ComapaSoftware.Vistas
 
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             att.Result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
             ActPlanta actPlanta = new ActPlanta(att.Result);
             actPlanta.Show();
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             bool pressedButton = true;
@@ -289,13 +250,9 @@ namespace ComapaSoftware.Vistas
             {
                 string result = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                 p.BorrarPlanta(result);
-                //c.Delete(result);
                 traerDatos();
             }
-
-
         }
-
         private void ConsPlanta_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

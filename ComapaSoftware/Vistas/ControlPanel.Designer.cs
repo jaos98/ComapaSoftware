@@ -95,9 +95,7 @@
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
             "Residual",
-            "PTAR",
-            "EBAR",
-            "EBAP"});
+            "Cruda"});
             this.cmbCategoria.Location = new System.Drawing.Point(58, 238);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(313, 21);

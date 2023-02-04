@@ -1,13 +1,9 @@
-﻿using ComapaSoftware.Controlador;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
@@ -47,14 +43,14 @@ namespace ComapaSoftware.Http
                 //?TipoPlanta=" + tipoPlanta
                 var response = client.GetAsync("api/bombas.php?IdEstacion=" + IdEstacion).Result;
                 var result = response.Content.ReadAsStringAsync().Result;
-                Console.WriteLine(result+"es este el result");
+                Console.WriteLine(result + "es este el result");
                 List<ModelsBombas> json = JsonSerializer.Deserialize<List<ModelsBombas>>(result);
                 Console.WriteLine(json);
                 foreach (var items in json)
                 {
-                    dt.Rows.Add(items.IdBombas.ToString(),items.IdEstacion,items.Posicion.ToString(),items.Marca,items.Modelo,items.Tipo,
-                        items.Hp,items.Voltaje,items.Diametro,items.Lps,items.Carga,items.Rpm,items.Estatus,
-                        items.Fpm,items.Observaciones);
+                    dt.Rows.Add(items.IdBombas.ToString(), items.IdEstacion, items.Posicion.ToString(), items.Marca, items.Modelo, items.Tipo,
+                        items.Hp, items.Voltaje, items.Diametro, items.Lps, items.Carga, items.Rpm, items.Estatus,
+                        items.Fpm, items.Observaciones);
                 }
                 return dt;
             }
@@ -213,7 +209,7 @@ namespace ComapaSoftware.Http
                 {
                     return false;
                 }
-                
+
             }
         }
         //ACTUALIZAR INFORMACION DE BOMBAS
@@ -265,7 +261,7 @@ namespace ComapaSoftware.Http
                 httpClient.DefaultRequestHeaders.Add("Function", "delete");
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage respuesta = httpClient.GetAsync("api/bombas.php?IdBombas="+IdBombas).Result;
+                HttpResponseMessage respuesta = httpClient.GetAsync("api/bombas.php?IdBombas=" + IdBombas).Result;
 
                 Console.WriteLine(respuesta.StatusCode.ToString());
                 if (respuesta.StatusCode == System.Net.HttpStatusCode.OK)

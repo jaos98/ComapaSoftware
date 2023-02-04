@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
@@ -16,9 +11,9 @@ namespace ComapaSoftware.Http
         public string Password { get; set; }
 
 
-        public bool validarSesionHttp(string Usuario,string Password)
+        public bool validarSesionHttp(string Usuario, string Password)
         {
-            Console.WriteLine(Usuario+"/"+Password);
+            Console.WriteLine(Usuario + "/" + Password);
             using (var client = new HttpClient())
             {
 
@@ -27,8 +22,8 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("Function", "login");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/usuarios.php?Usuario="+Usuario+"&Password="+Password+"").Result;
-               
+                var response = client.GetAsync("api/usuarios.php?Usuario=" + Usuario + "&Password=" + Password + "").Result;
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     var result = response.Content.ReadAsStringAsync().Result;

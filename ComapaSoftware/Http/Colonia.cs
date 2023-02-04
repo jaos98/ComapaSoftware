@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
@@ -26,7 +23,7 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("function", "getname");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/colonias.php?IdSector="+IdSector).Result;
+                var response = client.GetAsync("api/colonias.php?IdSector=" + IdSector).Result;
                 Console.WriteLine(response);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
@@ -55,16 +52,16 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("User-Agent", "Anything");
                 client.DefaultRequestHeaders.Add("function", "getallcol");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync("api/colonias.php?IdSector="+IdSector).Result;
+                var response = client.GetAsync("api/colonias.php?IdSector=" + IdSector).Result;
                 Console.WriteLine(response);
                 var result = response.Content.ReadAsStringAsync().Result; ;
-               
+
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     List<ModelsColonia> json = JsonSerializer.Deserialize<List<ModelsColonia>>(result);
                     foreach (var items in json)
                     {
-                        dt.Rows.Add(items.IdColonia,items.IdSector,items.NombreColonia);
+                        dt.Rows.Add(items.IdColonia, items.IdSector, items.NombreColonia);
                     }
                     return dt;
 
@@ -114,7 +111,7 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("function", "read");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/sectores.php?IdSector="+IdSector).Result;
+                var response = client.GetAsync("api/sectores.php?IdSector=" + IdSector).Result;
                 Console.WriteLine(response);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {

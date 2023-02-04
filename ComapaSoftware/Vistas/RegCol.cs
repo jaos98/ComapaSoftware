@@ -1,12 +1,5 @@
 ﻿using ComapaSoftware.Http;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
@@ -53,18 +46,18 @@ namespace ComapaSoftware.Vistas
         }
         private void cmbId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbId.SelectedIndex>=0)
+            if (cmbId.SelectedIndex >= 0)
             {
-               c.LeerNombre(cmbId.Text);;
-               dgvColonias.DataSource= c.LeerTodo(cmbId.Text);
-               lblSector.Text =  c.ms.NombreSector;
+                c.LeerNombre(cmbId.Text); ;
+                dgvColonias.DataSource = c.LeerTodo(cmbId.Text);
+                lblSector.Text = c.ms.NombreSector;
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             GetInfo();
-            if (c.Registrar(mc.IdSector,mc.NombreColonia))
+            if (c.Registrar(mc.IdSector, mc.NombreColonia))
             {
                 MessageBox.Show("¡Registrado!");
                 GetAllData();
@@ -96,7 +89,7 @@ namespace ComapaSoftware.Vistas
             int IdColonia = Convert.ToInt32(IdCol);
             string IdSector = dgvColonias.CurrentRow.Cells[1].Value.ToString();
             string NombreColonia = dgvColonias.CurrentRow.Cells[2].Value.ToString();
-            ActCol ac = new ActCol(IdColonia,IdSector,NombreColonia);
+            ActCol ac = new ActCol(IdColonia, IdSector, NombreColonia);
             ac.Show();
         }
 

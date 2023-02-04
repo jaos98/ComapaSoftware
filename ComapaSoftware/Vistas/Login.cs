@@ -1,8 +1,6 @@
 ﻿using ComapaSoftware.Http;
 using ComapaSoftware.Vistas;
 using System;
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace ComapaSoftware
@@ -76,7 +74,7 @@ namespace ComapaSoftware
         {
 
             Application.Exit();
-            
+
         }
     }
 }

@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ComapaSoftware.Http
+﻿namespace ComapaSoftware.Http
 {
     internal class ModelsColonia
     {
         public int IdColonia { get; set; }
         public string IdSector { get; set; }
         public string NombreColonia { get; set; }
-        
+
     }
 }

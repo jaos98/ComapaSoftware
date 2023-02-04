@@ -5,22 +5,10 @@ namespace ComapaSoftware.Vistas
 {
     public partial class ControlPanel : Form
     {
-        //DECLARACION DE VARIABLES A UTILIZAR EN LA CLASE FormPanel
-        MySqlCommand Query = new MySqlCommand();
-        MySqlConnection Conn;
-        MySqlDataReader consultar;
         //ACCESO PUBLICO A LA CLASE FormPanel
         public ControlPanel()
         {
             InitializeComponent();
-        }
-        //METODO DE CONEXION A BASE DE DATOS
-        public void conectarBase()
-        {
-            Conn = new MySqlConnection();
-            string sql = "server=localhost;user id=root; database=comapainfo;password=;";
-            Conn.ConnectionString = sql;
-            Conn.Open();
         }
         //DECLARACION DE BOTONES, BOTON QUE MUESTRA LA VISTA AGREGAR PLANTA
         private void btnAgregar_Click(object sender, EventArgs e)

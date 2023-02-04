@@ -347,11 +347,7 @@
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
             "Residual",
-            "PTAR",
-            "EBAR",
-            "EBAP",
-            "Obra de toma",
-            "Rebombeo de agua cruda"});
+            "Cruda"});
             this.cmbCategoria.Location = new System.Drawing.Point(11, 87);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(139, 21);

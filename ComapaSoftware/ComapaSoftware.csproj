@@ -383,9 +383,6 @@
     <None Include="Img\guardar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Img\guardar %281%29.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Img\unlocked.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

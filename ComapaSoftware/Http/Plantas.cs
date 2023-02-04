@@ -2,12 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
@@ -200,7 +197,7 @@ namespace ComapaSoftware.Http
                     new KeyValuePair<string,string>("Domicilio",Domicilio)
 
                 });
-                var response = client.PostAsync("api/plantas.php?IdPlantas="+IdPlantas, content).Result;
+                var response = client.PostAsync("api/plantas.php?IdPlantas=" + IdPlantas, content).Result;
                 Console.WriteLine(response);
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
@@ -232,7 +229,7 @@ namespace ComapaSoftware.Http
                 Console.WriteLine(response);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                    
+
                     return true;
 
                 }
@@ -251,7 +248,7 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("function", "validate");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/plantas.php?IdPlantas=" +IdPlantas).Result;
+                var response = client.GetAsync("api/plantas.php?IdPlantas=" + IdPlantas).Result;
                 Console.WriteLine(response);
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {

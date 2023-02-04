@@ -3,10 +3,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 
 namespace ComapaSoftware.Modelo
 {
@@ -37,7 +33,7 @@ namespace ComapaSoftware.Modelo
         }
 
 
-        public int registrarInfo(string idPlantas,string idEstacion,string nombre, string capEquipos, string operacionMinima, string equiposInstalados,
+        public int registrarInfo(string idPlantas, string idEstacion, string nombre, string capEquipos, string operacionMinima, string equiposInstalados,
             string tipo, string garantOperacion, string gastoPromedio, string gastoInstalado, string servicio, string observaciones)
         {
 
@@ -74,14 +70,14 @@ namespace ComapaSoftware.Modelo
             }
             finally
             {
-                
+
             }
         }
         public DataTable llevarDatos(string globalReceiver)
         {
             string sql = "SELECT `IdPlantas`, `IdEstacion`, `Nombre`, `CapacidadEquipos`," +
                 " `OperacionMinima`, `EquiposInstalados`, `Tipo`, `GarantOperacion`, `GastoPromedio`," +
-                " `GastoInstalado`, `Servicio`, `Observaciones` FROM `estaciones` WHERE IdPlantas='"+globalReceiver+"'";
+                " `GastoInstalado`, `Servicio`, `Observaciones` FROM `estaciones` WHERE IdPlantas='" + globalReceiver + "'";
             conectarBase();
             try
             {
@@ -106,7 +102,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 Query.CommandText = "SELECT Observaciones FROM estaciones WHERE IdEstacion= '" + idFicha + "'";
-                Query.Connection = Conn;    
+                Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
 
                 while (Consultar.Read())
@@ -158,8 +154,8 @@ namespace ComapaSoftware.Modelo
                    "`CapacidadEquipos`=@capEquipos,`OperacionMinima`=@opMinima,`EquiposInstalados`=@eqInstalados," +
                    "`Tipo`=@tipo,`GarantOperacion`=@garantOp,`GastoPromedio`=@gastoProm," +
                    "`GastoInstalado`=@gastoInst,`Servicio`=@servicio,`Observaciones`=@observaciones " +
-                   "WHERE IdEstacion = '"+idEstacion+"'";         
-                  
+                   "WHERE IdEstacion = '" + idEstacion + "'";
+
             try
             {
                 Conn.Close();

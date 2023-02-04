@@ -50,7 +50,7 @@
         }
         public string SubestacionKva
         {
-            get { return subestacionKva;}
+            get { return subestacionKva; }
             set { subestacionKva = value; }
         }
         public string Colonia
@@ -94,8 +94,8 @@
             idPlanta = IdPlanta;
         }
         public ModeloPlantas(string idPlanta, string numMedidor, string numServicio,
-            string tipoPlantas,string estatus, string descFunciones,string subestacionKva, string colonia,string sector,
-            string latitud, string longitud, string elevacion, string servicio,string domicilio)
+            string tipoPlantas, string estatus, string descFunciones, string subestacionKva, string colonia, string sector,
+            string latitud, string longitud, string elevacion, string servicio, string domicilio)
         {
             this.idPlanta = idPlanta;
             this.numMedidor = numMedidor;

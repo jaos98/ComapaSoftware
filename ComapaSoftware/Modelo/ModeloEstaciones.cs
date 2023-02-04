@@ -1,36 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ComapaSoftware.Controlador
+﻿namespace ComapaSoftware.Controlador
 {
     internal class ModeloInfo
     {
-        private string idPlantas,idEstacion,nombre,capEquipos, operacionMinima, equiposInstalados, tipo, garantOperacion
+        private string idPlantas, idEstacion, nombre, capEquipos, operacionMinima,
+            equiposInstalados, tipo, garantOperacion
            , gastoPromedio, gastoInstalado, servicio, observaciones;
 
 
 
         public string IdPlantas
         {
-            get{ return idPlantas; }
+            get { return idPlantas; }
             set { idPlantas = value; }
         }
         public string IdEstacion
         {
-            get{ return idEstacion; }
+            get { return idEstacion; }
             set { idEstacion = value; }
         }
         public string Nombre
         {
-            get{ return nombre; }
+            get { return nombre; }
             set { nombre = value; }
         }
         public string CapEquipos
         {
-            get{ return capEquipos; }
+            get { return capEquipos; }
             set { capEquipos = value; }
         }
         public string OperacionMinima
@@ -41,7 +36,7 @@ namespace ComapaSoftware.Controlador
         public string EquiposInstalados
         {
             get { return equiposInstalados; }
-            set { equiposInstalados = value;}
+            set { equiposInstalados = value; }
         }
         public string Tipo
         {
@@ -50,27 +45,27 @@ namespace ComapaSoftware.Controlador
         }
         public string GarantOperacion
         {
-            get { return garantOperacion;}
+            get { return garantOperacion; }
             set { garantOperacion = value; }
         }
         public string GastoPromedio
         {
-            get { return gastoPromedio;}
+            get { return gastoPromedio; }
             set { gastoPromedio = value; }
         }
         public string GastoInstalado
         {
-            get { return gastoInstalado;}
+            get { return gastoInstalado; }
             set { gastoInstalado = value; }
         }
         public string Servicio
         {
-            get { return servicio;}
+            get { return servicio; }
             set { servicio = value; }
         }
         public string Observaciones
         {
-            get { return observaciones;}
+            get { return observaciones; }
             set { observaciones = value; }
         }
 

@@ -1,17 +1,10 @@
 ﻿using ComapaSoftware.Http;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
-    
+
     public partial class RegSector : Form
     {
         Sector s = new Sector();
@@ -54,7 +47,7 @@ namespace ComapaSoftware.Vistas
             }
             else
             {
-            MessageBox.Show("Ha ocurrido un error, intentelo mas tarde");
+                MessageBox.Show("Ha ocurrido un error, intentelo mas tarde");
             }
 
         }
@@ -79,7 +72,7 @@ namespace ComapaSoftware.Vistas
                 s.Borrar(result);
                 GetAll();
             }
-           
+
         }
 
         private void btnAct_Click(object sender, EventArgs e)
@@ -88,7 +81,7 @@ namespace ComapaSoftware.Vistas
             string result2 = dgvSector.CurrentRow.Cells[1].Value.ToString();
             Console.WriteLine(result);
             Console.WriteLine(result2);
-            ActSector asec = new ActSector(result,result2);
+            ActSector asec = new ActSector(result, result2);
             asec.Show();
         }
 

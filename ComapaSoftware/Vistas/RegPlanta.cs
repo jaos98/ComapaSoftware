@@ -3,22 +3,17 @@ using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
 {
     public partial class FormPlanta : Form
     {
-        ModeloPlantas m = new ModeloPlantas();
-        ControladorPlantas c = new ControladorPlantas();
         ModelsPlantas mp = new ModelsPlantas();
         Colonia col = new Colonia();
         Sector s = new Sector();
         List<ModelsSector> catcher = new List<ModelsSector>();
-        //List<ModelsColonia> listcol = new List<ModelsColonia>();
+        Plantas p = new Plantas();
         public string IdSector;
         public FormPlanta()
         {
@@ -33,54 +28,41 @@ namespace ComapaSoftware.Vistas
             {
                 catcher.Add(item);
                 cmbSector.Items.Add(item.NombreSector);
-                
+
             }
-
-
-            //foreach (var item in c.consultarSector())
-            //{
-            //    cmbSector.Items.Add(item);
-            //}
         }
-       
-        //BOTON DE REGISTRO DE INFORMACION
-        private void btnAgregar_Click(object sender, EventArgs e)
+        //BOTON DE REGISTRO
+        private void btnRegHttp_Click(object sender, EventArgs e)
         {
-            GetInfo();
+            GetInfoHttp();
             if (Validate())
             {
-                //VALIDAR ANTES DE INGRESAR LA INFO
-                if (c.noRepite(m.IdPlanta))
+                if (p.DoesNotExists(mp.IdPlantas))
                 {
-                    if (c.insertarPlanta(m.IdPlanta, m.NumMedidor, m.NumServicio,
-               m.TipoPlantas, m.Estatus, m.DescFunciones,m.SubestacionKva, m.Colonia, m.Sector,
-               m.Latitud, m.Longitud, m.Elevacion, m.Servicio, m.Domicilio) > 0)
+                    if (p.insertarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio,
+                   mp.TipoPlantas, mp.Estatus, mp.DescFunciones, mp.SubestacionKva, mp.Colonia, mp.Sector,
+                   mp.Latitud, mp.Longitud, mp.Elevacion, mp.Servicio, mp.Domicilio) > 0)
                     {
-                        MessageBox.Show("Se han registrado todos los datos");
+                        MessageBox.Show("Registrado Exitosamente");
                         Clean();
                     }
                     else
                     {
-                        MessageBox.Show("Algo ha salido mal, revise la informacion" +
-                            "o bien, contacte al administrador");
+                        MessageBox.Show("Algo salio mal");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("El id ingresado ya se utilizo, cambie o elimine el anterior");
+                    MessageBox.Show("El Id que esta ingresando ya se encuentra en uso");
                 }
             }
             else
             {
-                MessageBox.Show("Porfavor Ingrese todos los datos");
+                MessageBox.Show("No se han introducido todos los datos");
             }
+            
         }
-        private void btnVolver_Click(object sender, EventArgs e)
-        {
-            Dispose();
-            ControlPanel formPanel = new ControlPanel();
-            formPanel.Show();
-        }
+        //CARGA LOS DATOS AL COMBOBOX DESDE LA BASE DE DATOS
         private void cmbSector_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbColonia.Items.Clear();
@@ -98,8 +80,6 @@ namespace ComapaSoftware.Vistas
                         break;
                     }
                 }
-                Console.WriteLine("Aqui llego");
-                Console.WriteLine(IdSector);
                 foreach (ModelsColonia mcl in col.getDatosHttpBySector(IdSector))
                 {
                     cmbColonia.Items.Add(mcl.NombreColonia);
@@ -110,40 +90,14 @@ namespace ComapaSoftware.Vistas
             {
                 MessageBox.Show("Ha ocurrido un error");
             }
-
-            //int value = cmbSector.SelectedIndex;
-            //if (cmbSector.SelectedIndex < 0)
-            //{
-            //    cmbColonia.Items.Clear();
-            //}
-            //else if (cmbSector.SelectedIndex >= 0)
-            //{
-            //    cmbColonia.Items.Clear();
-            //    cmbColonia.Enabled = true;
-                //string resultId = c.obtenerID(cmbSector.Text);
-                //cmbColonia.Enabled = true;
-                //foreach (var item in c.compararDatos(resultId))
-                //{
-                //    cmbColonia.Items.Add(item);
-                //}
-          //  }
-            //int value = cmbSector.SelectedIndex;
-            //if (cmbSector.SelectedIndex < 0)
-            //{
-            //    cmbColonia.Items.Clear();
-            //}
-            //else if (cmbSector.SelectedIndex >= 0)
-            //{
-            //    cmbColonia.Items.Clear();
-            //    cmbColonia.Enabled = true;
-            //    string resultId = c.obtenerID(cmbSector.Text);
-            //    cmbColonia.Enabled = true;
-            //    foreach (var item in c.compararDatos(resultId))
-            //    {
-            //        cmbColonia.Items.Add(item);
-            //    }
-            //}
         }
+        private void btnVolver_Click(object sender, EventArgs e)
+        {
+            Dispose();
+            ControlPanel formPanel = new ControlPanel();
+            formPanel.Show();
+        }
+       
         private void txtNumServ_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
@@ -168,7 +122,7 @@ namespace ComapaSoftware.Vistas
         }
         public void GetInfoHttp()
         {
-            
+
             mp.IdPlantas = txtPlanta.Text.Trim();
             mp.NumMedidor = txtNumMed.Text.Trim();
             mp.NumServicio = txtNumServ.Text.Trim();
@@ -184,35 +138,18 @@ namespace ComapaSoftware.Vistas
             mp.Servicio = cmbServicio.Text;
             mp.Domicilio = txtDomicilio.Text;
         }
-        public void GetInfo()
-        {
-            m.IdPlanta = txtPlanta.Text.Trim();
-            m.NumMedidor = txtNumMed.Text.Trim();
-            m.NumServicio = txtNumServ.Text.Trim();
-            m.TipoPlantas = cmbTipoPlanta.Text;
-            m.Estatus = cmbEstatus.Text;
-            m.DescFunciones = txtDescFunciones.Text;
-            m.SubestacionKva = txtKva.Text;
-            m.Colonia = cmbColonia.Text;
-            m.Sector = cmbSector.Text;
-            m.Latitud = txtLatitud.Text;
-            m.Longitud = txtLongitud.Text;
-            m.Elevacion = txtElevacion.Text;
-            m.Servicio = cmbServicio.Text;
-            m.Domicilio = txtDomicilio.Text;
-        }
         private bool Validate()
         {
-            if (m.IdPlanta == "" || m.NumMedidor == "" || m.NumServicio == "" ||
-                m.TipoPlantas == "" || m.Estatus == "" || m.DescFunciones == "" ||
-                m.SubestacionKva==""||m.Colonia == "" || m.Sector == "" || m.Latitud == "" || m.Longitud == "" ||
-                m.Elevacion == "" || m.Servicio == "" || m.Domicilio == "")
+            if (mp.IdPlantas == "" || mp.NumMedidor == "" || mp.NumServicio == "" ||
+                mp.TipoPlantas == "" || mp.Estatus == "" || mp.DescFunciones == "" ||
+                mp.SubestacionKva == "" || mp.Colonia == "" || mp.Sector == "" || mp.Latitud == "" || mp.Longitud == "" ||
+                mp.Elevacion == "" || mp.Servicio == "" || mp.Domicilio == "")
             {
                 return false;
             }
             return true;
         }
-        private void Clean()
+        void Clean()
         {
             txtPlanta.Clear();
             txtNumMed.Clear();
@@ -233,37 +170,7 @@ namespace ComapaSoftware.Vistas
         {
 
         }
-
-
-        public async Task ValidarIdPlantas()
-        {
-
-        }
-        private void btnRegHttp_Click(object sender, EventArgs e)
-        {
-            GetInfoHttp();
-            Plantas p = new Plantas();
-
-            
-            if (p.DoesNotExists(mp.IdPlantas))
-            {
-                if (p.insertarPlantaHttp(mp.IdPlantas, mp.NumMedidor, mp.NumServicio,
-               mp.TipoPlantas, mp.Estatus, mp.DescFunciones, mp.SubestacionKva, mp.Colonia, mp.Sector,
-               mp.Latitud, mp.Longitud, mp.Elevacion, mp.Servicio, mp.Domicilio) > 0)
-                {
-                    MessageBox.Show("Registrado Exitosamente");
-                    Clean();
-                }
-                else
-                {
-                    MessageBox.Show("Algo salio mal");
-                }
-            }
-            else
-            {
-                MessageBox.Show("El Id que esta ingresando ya se encuentra en uso");
-            }
-        }
+      
 
         private void FormPlanta_FormClosing(object sender, FormClosingEventArgs e)
         {

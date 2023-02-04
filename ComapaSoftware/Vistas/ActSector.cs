@@ -1,12 +1,5 @@
 ﻿using ComapaSoftware.Http;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
@@ -19,7 +12,7 @@ namespace ComapaSoftware.Vistas
         public string IdSector { get { return idSector; } set { idSector = value; } }
         public string NombreSector { get { return nombreSector; } set { nombreSector = value; } }
 
-        public ActSector(string idSector,string nombreSector)
+        public ActSector(string idSector, string nombreSector)
         {
             IdSector = idSector;
             NombreSector = nombreSector;
@@ -31,16 +24,16 @@ namespace ComapaSoftware.Vistas
         {
             if (s.Actualizar(txtId.Text, txtNombre.Text))
             {
-                    MessageBox.Show("Actualizado con exito");
-                    RegSector rs = new RegSector();
-                    rs.GetAll();
-                    Close();
+                MessageBox.Show("Actualizado con exito");
+                RegSector rs = new RegSector();
+                rs.GetAll();
+                Close();
             }
             else
             {
                 MessageBox.Show("Ha ocurrido un error, intentelo mas tarde");
             }
-           
+
         }
 
         private void btnVolver_Click(object sender, EventArgs e)
@@ -50,7 +43,7 @@ namespace ComapaSoftware.Vistas
 
         private void ActSector_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         void GetInfo()

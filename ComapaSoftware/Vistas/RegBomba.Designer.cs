@@ -57,7 +57,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnReg2 = new System.Windows.Forms.Button();
+            this.btnReg = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbPlanta = new System.Windows.Forms.ComboBox();
@@ -65,7 +65,6 @@
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.btnVolver = new System.Windows.Forms.Button();
-            this.btnReg = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +98,6 @@
             this.mainPanel.Controls.Add(this.label4);
             this.mainPanel.Controls.Add(this.label3);
             this.mainPanel.Controls.Add(this.btnReg);
-            this.mainPanel.Controls.Add(this.btnReg2);
             this.mainPanel.Enabled = false;
             this.mainPanel.Location = new System.Drawing.Point(233, 12);
             this.mainPanel.Name = "mainPanel";
@@ -113,7 +111,6 @@
             this.cmbPosicion.Name = "cmbPosicion";
             this.cmbPosicion.Size = new System.Drawing.Size(121, 21);
             this.cmbPosicion.TabIndex = 30;
-            this.cmbPosicion.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged_2);
             // 
             // label15
             // 
@@ -333,7 +330,6 @@
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Marca";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -344,16 +340,18 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Posicion";
             // 
-            // btnReg2
+            // btnReg
             // 
-            this.btnReg2.Location = new System.Drawing.Point(35, 351);
-            this.btnReg2.Name = "btnReg2";
-            this.btnReg2.Size = new System.Drawing.Size(155, 23);
-            this.btnReg2.TabIndex = 31;
-            this.btnReg2.Text = "Registrar Bomba";
-            this.btnReg2.UseVisualStyleBackColor = true;
-            this.btnReg2.Visible = false;
-            this.btnReg2.Click += new System.EventHandler(this.btnReg2_Click);
+            this.btnReg.BackColor = System.Drawing.Color.DarkRed;
+            this.btnReg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnReg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReg.Location = new System.Drawing.Point(35, 340);
+            this.btnReg.Name = "btnReg";
+            this.btnReg.Size = new System.Drawing.Size(157, 34);
+            this.btnReg.TabIndex = 22;
+            this.btnReg.Text = "Registrar Bomba";
+            this.btnReg.UseVisualStyleBackColor = false;
+            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // label1
             // 
@@ -402,9 +400,7 @@
             this.cmbCategoria.Items.AddRange(new object[] {
             "Potable",
             "Residual",
-            "PTAR",
-            "EBAR",
-            "EBAP"});
+            "Cruda"});
             this.cmbCategoria.Location = new System.Drawing.Point(26, 79);
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(121, 21);
@@ -431,19 +427,6 @@
             this.btnVolver.Text = "Volver";
             this.btnVolver.UseVisualStyleBackColor = false;
             this.btnVolver.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // btnReg
-            // 
-            this.btnReg.BackColor = System.Drawing.Color.DarkRed;
-            this.btnReg.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnReg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReg.Location = new System.Drawing.Point(35, 340);
-            this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(157, 34);
-            this.btnReg.TabIndex = 22;
-            this.btnReg.Text = "Registrar Bomba";
-            this.btnReg.UseVisualStyleBackColor = false;
-            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // RegBomba
             // 
@@ -509,6 +492,5 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox cmbPosicion;
         private System.Windows.Forms.Button btnVolver;
-        private System.Windows.Forms.Button btnReg2;
     }
 }

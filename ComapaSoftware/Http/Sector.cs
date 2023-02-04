@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
     internal class Sector
     {
         public ModelsSector sector;
-        public  List<ModelsSector> list = new List<ModelsSector>();
+        public List<ModelsSector> list = new List<ModelsSector>();
         //OBTIENE TODA LA INFORMACION DE SECTOR
         public List<ModelsSector> getDatosHttpByTipo()
         {
-            
+
             using (var client = new HttpClient())
             {
 
@@ -44,7 +41,7 @@ namespace ComapaSoftware.Http
 
         //LLENA EL DATAGRIDVIEW DE LA VISTA REG SECTOR
         public DataTable LeerTodo()
-        { 
+        {
             using (var client = new HttpClient())
             {
                 DataTable dt = new DataTable("TablaPlantas");
@@ -64,7 +61,7 @@ namespace ComapaSoftware.Http
                 {
                     foreach (var items in json)
                     {
-                        dt.Rows.Add(items.IdSector,items.NombreSector);
+                        dt.Rows.Add(items.IdSector, items.NombreSector);
                     }
                     return dt;
 

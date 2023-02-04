@@ -1,13 +1,9 @@
-﻿using ComapaSoftware.Controlador;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace ComapaSoftware.Http
 {
@@ -85,7 +81,7 @@ namespace ComapaSoftware.Http
                 client.DefaultRequestHeaders.Add("function", "IdPlantas");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 //?TipoPlanta=" + tipoPlanta
-                var response = client.GetAsync("api/estaciones.php?IdPlantas="+IdPlantas).Result;
+                var response = client.GetAsync("api/estaciones.php?IdPlantas=" + IdPlantas).Result;
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
                     Console.WriteLine(response);
@@ -125,8 +121,8 @@ namespace ComapaSoftware.Http
             }
         }
         //
-      
-        
+
+
 
         // TRAE EL ID DE LAS PLANTAS PARA REGISTRO
         public List<ModelsPlantas> getDatosHttpByTipo(string TipoPlantas)
@@ -223,7 +219,7 @@ namespace ComapaSoftware.Http
                 httpClient.DefaultRequestHeaders.Add("Function", "getdesc");
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage respuesta = httpClient.GetAsync("api/estaciones.php?IdEstacion="+ IdEstacion).Result;
+                HttpResponseMessage respuesta = httpClient.GetAsync("api/estaciones.php?IdEstacion=" + IdEstacion).Result;
 
                 Console.WriteLine(respuesta.StatusCode.ToString());
                 if (respuesta.StatusCode == System.Net.HttpStatusCode.OK)

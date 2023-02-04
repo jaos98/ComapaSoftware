@@ -1,5 +1,4 @@
-﻿using ComapaSoftware.Controlador;
-using ComapaSoftware.Http;
+﻿using ComapaSoftware.Http;
 using ComapaSoftware.Modelo;
 using System;
 using System.Windows.Forms;
@@ -7,9 +6,6 @@ namespace ComapaSoftware.Vistas
 {
     public partial class ConsInfoTec : Form
     {
-        ControladorFicha c = new ControladorFicha();
-        AttsInfo atts = new AttsInfo();
-        ModelsEstaciones me = new ModelsEstaciones();
         Estaciones es = new Estaciones();
 
         string globalReceiver;
@@ -20,14 +16,9 @@ namespace ComapaSoftware.Vistas
         public ConsInfoTec(string result)
         {
             InitializeComponent();
-            globalReceiver = result;  
+            globalReceiver = result;
         }
-        //METODO QUE CARGA LOS DATOS EN LA TABLA PRINCIPAL
-        public void traerDatos()
-        {
-            dataGridView1.DataSource = c.llevarDatos(globalReceiver);
-        }
-        //METODO HTTP
+        //METODO HTTP QUE CARGA LOS DATOS AL INICIAR
         public void traerDatosHttp()
         {
             dataGridView1.DataSource = es.llevarDatosHttp(globalReceiver);
@@ -37,30 +28,15 @@ namespace ComapaSoftware.Vistas
         {
             Ocultar();
             traerDatosHttp();
-            
-             //traerDatos();
         }
         //METODO AL HACER UN CLICK EN LA TABLA
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex>=0)
+            if (e.RowIndex >= 0)
             {
                 dataGridView1.Refresh();
                 richTextBox1.Text = es.ObtenerObservaciones(dataGridView1.CurrentRow.Cells[1].Value.ToString());
             }
-
-            //if (e.RowIndex >= 0)
-            //{
-            //    dataGridView1.Refresh();
-            //    //richTextBox1.Text = modelo.traerDescripcion(atts.Result);
-            //    string result = c.traerDescripcion(dataGridView1.CurrentRow.Cells[1].Value.ToString());
-
-            //    richTextBox1.Text = result;
-            //    //TRAER DESCRIPCIONES
-            //    /**
-                
-            //     **/
-            //}
         }
         //METODO AL HACER DOBLE CLICK EN LA TABLA
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -142,15 +118,6 @@ namespace ComapaSoftware.Vistas
             ControlPanel controlPanel = new ControlPanel();
             controlPanel.Show();
         }
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
-        {
-            //if (dataGridView1.CurrentRow != null)
-            //{
-            //    atts.Result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
-            //    c.traerDescripcion(atts.Result);
-            //}
-        }
-
         private void btnMostrar_Click(object sender, EventArgs e)
         {
             //RECIBE ID ESTACION
@@ -158,28 +125,6 @@ namespace ComapaSoftware.Vistas
             Dispose();
             ConsBombas consBombas = new ConsBombas(idEstacion);
             consBombas.Show();
-        }
-        class AttsInfo
-        {
-            private string result;
-            private string result2;
-
-            public string Result
-            {
-                get { return result; }
-                set { result = value; }
-            }
-            public string Result2
-            {
-                get { return result2; }
-                set { result2 = value; }
-            }
-
-            public AttsInfo()
-            {
-
-            }
-
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -199,8 +144,6 @@ namespace ComapaSoftware.Vistas
                 string result = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                 es.Borrar(result);
                 traerDatosHttp();
-                //c.Delete(result);
-                //traerDatos();
             }
         }
 

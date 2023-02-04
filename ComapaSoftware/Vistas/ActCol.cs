@@ -1,12 +1,5 @@
 ﻿using ComapaSoftware.Http;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ComapaSoftware.Vistas
@@ -18,7 +11,7 @@ namespace ComapaSoftware.Vistas
         public int IdColonia { get; set; }
         public string IdSector { get; set; }
         public string NombreColonia { get; set; }
-        public ActCol(int idColonia,string idSector,string nombreColonia)
+        public ActCol(int idColonia, string idSector, string nombreColonia)
         {
             IdColonia = idColonia;
             IdSector = idSector;
@@ -55,7 +48,7 @@ namespace ComapaSoftware.Vistas
                 MessageBox.Show("¡Actualizado!");
 
                 Dispose();
-                
+
             }
             else
             {

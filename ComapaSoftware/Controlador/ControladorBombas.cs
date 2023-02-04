@@ -3,9 +3,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text.Json;
 
 namespace ComapaSoftware.Modelo
 {
@@ -202,7 +199,7 @@ namespace ComapaSoftware.Modelo
             try
             {
                 conectarBase();
-                Query.CommandText = "SELECT * FROM bombas WHERE IdBombas="+idBombas+"";
+                Query.CommandText = "SELECT * FROM bombas WHERE IdBombas=" + idBombas + "";
                 Query.Connection = Conn;
                 Consultar = Query.ExecuteReader();
 
@@ -223,10 +220,10 @@ namespace ComapaSoftware.Modelo
             return list;
         }
         //ACTUALIZAR INFORMACION UPDATE
-        public int UpdateInfo(string idBombas,int posicion, string marca,
+        public int UpdateInfo(string idBombas, int posicion, string marca,
            string modelo, string tipo, string hp, string voltaje,
            string diametro, string lps, string carga, string rpm,
-           string estatus,string fpm,string observaciones)
+           string estatus, string fpm, string observaciones)
         {
             int numRegistros = 0;
             string sqlEjecutar = "UPDATE `bombas` SET `Posicion`=@posicion,`Marca`=@marca," +
@@ -234,11 +231,11 @@ namespace ComapaSoftware.Modelo
                 "`Tipo`=@tipo,`Hp`=@hp,`Voltaje`=@voltaje," +
                 "`Diametro`=@diametro,`Lps`=@lps,`Carga`=@carga," +
                 "`Rpm`=@rpm,`Estatus`=@estatus,`Fpm`=@fpm," +
-                "`Observaciones`=@observaciones WHERE IdBombas ="+idBombas;
+                "`Observaciones`=@observaciones WHERE IdBombas =" + idBombas;
 
             try
             {
-                Console.WriteLine("Entro al metodo: "+idBombas);
+                Console.WriteLine("Entro al metodo: " + idBombas);
                 Conn.Close();
                 Query.Connection = Conn;
                 Query.CommandText = sqlEjecutar;
@@ -276,7 +273,7 @@ namespace ComapaSoftware.Modelo
             conectarBase();
             try
             {
-                Query.CommandText = "DELETE FROM `bombas` WHERE IdBombas = "+ idBombas;
+                Query.CommandText = "DELETE FROM `bombas` WHERE IdBombas = " + idBombas;
                 Query.Connection = Conn;
                 if (Query.ExecuteNonQuery() > 0)
                 {
